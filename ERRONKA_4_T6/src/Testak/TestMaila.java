@@ -49,7 +49,7 @@ class TestMaila {
 	@Test
 	void testEqualsFalse() {
 		Maila maila = new Maila(maila_izena, biderkatzailea, kopurua, NAN, id_maila);
-        Maila maila1 = new Maila(maila_izena, biderkatzailea, kopurua, "48987766V", id_maila);
+        Maila maila1 = new Maila("k", 3, 6, "48987766V", 9);
         assertFalse(maila.equals(maila1));
 	}
 }
