@@ -3,17 +3,17 @@ package Objetuak;
 import java.util.Date;
 import java.util.Objects;
 
-public class Erablitzaile extends Pertsona{
+public class Erabiltzaile extends Pertsona{
 	private String erabiltzaile_izena;
 	private double diru_kopuru_historikoa;
 	private double diru_kopuru_momentukoa;
 	
-	public Erablitzaile(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
+	public Erabiltzaile(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
 			String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,
-			String pasahitza, String tlf_zenabkia, String erabiltzaile_izena, double diru_kopuru_historikoa,
+			String pasahitza, String tlf_zenbakia, String erabiltzaile_izena, double diru_kopuru_historikoa,
 			double diru_kopuru_momentukoa) {
 		super(nAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa, probintzia, herria, postaKodea,
-				posta_elektronikoa, pasahitza, tlf_zenabkia);
+				posta_elektronikoa, pasahitza, tlf_zenbakia);
 		this.erabiltzaile_izena = erabiltzaile_izena;
 		this.diru_kopuru_historikoa = diru_kopuru_historikoa;
 		this.diru_kopuru_momentukoa = diru_kopuru_momentukoa;
@@ -38,8 +38,7 @@ public class Erablitzaile extends Pertsona{
 		this.diru_kopuru_momentukoa = diru_kopuru_momentukoa;
 	}
 	public void erakutsi() {
-		System.out.println("Datuak: "/*super. (pertsonen datuak hemen erakusten ditugu ere)*/
-			+erabiltzaile_izena+", diru kopuru historikoa:"+diru_kopuru_historikoa
+		System.out.println("Datuak: " +erabiltzaile_izena+", diru kopuru historikoa:"+diru_kopuru_historikoa
 				+", diru kopuru momentukoa:"+diru_kopuru_momentukoa);
 	}
 
@@ -59,11 +58,8 @@ public class Erablitzaile extends Pertsona{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Erablitzaile other = (Erablitzaile) obj;
-		return Double.doubleToLongBits(diru_kopuru_historikoa) == Double.doubleToLongBits(other.diru_kopuru_historikoa)
-				&& Double.doubleToLongBits(diru_kopuru_momentukoa) == Double
-						.doubleToLongBits(other.diru_kopuru_momentukoa)
-				&& Objects.equals(erabiltzaile_izena, other.erabiltzaile_izena);
+		Erabiltzaile other = (Erabiltzaile) obj;
+		return Objects.equals(NAN, other.NAN);
 	}
 
 	@Override

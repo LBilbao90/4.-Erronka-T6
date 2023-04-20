@@ -71,10 +71,7 @@ public class Maila {
 		if (getClass() != obj.getClass())
 			return false;
 		Maila other = (Maila) obj;
-		return Objects.equals(NAN, other.NAN)
-				&& Double.doubleToLongBits(biderkatzailea) == Double.doubleToLongBits(other.biderkatzailea)
-				&& id_maila == other.id_maila && kopurua == other.kopurua
-				&& Objects.equals(maila_izena, other.maila_izena);
+		return Objects.equals(id_maila, other.id_maila);
 	}
 
 	@Override
@@ -85,4 +82,3 @@ public class Maila {
 	
 	
 }
-	
