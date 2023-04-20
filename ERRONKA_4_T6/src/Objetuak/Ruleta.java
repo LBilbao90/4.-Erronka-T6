@@ -8,7 +8,6 @@ public class Ruleta {
 	protected int apustua;
 
 	public Ruleta(int apustu_kopuru_max, int apustua) {
-		super();
 		this.apustu_kopuru_max = apustu_kopuru_max;
 		this.apustua = apustua;
 	}

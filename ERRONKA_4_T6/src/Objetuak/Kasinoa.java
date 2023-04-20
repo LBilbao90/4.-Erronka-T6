@@ -61,7 +61,7 @@ public class Kasinoa {
 	
 	@Override
 	public String toString() {
-		return "Kasinoa: id_kasinoa=" + id_kasinoa+ "/n izena=" + izena + "/n helbidea=" + helbidea + "/n telefonoa="
+		return "Kasinoa: id_kasinoa=" + id_kasinoa+ "\nizena=" + izena + "\nhelbidea=" + helbidea + "\ntelefonoa="
 				+ telefonoa + ""; 
 	}
 }

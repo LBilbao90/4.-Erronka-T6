@@ -1,8 +1,6 @@
 package Objetuak;
 
-public class Jokuak {
+public interface Jokuak {
 	
-	public void jokatu() {
-		
-	}
+	public void jokatu();
 }
