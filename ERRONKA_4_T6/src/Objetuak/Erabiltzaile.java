@@ -37,9 +37,9 @@ public class Erabiltzaile extends Pertsona{
 	public void setDiru_kopuru_momentukoa(double diru_kopuru_momentukoa) {
 		this.diru_kopuru_momentukoa = diru_kopuru_momentukoa;
 	}
-	public void erakutsi() {
-		System.out.println("Datuak: " +erabiltzaile_izena+", diru kopuru historikoa:"+diru_kopuru_historikoa
-				+", diru kopuru momentukoa:"+diru_kopuru_momentukoa);
+	public String erakutsi() {
+		return "Datuak:\n" +erabiltzaile_izena+"\ndiru kopuru historikoa:"+diru_kopuru_historikoa
+				+"\ndiru kopuru momentukoa:"+diru_kopuru_momentukoa;
 	}
 
 	@Override
@@ -59,7 +59,10 @@ public class Erabiltzaile extends Pertsona{
 		if (getClass() != obj.getClass())
 			return false;
 		Erabiltzaile other = (Erabiltzaile) obj;
-		return Objects.equals(NAN, other.NAN);
+		return Double.doubleToLongBits(diru_kopuru_historikoa) == Double.doubleToLongBits(other.diru_kopuru_historikoa)
+				&& Double.doubleToLongBits(diru_kopuru_momentukoa) == Double
+						.doubleToLongBits(other.diru_kopuru_momentukoa)
+				&& Objects.equals(erabiltzaile_izena, other.erabiltzaile_izena);
 	}
 
 	@Override

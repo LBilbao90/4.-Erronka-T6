@@ -102,6 +102,8 @@ class TestErabiltzailea {
     }
 	@Test
 	void testErakutsi() {
-		
+		String expected = "Datuak:\n" +erabiltzaile_izena+"\ndiru kopuru historikoa:"+diru_kopuru_historikoa
+				+"\ndiru kopuru momentukoa:"+diru_kopuru_momentukoa;
+		assertEquals(expected, erabiltzaile.erakutsi());
 	   }
 }
