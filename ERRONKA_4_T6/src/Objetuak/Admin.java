@@ -5,10 +5,10 @@ import java.util.Objects;
 
 public class Admin extends Pertsona {
 	
-	String kargua;
-	Double soldata;
-	int id_langile;
-	int id_kasino;
+	private String kargua;
+	private Double soldata;
+	private int id_langile;
+	private int id_kasino;
 	
 	public Admin(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
 			String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,

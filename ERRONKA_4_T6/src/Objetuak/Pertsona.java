@@ -5,18 +5,18 @@ import java.util.Objects;
 
 public class Pertsona {
 
-	String NAN;
-	String izena;
-	String abizena;
-	Date jaioteguna;
-	String herrialdea;
-	String autonomia_erkidegoa;
-	String probintzia;
-	String herria;
-	String postaKodea;
-	String posta_elektronikoa;
-	String pasahitza;
-	String tlf_zenabkia;
+	protected String NAN;
+	protected String izena;
+	protected String abizena;
+	protected Date jaioteguna;
+	protected String herrialdea;
+	protected String autonomia_erkidegoa;
+	protected String probintzia;
+	protected String herria;
+	protected String postaKodea;
+	protected String posta_elektronikoa;
+	protected String pasahitza;
+	protected String tlf_zenabkia;
 	
 	public Pertsona(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
 			String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,
