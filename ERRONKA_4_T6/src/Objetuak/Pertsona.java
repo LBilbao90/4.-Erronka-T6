@@ -3,7 +3,7 @@ package Objetuak;
 import java.util.Date;
 import java.util.Objects;
 
-public class Pertsona {
+public abstract class Pertsona {
 
 	protected String NAN;
 	protected String izena;
