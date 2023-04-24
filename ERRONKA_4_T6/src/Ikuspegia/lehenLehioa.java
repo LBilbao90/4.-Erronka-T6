@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,14 +15,39 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import Kontrolatzailea.metodoak;
+
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
+import java.awt.Component;
+import java.awt.Color;
+import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
+import javax.swing.JProgressBar;
+import javax.swing.JMenuBar;
 
 public class lehenLehioa extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtErabiltzailea;
+	private JTextField txtPasahitza;
+	private JTextField textErregistratu;
+	private JPasswordField passwordLogin;
+	private JTextField textNAN;
+	private JTextField txtIzena;
+	private JTextField txtAbizena;
+	private JTextField txtPasahitzaErregistratu;
+	private JTextField txtErrepikatuPasahitza;
+	private JTextField txtJaiotzeData;
+	private JTextField txtHerrialdea;
+	private JTextField txtProbintzia;
+	private JTextField txtHerria;
+	private JTextField txtPostaKodea;
+	private JTextField txtTelefonoa;
+
 
 	/**
 	 * Launch the application.
@@ -74,21 +101,102 @@ public class lehenLehioa extends JFrame {
 	    sarrera.add(logoa);
 	    sarrera.add(txt1);
 	    
-	    sarrera.setVisible(true);
-	    
+	    JButton btnSarrera = new JButton("");
+	    btnSarrera.setOpaque(false);
+	    btnSarrera.setContentAreaFilled(false);
+	    btnSarrera.setBorderPainted(false);	   
+	    btnSarrera.setBounds(0, 0, 1914, 1026);
+	    sarrera.add(btnSarrera);
+	    	    
 	    
 	    JPanel login = new JPanel();
+	    login.setBorder(null);
 	    contentPane.add(login);
 	    login.setLayout(null);
 	    
 	    txtErabiltzailea = new JTextField();
-	    txtErabiltzailea.setBounds(133, 255, 583, 69);
+	    txtErabiltzailea.setEditable(false);
+	    txtErabiltzailea.setBorder(null);
+	    txtErabiltzailea.setBounds(359, 247, 583, 69);
 	    txtErabiltzailea.setText("ERABILTZAILEA:");
-	    txt1.setFont(new Font("Tahoma", Font.BOLD, 50));
+	    txtErabiltzailea.setFont(new Font("Tahoma", Font.BOLD, 65));
+	    
+	    txtPasahitza = new JTextField();
+	    txtPasahitza.setEditable(false);
+	    txtPasahitza.setBorder(null);
+	    txtPasahitza.setBounds(359, 450, 583, 69);
+	    txtPasahitza.setText("PASAHITZA:");
+	    txtPasahitza.setFont(new Font("Tahoma", Font.BOLD, 65));
+
 
 	    login.add(txtErabiltzailea);
-	    txtErabiltzailea.setColumns(10);
+	    login.add(txtPasahitza);
+	    
+	    textErregistratu = new JTextField();
+	    textErregistratu.setFont(new Font("Tahoma", Font.PLAIN, 30));
+	    textErregistratu.setEditable(false);
+	    textErregistratu.setBorder(null);
+	    textErregistratu.setText("Ez daukazu kontua? ");
+	    textErregistratu.setBounds(594, 541, 288, 201);
+	    login.add(textErregistratu);
+	    textErregistratu.setColumns(10);
+	    
+	    JButton btnEzErregistratua = new JButton("Erregistratu hemen klik eginez");
+	    btnEzErregistratua.setFont(new Font("Tahoma", Font.PLAIN, 30));
+	    btnEzErregistratua.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    	}
+	    });
+	    btnEzErregistratua.setForeground(new Color(0, 0, 255));
+	    btnEzErregistratua.setBorder(null);
+	    btnEzErregistratua.setBackground(new Color(255, 255, 255));
+	    btnEzErregistratua.setBounds(872, 607, 435, 69);
+	    login.add(btnEzErregistratua);
+	    
+	    passwordLogin = new JPasswordField();
+	    passwordLogin.setFont(new Font("Tahoma", Font.PLAIN, 60));
+	    passwordLogin.setBorder(new LineBorder(new Color(171, 173, 179)));
+	    passwordLogin.setBounds(952, 450, 813, 69);
+	    login.add(passwordLogin);
+	    
+	    JTextArea textErabiltzailea = new JTextArea();
+	    textErabiltzailea.setFont(new Font("Monospaced", Font.PLAIN, 60));
+	    textErabiltzailea.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textErabiltzailea.setBounds(952, 247, 813, 69);
+	    login.add(textErabiltzailea);
+	    
+	    JPanel erregistratu = new JPanel();
+	    contentPane.add(erregistratu, "name_4201014156399");
+	    erregistratu.setLayout(null);
+	    
+	    textNAN = metodoak.createTextField("NAN:", 73, 157, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtIzena = metodoak.createTextField("Izena:", 73, 227, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtAbizena = metodoak.createTextField("Abizena:", 73, 297, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtPasahitzaErregistratu = metodoak.createTextField("Pasahitza:", 73, 367, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtErrepikatuPasahitza = metodoak.createTextField("Errepikatu pasahitza:", 73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtJaiotzeData = metodoak.createTextField("Jaiotze data:", 73, 507, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtHerrialdea = metodoak.createTextField("Herrialdea:", 73, 577, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtProbintzia = metodoak.createTextField("Probintzia:", 73, 647, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtHerria = metodoak.createTextField("Herria:", 73, 717, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtPostaKodea = metodoak.createTextField("Posta kodea:", 73, 786, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtTelefonoa = metodoak.createTextField("Telefonoa:", 73, 855, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);	
+	    
+	    JPanel ruleta = new JPanel();
+	    contentPane.add(ruleta, "name_9328358650800");
+	    
 
+	
+		btnSarrera.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, e);
+	        }
+		});	
+		
+		btnEzErregistratua.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, e);
+	        }
+		});	
 	}
 }
 
