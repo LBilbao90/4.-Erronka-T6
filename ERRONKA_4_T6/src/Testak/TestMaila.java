@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import Objetuak.Maila;
+
+import Modelo.Maila;
 
 class TestMaila {
 	String maila_izena = "Bronce";

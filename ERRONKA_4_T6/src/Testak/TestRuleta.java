@@ -2,7 +2,7 @@ package Testak;
 
 import org.junit.jupiter.api.Test;
 
-import Objetuak.Ruleta;
+import Modelo.Ruleta;
 
 import static org.junit.jupiter.api.Assertions.*;
 

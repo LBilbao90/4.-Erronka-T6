@@ -1,4 +1,4 @@
-package Objetuak;
+package Modelo;
 
 import java.util.Date;
 import java.util.Objects;

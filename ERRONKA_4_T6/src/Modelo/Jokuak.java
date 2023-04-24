@@ -1,4 +1,4 @@
-package Objetuak;
+package Modelo;
 
 public interface Jokuak {
 	

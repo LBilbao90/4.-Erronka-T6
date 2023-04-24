@@ -8,7 +8,7 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-import Objetuak.Erabiltzaile;
+import Modelo.Erabiltzaile;
 
 class TestErabiltzailea {
 	String NAN = "48987755P";

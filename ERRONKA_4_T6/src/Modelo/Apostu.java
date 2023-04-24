@@ -1,4 +1,4 @@
-package Objetuak;
+package Modelo;
 
 import java.util.Objects;
 

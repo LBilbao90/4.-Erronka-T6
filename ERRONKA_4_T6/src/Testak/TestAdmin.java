@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-import Objetuak.Admin;
+import Modelo.Admin;
 
 class TestAdmin {
 
