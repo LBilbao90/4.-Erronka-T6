@@ -1,10 +1,13 @@
 package Kontrolatzailea;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 
 public class metodoak {
@@ -28,7 +31,7 @@ public class metodoak {
 	
 	}
 	
-	public static JTextField createTextField (String text, int x, int y, int width, int height, Font font,JPanel erregistratu) {
+	public static JTextField createTextFieldTestua (String text, int x, int y, int width, int height, Font font,JPanel erregistratu) {
 	    JTextField textField = new JTextField();
 	    textField.setBounds(x, y, width, height);
 	    textField.setFont(font);
@@ -38,6 +41,16 @@ public class metodoak {
 	    erregistratu.add(textField);
 	    textField.setColumns(10);
 	    return textField;
+	}
+	
+	public static JTextArea createTextFieldBete (int x, int y, int width, int height, Font font,JPanel erregistratu) {
+		JTextArea JTextArea = new JTextArea();
+		JTextArea.setBounds(x, y, width, height);
+		JTextArea.setFont(font);
+	    erregistratu.setBorder(new LineBorder(new Color(171, 173, 179)));
+	    erregistratu.add(JTextArea);
+	    JTextArea.setColumns(10);
+	    return JTextArea;
 	}
 	
 

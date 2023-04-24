@@ -36,7 +36,7 @@ public class lehenLehioa extends JFrame {
 	private JTextField txtPasahitza;
 	private JTextField textErregistratu;
 	private JPasswordField passwordLogin;
-	private JTextField textNAN;
+	private JTextField txtNAN;
 	private JTextField txtIzena;
 	private JTextField txtAbizena;
 	private JTextField txtPasahitzaErregistratu;
@@ -47,6 +47,17 @@ public class lehenLehioa extends JFrame {
 	private JTextField txtHerria;
 	private JTextField txtPostaKodea;
 	private JTextField txtTelefonoa;
+	private JTextArea textNAN;
+	private JTextArea textIzena;
+	private JTextArea textAbizena;
+	private JTextArea textPasahitzaErregistratu;
+	private JTextArea textErrepikatuPasahitza;
+	private JTextArea textJaiotzeData;
+	private JTextArea textHerrialdea;
+	private JTextArea textProbintzia;
+	private JTextArea textHerria;
+	private JTextArea textPostaKodea;
+	private JTextArea textTelefonoa;
 
 
 	/**
@@ -166,20 +177,32 @@ public class lehenLehioa extends JFrame {
 	    login.add(textErabiltzailea);
 	    
 	    JPanel erregistratu = new JPanel();
-	    contentPane.add(erregistratu, "name_4201014156399");
+	    contentPane.add(erregistratu);
 	    erregistratu.setLayout(null);
 	    
-	    textNAN = metodoak.createTextField("NAN:", 73, 157, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtIzena = metodoak.createTextField("Izena:", 73, 227, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtAbizena = metodoak.createTextField("Abizena:", 73, 297, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtPasahitzaErregistratu = metodoak.createTextField("Pasahitza:", 73, 367, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtErrepikatuPasahitza = metodoak.createTextField("Errepikatu pasahitza:", 73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtJaiotzeData = metodoak.createTextField("Jaiotze data:", 73, 507, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtHerrialdea = metodoak.createTextField("Herrialdea:", 73, 577, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtProbintzia = metodoak.createTextField("Probintzia:", 73, 647, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtHerria = metodoak.createTextField("Herria:", 73, 717, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtPostaKodea = metodoak.createTextField("Posta kodea:", 73, 786, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtTelefonoa = metodoak.createTextField("Telefonoa:", 73, 855, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);	
+	    txtNAN = metodoak.createTextFieldTestua("NAN:", 73, 157, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtIzena = metodoak.createTextFieldTestua("Izena:", 73, 227, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtAbizena = metodoak.createTextFieldTestua("Abizena:", 73, 297, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtPasahitzaErregistratu = metodoak.createTextFieldTestua("Pasahitza:", 73, 367, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtErrepikatuPasahitza = metodoak.createTextFieldTestua("Errepikatu pasahitza:", 73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtJaiotzeData = metodoak.createTextFieldTestua("Jaiotze data:", 73, 507, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtHerrialdea = metodoak.createTextFieldTestua("Herrialdea:", 73, 577, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtProbintzia = metodoak.createTextFieldTestua("Probintzia:", 73, 647, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtHerria = metodoak.createTextFieldTestua("Herria:", 73, 717, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtPostaKodea = metodoak.createTextFieldTestua("Posta kodea:", 73, 786, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    txtTelefonoa = metodoak.createTextFieldTestua("Telefonoa:", 73, 855, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);	
+	    
+	    textNAN = metodoak.createTextFieldBete(73, 157, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textIzena = metodoak.createTextFieldBete(73, 227, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textAbizena = metodoak.createTextFieldBete(73, 297, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textPasahitzaErregistratu = metodoak.createTextFieldBete(73, 367, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textErrepikatuPasahitza = metodoak.createTextFieldBete(73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textJaiotzeData = metodoak.createTextFieldBete(73, 507, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textHerrialdea = metodoak.createTextFieldBete(73, 577, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textProbintzia = metodoak.createTextFieldBete(73, 647, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textHerria = metodoak.createTextFieldBete(73, 717, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textPostaKodea = metodoak.createTextFieldBete(73, 786, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textTelefonoa = metodoak.createTextFieldBete(73, 855, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);	
 	    
 	    JPanel ruleta = new JPanel();
 	    contentPane.add(ruleta, "name_9328358650800");
