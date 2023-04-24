@@ -4,6 +4,8 @@ import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,7 @@ import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
@@ -58,6 +61,13 @@ public class lehenLehioa extends JFrame {
 	private JTextArea textHerria;
 	private JTextArea textPostaKodea;
 	private JTextArea textTelefonoa;
+	
+	// Pantailaren dimentsioak lortu
+	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	int screenHeight = (int) (screenSize.height * 0.75);
+	int screenWidth = (int) (screenSize.width * 0.75);
+
+	
 
 
 	/**
@@ -81,79 +91,100 @@ public class lehenLehioa extends JFrame {
 	 */
 	public lehenLehioa() {
 	    //Pantaila handian agertu ahal izateko
-	    this.setExtendedState(Frame.MAXIMIZED_BOTH);
-	    setResizable(true);
+	    setResizable(false);
+	    
+	 // Lehen lehioaren dimentsioak aldatu
+		setBounds((screenSize.width - screenWidth) / 2, (screenSize.height - screenHeight) / 2, screenWidth, screenHeight);
 
 	    Image img = new ImageIcon(this.getClass().getResource("/elorrieta_kasinoa.png")).getImage();
 
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setBounds(100, 100, 3000, 1100);
 	    
 	    contentPane = new JPanel();
 	    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	    setContentPane(contentPane);
 	    contentPane.setLayout(new CardLayout(0, 0));
 
-	    //SARRERA
+	  //SARRERA
 	    JPanel sarrera = new JPanel();
-	    sarrera.setBounds(5, 5, 484, 314);
+	    sarrera.setLayout(new GridBagLayout());
+	    sarrera.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(sarrera);
 
-	    JLabel logoa = new JLabel("");
-	    logoa.setBounds(750, 0, 500, 500);
-	    logoa.setIcon(new ImageIcon(img));
+	    // Logo restrikzioak
+	    GridBagConstraints gbcLogo = new GridBagConstraints();
+	    gbcLogo.gridx = 0;
+	    gbcLogo.gridy = 0;
+	    gbcLogo.weighty = 0.3;
+	    gbcLogo.anchor = GridBagConstraints.CENTER;
 
-	    JLabel txt1 = new JLabel("Ongi Etorri!");
-	    txt1.setHorizontalAlignment(SwingConstants.CENTER);
-	    txt1.setBounds(821, 604, 291, 61);
-	    txt1.setFont(new Font("Tahoma", Font.BOLD, 50));
-	    sarrera.setLayout(null);
+	    // JLabel  logo
+	    JLabel logoa = new JLabel(new ImageIcon(img));
+	    sarrera.add(logoa, gbcLogo);
 
-	    sarrera.add(logoa);
-	    sarrera.add(txt1);
-	    
+	    // Testu restrikzioak
+	    GridBagConstraints gbcTxt1 = new GridBagConstraints();
+	    gbcTxt1.gridx = 0;
+	    gbcTxt1.gridy = 1;
+	    gbcTxt1.anchor = GridBagConstraints.CENTER;
+
+	    // JLabel del testua
+	    JLabel txt1 = new JLabel("Zure zortea hemen dago! Elorrieta Kasinoan sartu eta irabazi!");
+	    txt1.setFont(new Font("Tahoma", Font.BOLD, 30));
+	    sarrera.add(txt1, gbcTxt1);
+
+	    // Restricciones para el botón
+	    GridBagConstraints gbcBtn = new GridBagConstraints();
+	    gbcBtn.gridx = 0;
+	    gbcBtn.gridy = 0;
+	    gbcBtn.weightx = 1.0;
+	    gbcBtn.weighty = 1.0;
+	    gbcBtn.fill = GridBagConstraints.BOTH;
+
 	    JButton btnSarrera = new JButton("");
 	    btnSarrera.setOpaque(false);
 	    btnSarrera.setContentAreaFilled(false);
 	    btnSarrera.setBorderPainted(false);	   
-	    btnSarrera.setBounds(0, 0, 1914, 1026);
-	    sarrera.add(btnSarrera);
+	    sarrera.add(btnSarrera, gbcBtn);
+	    sarrera.setComponentZOrder(btnSarrera, 0);
+
 	    	    
 	    
 	    JPanel login = new JPanel();
 	    login.setBorder(null);
+	    login.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(login);
 	    login.setLayout(null);
 	    
 	    txtErabiltzailea = new JTextField();
 	    txtErabiltzailea.setEditable(false);
 	    txtErabiltzailea.setBorder(null);
-	    txtErabiltzailea.setBounds(359, 247, 583, 69);
+	    txtErabiltzailea.setBounds((int) (screenWidth*0.10), (int) (screenHeight*0.15), (int) (screenWidth*0.25), 69);
 	    txtErabiltzailea.setText("ERABILTZAILEA:");
-	    txtErabiltzailea.setFont(new Font("Tahoma", Font.BOLD, 65));
+	    txtErabiltzailea.setFont(new Font("Tahoma", Font.BOLD, 30));
 	    
 	    txtPasahitza = new JTextField();
 	    txtPasahitza.setEditable(false);
 	    txtPasahitza.setBorder(null);
-	    txtPasahitza.setBounds(359, 450, 583, 69);
+	    txtPasahitza.setBounds((int) (screenWidth*0.10), (int) (screenHeight*0.30), (int) (screenWidth*0.25), 69);
 	    txtPasahitza.setText("PASAHITZA:");
-	    txtPasahitza.setFont(new Font("Tahoma", Font.BOLD, 65));
+	    txtPasahitza.setFont(new Font("Tahoma", Font.BOLD, 30));
 
 
 	    login.add(txtErabiltzailea);
 	    login.add(txtPasahitza);
 	    
 	    textErregistratu = new JTextField();
-	    textErregistratu.setFont(new Font("Tahoma", Font.PLAIN, 30));
 	    textErregistratu.setEditable(false);
 	    textErregistratu.setBorder(null);
+	    textErregistratu.setBounds ((int) (screenWidth*0.24), (int) (screenHeight*0.41), (int) (screenWidth*0.23), 75);
 	    textErregistratu.setText("Ez daukazu kontua? ");
-	    textErregistratu.setBounds(594, 541, 288, 201);
-	    login.add(textErregistratu);
+	    textErregistratu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    
 	    textErregistratu.setColumns(10);
 	    
 	    JButton btnEzErregistratua = new JButton("Erregistratu hemen klik eginez");
-	    btnEzErregistratua.setFont(new Font("Tahoma", Font.PLAIN, 30));
+	    btnEzErregistratua.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	    btnEzErregistratua.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    	}
@@ -161,22 +192,25 @@ public class lehenLehioa extends JFrame {
 	    btnEzErregistratua.setForeground(new Color(0, 0, 255));
 	    btnEzErregistratua.setBorder(null);
 	    btnEzErregistratua.setBackground(new Color(255, 255, 255));
-	    btnEzErregistratua.setBounds(872, 607, 435, 69);
+	    btnEzErregistratua.setOpaque(false); // transparente
+	    btnEzErregistratua.setBounds((int) (screenWidth*0.45), (int) (screenHeight*0.41), (int) (screenWidth*0.35), 75);
 	    login.add(btnEzErregistratua);
+	    login.add(textErregistratu);
 	    
 	    passwordLogin = new JPasswordField();
-	    passwordLogin.setFont(new Font("Tahoma", Font.PLAIN, 60));
+	    passwordLogin.setFont(new Font("Tahoma", Font.PLAIN, 30));
 	    passwordLogin.setBorder(new LineBorder(new Color(171, 173, 179)));
-	    passwordLogin.setBounds(952, 450, 813, 69);
+	    passwordLogin.setBounds((int) (screenWidth*0.36), (int) (screenHeight*0.32), (int) (screenWidth*0.35), 40);
 	    login.add(passwordLogin);
 	    
 	    JTextArea textErabiltzailea = new JTextArea();
-	    textErabiltzailea.setFont(new Font("Monospaced", Font.PLAIN, 60));
+	    textErabiltzailea.setFont(new Font("Monospaced", Font.PLAIN, 30));
 	    textErabiltzailea.setBorder(new LineBorder(new Color(0, 0, 0)));
-	    textErabiltzailea.setBounds(952, 247, 813, 69);
+	    textErabiltzailea.setBounds((int) (screenWidth*0.36), (int) (screenHeight*0.17), (int) (screenWidth*0.35), 40);
 	    login.add(textErabiltzailea);
 	    
 	    JPanel erregistratu = new JPanel();
+	    erregistratu.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(erregistratu);
 	    erregistratu.setLayout(null);
 	    
@@ -205,6 +239,7 @@ public class lehenLehioa extends JFrame {
 	    textTelefonoa = metodoak.createTextFieldBete(73, 855, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);	
 	    
 	    JPanel ruleta = new JPanel();
+	    ruleta.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(ruleta, "name_9328358650800");
 	    
 
@@ -222,4 +257,3 @@ public class lehenLehioa extends JFrame {
 		});	
 	}
 }
-
