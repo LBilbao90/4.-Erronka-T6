@@ -23,6 +23,8 @@ import Kontrolatzailea.metodoak;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Color;
@@ -31,6 +33,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.JProgressBar;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 
 public class lehenLehioa extends JFrame {
 
@@ -43,7 +46,7 @@ public class lehenLehioa extends JFrame {
 	private JTextField txtIzena;
 	private JTextField txtAbizena;
 	private JTextField txtPasahitzaErregistratu;
-	private JTextField txtErrepikatuPasahitza;
+//	private JTextField txtErrepikatuPasahitza;
 	private JTextField txtJaiotzeData;
 	private JTextField txtHerrialdea;
 	private JTextField txtProbintzia;
@@ -53,7 +56,7 @@ public class lehenLehioa extends JFrame {
 	private JTextArea textNAN;
 	private JTextArea textIzena;
 	private JTextArea textAbizena;
-	private JTextArea textPasahitzaErregistratu;
+	private JPasswordField textPasahitzaErregistratu;
 	private JTextArea textErrepikatuPasahitza;
 	private JTextArea textJaiotzeData;
 	private JTextArea textHerrialdea;
@@ -92,6 +95,8 @@ public class lehenLehioa extends JFrame {
 	public lehenLehioa() {
 	    //Pantaila handian agertu ahal izateko
 	    setResizable(false);
+	    
+	    setTitle("Elorrieta Kasinoa ©");
 	    
 	 // Lehen lehioaren dimentsioak aldatu
 		setBounds((screenSize.width - screenWidth) / 2, (screenSize.height - screenHeight) / 2, screenWidth, screenHeight);
@@ -185,10 +190,6 @@ public class lehenLehioa extends JFrame {
 	    
 	    JButton btnEzErregistratua = new JButton("Erregistratu hemen klik eginez");
 	    btnEzErregistratua.setFont(new Font("Tahoma", Font.PLAIN, 25));
-	    btnEzErregistratua.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-	    	}
-	    });
 	    btnEzErregistratua.setForeground(new Color(0, 0, 255));
 	    btnEzErregistratua.setBorder(null);
 	    btnEzErregistratua.setBackground(new Color(255, 255, 255));
@@ -209,51 +210,99 @@ public class lehenLehioa extends JFrame {
 	    textErabiltzailea.setBounds((int) (screenWidth*0.36), (int) (screenHeight*0.17), (int) (screenWidth*0.35), 40);
 	    login.add(textErabiltzailea);
 	    
+	    
+	    //EREGISTRATU
 	    JPanel erregistratu = new JPanel();
 	    erregistratu.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(erregistratu);
 	    erregistratu.setLayout(null);
 	    
-	    txtNAN = metodoak.createTextFieldTestua("NAN:", 73, 157, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtIzena = metodoak.createTextFieldTestua("Izena:", 73, 227, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtAbizena = metodoak.createTextFieldTestua("Abizena:", 73, 297, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtPasahitzaErregistratu = metodoak.createTextFieldTestua("Pasahitza:", 73, 367, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtErrepikatuPasahitza = metodoak.createTextFieldTestua("Errepikatu pasahitza:", 73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtJaiotzeData = metodoak.createTextFieldTestua("Jaiotze data:", 73, 507, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtHerrialdea = metodoak.createTextFieldTestua("Herrialdea:", 73, 577, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtProbintzia = metodoak.createTextFieldTestua("Probintzia:", 73, 647, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtHerria = metodoak.createTextFieldTestua("Herria:", 73, 717, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtPostaKodea = metodoak.createTextFieldTestua("Posta kodea:", 73, 786, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    txtTelefonoa = metodoak.createTextFieldTestua("Telefonoa:", 73, 855, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);	
+	    //erregistroa testuak
+	    txtNAN = metodoak.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.20), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtIzena = metodoak.createTextFieldTestua("Izena:", (int) (screenWidth*0.07), (int) (screenHeight*0.30), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtAbizena = metodoak.createTextFieldTestua("Abizena:", (int) (screenWidth*0.07), (int) (screenHeight*0.40), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtPasahitzaErregistratu = metodoak.createTextFieldTestua("Pasahitza:", (int) (screenWidth*0.07), (int) (screenHeight*0.50), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtJaiotzeData = metodoak.createTextFieldTestua("Jaiotze data:", (int) (screenWidth*0.07), (int) (screenHeight*0.60), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtHerrialdea = metodoak.createTextFieldTestua("Herrialdea:", (int) (screenWidth*0.52), (int) (screenHeight*0.20), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtProbintzia = metodoak.createTextFieldTestua("Probintzia:", (int) (screenWidth*0.52), (int) (screenHeight*0.30), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtHerria = metodoak.createTextFieldTestua("Herria:", (int) (screenWidth*0.52), (int) (screenHeight*0.40), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtPostaKodea = metodoak.createTextFieldTestua("Posta kodea:", (int) (screenWidth*0.52), (int) (screenHeight*0.50), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtTelefonoa = metodoak.createTextFieldTestua("Telefonoa:", (int) (screenWidth*0.52), (int) (screenHeight*0.60), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);	
 	    
-	    textNAN = metodoak.createTextFieldBete(73, 157, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textIzena = metodoak.createTextFieldBete(73, 227, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textAbizena = metodoak.createTextFieldBete(73, 297, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textPasahitzaErregistratu = metodoak.createTextFieldBete(73, 367, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textErrepikatuPasahitza = metodoak.createTextFieldBete(73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textJaiotzeData = metodoak.createTextFieldBete(73, 507, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textHerrialdea = metodoak.createTextFieldBete(73, 577, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textProbintzia = metodoak.createTextFieldBete(73, 647, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textHerria = metodoak.createTextFieldBete(73, 717, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textPostaKodea = metodoak.createTextFieldBete(73, 786, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textTelefonoa = metodoak.createTextFieldBete(73, 855, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);	
+	    //erregistroa betetzeko textField
+	    textNAN = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.195), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textIzena = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.295), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textAbizena = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.395), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textPasahitzaErregistratu = metodoak.createPasswordFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.495), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+//	    textErrepikatuPasahitza = metodoak.createTextFieldBete(73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
+	    textJaiotzeData = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.595), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textHerrialdea = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.195), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textProbintzia = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.295), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textHerria = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.395), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textPostaKodea = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.495), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textTelefonoa = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.595), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);	
+	    
+	    //erregistroko textFieldak borde beltzarekin
+	    textNAN.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textIzena.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textAbizena.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textPasahitzaErregistratu.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textJaiotzeData.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textHerrialdea.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textProbintzia.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textHerria.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textPostaKodea.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textTelefonoa.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    
+	    //Erregistratu botoia
+	    JButton btnErregistratu = new JButton("Erregistratu hemen klik eginez");
+	    btnErregistratu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    btnErregistratu.setOpaque(false); // transparente
+	    btnErregistratu.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
+	    erregistratu.add(btnErregistratu);
+	    
+	    //Jokoak panela
+	    JPanel jokoak = new JPanel();
+	    jokoak.setBounds(0, 0, screenWidth, screenHeight);
+	    contentPane.add(jokoak);
+	    
+	    JButton btnRuletaJokoa = new JButton("");
+	    btnRuletaJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/unax/ruleta.zip_expanded/Prueba3/src/imagen/rouletteLive.png"));
+	    btnRuletaJokoa.setOpaque(false); // transparente
+	    btnRuletaJokoa.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
+	    btnRuletaJokoa.setPreferredSize(new Dimension(470, 400));
+	    jokoak.add(btnRuletaJokoa);
 	    
 	    JPanel ruleta = new JPanel();
 	    ruleta.setBounds(0, 0, screenWidth, screenHeight);
-	    contentPane.add(ruleta, "name_9328358650800");
+	    contentPane.add(ruleta);
 	    
 
 	
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, e);
+	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, ruleta, e);
 	        }
 		});	
 		
 		btnEzErregistratua.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, e);
+	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
 	        }
-		});	
+		});
+		
+		
+	    //Erregistratu botoiaren akzioak
+	    btnErregistratu.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    	    if (textNAN.getText().equals("") || textIzena.getText().equals("") || textAbizena.getText().equals("") || textPasahitzaErregistratu.getText().equals("") || textJaiotzeData.getText().equals("") || textHerria.getText().equals("") || textProbintzia.getText().equals("") || textHerria.getText().equals("") || textPostaKodea.getText().equals("") || textTelefonoa.getText().equals("")) {
+	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+	    	    } else {
+	    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
+	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	    	    }
+	    	}
+	    });
+	    
 	}
 }
