@@ -102,6 +102,10 @@ public class lehenLehioa extends JFrame {
 		setBounds((screenSize.width - screenWidth) / 2, (screenSize.height - screenHeight) / 2, screenWidth, screenHeight);
 
 	    Image img = new ImageIcon(this.getClass().getResource("/elorrieta_kasinoa.png")).getImage();
+	    Image nuevaImg = img.getScaledInstance(screenWidth/2, (screenHeight*3)/4, Image.SCALE_SMOOTH);
+	    ImageIcon icono = new ImageIcon(nuevaImg);
+
+
 
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
@@ -124,7 +128,9 @@ public class lehenLehioa extends JFrame {
 	    gbcLogo.anchor = GridBagConstraints.CENTER;
 
 	    // JLabel  logo
-	    JLabel logoa = new JLabel(new ImageIcon(img));
+	    JLabel logoa = new JLabel();
+	    logoa.setIcon(icono);
+	    
 	    sarrera.add(logoa, gbcLogo);
 
 	    // Testu restrikzioak
@@ -185,7 +191,6 @@ public class lehenLehioa extends JFrame {
 	    textErregistratu.setBounds ((int) (screenWidth*0.24), (int) (screenHeight*0.41), (int) (screenWidth*0.23), 75);
 	    textErregistratu.setText("Ez daukazu kontua? ");
 	    textErregistratu.setFont(new Font("Tahoma", Font.PLAIN, 25));
-	    
 	    textErregistratu.setColumns(10);
 	    
 	    JButton btnEzErregistratua = new JButton("Erregistratu hemen klik eginez");
@@ -197,6 +202,13 @@ public class lehenLehioa extends JFrame {
 	    btnEzErregistratua.setBounds((int) (screenWidth*0.45), (int) (screenHeight*0.41), (int) (screenWidth*0.35), 75);
 	    login.add(btnEzErregistratua);
 	    login.add(textErregistratu);
+	    
+	    JButton btnLogin = new JButton("Sartu");
+	    btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 25));
+//	    btnEzErregistratua.setBackground(new Color(255, 255, 255));
+	    btnLogin.setOpaque(false); // transparente
+	    btnLogin.setBounds((int) (screenWidth*0.70), (int) (screenHeight*0.70), (int) (screenWidth*0.12), 50);
+	    login.add(btnLogin);
 	    
 	    passwordLogin = new JPasswordField();
 	    passwordLogin.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -267,7 +279,7 @@ public class lehenLehioa extends JFrame {
 	    contentPane.add(jokoak);
 	    
 	    JButton btnRuletaJokoa = new JButton("");
-	    btnRuletaJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/unax/ruleta.zip_expanded/Prueba3/src/imagen/rouletteLive.png"));
+	    btnRuletaJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/4.-Erronka-T6/ERRONKA_4_T6/img/ruleta.png"));
 	    btnRuletaJokoa.setOpaque(false); // transparente
 	    btnRuletaJokoa.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
 	    btnRuletaJokoa.setPreferredSize(new Dimension(470, 400));
@@ -291,6 +303,16 @@ public class lehenLehioa extends JFrame {
 	        }
 		});
 		
+		//Login botoia akzioak
+		btnLogin.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    	    if (textErabiltzailea.getText().equals("") || passwordLogin.getText().equals("")) {
+	    	    	JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+	    	    } else {
+	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	    	    }
+	    	}
+	    });
 		
 	    //Erregistratu botoiaren akzioak
 	    btnErregistratu.addActionListener(new ActionListener() {
