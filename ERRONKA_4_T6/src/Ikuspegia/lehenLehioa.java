@@ -3,11 +3,9 @@ package Ikuspegia;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,24 +13,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Kontrolatzailea.metodoak;
 
 import javax.swing.JButton;
-import java.awt.GridLayout;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
-import javax.swing.JProgressBar;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import java.awt.Cursor;
 import java.awt.Insets;
@@ -107,7 +99,6 @@ public class lehenLehioa extends JFrame {
 	    Image img = new ImageIcon(this.getClass().getResource("/elorrieta_kasinoa.png")).getImage();
 	    Image nuevaImg = img.getScaledInstance(screenWidth/2, (screenHeight*3)/4, Image.SCALE_SMOOTH);
 	    ImageIcon icono = new ImageIcon(nuevaImg);
-
 
 
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -269,6 +260,13 @@ public class lehenLehioa extends JFrame {
 	    textPostaKodea.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textTelefonoa.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    
+		   //Login buelatzeko botoia
+	    JButton btnLoginBuelta = new JButton("login");
+	    btnLoginBuelta.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    btnLoginBuelta.setOpaque(false); // transparente
+	    btnLoginBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 35);
+	    erregistratu.add(btnLoginBuelta);
+	    
 	    //Erregistratu botoia
 	    JButton btnErregistratu = new JButton("Erregistratu hemen klik eginez");
 	    btnErregistratu.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -280,6 +278,8 @@ public class lehenLehioa extends JFrame {
 	    JPanel jokoak = new JPanel();
 	    jokoak.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(jokoak);
+	    jokoak.setLayout(null);
+	    
 	    
 //	    textJokoak = new JTextField();
 //	    textJokoak.setEditable(false);
@@ -289,11 +289,18 @@ public class lehenLehioa extends JFrame {
 //	    textJokoak.setColumns(10);
 //	    jokoak.add(textJokoak);
 //	    	    
+	    //Tituloa jokoa panelean
+	    JLabel jokoakTituloa = new JLabel("Aukeratu joku bat mesedez");
+	    jokoakTituloa.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    jokoakTituloa.setBounds((int) (screenWidth*0.38), (int) (screenHeight*0.10), 305, 40);
+	    jokoak.add(jokoakTituloa);
 	    
+	    //Ruletara joateko botoia
 	    JButton btnRuletaJokoa = new JButton("");
-	    btnRuletaJokoa.setMargin(new Insets(250, 0, 0, 50));
+	    btnRuletaJokoa.setMargin(new Insets(25, 25, 25, 25));
+	    btnRuletaJokoa.setBounds((int) (screenWidth*0.25), (int) (screenHeight*0.30), 350, 350);
 	    btnRuletaJokoa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-	    btnRuletaJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/4.-Erronka-T6/ERRONKA_4_T6/img/ruleta_boton.png"));
+	    btnRuletaJokoa.setIcon(new ImageIcon("img/ruleta_boton.png"));
 	    btnRuletaJokoa.setOpaque(false); // make the button background transparent
 	    btnRuletaJokoa.setContentAreaFilled(false); // make the content area of the button transparent
 	    btnRuletaJokoa.setBorderPainted(false); // remove the border of the button
@@ -301,11 +308,12 @@ public class lehenLehioa extends JFrame {
 //	    btnRuletaJokoa.setPreferredSize(new Dimension(300, 300));
 	    jokoak.add(btnRuletaJokoa);
 	    
-	    
+	    //BlackJackera joateko botoia
 	    JButton btnBlackJackJokoa = new JButton("");
-	    btnBlackJackJokoa.setMargin(new Insets(250, 50, 0, 0));
+	    btnBlackJackJokoa.setMargin(new Insets(25, 25, 25, 25));
+	    btnBlackJackJokoa.setBounds((int) (screenWidth*0.492), (int) (screenHeight*0.30), 350, 350);
 	    btnBlackJackJokoa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-	    btnBlackJackJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/4.-Erronka-T6/ERRONKA_4_T6/img/blackJack_boton.png"));
+	    btnBlackJackJokoa.setIcon(new ImageIcon("img/blackJack_boton.png"));
 	    btnBlackJackJokoa.setOpaque(false); // make the button background transparent
 	    btnBlackJackJokoa.setContentAreaFilled(false); // make the content area of the button transparent
 	    btnBlackJackJokoa.setBorderPainted(false); // remove the border of the button
@@ -313,20 +321,26 @@ public class lehenLehioa extends JFrame {
 //	    btnBlackJackJokoa.setPreferredSize(new Dimension(300, 300));
 	    jokoak.add(btnBlackJackJokoa);
 	    
-	    JPanel ruleta = new JPanel();
-	    ruleta.setBounds(0, 0, screenWidth, screenHeight);
-	    contentPane.add(ruleta);
 	    
-	
+
+	    
+
+
+
+
+
+//	    ruletaJokoa ruletaJokoa = new ruletaJokoa();
+//	    ruleta.add(ruletaJokoa);
+
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, ruleta, e);
+	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, e);
 	        }
 		});	
 		
 		btnEzErregistratua.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, e);
 	        }
 		});
 		
@@ -336,8 +350,14 @@ public class lehenLehioa extends JFrame {
 	    	    if (textErabiltzailea.getText().equals("") || passwordLogin.getText().equals("")) {
 	    	    	JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
 	    	    } else {
-	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
 	    	    }
+	    	}
+	    });
+		
+		btnLoginBuelta.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    	    	metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
 	    	}
 	    });
 		
@@ -348,22 +368,34 @@ public class lehenLehioa extends JFrame {
 	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
 	    	    } else {
 	    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
-	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
 	    	    }
 	    	}
 	    });
 	    
 	    //Ruleta botoiaren akzioak
 	    btnRuletaJokoa.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-    	    	metodoak.btn3secDelay(ruleta, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
-	    	}	
+	        public void actionPerformed(ActionEvent e) {
+	            // Oculta la ventana actual
+	            setVisible(false);
+	            
+	    	    ruletaJokoa ruleta = new ruletaJokoa();
+	    	    
+	            // Crea y muestra la ventana de ruleta
+	            metodoak.btn3secDelay(ruleta, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa ©");
+
+	            ruletaLehioa.getContentPane().add(ruleta);
+	            ruletaLehioa.pack();
+	            ruletaLehioa.setVisible(true);
+	        }    
 	    });
+
 	    
 	    //BlackJack botoiaren akzioak
 	    btnBlackJackJokoa.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-    	    	JOptionPane.showMessageDialog(jokoak, "Laster egongo da prest, barkatu eragozpenak.\r\n", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+    	    	JOptionPane.showMessageDialog(jokoak, "Laster egongo da prest, barkatu eragozpenak.\r\n", "Elorrieta Kasinoa ©", JOptionPane.WARNING_MESSAGE);
 	    	}	
 	    });
 	    
