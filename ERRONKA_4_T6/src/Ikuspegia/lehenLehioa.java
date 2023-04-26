@@ -34,6 +34,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.JProgressBar;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import java.awt.Cursor;
+import java.awt.Insets;
 
 public class lehenLehioa extends JFrame {
 
@@ -64,6 +66,7 @@ public class lehenLehioa extends JFrame {
 	private JTextArea textHerria;
 	private JTextArea textPostaKodea;
 	private JTextArea textTelefonoa;
+	private JTextField textJokoak;
 	
 	// Pantailaren dimentsioak lortu
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -278,18 +281,42 @@ public class lehenLehioa extends JFrame {
 	    jokoak.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(jokoak);
 	    
+//	    textJokoak = new JTextField();
+//	    textJokoak.setEditable(false);
+//	    textJokoak.setBorder(null);
+//	    textJokoak.setText("Aukeratu jolastu nahi duzun jokoa");
+//	    textJokoak.setFont(new Font("Tahoma", Font.PLAIN, 20));
+//	    textJokoak.setColumns(10);
+//	    jokoak.add(textJokoak);
+//	    	    
+	    
 	    JButton btnRuletaJokoa = new JButton("");
-	    btnRuletaJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/4.-Erronka-T6/ERRONKA_4_T6/img/ruleta.png"));
-	    btnRuletaJokoa.setOpaque(false); // transparente
-	    btnRuletaJokoa.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
-	    btnRuletaJokoa.setPreferredSize(new Dimension(470, 400));
+	    btnRuletaJokoa.setMargin(new Insets(250, 0, 0, 50));
+	    btnRuletaJokoa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	    btnRuletaJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/4.-Erronka-T6/ERRONKA_4_T6/img/ruleta_boton.png"));
+	    btnRuletaJokoa.setOpaque(false); // make the button background transparent
+	    btnRuletaJokoa.setContentAreaFilled(false); // make the content area of the button transparent
+	    btnRuletaJokoa.setBorderPainted(false); // remove the border of the button
+//	    btnRuletaJokoa.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
+//	    btnRuletaJokoa.setPreferredSize(new Dimension(300, 300));
 	    jokoak.add(btnRuletaJokoa);
+	    
+	    
+	    JButton btnBlackJackJokoa = new JButton("");
+	    btnBlackJackJokoa.setMargin(new Insets(250, 50, 0, 0));
+	    btnBlackJackJokoa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	    btnBlackJackJokoa.setIcon(new ImageIcon("C:/Users/in1dm3/Desktop/4.-Erronka-T6/ERRONKA_4_T6/img/blackJack_boton.png"));
+	    btnBlackJackJokoa.setOpaque(false); // make the button background transparent
+	    btnBlackJackJokoa.setContentAreaFilled(false); // make the content area of the button transparent
+	    btnBlackJackJokoa.setBorderPainted(false); // remove the border of the button
+//	    btnBlackJackJokoa.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
+//	    btnBlackJackJokoa.setPreferredSize(new Dimension(300, 300));
+	    jokoak.add(btnBlackJackJokoa);
 	    
 	    JPanel ruleta = new JPanel();
 	    ruleta.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(ruleta);
 	    
-
 	
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
@@ -324,6 +351,20 @@ public class lehenLehioa extends JFrame {
 	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
 	    	    }
 	    	}
+	    });
+	    
+	    //Ruleta botoiaren akzioak
+	    btnRuletaJokoa.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+    	    	metodoak.btn3secDelay(ruleta, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	    	}	
+	    });
+	    
+	    //BlackJack botoiaren akzioak
+	    btnBlackJackJokoa.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+    	    	JOptionPane.showMessageDialog(jokoak, "Laster egongo da prest, barkatu eragozpenak.\r\n", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+	    	}	
 	    });
 	    
 	}
