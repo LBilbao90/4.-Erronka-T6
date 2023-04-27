@@ -1,16 +1,19 @@
 package Ikuspegia;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
@@ -29,13 +32,6 @@ public class ruletaJokoa extends JPanel {
 
 
     public ruletaJokoa() {
-    	
-    	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    	int screenWidth = (int) (screenSize.width * 0.75);
-    	int screenHeight = (int) (screenSize.height * 0.75);
-    	
-    	setBounds(screenWidth, screenHeight, screenHeight, screenHeight);
-        
         // Cargar la imagen
         try {
         	image = ImageIO.read(new File("img/ruletaJokoa.png")).getScaledInstance(400, 400, Image.SCALE_SMOOTH);
@@ -43,16 +39,15 @@ public class ruletaJokoa extends JPanel {
             e.printStackTrace();
         }
 
-        // Establecer el tamaño del panel
-        setPreferredSize(new Dimension(screenWidth, screenHeight));
         
+        // Establecer el tamaño del panel
+        setPreferredSize(new Dimension(470, 400));
+
         // Configurar el BorderLayout para el panel de dibujo
         setLayout(new BorderLayout());
-        
 
         // Crear boton girar
         JButton btnGirar = new JButton("Girar");
-        btnGirar.setBounds(100, 100, 50, 50);
         add(btnGirar, BorderLayout.EAST);
 
         // Crear temporizadores con diferentes velocidades de rotación
@@ -61,7 +56,7 @@ public class ruletaJokoa extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 angle += Math.toRadians(4);
                 repaint();
-//                System.out.println(timer1 + " timer1");
+                System.out.println(angle);
             }
         });
         
@@ -70,7 +65,6 @@ public class ruletaJokoa extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 angle += Math.toRadians(3.75);
                 repaint();
-//                System.out.println(timer2 + "timer 2");
             }
         });
 
@@ -188,7 +182,7 @@ public class ruletaJokoa extends JPanel {
                     timer1.start();
                     startTime = System.currentTimeMillis();
             	} else {
-            		System.err.println("Itxaron");
+            		System.out.println("No le des mas al puto boton por que no va bobo, MIRA EL KONT bobi ");
             	}
             }
         });
@@ -198,79 +192,60 @@ public class ruletaJokoa extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int elapsedSeconds = (int) (System.currentTimeMillis() - startTime) / 1000;
-                System.out.println(elapsedSeconds);
-                if (elapsedSeconds >= 5 && elapsedSeconds < 7) {
+                if (elapsedSeconds >= 5 && elapsedSeconds < 7 && kont == 1) {
                     timer1.stop();
                     timer2.start();
-                } else if (elapsedSeconds >= 7 && elapsedSeconds < 10) {
+                } else if (elapsedSeconds >= 7 && elapsedSeconds < 10 && kont == 1) {
                     timer2.stop();
                     timer3.start();
-                } else if (elapsedSeconds >= 10 && elapsedSeconds < 12) {
+                } else if (elapsedSeconds >= 10 && elapsedSeconds < 12 && kont == 1) {
                     timer3.stop();
                     timer4.start();
-                } else if (elapsedSeconds >= 12 && elapsedSeconds < 15) {
+                } else if (elapsedSeconds >= 12 && elapsedSeconds < 15 && kont == 1) {
                 	timer4.stop();
                 	timer5.start();
-                } else if (elapsedSeconds >= 15 && elapsedSeconds < 17) {
+                } else if (elapsedSeconds >= 15 && elapsedSeconds < 17 && kont == 1) {
                 	timer5.stop();
                 	timer6.start();
-                } else if (elapsedSeconds >= 17 && elapsedSeconds < 20) {
+                } else if (elapsedSeconds >= 17 && elapsedSeconds < 20 && kont == 1) {
                 	timer6.stop();
                 	timer7.start();
-                } else if (elapsedSeconds >= 20 && elapsedSeconds < 22) {
+                } else if (elapsedSeconds >= 20 && elapsedSeconds < 22 && kont == 1) {
                 	timer7.stop();
                 	timer8.start();
-                } else if (elapsedSeconds >= 22 && elapsedSeconds < 25) {
+                } else if (elapsedSeconds >= 22 && elapsedSeconds < 25 && kont == 1) {
                 	timer8.stop();
                 	timer9.start();
-                } else if (elapsedSeconds >= 25 && elapsedSeconds < 26) {
+                } else if (elapsedSeconds >= 25 && elapsedSeconds < 26 && kont == 1) {
                 	timer9.stop();
                 	timer10.start();
-                } else if (elapsedSeconds >= 26 && elapsedSeconds < 28) {
+                } else if (elapsedSeconds >= 26 && elapsedSeconds < 28 && kont == 1) {
                 	timer10.stop();
                 	timer11.start();
-                } else if (elapsedSeconds >= 28 && elapsedSeconds < 30) {
+                } else if (elapsedSeconds >= 28 && elapsedSeconds < 30 && kont == 1) {
                 	timer11.stop();
                 	timer12.start();
-                } else if (elapsedSeconds >= 30 && elapsedSeconds < 31) {
+                } else if (elapsedSeconds >= 30 && elapsedSeconds < 31 && kont == 1) {
                 	timer12.stop();
                 	timer13.start();
-                } else if (elapsedSeconds >= 31 && elapsedSeconds < 32) {
+                } else if (elapsedSeconds >= 31 && elapsedSeconds < 32 && kont == 1) {
                 	timer13.stop();
                 	timer14.start();
-                } else if (elapsedSeconds >= 32 && elapsedSeconds < 33) {
+                } else if (elapsedSeconds >= 32 && elapsedSeconds < 33 && kont == 1) {
                 	timer14.stop();
                 	timer15.start();
-                } else if (elapsedSeconds >= 33 && elapsedSeconds < 34) {
+                } else if (elapsedSeconds >= 33 && elapsedSeconds < 34 && kont == 1) {
                     timer15.stop();
                     double currentAngleDegrees = Math.toDegrees(angle);
                     do {
                         currentAngleDegrees = currentAngleDegrees -360;
                     } while (currentAngleDegrees > 360);
                     System.out.println("Ángulo actual de la ruleta: " + currentAngleDegrees);
-                    double sectorSize = currentAngleDegrees / 37.0;
-                    int[] ArrayZenbakiak = {0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8 ,32, 10, 5, 24, 16, 33, 1, 20, 14, 33, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26};
-                    
-                    System.out.println("Número actual en la ruleta: " + ArrayZenbakiak[(int) sectorSize]);
-   
-                    kont--;
+                    double sectorSize = 360.0 / 37.0;
+                    int currentNumber = (int)(currentAngleDegrees / sectorSize);
+                    System.out.println("Número actual en la ruleta: " + currentNumber);
                     timer15.stop();
-                    System.out.println(elapsedSeconds);
-                    
-//                    ((Timer)e.getSource()).stop();
-                    
-                    System.out.println(elapsedSeconds);
-                    elapsedSeconds = 0;
-                    
-                    
-//                    try {
-//                    	
-//                        Thread.sleep(5000); // Pausa de 5 segundos (5000 milisegundos)
-//                        timer1.start();
-//                    } catch (InterruptedException ex) {
-//                        ex.printStackTrace(); // Manejo de la excepción en caso de interrupción
-//                    }
-
+                    kont--;
                 }
             }
         }).start();
@@ -288,5 +263,15 @@ public class ruletaJokoa extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2d.drawImage(image, at, null);
         }
+    
+//    public static void main(String[] args) {
+//        // Crear la ventana de la aplicación y agregar el panel de la imagen rotada
+//        JFrame frame = new JFrame("Rotar Imagen con Animación");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.getContentPane().add(new ruletaJokoa());
+//        frame.pack();
+//        frame.setLocationRelativeTo(null);
+//        frame.setVisible(true);
+//    }
     
 }
