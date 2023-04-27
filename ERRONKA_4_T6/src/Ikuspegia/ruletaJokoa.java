@@ -14,6 +14,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
@@ -21,20 +22,36 @@ import java.awt.event.ActionListener;
 
 public class ruletaJokoa extends JPanel {
     private static final long serialVersionUID = 1L;
-    private Image image;
-    private double angle = 0;
+    private Image irudi;
+    private double angelu = 0;
     private Timer timer1, timer2, timer3, timer4, timer5, timer6, timer7, timer8, timer9, timer10, timer11, timer12, timer13, timer14, timer15;
-    private long startTime = System.currentTimeMillis();
+    private long hasieraDenbora = System.currentTimeMillis();
     private int kont = 0;
 
     private Random random = new Random();
+    private static JButton btnBiratu;
+    
+    public boolean lehioaItxi = false;
 
+    public static JButton getBtnBiratu() {
+        return btnBiratu;
+    }
+
+    private static OKButtonListener okButtonListener;
+
+    public interface OKButtonListener {
+        void onOKButtonPressed();
+    }
+
+    public static void setOKButtonListener(OKButtonListener listener) {
+        okButtonListener = listener;
+    }
 
 
     public ruletaJokoa() {
         // Cargar la imagen
         try {
-        	image = ImageIO.read(new File("img/ruletaJokoa.png")).getScaledInstance(400, 400, Image.SCALE_SMOOTH);
+        	irudi = ImageIO.read(new File("img/ruletaJokoa.png")).getScaledInstance(400, 400, Image.SCALE_SMOOTH);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,23 +64,23 @@ public class ruletaJokoa extends JPanel {
         setLayout(new BorderLayout());
 
         // Crear boton girar
-        JButton btnGirar = new JButton("Girar");
-        add(btnGirar, BorderLayout.EAST);
+        btnBiratu = new JButton("Biratu");
+        add(btnBiratu, BorderLayout.EAST);
 
         // Crear temporizadores con diferentes velocidades de rotación
         timer1 = new Timer(random.nextInt(6) + 5, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(4);
+                angelu += Math.toRadians(4);
                 repaint();
-                System.out.println(angle);
+                System.out.println(angelu);
             }
         });
         
         timer2 = new Timer(random.nextInt(4) + 7, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(3.75);
+                angelu += Math.toRadians(3.75);
                 repaint();
             }
         });
@@ -71,7 +88,7 @@ public class ruletaJokoa extends JPanel {
         timer3 = new Timer(random.nextInt(6) + 10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(3.5);
+                angelu += Math.toRadians(3.5);
                 repaint();
             }
         });
@@ -79,7 +96,7 @@ public class ruletaJokoa extends JPanel {
         timer4 = new Timer(random.nextInt(3) + 12, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(3.25);
+                angelu += Math.toRadians(3.25);
                 repaint();
             }
         });
@@ -87,7 +104,7 @@ public class ruletaJokoa extends JPanel {
         timer5 = new Timer(random.nextInt(5) + 15, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(3);
+                angelu += Math.toRadians(3);
                 repaint();
             }
         });
@@ -95,7 +112,7 @@ public class ruletaJokoa extends JPanel {
         timer6 = new Timer(random.nextInt(3) + 17, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(2.75);
+                angelu += Math.toRadians(2.75);
                 repaint();
             }
         });
@@ -103,7 +120,7 @@ public class ruletaJokoa extends JPanel {
         timer7 = new Timer(random.nextInt(3) + 20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(2.5);
+                angelu += Math.toRadians(2.5);
                 repaint();
             }
         });
@@ -111,7 +128,7 @@ public class ruletaJokoa extends JPanel {
         timer8 = new Timer(random.nextInt(3) + 22, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(2.25);
+                angelu += Math.toRadians(2.25);
                 repaint();
             }
         });
@@ -119,7 +136,7 @@ public class ruletaJokoa extends JPanel {
         timer9 = new Timer(random.nextInt(5) + 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(2);
+                angelu += Math.toRadians(2);
                 repaint();
             }
         });
@@ -127,7 +144,7 @@ public class ruletaJokoa extends JPanel {
         timer10 = new Timer(random.nextInt(2) + 26, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(1.75);
+                angelu += Math.toRadians(1.75);
                 repaint();
             }
         });
@@ -135,7 +152,7 @@ public class ruletaJokoa extends JPanel {
         timer11 = new Timer(random.nextInt(2) + 28, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(1.5);
+                angelu += Math.toRadians(1.5);
                 repaint();
             }
         });
@@ -143,7 +160,7 @@ public class ruletaJokoa extends JPanel {
         timer12 = new Timer(random.nextInt(2) + 30, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(1.25);
+                angelu += Math.toRadians(1.25);
                 repaint();
             }
         });
@@ -151,7 +168,7 @@ public class ruletaJokoa extends JPanel {
         timer13 = new Timer(random.nextInt(1) + 31, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(1);
+                angelu += Math.toRadians(1);
                 repaint();
             }
         });
@@ -159,7 +176,7 @@ public class ruletaJokoa extends JPanel {
         timer14 = new Timer(random.nextInt(1) + 32, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(0.75);
+                angelu += Math.toRadians(0.75);
                 repaint();
             }
         });
@@ -167,20 +184,20 @@ public class ruletaJokoa extends JPanel {
         timer15 = new Timer(random.nextInt(1) + 33, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += Math.toRadians(0.5);
+                angelu += Math.toRadians(0.5);
                 repaint();
             }
         });
 
 
      // Iniciar el primer temporizador cuando se pulsa el boton
-        btnGirar.addActionListener(new ActionListener() {
+        btnBiratu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             	if (kont == 0) {
             		kont++;
                     timer1.start();
-                    startTime = System.currentTimeMillis();
+                    hasieraDenbora = System.currentTimeMillis();
             	} else {
             		System.out.println("No le des mas al puto boton por que no va bobo, MIRA EL KONT bobi ");
             	}
@@ -191,66 +208,79 @@ public class ruletaJokoa extends JPanel {
         new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int elapsedSeconds = (int) (System.currentTimeMillis() - startTime) / 1000;
-                if (elapsedSeconds >= 5 && elapsedSeconds < 7 && kont == 1) {
+                int pasatakoDenbora = (int) (System.currentTimeMillis() - hasieraDenbora) / 1000;
+                if (pasatakoDenbora >= 5 && pasatakoDenbora < 7 ) {
                     timer1.stop();
                     timer2.start();
-                } else if (elapsedSeconds >= 7 && elapsedSeconds < 10 && kont == 1) {
+                } else if (pasatakoDenbora >= 7 && pasatakoDenbora < 10) {
                     timer2.stop();
                     timer3.start();
-                } else if (elapsedSeconds >= 10 && elapsedSeconds < 12 && kont == 1) {
+                } else if (pasatakoDenbora >= 10 && pasatakoDenbora < 12) {
                     timer3.stop();
                     timer4.start();
-                } else if (elapsedSeconds >= 12 && elapsedSeconds < 15 && kont == 1) {
+                } else if (pasatakoDenbora >= 12 && pasatakoDenbora < 15) {
                 	timer4.stop();
                 	timer5.start();
-                } else if (elapsedSeconds >= 15 && elapsedSeconds < 17 && kont == 1) {
+                } else if (pasatakoDenbora >= 15 && pasatakoDenbora < 17) {
                 	timer5.stop();
                 	timer6.start();
-                } else if (elapsedSeconds >= 17 && elapsedSeconds < 20 && kont == 1) {
+                } else if (pasatakoDenbora >= 17 && pasatakoDenbora < 20) {
                 	timer6.stop();
                 	timer7.start();
-                } else if (elapsedSeconds >= 20 && elapsedSeconds < 22 && kont == 1) {
+                } else if (pasatakoDenbora >= 20 && pasatakoDenbora < 22) {
                 	timer7.stop();
                 	timer8.start();
-                } else if (elapsedSeconds >= 22 && elapsedSeconds < 25 && kont == 1) {
+                } else if (pasatakoDenbora >= 22 && pasatakoDenbora < 25) {
                 	timer8.stop();
                 	timer9.start();
-                } else if (elapsedSeconds >= 25 && elapsedSeconds < 26 && kont == 1) {
+                } else if (pasatakoDenbora >= 25 && pasatakoDenbora < 26) {
                 	timer9.stop();
                 	timer10.start();
-                } else if (elapsedSeconds >= 26 && elapsedSeconds < 28 && kont == 1) {
+                } else if (pasatakoDenbora >= 26 && pasatakoDenbora < 28) {
                 	timer10.stop();
                 	timer11.start();
-                } else if (elapsedSeconds >= 28 && elapsedSeconds < 30 && kont == 1) {
+                } else if (pasatakoDenbora >= 28 && pasatakoDenbora < 30) {
                 	timer11.stop();
                 	timer12.start();
-                } else if (elapsedSeconds >= 30 && elapsedSeconds < 31 && kont == 1) {
+                } else if (pasatakoDenbora >= 30 && pasatakoDenbora < 31) {
                 	timer12.stop();
                 	timer13.start();
-                } else if (elapsedSeconds >= 31 && elapsedSeconds < 32 && kont == 1) {
+                } else if (pasatakoDenbora >= 31 && pasatakoDenbora < 32) {
                 	timer13.stop();
                 	timer14.start();
-                } else if (elapsedSeconds >= 32 && elapsedSeconds < 33 && kont == 1) {
+                } else if (pasatakoDenbora >= 32 && pasatakoDenbora < 33) {
                 	timer14.stop();
                 	timer15.start();
-                } else if (elapsedSeconds >= 33 && elapsedSeconds < 34 && kont == 1) {
+                } else if (pasatakoDenbora >= 33 && pasatakoDenbora < 34) {
                     timer15.stop();
-                    double currentAngleDegrees = Math.toDegrees(angle);
+                    double unekoAngeluGraduak = Math.toDegrees(angelu);
                     do {
-                        currentAngleDegrees = currentAngleDegrees -360;
-                    } while (currentAngleDegrees > 360);
-                    System.out.println("Ángulo actual de la ruleta: " + currentAngleDegrees);
-                    double sectorSize = 360.0 / 37.0;
-                    int currentNumber = (int)(currentAngleDegrees / sectorSize);
-                    System.out.println("Número actual en la ruleta: " + currentNumber);
+                        unekoAngeluGraduak = unekoAngeluGraduak -360;
+                    } while (unekoAngeluGraduak > 360);
+                    System.out.println("Ángulo actual de la ruleta: " + unekoAngeluGraduak);
+                    double sektoreTamaina = 360.0 / 37.0;
+                    int unekoZenbakia = (int)(unekoAngeluGraduak / sektoreTamaina);
+                    System.out.println("Número actual en la ruleta: " + unekoZenbakia);
                     timer15.stop();
                     kont--;
+                    
+                    erakutsiMezua(unekoZenbakia);
+                    
                 }
             }
         }).start();
     }
 
+ // Método para mostrar el diálogo con el número actual
+    private void erakutsiMezua(int unekoZenbakia) {
+        JOptionPane.showMessageDialog(this, "Zenbakia: " + unekoZenbakia, "Ruleta Emaitza | Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
+        if (okButtonListener != null) {
+            okButtonListener.onOKButtonPressed();
+        }
+    }
+
+
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -259,10 +289,12 @@ public class ruletaJokoa extends JPanel {
 
      // Aplicar la interpolación de transformación para dibujar la imagen rotada gradualmente
         AffineTransform at = new AffineTransform();
-        at.rotate(angle, image.getWidth(null) / 2, image.getHeight(null) / 2);
+        at.rotate(angelu, irudi.getWidth(null) / 2, irudi.getHeight(null) / 2);
         g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2d.drawImage(image, at, null);
+        g2d.drawImage(irudi, at, null);
         }
+    
+    
     
 //    public static void main(String[] args) {
 //        // Crear la ventana de la aplicación y agregar el panel de la imagen rotada

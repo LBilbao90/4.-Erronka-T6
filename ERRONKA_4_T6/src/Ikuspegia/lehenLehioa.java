@@ -25,6 +25,9 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
+
+import Ikuspegia.ruletaApostua.btnJokoetaraBueltatuListener;
+
 import javax.swing.JOptionPane;
 import java.awt.Cursor;
 import java.awt.Insets;
@@ -65,7 +68,7 @@ public class lehenLehioa extends JFrame {
 	int screenHeight = (int) (screenSize.height * 0.75);
 	int screenWidth = (int) (screenSize.width * 0.75);
 
-	
+    ruletaApostua ruleta = new ruletaApostua();
 
 
 	/**
@@ -379,10 +382,10 @@ public class lehenLehioa extends JFrame {
 	            // Oculta la ventana actual
 	            setVisible(false);
 	            
-	    	    ruletaJokoa ruleta = new ruletaJokoa();
+
 	    	    
 	            // Crea y muestra la ventana de ruleta
-	            metodoak.btn3secDelay(ruleta, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
+	            metodoak.hurrengoaBtn(ruleta);
 	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa ©");
 
 	            ruletaLehioa.getContentPane().add(ruleta);
@@ -399,5 +402,20 @@ public class lehenLehioa extends JFrame {
 	    	}	
 	    });
 	    
+	    ruletaApostua.setBtnJokoetaraBueltatuListener(new btnJokoetaraBueltatuListener() {
+			
+			@Override
+			public void onJokoetaraBueltatu() {
+				// TODO Auto-generated method stub
+				//metodoak.hurrengoaBtn(jokoak, sarrera, login, erregistratu, jokoak, ruleta);
+				ruleta.setVisible(false);
+				jokoak.setVisible(true);
+			//	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, ruleta);
+				System.out.println("aaa");
+			}
+		});
+
+
+		
 	}
 }

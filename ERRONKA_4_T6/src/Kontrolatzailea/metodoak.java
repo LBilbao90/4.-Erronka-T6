@@ -10,6 +10,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import Ikuspegia.ruletaApostua;
+import Ikuspegia.ruletaJokoa;
+import Ikuspegia.ruletaJokoa.OKButtonListener;
+
 
 public class metodoak {
 	
@@ -21,6 +25,17 @@ public class metodoak {
             }
 		
         metodoak.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak, ruleta);
+		
+	}
+	
+	public static void btn3secDelay (ruletaApostua ruletaApostua, int segundu, JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta, ActionEvent e) {
+        try {
+            Thread.sleep(segundu * 1000);
+            } catch (InterruptedException ex) {
+                System.out.println(e);
+            }
+		
+        metodoak.hurrengoaBtn(ruletaApostua, sarrera, login, erregistratu, jokoak, ruleta);
 		
 	}
 	
@@ -45,6 +60,44 @@ public class metodoak {
 		erakutsi.setVisible(true);
 	
 	}
+//	public static void btn3secDelay (JPanel erakutsi, int segundu, JPanel sarrera, JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta) {
+//        try {
+//            Thread.sleep(segundu * 1000);
+//            } catch (InterruptedException ex) {
+//                System.out.println(e);
+//            }
+//		
+//        metodoak.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak, ruleta);
+//		
+//	}
+	
+	public static void hurrengoaBtn (JPanel erakutsi,JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta) {
+		
+		sarrera.setVisible(false);
+		login.setVisible(false);
+		erregistratu.setVisible(false);
+		jokoak.setVisible(false);
+		ruleta.setVisible(false);
+		erakutsi.setVisible(true);
+	}
+	
+	
+	public static void hurrengoaBtn (ruletaApostua erakutsi,JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta) {
+		
+		sarrera.setVisible(false);
+		login.setVisible(false);
+		erregistratu.setVisible(false);
+		jokoak.setVisible(false);
+		ruleta.setVisible(false);
+		erakutsi.setVisible(true);
+	
+	}
+	
+	public static void hurrengoaBtn (ruletaApostua erakutsi) {
+		
+		erakutsi.setVisible(true);
+	
+	}
 	
 	public static void hurrengoaBtn (JPanel erakutsi,JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak) {
 		
@@ -55,17 +108,6 @@ public class metodoak {
 		erakutsi.setVisible(true);
 	
 	}
-	
-//	public static void lehioakEskutatu (JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak) {
-//		
-//		sarrera.setVisible(false);
-//		login.setVisible(false);
-//		erregistratu.setVisible(false);
-//		jokoak.setVisible(false);
-//	
-//	}
-	
-	
 	
 	public static JTextField createTextFieldTestua (String text, int x, int y, int width, int height, Font font,JPanel erregistratu) {
 	    JTextField textField = new JTextField();
