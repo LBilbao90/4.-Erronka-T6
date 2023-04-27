@@ -18,9 +18,7 @@ public abstract class Pertsona {
 	protected String pasahitza;
 	protected String tlf_zenabkia;
 	
-	public Pertsona(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
-			String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,
-			String pasahitza, String tlf_zenabkia) {
+	public Pertsona(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,String pasahitza, String tlf_zenabkia) {
 		NAN = nAN;
 		this.izena = izena;
 		this.abizena = abizena;
@@ -146,22 +144,16 @@ public abstract class Pertsona {
 		if (getClass() != obj.getClass())
 			return false;
 		Pertsona other = (Pertsona) obj;
-		return Objects.equals(NAN, other.NAN) && Objects.equals(abizena, other.abizena)
-				&& Objects.equals(autonomia_erkidegoa, other.autonomia_erkidegoa)
-				&& Objects.equals(herria, other.herria) && Objects.equals(herrialdea, other.herrialdea)
-				&& Objects.equals(izena, other.izena) && Objects.equals(jaioteguna, other.jaioteguna)
-				&& Objects.equals(pasahitza, other.pasahitza) && Objects.equals(postaKodea, other.postaKodea)
-				&& Objects.equals(posta_elektronikoa, other.posta_elektronikoa)
-				&& Objects.equals(probintzia, other.probintzia) && Objects.equals(tlf_zenabkia, other.tlf_zenabkia);
+		return Objects.equals(NAN, other.NAN);
 	}
 
-	@Override
-	public String toString() {
-		return "Pertsona [NAN=" + NAN + "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna=" + jaioteguna
-				+ "\nherrialdea=" + herrialdea + "\nautonomia_erkidegoa=" + autonomia_erkidegoa + "\nprobintzia="
-				+ probintzia + "\nherria=" + herria + "\npostaKodea=" + postaKodea + "\nposta_elektronikoa="
-				+ posta_elektronikoa + "\npasahitza=" + pasahitza + "\ntlf_zenabkia=" + tlf_zenabkia + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Pertsona [NAN=" + NAN + "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna=" + jaioteguna
+//				+ "\nherrialdea=" + herrialdea + "\nautonomia_erkidegoa=" + autonomia_erkidegoa + "\nprobintzia="
+//				+ probintzia + "\nherria=" + herria + "\npostaKodea=" + postaKodea + "\nposta_elektronikoa="
+//				+ posta_elektronikoa + "\npasahitza=" + pasahitza + "\ntlf_zenabkia=" + tlf_zenabkia + "]";
+//	}
 	
 	
 	

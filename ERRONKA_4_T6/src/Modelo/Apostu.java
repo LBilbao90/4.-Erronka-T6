@@ -12,7 +12,6 @@ public class Apostu {
 	
 	//KONSTRUKTOREA
 	public Apostu(int id_apustua, int id_joko, String nAN, int apostu_kantitatea, int apostu_emaitza) {
-		super();
 		this.id_apustua = id_apustua;
 		this.id_joko = id_joko;
 		NAN = nAN;
@@ -68,11 +67,11 @@ public class Apostu {
 		return "Apustuak [id_apustua=" + id_apustua + ", id_joko=" + id_joko + ", NAN=" + NAN + ", apostu_kantitatea="
 				+ apostu_kantitatea + ", apostu_emaitza=" + apostu_emaitza + "]";
 	}
-
+	
 	//HASHCODE
 	@Override
 	public int hashCode() {
-		return Objects.hash(NAN, apostu_emaitza, apostu_kantitatea, id_apustua, id_joko);
+		return Objects.hash(apostu_emaitza, apostu_emaitza, NAN, apostu_emaitza, apostu_emaitza);
 	}
 
 	//EQUALS
@@ -85,10 +84,7 @@ public class Apostu {
 		if (getClass() != obj.getClass())
 			return false;
 		Apostu other = (Apostu) obj;
-		return Objects.equals(NAN, other.NAN) && apostu_emaitza == other.apostu_emaitza
-				&& apostu_kantitatea == other.apostu_kantitatea && id_apustua == other.id_apustua
-				&& id_joko == other.id_joko;
+		return Objects.equals(id_apustua, other.id_apustua);
 	}
-	
 
 }

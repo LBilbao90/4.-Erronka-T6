@@ -10,7 +10,7 @@ package Testak;
 //import Objetuak.Erabiltzaile;
 //import Objetuak.Pertsona;
 //
-//public class TestPertsona{  !!!! NO SE PUEDE HACER DIRECTAMENTE EL TEST  PERO SE HACE INDIRECTAMENTE CON ADMIN !!!!
+//public class TestPertsona{
 //
 //	@Test
 //	public void testGettersAndSetters() {
