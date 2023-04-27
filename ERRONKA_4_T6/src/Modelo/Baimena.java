@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -9,12 +10,10 @@ public class Baimena {
 	private int baimen_mota;
 	private Date hasiera_data;
 	private Date bukaera_data;
-	
-	private Pertsona pertsona;
+	private ArrayList<Pertsona> pertsona;
 	
 	//CONSTRUCTOR
-	public Baimena(String erabiltzailea, int baimen_mota, Date hasiera_data, Date bukaera_data, Pertsona pertsona) {
-		super();
+	public Baimena(String erabiltzailea, int baimen_mota, Date hasiera_data, Date bukaera_data, ArrayList<Pertsona> pertsona) {
 		this.erabiltzailea = erabiltzailea;
 		this.baimen_mota = baimen_mota;
 		this.hasiera_data = hasiera_data;
@@ -56,33 +55,38 @@ public class Baimena {
 	}
 
 
-	public Pertsona getPertsona() {
+	
+
+	
+	public ArrayList<Pertsona> getPertsona() {
 		return pertsona;
 	}
-	public void setPertsona(Pertsona pertsona) {
+
+
+	public void setPertsona(ArrayList<Pertsona> pertsona) {
 		this.pertsona = pertsona;
 	}
 
-	
+
 	//METODOAK
-	public int baimena_artu(int nahai_duen_baimena) {
+	public int baimena_hartu(int nahai_duen_baimena) {
 		
-		if( this.baimen_mota == nahai_duen_baimena) {
+		/*if( this.baimen_mota == nahai_duen_baimena) {
 			return baimen_mota;
 		}else{
 			return -1;
-		}
-		
+		}*/
+		return nahai_duen_baimena;
 		
 	}
 	
 	
 	public void baimena_kanporatu(int baimena_kanp, String erabiltzailea) {
-		
+		/*
 		if(this.baimen_mota == baimena_kanp && this.erabiltzailea.equalsIgnoreCase(erabiltzailea)) {
 			
 		}else {}
-	
+	*/
 	}
 	
 	
@@ -118,10 +122,9 @@ public class Baimena {
 		if (getClass() != obj.getClass())
 			return false;
 		Baimena other = (Baimena) obj;
-		return baimen_mota == other.baimen_mota && Objects.equals(bukaera_data, other.bukaera_data)
-				&& Objects.equals(erabiltzailea, other.erabiltzailea)
-				&& Objects.equals(hasiera_data, other.hasiera_data) && Objects.equals(pertsona, other.pertsona);
+		return Objects.equals(baimen_mota, other.baimen_mota);
 	}
+				
 	
 
 }

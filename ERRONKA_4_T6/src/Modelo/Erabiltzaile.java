@@ -7,18 +7,19 @@ public class Erabiltzaile extends Pertsona{
 	private String erabiltzaile_izena;
 	private double diru_kopuru_historikoa;
 	private double diru_kopuru_momentukoa;
+	private Maila maila;
 	
 	public Erabiltzaile(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
 			String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,
-			String pasahitza, String tlf_zenbakia, String erabiltzaile_izena, double diru_kopuru_historikoa,
-			double diru_kopuru_momentukoa) {
+			String pasahitza, String tlf_zenabkia, String erabiltzaile_izena, double diru_kopuru_historikoa,
+			double diru_kopuru_momentukoa, Maila maila) {
 		super(nAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa, probintzia, herria, postaKodea,
-				posta_elektronikoa, pasahitza, tlf_zenbakia);
+				posta_elektronikoa, pasahitza, tlf_zenabkia);
 		this.erabiltzaile_izena = erabiltzaile_izena;
 		this.diru_kopuru_historikoa = diru_kopuru_historikoa;
 		this.diru_kopuru_momentukoa = diru_kopuru_momentukoa;
+		this.maila = maila;
 	}
-
 	public String getErabiltzaile_izena() {
 		return erabiltzaile_izena;
 	}
@@ -37,6 +38,13 @@ public class Erabiltzaile extends Pertsona{
 	public void setDiru_kopuru_momentukoa(double diru_kopuru_momentukoa) {
 		this.diru_kopuru_momentukoa = diru_kopuru_momentukoa;
 	}
+	public Maila getMaila() {
+		return maila;
+	}
+	public void setMaila(Maila maila) {
+		this.maila = maila;
+	}
+	
 	public String erakutsi() {
 		return "Datuak:\n" +erabiltzaile_izena+"\ndiru kopuru historikoa:"+diru_kopuru_historikoa
 				+"\ndiru kopuru momentukoa:"+diru_kopuru_momentukoa;

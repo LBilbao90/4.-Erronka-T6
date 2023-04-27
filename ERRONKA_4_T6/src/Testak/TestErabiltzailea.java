@@ -9,6 +9,7 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import Modelo.Erabiltzaile;
+import Modelo.Maila;
 
 class TestErabiltzailea {
 	String NAN = "48987755P";
@@ -26,12 +27,13 @@ class TestErabiltzailea {
 	String erabiltzaile_izena = "mkm";
 	double diru_kopuru_historikoa = 120;
 	double diru_kopuru_momentukoa = 20;
+	Maila maila; 
 	Erabiltzaile erabiltzaile = new Erabiltzaile(NAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa,
 			probintzia, herria, postaKodea, posta_elektronikoa, pasahitza, tlf_zenbakia,
-			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa);
+			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa, maila);
 	Erabiltzaile erabiltzaile1 = new Erabiltzaile (NAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa,
 			probintzia, herria, postaKodea, posta_elektronikoa, pasahitza, tlf_zenbakia,
-			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa);
+			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa, maila);
 	@Test
 	void testGettersSetters() {
 		erabiltzaile.setNAN(NAN);
@@ -49,6 +51,7 @@ class TestErabiltzailea {
 		erabiltzaile.setErabiltzaile_izena(erabiltzaile_izena);
 		erabiltzaile.setDiru_kopuru_historikoa(diru_kopuru_historikoa);
 		erabiltzaile.setDiru_kopuru_momentukoa(diru_kopuru_momentukoa);
+		erabiltzaile.setMaila(maila);
 		assertEquals(erabiltzaile.getNAN(),NAN);
 		assertEquals(erabiltzaile.getIzena(),izena);
 		assertEquals(erabiltzaile.getAbizena(),abizena);
@@ -64,6 +67,7 @@ class TestErabiltzailea {
 		assertEquals(erabiltzaile.getDiru_kopuru_historikoa(),diru_kopuru_historikoa);
 		assertEquals(erabiltzaile.getDiru_kopuru_momentukoa(),diru_kopuru_momentukoa);
 		assertEquals(erabiltzaile.getProbintzia(),probintzia);
+		assertEquals(erabiltzaile.getMaila(),maila);
 		}
 	@Test
 	void testToString() {
@@ -84,20 +88,20 @@ class TestErabiltzailea {
     public void testEqualsTrue() {
         Erabiltzaile erabiltzaile = new Erabiltzaile(NAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa,
 			probintzia, herria, postaKodea, posta_elektronikoa, pasahitza, tlf_zenbakia,
-			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa);
+			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa, maila);
         Erabiltzaile erabiltzaile1 = new Erabiltzaile(NAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa,
     			probintzia, herria, postaKodea, posta_elektronikoa, pasahitza, tlf_zenbakia,
-    			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa);
+    			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa, maila);
         assertTrue(erabiltzaile.equals(erabiltzaile1));
     }
 	@Test
     public void testEqualsFalse() {
 		Erabiltzaile erabiltzaile = new Erabiltzaile(NAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa,
 				probintzia, herria, postaKodea, posta_elektronikoa, pasahitza, tlf_zenbakia,
-				erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa);
+				erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa, maila);
 	    Erabiltzaile erabiltzaile1 = new Erabiltzaile("48987766V", izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa,
 	    			probintzia, herria, postaKodea, posta_elektronikoa, pasahitza, tlf_zenbakia,
-	    			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa);
+	    			erabiltzaile_izena, diru_kopuru_historikoa, diru_kopuru_momentukoa, maila);
 	    assertFalse(erabiltzaile.equals(erabiltzaile1));
     }
 	@Test

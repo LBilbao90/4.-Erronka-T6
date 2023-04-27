@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Kasinoa {
@@ -7,15 +8,15 @@ public class Kasinoa {
 	protected String izena;
 	protected String helbidea;
 	protected int telefonoa;
-
-	public Kasinoa(int id_kasinoa, String izena, String helbidea, int telefonoa) {
-		super();
+	private ArrayList<Jokuak> jokoak; 
+	
+	public Kasinoa(int id_kasinoa, String izena, String helbidea, int telefonoa, ArrayList<Jokuak> jokoak) {
 		this.id_kasinoa = id_kasinoa;
 		this.izena = izena;
 		this.helbidea = helbidea;
 		this.telefonoa = telefonoa;
+		this.jokoak = jokoak;
 	}
-	
 	public int getId_kasinoa() {
 		return id_kasinoa;
 	}
@@ -39,6 +40,12 @@ public class Kasinoa {
 	}
 	public void setTelefonoa(int telefonoa) {
 		this.telefonoa = telefonoa;
+	}
+	public ArrayList<Jokuak> getJokoak() {
+		return jokoak;
+	}
+	public void setJokoak(ArrayList<Jokuak> jokoak) {
+		this.jokoak = jokoak;
 	}
 	
 	@Override

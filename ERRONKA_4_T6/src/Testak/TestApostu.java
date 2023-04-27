@@ -136,7 +136,7 @@ class TestApostu {
 		
 		Apostu apustua_test_hascode1 =  new Apostu(1, 2, "12345678L", 1000, 500);
 		Apostu apustua_test_hascode2 =  new Apostu(1, 2, "12345678L", 1000, 500);
-		assertEquals(apustua_test_hascode1, apustua_test_hascode2);
+		assertEquals(apustua_test_hascode1.hashCode(), apustua_test_hascode2.hashCode());
 	}
 	
 	//EQUALS

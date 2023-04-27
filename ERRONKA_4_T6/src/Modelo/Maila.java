@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Maila {
@@ -8,13 +9,16 @@ public class Maila {
 	private int kopurua;
 	private String NAN;
 	private int id_maila;
-	
-	public Maila(String maila_izena, double biderkatzailea, int kopurua, String nAN, int id_maila) {
+	private ArrayList<Erabiltzaile> Erabiltzaile;
+
+	public Maila(String maila_izena, double biderkatzailea, int kopurua, String nAN, int id_maila,
+			ArrayList<Erabiltzaile> erabiltzaile) {
 		this.maila_izena = maila_izena;
 		this.biderkatzailea = biderkatzailea;
 		this.kopurua = kopurua;
-		this.NAN = nAN;
+		NAN = nAN;
 		this.id_maila = id_maila;
+		Erabiltzaile = erabiltzaile;
 	}
 
 	public String getMaila_izena() {
@@ -57,9 +61,17 @@ public class Maila {
 		this.id_maila = id_maila;
 	}
 
+	public ArrayList<Erabiltzaile> getErabiltzaile() {
+		return Erabiltzaile;
+	}
+
+	public void setErabiltzaile(ArrayList<Erabiltzaile> erabiltzaile) {
+		Erabiltzaile = erabiltzaile;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(NAN, biderkatzailea, id_maila, kopurua, maila_izena);
+		return Objects.hash(NAN, biderkatzailea, id_maila, kopurua, maila_izena, Erabiltzaile);
 	}
 
 	@Override
@@ -77,7 +89,7 @@ public class Maila {
 	@Override
 	public String toString() {
 		return "Maila [maila_izena=" + maila_izena + "\nbiderkatzailea=" + biderkatzailea + "\nkopurua=" + kopurua
-				+ "\nNAN=" + NAN + "\nid_maila=" + id_maila + "]";
+				+ "\nNAN=" + NAN + "\nid_maila=" + id_maila + ""+Erabiltzaile+"]";
 	}
 	
 	
