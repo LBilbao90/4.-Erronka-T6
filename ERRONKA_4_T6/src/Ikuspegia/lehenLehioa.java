@@ -365,6 +365,7 @@ public class lehenLehioa extends JFrame {
 	    				try {
 	    					
 	    					ruletaFrame.setVisible(true);
+	    					ruletaFrame.setResizable(false);
 	    				} catch (Exception e) {
 	    					e.printStackTrace();
 	    				}

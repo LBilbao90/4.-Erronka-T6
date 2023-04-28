@@ -442,6 +442,7 @@ public class ruletaApostua extends JFrame {
 	            ruletaLehioa.getContentPane().add(ruleta);
 	            ruletaLehioa.pack();
 	            ruletaLehioa.setVisible(true);
+	            ruletaLehioa.setResizable(false);
 	            
 	            if (blokeatu == true) {
 	            	btnJokoetaraBueltatu.setEnabled(false);
