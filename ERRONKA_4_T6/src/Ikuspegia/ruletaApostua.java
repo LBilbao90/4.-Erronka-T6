@@ -39,23 +39,24 @@ public class ruletaApostua extends JFrame {
     /**
      * Launch the application.
      */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ruletaApostua frame = new ruletaApostua();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ruletaApostua frame = new ruletaApostua();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
 	public ruletaApostua() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 500);
 		contentPane = new JPanel();
@@ -411,32 +412,31 @@ public class ruletaApostua extends JFrame {
 		btnApostuaEzabatu.setBounds(647, 341, 130, 50);
 		contentPane.add(btnApostuaEzabatu);
 		
-			       JButton btnJokoetaraBueltatu = new JButton("Jokoetara Bueltatu");
-			       btnJokoetaraBueltatu.addActionListener(new ActionListener() {
-			           public void actionPerformed(ActionEvent e) {
-			               if (btnJokoetaraBueltatuListener != null) {
-			                   btnJokoetaraBueltatuListener.onJokoetaraBueltatu();
-			               }
-			           }
-			       });
-			       btnJokoetaraBueltatu.setBounds(622, 59, 155, 50);
-			       contentPane.add(btnJokoetaraBueltatu);
+       JButton btnJokoetaraBueltatu = new JButton("Jokoetara Bueltatu");
+       btnJokoetaraBueltatu.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+               if (btnJokoetaraBueltatuListener != null) {
+                   btnJokoetaraBueltatuListener.onJokoetaraBueltatu();
+               }
+           }
+       });
+       btnJokoetaraBueltatu.setBounds(622, 59, 155, 50);
+       contentPane.add(btnJokoetaraBueltatu);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("img/ruletaTablero.jpg"));
-		lblNewLabel.setBounds(10, 137, 627, 313);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Apostu Max: " + pertsonaApostuMax);
-		lblNewLabel_1.setBounds(656, 11, 121, 37);
-		contentPane.add(lblNewLabel_1);
-		
-		JButton btnApostuaEginEta = new JButton("Apostua bukatu");
-		btnApostuaEginEta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-	    	    blokeatu = true;
+       JLabel lblNewLabel = new JLabel("");
+       lblNewLabel.setIcon(new ImageIcon("img/ruletaTablero.jpg"));
+       lblNewLabel.setBounds(10, 137, 627, 313);
+       contentPane.add(lblNewLabel);
+       
+       JLabel lblNewLabel_1 = new JLabel("Apostu Max: " + pertsonaApostuMax);
+       lblNewLabel_1.setBounds(656, 11, 121, 37);
+       contentPane.add(lblNewLabel_1);
+       
+       JButton btnApostuaEginEta = new JButton("Apostua bukatu");
+       btnApostuaEginEta.addActionListener(new ActionListener() {
+    	   public void actionPerformed(ActionEvent e) {
+    		   blokeatu = true;
 	            // Crea y muestra la ventana de ruleta
-	         //   metodoak.btn3secDelay(ruleta, 0, sarrera, login, erregistratu, jokoak, ruleta, e);
 	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa ©");
 	            
 	            ruletaLehioa.getContentPane().add(ruleta);
@@ -444,6 +444,7 @@ public class ruletaApostua extends JFrame {
 	            ruletaLehioa.setVisible(true);
 	            
 	            if (blokeatu == true) {
+	            	btnJokoetaraBueltatu.setEnabled(false);
 	    			btnApostuaEginEta.setEnabled(false);
 	    			btnApostuaEzabatu.setEnabled(false);
 	    			btn_1_18.setEnabled(false);
@@ -495,7 +496,6 @@ public class ruletaApostua extends JFrame {
 	    			btn_zbk_34.setEnabled(false);
 	    			btn_zbk_35.setEnabled(false);
 	    			btn_zbk_36.setEnabled(false);
-//	    			kont = 1;
 	    			ruletaJokoa.getBtnBiratu().doClick();
 	    		}
 	            
@@ -504,6 +504,7 @@ public class ruletaApostua extends JFrame {
 					@Override
 					public void onOKButtonPressed() {
 						ruletaLehioa.dispose();
+						btnJokoetaraBueltatu.setEnabled(true);
 		            	btnApostuaEginEta.setEnabled(true);
 		    			btnApostuaEzabatu.setEnabled(true);
 		    			btn_1_18.setEnabled(true);

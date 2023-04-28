@@ -70,6 +70,9 @@ public class lehenLehioa extends JFrame {
 
     ruletaApostua ruleta = new ruletaApostua();
 
+    private static lehenLehioa lehenLehioaframe = new lehenLehioa();
+    
+    ruletaApostua ruletaFrame = new ruletaApostua();
 
 	/**
 	 * Launch the application.
@@ -78,8 +81,8 @@ public class lehenLehioa extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					lehenLehioa frame = new lehenLehioa();
-					frame.setVisible(true);
+					//lehenLehioa frame = new lehenLehioa();
+					lehenLehioaframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -202,7 +205,6 @@ public class lehenLehioa extends JFrame {
 	    
 	    JButton btnLogin = new JButton("Sartu");
 	    btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-//	    btnEzErregistratua.setBackground(new Color(255, 255, 255));
 	    btnLogin.setOpaque(false); // transparente
 	    btnLogin.setBounds((int) (screenWidth*0.70), (int) (screenHeight*0.70), (int) (screenWidth*0.12), 50);
 	    login.add(btnLogin);
@@ -282,16 +284,7 @@ public class lehenLehioa extends JFrame {
 	    jokoak.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(jokoak);
 	    jokoak.setLayout(null);
-	    
-	    
-//	    textJokoak = new JTextField();
-//	    textJokoak.setEditable(false);
-//	    textJokoak.setBorder(null);
-//	    textJokoak.setText("Aukeratu jolastu nahi duzun jokoa");
-//	    textJokoak.setFont(new Font("Tahoma", Font.PLAIN, 20));
-//	    textJokoak.setColumns(10);
-//	    jokoak.add(textJokoak);
-//	    	    
+	        
 	    //Tituloa jokoa panelean
 	    JLabel jokoakTituloa = new JLabel("Aukeratu joku bat mesedez");
 	    jokoakTituloa.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -307,8 +300,6 @@ public class lehenLehioa extends JFrame {
 	    btnRuletaJokoa.setOpaque(false); // make the button background transparent
 	    btnRuletaJokoa.setContentAreaFilled(false); // make the content area of the button transparent
 	    btnRuletaJokoa.setBorderPainted(false); // remove the border of the button
-//	    btnRuletaJokoa.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
-//	    btnRuletaJokoa.setPreferredSize(new Dimension(300, 300));
 	    jokoak.add(btnRuletaJokoa);
 	    
 	    //BlackJackera joateko botoia
@@ -320,20 +311,7 @@ public class lehenLehioa extends JFrame {
 	    btnBlackJackJokoa.setOpaque(false); // make the button background transparent
 	    btnBlackJackJokoa.setContentAreaFilled(false); // make the content area of the button transparent
 	    btnBlackJackJokoa.setBorderPainted(false); // remove the border of the button
-//	    btnBlackJackJokoa.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
-//	    btnBlackJackJokoa.setPreferredSize(new Dimension(300, 300));
 	    jokoak.add(btnBlackJackJokoa);
-	    
-	    
-
-	    
-
-
-
-
-
-//	    ruletaJokoa ruletaJokoa = new ruletaJokoa();
-//	    ruleta.add(ruletaJokoa);
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
@@ -382,16 +360,17 @@ public class lehenLehioa extends JFrame {
 	            // Oculta la ventana actual
 	            setVisible(false);
 	            
-
-	    	    
-	            // Crea y muestra la ventana de ruleta
-	            metodoak.hurrengoaBtn(ruleta);
-	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa ©");
-
-	            ruletaLehioa.getContentPane().add(ruleta);
-	            ruletaLehioa.pack();
-	            ruletaLehioa.setVisible(true);
-	        }    
+	            EventQueue.invokeLater(new Runnable() {
+	    			public void run() {
+	    				try {
+	    					
+	    					ruletaFrame.setVisible(true);
+	    				} catch (Exception e) {
+	    					e.printStackTrace();
+	    				}
+	    			}
+	    		});
+	    	}
 	    });
 
 	    
@@ -406,16 +385,18 @@ public class lehenLehioa extends JFrame {
 			
 			@Override
 			public void onJokoetaraBueltatu() {
-				// TODO Auto-generated method stub
-				//metodoak.hurrengoaBtn(jokoak, sarrera, login, erregistratu, jokoak, ruleta);
-				ruleta.setVisible(false);
-				jokoak.setVisible(true);
-			//	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, ruleta);
-				System.out.println("aaa");
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							lehenLehioaframe.setVisible(true);
+							ruletaFrame.setVisible(false);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, null);
 			}
-		});
-
-
-		
+		});	
 	}
 }

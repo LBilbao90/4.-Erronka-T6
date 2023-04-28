@@ -199,7 +199,7 @@ public class ruletaJokoa extends JPanel {
                     timer1.start();
                     hasieraDenbora = System.currentTimeMillis();
             	} else {
-            		System.out.println("No le des mas al puto boton por que no va bobo, MIRA EL KONT bobi ");
+            		System.err.println("Err, botoi hau eskutatuta egongo da");
             	}
             }
         });
@@ -209,49 +209,49 @@ public class ruletaJokoa extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int pasatakoDenbora = (int) (System.currentTimeMillis() - hasieraDenbora) / 1000;
-                if (pasatakoDenbora >= 5 && pasatakoDenbora < 7 ) {
+                if (pasatakoDenbora >= 5 && pasatakoDenbora < 7 && kont == 1) {
                     timer1.stop();
                     timer2.start();
-                } else if (pasatakoDenbora >= 7 && pasatakoDenbora < 10) {
+                } else if (pasatakoDenbora >= 7 && pasatakoDenbora < 10 && kont == 1) {
                     timer2.stop();
                     timer3.start();
-                } else if (pasatakoDenbora >= 10 && pasatakoDenbora < 12) {
+                } else if (pasatakoDenbora >= 10 && pasatakoDenbora < 12 && kont == 1) {
                     timer3.stop();
                     timer4.start();
-                } else if (pasatakoDenbora >= 12 && pasatakoDenbora < 15) {
+                } else if (pasatakoDenbora >= 12 && pasatakoDenbora < 15 && kont == 1) {
                 	timer4.stop();
                 	timer5.start();
-                } else if (pasatakoDenbora >= 15 && pasatakoDenbora < 17) {
+                } else if (pasatakoDenbora >= 15 && pasatakoDenbora < 17 && kont == 1) {
                 	timer5.stop();
                 	timer6.start();
-                } else if (pasatakoDenbora >= 17 && pasatakoDenbora < 20) {
+                } else if (pasatakoDenbora >= 17 && pasatakoDenbora < 20 && kont == 1) {
                 	timer6.stop();
                 	timer7.start();
-                } else if (pasatakoDenbora >= 20 && pasatakoDenbora < 22) {
+                } else if (pasatakoDenbora >= 20 && pasatakoDenbora < 22 && kont == 1) {
                 	timer7.stop();
                 	timer8.start();
-                } else if (pasatakoDenbora >= 22 && pasatakoDenbora < 25) {
+                } else if (pasatakoDenbora >= 22 && pasatakoDenbora < 25 && kont == 1) {
                 	timer8.stop();
                 	timer9.start();
-                } else if (pasatakoDenbora >= 25 && pasatakoDenbora < 26) {
+                } else if (pasatakoDenbora >= 25 && pasatakoDenbora < 26 && kont == 1) {
                 	timer9.stop();
                 	timer10.start();
-                } else if (pasatakoDenbora >= 26 && pasatakoDenbora < 28) {
+                } else if (pasatakoDenbora >= 26 && pasatakoDenbora < 28 && kont == 1) {
                 	timer10.stop();
                 	timer11.start();
-                } else if (pasatakoDenbora >= 28 && pasatakoDenbora < 30) {
+                } else if (pasatakoDenbora >= 28 && pasatakoDenbora < 30 && kont == 1) {
                 	timer11.stop();
                 	timer12.start();
-                } else if (pasatakoDenbora >= 30 && pasatakoDenbora < 31) {
+                } else if (pasatakoDenbora >= 30 && pasatakoDenbora < 31 && kont == 1) {
                 	timer12.stop();
                 	timer13.start();
-                } else if (pasatakoDenbora >= 31 && pasatakoDenbora < 32) {
+                } else if (pasatakoDenbora >= 31 && pasatakoDenbora < 32 && kont == 1) {
                 	timer13.stop();
                 	timer14.start();
-                } else if (pasatakoDenbora >= 32 && pasatakoDenbora < 33) {
+                } else if (pasatakoDenbora >= 32 && pasatakoDenbora < 33 && kont == 1) {
                 	timer14.stop();
                 	timer15.start();
-                } else if (pasatakoDenbora >= 33 && pasatakoDenbora < 34) {
+                } else if (pasatakoDenbora >= 33 && pasatakoDenbora < 34 && kont == 1) {
                     timer15.stop();
                     double unekoAngeluGraduak = Math.toDegrees(angelu);
                     do {
