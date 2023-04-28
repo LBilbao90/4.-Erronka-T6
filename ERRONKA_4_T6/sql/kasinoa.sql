@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2023 a las 11:03:34
+-- Tiempo de generación: 28-04-2023 a las 12:34:12
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -29,11 +29,31 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `apostua` (
   `id_apostu` int(11) NOT NULL,
-  `NAN` varchar(9) DEFAULT NULL CHECK (`NAN` like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]'),
-  `Id_joko` int(11) DEFAULT NULL,
+  `NAN` varchar(9) DEFAULT NULL,
+  `id_joko` int(11) DEFAULT NULL,
   `apostu_kantitatea` int(11) NOT NULL,
-  `apostu_emaitza` enum('zuenza','okerra') NOT NULL
+  `apostu_emaitza` enum('irabazi','galdu') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `apostua`
+--
+
+INSERT INTO `apostua` (`id_apostu`, `NAN`, `id_joko`, `apostu_kantitatea`, `apostu_emaitza`) VALUES
+(1, '12345678A', 1, 100, 'irabazi');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `apostu_emaitza`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `apostu_emaitza` (
+`erabiltzaile_izena` varchar(50)
+,`JokoIzena` varchar(50)
+,`apostu_kantitatea` int(11)
+,`apostu_emaitza` enum('irabazi','galdu')
+);
 
 -- --------------------------------------------------------
 
@@ -42,7 +62,8 @@ CREATE TABLE `apostua` (
 --
 
 CREATE TABLE `erabiltzaile_kontua` (
-  `NAN` varchar(9) NOT NULL CHECK (`NAN` like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]'),
+  `NAN` varchar(9) NOT NULL,
+  `id_maila` int(10) UNSIGNED DEFAULT NULL,
   `diru_kopuru_historikoa` double UNSIGNED NOT NULL,
   `diru_kopuru_momentukoa` double UNSIGNED NOT NULL,
   `tlf_zenbakia` char(9) NOT NULL,
@@ -56,6 +77,13 @@ CREATE TABLE `erabiltzaile_kontua` (
   `pasahitza` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `erabiltzaile_kontua`
+--
+
+INSERT INTO `erabiltzaile_kontua` (`NAN`, `id_maila`, `diru_kopuru_historikoa`, `diru_kopuru_momentukoa`, `tlf_zenbakia`, `posta_Kodea`, `herialdea`, `probintzia`, `herria`, `jaiotze_data`, `abizena`, `erabiltzaile_izena`, `pasahitza`) VALUES
+('12345678A', 2, 1000, 505, '666999666', 12345, 'Gipuzkoa', 'Gipuzkoa', 'Donostia', '1989-12-31 23:00:00', 'Garcia', 'jgarcia', 'elorrieta00');
+
 -- --------------------------------------------------------
 
 --
@@ -63,11 +91,19 @@ CREATE TABLE `erabiltzaile_kontua` (
 --
 
 CREATE TABLE `jokoak` (
-  `Id_joko` int(11) NOT NULL,
-  `Id_Kasino` int(11) NOT NULL,
+  `id_joko` int(11) NOT NULL,
+  `id_Kasino` int(11) NOT NULL,
   `JokoIzena` varchar(50) NOT NULL,
   `MaxApostu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `jokoak`
+--
+
+INSERT INTO `jokoak` (`id_joko`, `id_Kasino`, `JokoIzena`, `MaxApostu`) VALUES
+(1, 1, 'Ruleta', 1000),
+(2, 1, 'Blackjack', 1000);
 
 -- --------------------------------------------------------
 
@@ -76,11 +112,74 @@ CREATE TABLE `jokoak` (
 --
 
 CREATE TABLE `kasino` (
-  `Id_Kasino` int(11) NOT NULL,
+  `id_Kasino` int(11) NOT NULL,
   `Izena` varchar(70) NOT NULL,
   `Helbidea` varchar(50) NOT NULL,
   `Telefonoa` char(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `kasino`
+--
+
+INSERT INTO `kasino` (`id_Kasino`, `Izena`, `Helbidea`, `Telefonoa`) VALUES
+(1, 'Elorrieta Kasinoa', 'Karmen Kalea 35', '606408012');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `kasino_erabiltzaile`
+--
+
+CREATE TABLE `kasino_erabiltzaile` (
+  `id_Kasino` int(11) DEFAULT NULL,
+  `NAN` varchar(9) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `kasino_erabiltzaile`
+--
+
+INSERT INTO `kasino_erabiltzaile` (`id_Kasino`, `NAN`) VALUES
+(1, '12345678A');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `kasino_info`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `kasino_info` (
+`Kasinoren Izena` varchar(70)
+,`Joko kopurua` bigint(21)
+,`Betebehar batazbestekoa` decimal(14,4)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `kasino_jokoak`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `kasino_jokoak` (
+`Izena` varchar(70)
+,`JokoIzena` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `langile_info`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `langile_info` (
+`NAN` varchar(9)
+,`Izena` varchar(20)
+,`Abizena` varchar(50)
+,`Kargu` varchar(50)
+,`Soldata` double unsigned
+,`Kasinoren Izena` varchar(70)
+);
 
 -- --------------------------------------------------------
 
@@ -89,9 +188,9 @@ CREATE TABLE `kasino` (
 --
 
 CREATE TABLE `langile_kontua` (
-  `Id_Langile` int(11) NOT NULL,
-  `Id_Kasino` int(11) DEFAULT NULL,
-  `NAN` varchar(9) NOT NULL CHECK (`NAN` like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]'),
+  `id_Langile` int(11) NOT NULL,
+  `id_Kasino` int(11) DEFAULT NULL,
+  `NAN` varchar(9) DEFAULT NULL,
   `Izena` varchar(20) NOT NULL,
   `Abizena` varchar(50) NOT NULL,
   `Jaiotze_data` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -105,6 +204,13 @@ CREATE TABLE `langile_kontua` (
   `Soldata` double UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `langile_kontua`
+--
+
+INSERT INTO `langile_kontua` (`id_Langile`, `id_Kasino`, `NAN`, `Izena`, `Abizena`, `Jaiotze_data`, `Herrialdea`, `Probintzia`, `Herria`, `Posta_Kodea`, `Posta_elektronikoa`, `tlf_zenbakia`, `Kargu`, `Soldata`) VALUES
+(1, 1, '12343678A', 'Jon', 'Doe', '1979-12-31 23:00:00', 'Spain', 'Barcelona', 'Barcelona', 8001, 'jon.doe@example.com', '123456789', 'Manager', 50000);
+
 -- --------------------------------------------------------
 
 --
@@ -114,10 +220,53 @@ CREATE TABLE `langile_kontua` (
 CREATE TABLE `maila` (
   `id_maila` int(10) UNSIGNED NOT NULL,
   `izena` varchar(70) NOT NULL,
-  `NAN` varchar(9) NOT NULL CHECK (`NAN` like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]'),
-  `kopurua` int(11) NOT NULL,
   `apostua_max` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `maila`
+--
+
+INSERT INTO `maila` (`id_maila`, `izena`, `apostua_max`) VALUES
+(1, 'Brontze', 100),
+(2, 'Zilarra', 500),
+(3, 'Urrea', 1000);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `apostu_emaitza`
+--
+DROP TABLE IF EXISTS `apostu_emaitza`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `apostu_emaitza`  AS SELECT `erabiltzaile_kontua`.`erabiltzaile_izena` AS `erabiltzaile_izena`, `jokoak`.`JokoIzena` AS `JokoIzena`, `apostua`.`apostu_kantitatea` AS `apostu_kantitatea`, `apostua`.`apostu_emaitza` AS `apostu_emaitza` FROM ((`erabiltzaile_kontua` join `apostua` on(`erabiltzaile_kontua`.`NAN` = `apostua`.`NAN`)) join `jokoak` on(`apostua`.`id_joko` = `jokoak`.`id_joko`))  ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `kasino_info`
+--
+DROP TABLE IF EXISTS `kasino_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kasino_info`  AS SELECT `k`.`Izena` AS `Kasinoren Izena`, count(`j`.`id_joko`) AS `Joko kopurua`, avg(`j`.`MaxApostu`) AS `Betebehar batazbestekoa` FROM (`kasino` `k` left join `jokoak` `j` on(`k`.`id_Kasino` = `j`.`id_Kasino`)) GROUP BY `k`.`id_Kasino``id_Kasino`  ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `kasino_jokoak`
+--
+DROP TABLE IF EXISTS `kasino_jokoak`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kasino_jokoak`  AS SELECT `kasino`.`Izena` AS `Izena`, `jokoak`.`JokoIzena` AS `JokoIzena` FROM (`kasino` join `jokoak` on(`kasino`.`id_Kasino` = `jokoak`.`id_Kasino`))  ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `langile_info`
+--
+DROP TABLE IF EXISTS `langile_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `langile_info`  AS SELECT `lk`.`NAN` AS `NAN`, `lk`.`Izena` AS `Izena`, `lk`.`Abizena` AS `Abizena`, `lk`.`Kargu` AS `Kargu`, `lk`.`Soldata` AS `Soldata`, `k`.`Izena` AS `Kasinoren Izena` FROM (`langile_kontua` `lk` join `kasino` `k` on(`lk`.`id_Kasino` = `k`.`id_Kasino`))  ;
 
 --
 -- Índices para tablas volcadas
@@ -128,60 +277,49 @@ CREATE TABLE `maila` (
 --
 ALTER TABLE `apostua`
   ADD PRIMARY KEY (`id_apostu`),
-  ADD KEY `idx_apostua_id_joko` (`Id_joko`),
-  ADD KEY `idx_apostua_NAN` (`NAN`),
-  ADD KEY `idx_apostua_id_joko_emaitza` (`Id_joko`,`apostu_emaitza`);
+  ADD KEY `fk_erabiltzaile_kontua` (`NAN`),
+  ADD KEY `fk_jokua` (`id_joko`);
 
 --
 -- Indices de la tabla `erabiltzaile_kontua`
 --
 ALTER TABLE `erabiltzaile_kontua`
   ADD PRIMARY KEY (`NAN`),
-  ADD KEY `tlf_zenbakia_idx` (`tlf_zenbakia`),
-  ADD KEY `posta_Kodea_idx` (`posta_Kodea`),
-  ADD KEY `herialdea_idx` (`herialdea`),
-  ADD KEY `probintzia_idx` (`probintzia`),
-  ADD KEY `herria_idx` (`herria`),
-  ADD KEY `jaiotze_data_idx` (`jaiotze_data`),
-  ADD KEY `abizena_idx` (`abizena`),
-  ADD KEY `erabiltzaile_izena_idx` (`erabiltzaile_izena`);
+  ADD KEY `erabiltzaile_kontua_ibfk_1` (`id_maila`);
 
 --
 -- Indices de la tabla `jokoak`
 --
 ALTER TABLE `jokoak`
-  ADD PRIMARY KEY (`Id_joko`),
-  ADD KEY `idx_jokoak_id_kasino` (`Id_Kasino`),
-  ADD KEY `idx_jokoak_jokoizena` (`JokoIzena`),
-  ADD KEY `idx_jokoak_maxapostu` (`MaxApostu`);
+  ADD PRIMARY KEY (`id_joko`),
+  ADD KEY `id_Kasino` (`id_Kasino`);
 
 --
 -- Indices de la tabla `kasino`
 --
 ALTER TABLE `kasino`
-  ADD PRIMARY KEY (`Id_Kasino`),
-  ADD KEY `idx_kasino_basik` (`Izena`),
-  ADD KEY `idx_kasino_basiko` (`Izena`);
+  ADD PRIMARY KEY (`id_Kasino`);
+
+--
+-- Indices de la tabla `kasino_erabiltzaile`
+--
+ALTER TABLE `kasino_erabiltzaile`
+  ADD KEY `fk_Id_Kasino_kasino_erabiltzailea` (`id_Kasino`),
+  ADD KEY `fk_NAN_kasino_erabiltzailea` (`NAN`);
 
 --
 -- Indices de la tabla `langile_kontua`
 --
 ALTER TABLE `langile_kontua`
-  ADD PRIMARY KEY (`Id_Langile`),
+  ADD PRIMARY KEY (`id_Langile`),
   ADD UNIQUE KEY `Posta_elektronikoa` (`Posta_elektronikoa`),
-  ADD KEY `fk_Id_Kasino` (`Id_Kasino`),
-  ADD KEY `idx_langile_kontua_basik` (`NAN`,`Izena`,`Abizena`,`Jaiotze_data`,`Kargu`,`Soldata`,`Probintzia`);
+  ADD KEY `fk_Id_Kasino` (`id_Kasino`);
 
 --
 -- Indices de la tabla `maila`
 --
 ALTER TABLE `maila`
-  ADD PRIMARY KEY (`id_maila`),
-  ADD KEY `izena_idx` (`izena`),
-  ADD KEY `NAN_idx` (`NAN`),
-  ADD KEY `kopurua_idx` (`kopurua`),
-  ADD KEY `apostua_max_idx` (`apostua_max`),
-  ADD KEY `fk_erabiltzaile_kontua_idx` (`NAN`);
+  ADD PRIMARY KEY (`id_maila`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -191,31 +329,31 @@ ALTER TABLE `maila`
 -- AUTO_INCREMENT de la tabla `apostua`
 --
 ALTER TABLE `apostua`
-  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `jokoak`
 --
 ALTER TABLE `jokoak`
-  MODIFY `Id_joko` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_joko` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `kasino`
 --
 ALTER TABLE `kasino`
-  MODIFY `Id_Kasino` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Kasino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `langile_kontua`
 --
 ALTER TABLE `langile_kontua`
-  MODIFY `Id_Langile` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Langile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `maila`
 --
 ALTER TABLE `maila`
-  MODIFY `id_maila` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_maila` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -225,26 +363,33 @@ ALTER TABLE `maila`
 -- Filtros para la tabla `apostua`
 --
 ALTER TABLE `apostua`
-  ADD CONSTRAINT `fk_erabiltzaile_kontua_apostua` FOREIGN KEY (`NAN`) REFERENCES `erabiltzaile_kontua` (`NAN`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_jokua` FOREIGN KEY (`Id_joko`) REFERENCES `jokoak` (`Id_joko`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_erabiltzaile_kontua` FOREIGN KEY (`NAN`) REFERENCES `erabiltzaile_kontua` (`NAN`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_jokua` FOREIGN KEY (`id_joko`) REFERENCES `jokoak` (`id_joko`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `erabiltzaile_kontua`
+--
+ALTER TABLE `erabiltzaile_kontua`
+  ADD CONSTRAINT `erabiltzaile_kontua_ibfk_1` FOREIGN KEY (`id_maila`) REFERENCES `maila` (`id_maila`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `jokoak`
 --
 ALTER TABLE `jokoak`
-  ADD CONSTRAINT `jokoak_ibfk_1` FOREIGN KEY (`Id_Kasino`) REFERENCES `kasino` (`Id_Kasino`);
+  ADD CONSTRAINT `jokoak_ibfk_1` FOREIGN KEY (`id_Kasino`) REFERENCES `kasino` (`id_Kasino`);
+
+--
+-- Filtros para la tabla `kasino_erabiltzaile`
+--
+ALTER TABLE `kasino_erabiltzaile`
+  ADD CONSTRAINT `fk_Id_Kasino_kasino_erabiltzailea` FOREIGN KEY (`id_Kasino`) REFERENCES `kasino` (`id_Kasino`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_NAN_kasino_erabiltzailea` FOREIGN KEY (`NAN`) REFERENCES `erabiltzaile_kontua` (`NAN`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `langile_kontua`
 --
 ALTER TABLE `langile_kontua`
-  ADD CONSTRAINT `fk_Id_Kasino` FOREIGN KEY (`Id_Kasino`) REFERENCES `kasino` (`Id_Kasino`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `maila`
---
-ALTER TABLE `maila`
-  ADD CONSTRAINT `fk_erabiltzaile_kontua` FOREIGN KEY (`NAN`) REFERENCES `erabiltzaile_kontua` (`NAN`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Id_Kasino` FOREIGN KEY (`id_Kasino`) REFERENCES `kasino` (`id_Kasino`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
