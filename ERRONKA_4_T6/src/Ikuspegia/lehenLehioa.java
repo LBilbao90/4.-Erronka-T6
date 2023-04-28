@@ -68,7 +68,7 @@ public class lehenLehioa extends JFrame {
 	int screenHeight = (int) (screenSize.height * 0.75);
 	int screenWidth = (int) (screenSize.width * 0.75);
 
-    ruletaApostua ruleta = new ruletaApostua();
+//    ruletaApostua ruleta = new ruletaApostua();
 
     private static lehenLehioa lehenLehioaframe = new lehenLehioa();
     
@@ -316,31 +316,35 @@ public class lehenLehioa extends JFrame {
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, e);
+	            setTitle("Hasi saioa | Elorrieta Kasinoa ©");
 	        }
 		});	
 		
 		btnEzErregistratua.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, e);
-	        }
-		});
+	            setTitle("Erregistroa | Elorrieta Kasinoa ©");
+	            }
+	        });
 		
 		//Login botoia akzioak
 		btnLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    	    if (textErabiltzailea.getText().equals("") || passwordLogin.getText().equals("")) {
 	    	    	JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
-	    	    } else {
-	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    	    	} else {
+	    	    		metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    	    		setTitle("Jokoak | Elorrieta Kasinoa ©");
+	    	    		}
 	    	    }
-	    	}
-	    });
+	    	});
 		
 		btnLoginBuelta.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    	    	metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
-	    	}
-	    });
+	    	    	setTitle("Hasi saioa | Elorrieta Kasinoa ©");
+	    	    	}
+	    	});
 		
 	    //Erregistratu botoiaren akzioak
 	    btnErregistratu.addActionListener(new ActionListener() {
@@ -350,6 +354,7 @@ public class lehenLehioa extends JFrame {
 	    	    } else {
 	    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
 	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    	    	setTitle("Jokoak | Elorrieta Kasinoa ©");
 	    	    }
 	    	}
 	    });

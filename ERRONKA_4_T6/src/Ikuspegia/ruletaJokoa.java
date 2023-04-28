@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -56,14 +57,23 @@ public class ruletaJokoa extends JPanel {
         }
 
         // Tamaina definitu
-        setPreferredSize(new Dimension(470, 400));
+        setPreferredSize(new Dimension(400, 400));
 
         // BorderLayout-a konfiguratu marrazkiaren panelarentzat
         setLayout(new BorderLayout());
 
         // Biratu botoia sortu
-        btnBiratu = new JButton("Biratu");
-        add(btnBiratu, BorderLayout.EAST);
+        btnBiratu = new JButton("");
+        String geziaHelbidea = "img/ruletaGezia.png";
+        ImageIcon gezia = new ImageIcon(geziaHelbidea);
+        btnBiratu.setIcon(gezia);
+        btnBiratu.setOpaque(false);
+        btnBiratu.setContentAreaFilled(false);
+        btnBiratu.setBorderPainted(false);
+        btnBiratu.setFocusPainted(false);
+        add(btnBiratu, BorderLayout.NORTH);
+
+
         
         //ArrayList onen barruan temporizadoreentzako zenbateko delaya esartzen zaien gordetzen da.
         ArrayList<Integer> timerDelay = new ArrayList<>(Arrays.asList(5, 8, 11, 15, 18, 21, 24, 27, 30, 33, 35, 37, 39, 41, 45));
@@ -114,10 +124,10 @@ public class ruletaJokoa extends JPanel {
                 denboraAraberaTimer(pasatakoDenbora, timerDelay.get(11), timerDelay.get(12), kont, timer11, timer12);
                 denboraAraberaTimer(pasatakoDenbora, timerDelay.get(12), timerDelay.get(13), kont, timer12, timer13);
                 if (pasatakoDenbora >= timerDelay.get(13) && pasatakoDenbora < timerDelay.get(14) && kont == 1) {
+                	kont--;
                 	timer13.stop();
                     int unekoZenbakia = ruletakoZbkKalkulatu(angelu);
                     System.out.println("Número actual en la ruleta: " + unekoZenbakia);
-                    kont--;
                     erakutsiMezua(unekoZenbakia);
                 }
             }
@@ -188,14 +198,14 @@ public class ruletaJokoa extends JPanel {
         }
     }
     
-    public static void main(String[] args) {
-        // Crear la ventana de la aplicación y agregar el panel de la imagen rotada
-        JFrame frame = new JFrame("Rotar Imagen con Animación");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new ruletaJokoa());
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        // Crear la ventana de la aplicación y agregar el panel de la imagen rotada
+//        JFrame frame = new JFrame("Rotar Imagen con Animación");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.getContentPane().add(new ruletaJokoa());
+//        frame.pack();
+//        frame.setLocationRelativeTo(null);
+//        frame.setVisible(true);
+//    }
     
 }

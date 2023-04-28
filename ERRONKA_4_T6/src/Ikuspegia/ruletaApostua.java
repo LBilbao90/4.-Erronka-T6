@@ -51,8 +51,11 @@ public class ruletaApostua extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param string 
 	 */
 	public ruletaApostua() {
+		
+		setTitle("Ruleta | Elorrieta Kasinoa ©");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 500);
