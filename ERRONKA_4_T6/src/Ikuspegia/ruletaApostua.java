@@ -456,6 +456,7 @@ public class ruletaApostua extends JFrame {
 	    			btn_even.setEnabled(false);
 	    			btn_odd.setEnabled(false);
 	    			btn_odd.setEnabled(false);
+	    			btn_gorriak.setEnabled(false);
 	    			btn_beltzak.setEnabled(false);
 	    			btn_1_12.setEnabled(false);
 	    			btn_13_24.setEnabled(false);
@@ -517,6 +518,7 @@ public class ruletaApostua extends JFrame {
 		    			btn_even.setEnabled(true);
 		    			btn_odd.setEnabled(true);
 		    			btn_odd.setEnabled(true);
+		    			btn_gorriak.setEnabled(true);
 		    			btn_beltzak.setEnabled(true);
 		    			btn_1_12.setEnabled(true);
 		    			btn_13_24.setEnabled(true);
