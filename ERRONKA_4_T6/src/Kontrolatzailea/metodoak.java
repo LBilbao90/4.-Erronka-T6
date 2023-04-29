@@ -116,6 +116,7 @@ public class metodoak {
 	    textField.setText(text);
 	    textField.setEditable(false);
 	    textField.setBorder(null);
+	    textField.setOpaque(false);
 	    erregistratu.add(textField);
 	    textField.setColumns(10);
 	    return textField;

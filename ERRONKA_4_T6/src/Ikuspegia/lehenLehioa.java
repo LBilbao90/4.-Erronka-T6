@@ -64,6 +64,9 @@ public class lehenLehioa extends JFrame {
 	private JTextField textJokoak;
 	
     private ImageIcon irtenImg = new ImageIcon("img/bukatu.png");
+    private ImageIcon atzeraGezia = new ImageIcon("img/atzeraGezia.png");
+    private ImageIcon begiaBai = new ImageIcon("img/begiaBai.png");
+    private ImageIcon begiaEz = new ImageIcon("img/begiaEz.png");
 	
 	// Pantailaren dimentsioak lortu
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -84,6 +87,8 @@ public class lehenLehioa extends JFrame {
 			public void run() {
 				try {
 					//lehenLehioa frame = new lehenLehioa();
+				//	lehenLehioaframe.setUndecorated(true);
+
 					lehenLehioaframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -96,6 +101,8 @@ public class lehenLehioa extends JFrame {
 	 * Create the frame.
 	 */
 	public lehenLehioa() {
+		
+		lehenLehioaframe = this;
 	    //Pantaila handian agertu ahal izateko
 	    setResizable(false);
 	    
@@ -192,6 +199,26 @@ public class lehenLehioa extends JFrame {
 	    itxiLogin.setBorderPainted(false);
 	    itxiLogin.setFocusPainted(false);
 	    login.add(itxiLogin);
+	    
+	    JButton eskutatuLogoBai = new JButton("");
+	    eskutatuLogoBai.setIcon(begiaBai);
+	    eskutatuLogoBai.setBounds(200, 10, 110, 100);
+	    eskutatuLogoBai.setOpaque(false);
+	    eskutatuLogoBai.setContentAreaFilled(false);
+	    eskutatuLogoBai.setBorderPainted(false);
+	    eskutatuLogoBai.setFocusPainted(false);
+	    eskutatuLogoBai.setVisible(false);
+	    eskutatuLogoBai.setEnabled(false);
+	    login.add(eskutatuLogoBai);
+	    
+	    JButton eskutatuLogoEz = new JButton("");
+	    eskutatuLogoEz.setIcon(begiaEz);
+	    eskutatuLogoEz.setBounds(200, 10, 110, 100);
+	    eskutatuLogoEz.setOpaque(false);
+	    eskutatuLogoEz.setContentAreaFilled(false);
+	    eskutatuLogoEz.setBorderPainted(false);
+	    eskutatuLogoEz.setFocusPainted(false);
+	    login.add(eskutatuLogoEz);
 	    
 	    JLabel imgBannerLogin = new JLabel(new ImageIcon("img/banner.jpg"));
 	    imgBannerLogin.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
@@ -292,19 +319,23 @@ public class lehenLehioa extends JFrame {
 	    textTelefonoa.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    
 		// Login buelatzeko botoia
-	    JButton btnLoginBuelta = new JButton("login");
-	    btnLoginBuelta.setFont(new Font("Tahoma", Font.PLAIN, 25));
-	    btnLoginBuelta.setOpaque(false); // transparente
-	    btnLoginBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 35);
+	    JButton btnLoginBuelta = new JButton("");
+	    btnLoginBuelta.setIcon(atzeraGezia);
+	    btnLoginBuelta.setContentAreaFilled(false);
+	    btnLoginBuelta.setBorderPainted(false);
+	    btnLoginBuelta.setFocusPainted(false);
+	    btnLoginBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.20), 70);
 	    erregistratu.add(btnLoginBuelta);
 	    
 	    //Erregistratu botoia
-	    JButton btnErregistratu = new JButton("Erregistratu hemen klik eginez");
+	    JButton btnErregistratu = new JButton("Erregistratu");
 	    btnErregistratu.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	    btnErregistratu.setOpaque(false); // transparente
 	    btnErregistratu.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
 	    erregistratu.add(btnErregistratu);
 	    
+	    metodoak.createTextFieldTestua("(Bete itzazu aurreko eremuak guztiak erregistratu ahal izateko)", (int) (screenWidth*0.54), (int) (screenHeight*0.75), (int) (screenWidth*0.40), 40, new Font("Tahoma", Font.PLAIN, 15), erregistratu);
+	   
 	    //Jokoak panela
 	    JPanel jokoak = new JPanel();
 	    jokoak.setBounds(0, 0, screenWidth, screenHeight);
@@ -372,6 +403,30 @@ public class lehenLehioa extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
+			}
+		});
+	    
+		//'bukatu img' botoia 'login' panelean dagoena. Aplikazioa bukatzen du.
+	    eskutatuLogoBai.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				eskutatuLogoBai.setVisible(false);
+				eskutatuLogoBai.setEnabled(false);
+				eskutatuLogoEz.setVisible(true);
+				eskutatuLogoEz.setEnabled(true);
+				lehenLehioaframe.setUndecorated(true);
+			}
+		});
+	    
+		//'bukatu img' botoia 'login' panelean dagoena. Aplikazioa bukatzen du.
+	    eskutatuLogoEz.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				eskutatuLogoBai.setVisible(true);
+				eskutatuLogoBai.setEnabled(true);
+				eskutatuLogoEz.setVisible(false);
+				eskutatuLogoEz.setEnabled(false);
+				lehenLehioaframe.setUndecorated(false);
 			}
 		});
 	    

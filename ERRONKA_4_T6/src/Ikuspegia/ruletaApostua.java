@@ -7,19 +7,33 @@ import javax.swing.border.EmptyBorder;
 import Ikuspegia.ruletaJokoa.OKButtonListener;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.JRadioButton;
+import java.awt.Font;
 
 public class ruletaApostua extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
     ruletaJokoa ruleta = new ruletaJokoa();
+    private int apostuOrain;
     private int pertsonaApostuMax = 100;
     private boolean blokeatu = false;
+
+    // 37 sortzen ditugu, taulan 0 tik 36 zenbaki daudelako.
+    private int[] zbk = new int[37];
+    private int[] dozenak = new int [2];
+    private int[] dozenakEskerrEskuin = new int [2];	
+    private int[] taulaErdia = new int [1];
+    private int[] bakoitiBikoiti = new int [1];
+    private int[] kolorea = new int [1];
+    
 
     Timer timer = new Timer();
 
@@ -64,6 +78,45 @@ public class ruletaApostua extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		// Talde bat sortu 'rdbtnApostuXX' guztiak batera funtzionatzeko.
+		ButtonGroup apostuKantitatea = new ButtonGroup();
+		
+		JRadioButton rdbtnApostu10 = new JRadioButton("10");
+		rdbtnApostu10.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnApostu10.setBounds(10, 48, 67, 21);
+		apostuKantitatea.add(rdbtnApostu10);
+		contentPane.add(rdbtnApostu10);
+		
+		JRadioButton rdbtnApostu20 = new JRadioButton("20");
+		rdbtnApostu20.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnApostu20.setBounds(88, 48, 67, 21);
+		apostuKantitatea.add(rdbtnApostu20);
+		contentPane.add(rdbtnApostu20);
+		
+		JRadioButton rdbtnApostu50 = new JRadioButton("50");
+		rdbtnApostu50.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnApostu50.setBounds(157, 48, 67, 21);
+		apostuKantitatea.add(rdbtnApostu50);
+		contentPane.add(rdbtnApostu50);
+		
+		JRadioButton rdbtnApostu100 = new JRadioButton("100");
+		rdbtnApostu100.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnApostu100.setBounds(232, 48, 67, 21);
+		apostuKantitatea.add(rdbtnApostu100);
+		contentPane.add(rdbtnApostu100);
+		
+		JRadioButton rdbtnApostu500 = new JRadioButton("500");
+		rdbtnApostu500.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnApostu500.setBounds(322, 48, 67, 21);
+		apostuKantitatea.add(rdbtnApostu500);
+		contentPane.add(rdbtnApostu500);
+		
+		JRadioButton rdbtnApostu1000 = new JRadioButton("1000");
+		rdbtnApostu1000.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnApostu1000.setBounds(415, 48, 78, 21);
+		apostuKantitatea.add(rdbtnApostu1000);
+		contentPane.add(rdbtnApostu1000);
 		
 		JButton btn_zbk_36 = new JButton("");
 		btn_zbk_36.setOpaque(false);
@@ -569,5 +622,64 @@ public class ruletaApostua extends JFrame {
 			});
 		btnApostuaEgin.setBounds(647, 400, 130, 50);
 		contentPane.add(btnApostuaEgin);
+		
+		
+		btn_zbk_0.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				apostuOrain = apostua(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, zbk);
+			
+			System.out.println("zbk[0] = " + zbk[0]);
+			System.out.println("zbk[1] = " + zbk[1]);
+			System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+			
+			}
+		});
+		
+		btn_zbk_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostua(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, zbk);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
 	}
+	
+	public int apostua(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
+	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
+	        zbk[zbkApostua] = zbk[zbkApostua] + 10;
+	        apostuOrain = apostuOrain + 10;
+	        System.out.println(zbk[zbkApostua]);
+	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
+	        zbk[zbkApostua] = zbk[zbkApostua] + 20;
+	        apostuOrain = apostuOrain + 20;
+	        System.out.println(zbk[zbkApostua]);
+	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
+	        zbk[zbkApostua] = zbk[zbkApostua] + 50;
+	        apostuOrain = apostuOrain + 50;
+	        System.out.println(zbk[zbkApostua]);
+	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
+	        zbk[zbkApostua] = zbk[zbkApostua] + 100;
+	        apostuOrain = apostuOrain + 100;
+	        System.out.println(zbk[zbkApostua]);
+	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
+	        zbk[zbkApostua] = zbk[zbkApostua] + 500;
+	        apostuOrain = apostuOrain + 500;
+	        System.out.println(zbk[zbkApostua]);
+	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
+	        zbk[zbkApostua] = zbk[zbkApostua] + 1000;
+	        apostuOrain = apostuOrain + 1000;
+	        System.out.println(zbk[zbkApostua]);
+	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
+	    } else {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
+	    }
+	    return apostuOrain;
+	}
+
 }
