@@ -28,11 +28,20 @@ public class ruletaJokoa extends JPanel {
     private Timer timer1, timer2, timer3, timer4, timer5, timer6, timer7, timer8, timer9, timer10, timer11, timer12, timer13;
     private long hasieraDenbora = System.currentTimeMillis();
     private int kont = 0;
+    protected static int unekoZenbakia;
 
     private Random random = new Random();
     private static JButton btnBiratu;
 
-    // Biratu botoia getter
+    public static int getUnekoZenbakia() {
+		return unekoZenbakia;
+	}
+
+	public void setUnekoZenbakia(int unekoZenbakia) {
+		this.unekoZenbakia = unekoZenbakia;
+	}
+
+	// Biratu botoia getter
     public static JButton getBtnBiratu() {
         return btnBiratu;
     }
@@ -126,8 +135,8 @@ public class ruletaJokoa extends JPanel {
                 if (pasatakoDenbora >= timerDelay.get(13) && pasatakoDenbora < timerDelay.get(14) && kont == 1) {
                 	kont--;
                 	timer13.stop();
-                    int unekoZenbakia = ruletakoZbkKalkulatu(angelu);
-                    System.out.println("Número actual en la ruleta: " + unekoZenbakia);
+                    unekoZenbakia = ruletakoZbkKalkulatu(angelu);
+                    System.out.println("Ruleta emaitza: " + unekoZenbakia);
                     erakutsiMezua(unekoZenbakia);
                 }
             }

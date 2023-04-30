@@ -12,6 +12,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -23,16 +24,18 @@ public class ruletaApostua extends JFrame {
 	private JPanel contentPane;
     ruletaJokoa ruleta = new ruletaJokoa();
     private int apostuOrain;
-    private int pertsonaApostuMax = 100;
+    private int pertsonaApostuMax = 1000;
     private boolean blokeatu = false;
 
     // 37 sortzen ditugu, taulan 0 tik 36 zenbaki daudelako.
     private int[] zbk = new int[37];
-    private int[] dozenak = new int [2];
-    private int[] dozenakEskerrEskuin = new int [2];	
-    private int[] taulaErdia = new int [1];
-    private int[] bakoitiBikoiti = new int [1];
-    private int[] kolorea = new int [1];
+    private int[] dozenak = new int [3];
+    private int[] dozenakEskerrEskuin = new int [3];	
+    private int[] taulaErdia = new int [2];
+    private int[] bakoitiBikoiti = new int [2];
+    private int[] kolorea = new int [2];
+    
+    private int ruletaEmaitza;
     
 
     Timer timer = new Timer();
@@ -69,7 +72,7 @@ public class ruletaApostua extends JFrame {
 	 */
 	public ruletaApostua() {
 		
-		setTitle("Ruleta | Elorrieta Kasinoa ©");
+		setTitle("Apostua | Ruleta | Elorrieta Kasinoa ©");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 500);
@@ -411,7 +414,7 @@ public class ruletaApostua extends JFrame {
 		btn_13_24.setBounds(254, 329, 136, 37);
 		btn_13_24.setBorder(null);
 		contentPane.add(btn_13_24);
-		
+
 		JButton btn_1_12 = new JButton("");
 		btn_1_12.setOpaque(false);
 		btn_1_12.setBackground(new Color(0, 0, 0, 0));
@@ -425,7 +428,7 @@ public class ruletaApostua extends JFrame {
 		btn_beltzak.setBounds(323, 365, 67, 37);
 		btn_beltzak.setBorder(null);
 		contentPane.add(btn_beltzak);
-		
+
 		JButton btn_gorriak = new JButton("");
 		btn_gorriak.setOpaque(false);
 		btn_gorriak.setBackground(new Color(0, 0, 0, 0));
@@ -453,7 +456,7 @@ public class ruletaApostua extends JFrame {
 		btn_19_36.setBounds(461, 365, 67, 37);
 		btn_19_36.setBorder(null);
 		contentPane.add(btn_19_36);
-		
+
 		JButton btn_1_18 = new JButton("");
 		btn_1_18.setOpaque(false);
 		btn_1_18.setBackground(new Color(0, 0, 0, 0));
@@ -461,21 +464,46 @@ public class ruletaApostua extends JFrame {
 		btn_1_18.setBorder(null);
 		contentPane.add(btn_1_18);
 		
-		JButton btnApostuaEzabatu = new JButton("Apostua ezabatu");
-		btnApostuaEzabatu.setBounds(647, 341, 130, 50);
+		JButton btnApostuaEzabatu = new JButton("Apostuak ezabatu");
+		btnApostuaEzabatu.setBounds(641, 341, 136, 50);
 		contentPane.add(btnApostuaEzabatu);
 		
+		btnApostuaEzabatu.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuKantitatea.clearSelection();
+				apostuOrain = 0;
+				Arrays.fill(zbk, 0);
+				Arrays.fill(dozenak, 0);
+				Arrays.fill(dozenakEskerrEskuin, 0);
+				Arrays.fill(taulaErdia, 0);
+				Arrays.fill(bakoitiBikoiti, 0);
+				Arrays.fill(kolorea, 0);
+				
+			}
+		});
+		
 		// 'lehenLehioa' klaseko 'jokuak' lehiora bueltatzen da botoia exekutatzean.
-		JButton btnJokoetaraBueltatu = new JButton("Jokoetara Bueltatu");
+		JButton btnJokoetaraBueltatu = new JButton("Jokoetara Buelta");
 		btnJokoetaraBueltatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnJokoetaraBueltatuListener != null) {
 					btnJokoetaraBueltatuListener.onJokoetaraBueltatu();
+					apostuOrain = 0;
+					Arrays.fill(zbk, 0);
+					Arrays.fill(dozenak, 0);
+					Arrays.fill(dozenakEskerrEskuin, 0);
+					Arrays.fill(taulaErdia, 0);
+					Arrays.fill(bakoitiBikoiti, 0);
+					Arrays.fill(kolorea, 0);
+					apostuKantitatea.clearSelection();
 					}
 				}
 			});
 		
-		btnJokoetaraBueltatu.setBounds(622, 59, 155, 50);
+		btnJokoetaraBueltatu.setBounds(641, 137, 136, 50);
 		contentPane.add(btnJokoetaraBueltatu);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -501,6 +529,13 @@ public class ruletaApostua extends JFrame {
 	            
 	            // 'ruletaApostua' klaseko botoi guztiak kblokeatzen ditu. (momentu onetan 'ruletaJokoa' egongo da martxan)
 	            if (blokeatu == true) {
+					apostuKantitatea.clearSelection();
+					rdbtnApostu10.setEnabled(false);
+					rdbtnApostu20.setEnabled(false);
+					rdbtnApostu50.setEnabled(false);
+					rdbtnApostu100.setEnabled(false);
+					rdbtnApostu500.setEnabled(false);
+					rdbtnApostu1000.setEnabled(false);
 	            	btnJokoetaraBueltatu.setEnabled(false);
 	    			btnApostuaEgin.setEnabled(false);
 	    			btnApostuaEzabatu.setEnabled(false);
@@ -563,6 +598,12 @@ public class ruletaApostua extends JFrame {
 	            	@Override
 					public void onOKButtonPressed() {
 						ruletaLehioa.dispose();
+						rdbtnApostu10.setEnabled(true);
+						rdbtnApostu20.setEnabled(true);
+						rdbtnApostu50.setEnabled(true);
+						rdbtnApostu100.setEnabled(true);
+						rdbtnApostu500.setEnabled(true);
+						rdbtnApostu1000.setEnabled(true);
 						btnJokoetaraBueltatu.setEnabled(true);
 		            	btnApostuaEgin.setEnabled(true);
 		    			btnApostuaEzabatu.setEnabled(true);
@@ -616,11 +657,67 @@ public class ruletaApostua extends JFrame {
 		    			btn_zbk_34.setEnabled(true);
 		    			btn_zbk_35.setEnabled(true);
 		    			btn_zbk_36.setEnabled(true);
+		    			
+		    			ruletaEmaitza = ruletaJokoa.getUnekoZenbakia();
+		    			int guztiraIrabaziak = 0;
+		    			// Kolorea konprobatu
+		    			if (ruletaEmaitza == 1 || ruletaEmaitza == 3 || ruletaEmaitza == 5 || ruletaEmaitza == 7 || ruletaEmaitza == 9 || ruletaEmaitza == 12 || ruletaEmaitza == 14 || ruletaEmaitza == 16 || ruletaEmaitza == 18 || ruletaEmaitza == 19 || ruletaEmaitza == 21 || ruletaEmaitza == 23 || ruletaEmaitza == 25 || ruletaEmaitza == 27 || ruletaEmaitza == 30 || ruletaEmaitza == 32 || ruletaEmaitza == 34 || ruletaEmaitza == 36 && kolorea[0] >= 10) {
+		    				guztiraIrabaziak += kolorea[0] * 2;
+		    			} else if (ruletaEmaitza == 2 || ruletaEmaitza == 4 || ruletaEmaitza == 6 || ruletaEmaitza == 8 || ruletaEmaitza == 10 || ruletaEmaitza == 11 || ruletaEmaitza == 13 || ruletaEmaitza == 15 || ruletaEmaitza == 17 || ruletaEmaitza == 20 || ruletaEmaitza == 22 || ruletaEmaitza == 24 || ruletaEmaitza == 26 || ruletaEmaitza == 28 || ruletaEmaitza == 29 || ruletaEmaitza == 31 || ruletaEmaitza == 33 || ruletaEmaitza == 35 && kolorea[1] >= 10) {
+		    				guztiraIrabaziak += kolorea[1] * 2;
+		    			}
+		    			// Zenbakia konprobatu
+		    			if (ruletaEmaitza != 0 && zbk[ruletaEmaitza] != 0) {
+		    			    guztiraIrabaziak += zbk[ruletaEmaitza] * 36;  // 36 * apostua
+		    			}
+
+		    			// Dozenetan konprobatu apostuak
+		    			int dozena = (ruletaEmaitza - 1) / 12;  // Ze dozenatan irten den zenbakia kalkulatzen du
+		    			if (dozenak[dozena] != 0) {
+		    			    guztiraIrabaziak += dozenak[dozena] * 3;  // 3 * apostua
+		    			}
+
+		    			if (ruletaEmaitza == 1 || ruletaEmaitza == 4 || ruletaEmaitza == 7 || ruletaEmaitza == 10 || ruletaEmaitza == 13 || ruletaEmaitza == 16 || ruletaEmaitza == 19 || ruletaEmaitza == 22 || ruletaEmaitza == 25 || ruletaEmaitza == 28 || ruletaEmaitza == 31 || ruletaEmaitza == 43 && dozenakEskerrEskuin[0] >= 10) {
+		    				guztiraIrabaziak = dozenakEskerrEskuin[0] * 3; // 3 * apostua
+		    			} else if (ruletaEmaitza == 2 || ruletaEmaitza == 5 || ruletaEmaitza == 8 || ruletaEmaitza == 11 || ruletaEmaitza == 14 || ruletaEmaitza == 17 || ruletaEmaitza == 20 || ruletaEmaitza == 23 || ruletaEmaitza == 26 || ruletaEmaitza == 29 || ruletaEmaitza == 32 || ruletaEmaitza == 35 && dozenakEskerrEskuin[1] >= 10) {
+	    			    	guztiraIrabaziak += dozenakEskerrEskuin[1] * 3; // 3 * apostua
+	    			    } else if (ruletaEmaitza == 3 || ruletaEmaitza == 6 || ruletaEmaitza == 9 || ruletaEmaitza == 12 || ruletaEmaitza == 15 || ruletaEmaitza == 18 || ruletaEmaitza == 21 || ruletaEmaitza == 24 || ruletaEmaitza == 27 || ruletaEmaitza == 30 || ruletaEmaitza == 33 || ruletaEmaitza == 36 && dozenakEskerrEskuin[2] >= 10) {
+	    			    	guztiraIrabaziak += dozenakEskerrEskuin[2] * 3; // 3 * apostua
+	    			    }
+
+		    			// Taulen erdikaldea apostua konprobatu
+		    			int erdia = (ruletaEmaitza > 18) ? 1 : 0;  // Zenbakia 18 baino handiagoa den konprobatzen du.
+		    			if (taulaErdia[erdia] != 0) {
+		    			    guztiraIrabaziak += taulaErdia[erdia] * 2;  // 2 * apostua
+		    			}
+
+		    			// Bakoitia edo bikoitia den konprobatzen du
+		    			int paridad = ruletaEmaitza % 2;  // Zenbakia bakoiti (0) edo bikoiti (1) den konprobatzen du
+		    			if (bakoitiBikoiti[paridad] != 0) {
+		    			    guztiraIrabaziak += bakoitiBikoiti[paridad] * 2;  // 2 * apostua
+		    			}
+		    			System.out.println(guztiraIrabaziak);
+		    			if (guztiraIrabaziak > 0 && guztiraIrabaziak > apostuOrain) {
+		    				JOptionPane.showMessageDialog(btnApostuaEgin, "Zorionak! Irabazitakoa: " + guztiraIrabaziak);
+		    			} else if (guztiraIrabaziak == apostuOrain){
+		    				JOptionPane.showMessageDialog(btnApostuaEgin, "Berdin gelditzen zara");
+		    			} else {
+		    				 JOptionPane.showMessageDialog(btnApostuaEgin, "Ez duzu ezer irabazi :(");
+		    			}
+		    			
+						apostuOrain = 0;
+						Arrays.fill(zbk, 0);
+						Arrays.fill(dozenak, 0);
+						Arrays.fill(dozenakEskerrEskuin, 0);
+						Arrays.fill(taulaErdia, 0);
+						Arrays.fill(bakoitiBikoiti, 0);
+						Arrays.fill(kolorea, 0);
+		    			
 		    			}
 					});
 	            }
 			});
-		btnApostuaEgin.setBounds(647, 400, 130, 50);
+		btnApostuaEgin.setBounds(641, 400, 136, 50);
 		contentPane.add(btnApostuaEgin);
 		
 		
@@ -628,7 +725,7 @@ public class ruletaApostua extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostua(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, zbk);
+				apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, zbk);
 			
 			System.out.println("zbk[0] = " + zbk[0]);
 			System.out.println("zbk[1] = " + zbk[1]);
@@ -642,38 +739,486 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostua(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, zbk);
+				apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, zbk);
 				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				
 			}
 		});
+
+		btn_zbk_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, zbk);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_zbk_3.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 3, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_4.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 4, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_5.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 5, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_6.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 6, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_7.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 7, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_8.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 8, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_9.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 9, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_10.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 10, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_11.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 11, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_12.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 12, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_13.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 13, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_14.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 14, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_15.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 15, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_16.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 16, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_17.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 17, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_18.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 18, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_19.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 19, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_20.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 20, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_21.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 21, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_22.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 22, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_23.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 23, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_24.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 24, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_25.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 25, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_26.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 26, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_27.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 27, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_28.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 28, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_29.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 29, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+
+		btn_zbk_30.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 30, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_31.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 31, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_32.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 32, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_33.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 33, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_34.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 34, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_35.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 35, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_zbk_36.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 36, zbk);
+		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+		    }
+		});
+		
+		btn_1_34.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenakEskerrEskuin);
+				
+				System.out.println("dozenakEskerrEskuin[0] = " + dozenakEskerrEskuin[0]);
+				System.out.println("dozenakEskerrEskuin[1] = " + dozenakEskerrEskuin[1]);
+				System.out.println("dozenakEskerrEskuin[2] = " + dozenakEskerrEskuin[2]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+			}
+		});
+		
+		btn_2_35.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenakEskerrEskuin);
+				
+				System.out.println("dozenakEskerrEskuin[0] = " + dozenakEskerrEskuin[0]);
+				System.out.println("dozenakEskerrEskuin[1] = " + dozenakEskerrEskuin[1]);
+				System.out.println("dozenakEskerrEskuin[2] = " + dozenakEskerrEskuin[2]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");	
+			}
+		});
+		
+		btn_3_36.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenakEskerrEskuin);
+				
+				System.out.println("dozenakEskerrEskuin[0] = " + dozenakEskerrEskuin[0]);
+				System.out.println("dozenakEskerrEskuin[1] = " + dozenakEskerrEskuin[1]);
+				System.out.println("dozenakEskerrEskuin[2] = " + dozenakEskerrEskuin[2]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_1_12.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenak);
+				
+				System.out.println("dozenak[0] = " + dozenak[0]);
+				System.out.println("dozenak[1] = " + dozenak[1]);
+				System.out.println("dozenak[2] = " + dozenak[2]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+			}
+		});
+		
+		btn_13_24.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenak);
+				
+				System.out.println("dozenak[0] = " + dozenak[0]);
+				System.out.println("dozenak[1] = " + dozenak[1]);
+				System.out.println("dozenak[2] = " + dozenak[2]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_25_36.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenak);
+				
+				System.out.println("dozenak[0] = " + dozenak[0]);
+				System.out.println("dozenak[1] = " + dozenak[1]);
+				System.out.println("dozenak[2] = " + dozenak[2]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_1_18.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, taulaErdia);
+				
+				System.out.println("taulaErdia[0] = " + taulaErdia[0]);
+				System.out.println("taulaErdia[1] = " + taulaErdia[1]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_19_36.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, taulaErdia);
+				
+				System.out.println("taulaErdia[0] = " + taulaErdia[0]);
+				System.out.println("taulaErdia[1] = " + taulaErdia[1]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_even.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, bakoitiBikoiti);
+				
+				System.out.println("bakoitiBikoiti[0] = " + bakoitiBikoiti[0]);
+				System.out.println("bakoitiBikoiti[1] = " + bakoitiBikoiti[1]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_odd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, bakoitiBikoiti);
+				
+				System.out.println("bakoitiBikoiti[0] = " + bakoitiBikoiti[0]);
+				System.out.println("bakoitiBikoiti[1] = " + bakoitiBikoiti[1]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});
+		
+		btn_gorriak.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, kolorea);
+				
+				System.out.println("kolorea[0] = " + kolorea[0]);
+				System.out.println("kolorea[1] = " + kolorea[1]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+			}
+		});
+		
+		btn_beltzak.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, kolorea);
+				
+				System.out.println("kolorea[0] = " + kolorea[0]);
+				System.out.println("kolorea[1] = " + kolorea[1]);
+				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
+				
+			}
+		});	
+
 	}
 	
-	public int apostua(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
+	public int apostuaZBK(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
 	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
 	        zbk[zbkApostua] = zbk[zbkApostua] + 10;
 	        apostuOrain = apostuOrain + 10;
-	        System.out.println(zbk[zbkApostua]);
 	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
 	        zbk[zbkApostua] = zbk[zbkApostua] + 20;
 	        apostuOrain = apostuOrain + 20;
-	        System.out.println(zbk[zbkApostua]);
 	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
 	        zbk[zbkApostua] = zbk[zbkApostua] + 50;
 	        apostuOrain = apostuOrain + 50;
-	        System.out.println(zbk[zbkApostua]);
 	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
 	        zbk[zbkApostua] = zbk[zbkApostua] + 100;
 	        apostuOrain = apostuOrain + 100;
-	        System.out.println(zbk[zbkApostua]);
 	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
 	        zbk[zbkApostua] = zbk[zbkApostua] + 500;
 	        apostuOrain = apostuOrain + 500;
-	        System.out.println(zbk[zbkApostua]);
 	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
 	        zbk[zbkApostua] = zbk[zbkApostua] + 1000;
-	        apostuOrain = apostuOrain + 1000;
-	        System.out.println(zbk[zbkApostua]);
+	        apostuOrain = apostuOrain + 1000;;
 	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
 	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
 	    } else {
@@ -681,5 +1226,141 @@ public class ruletaApostua extends JFrame {
 	    }
 	    return apostuOrain;
 	}
+	
+	public int apostuaEskerEskuin(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenakEskerrEskuin) {
+	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
+	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 10;
+	        apostuOrain = apostuOrain + 10;
+	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
+	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 20;
+	        apostuOrain = apostuOrain + 20;
+	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
+	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 50;
+	        apostuOrain = apostuOrain + 50;
+	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
+	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 100;
+	        apostuOrain = apostuOrain + 100;
+	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
+	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 500;
+	        apostuOrain = apostuOrain + 500;
+	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
+	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 1000;
+	        apostuOrain = apostuOrain + 1000;
+	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
+	    } else {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
+	    }
+	    return apostuOrain;
+	}
+	
+	public int apostuaDozena(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenak) {
+	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
+	        dozenak[zbkApostua] = dozenak[zbkApostua] + 10;
+	        apostuOrain = apostuOrain + 10;
+	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
+	        dozenak[zbkApostua] = dozenak[zbkApostua] + 20;
+	        apostuOrain = apostuOrain + 20;
+	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
+	        dozenak[zbkApostua] = dozenak[zbkApostua] + 50;
+	        apostuOrain = apostuOrain + 50;
+	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
+	        dozenak[zbkApostua] = dozenak[zbkApostua] + 100;
+	        apostuOrain = apostuOrain + 100;
+	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
+	        dozenak[zbkApostua] = dozenak[zbkApostua] + 500;
+	        apostuOrain = apostuOrain + 500;
+	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
+	        dozenak[zbkApostua] = dozenak[zbkApostua] + 1000;
+	        apostuOrain = apostuOrain + 1000;
+	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
+	    } else {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
+	    }
+	    return apostuOrain;
+	}
+	
+	public int apostuErdia(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] taulaErdia) {
+	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
+	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 10;
+	        apostuOrain = apostuOrain + 10;
+	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
+	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 20;
+	        apostuOrain = apostuOrain + 20;
+	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
+	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 50;
+	        apostuOrain = apostuOrain + 50;
+	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
+	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 100;
+	        apostuOrain = apostuOrain + 100;
+	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
+	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 500;
+	        apostuOrain = apostuOrain + 500;
+	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
+	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 1000;
+	        apostuOrain = apostuOrain + 1000;
+	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
+	    } else {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
+	    }
+	    return apostuOrain;
+	}
+	
+	public int apostuBakoitiBikoiti(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] bakoitiBikoiti) {
+	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
+	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 10;
+	        apostuOrain = apostuOrain + 10;
+	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
+	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 20;
+	        apostuOrain = apostuOrain + 20;
+	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
+	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 50;
+	        apostuOrain = apostuOrain + 50;
+	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
+	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 100;
+	        apostuOrain = apostuOrain + 100;
+	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
+	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 500;
+	        apostuOrain = apostuOrain + 500;
+	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
+	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 1000;
+	        apostuOrain = apostuOrain + 1000;
+	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
+	    } else {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
+	    }
+	    return apostuOrain;
+	}
+	
+	public int apostuKolorea(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] kolorea) {
+	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
+	        kolorea[zbkApostua] = kolorea[zbkApostua] + 10;
+	        apostuOrain = apostuOrain + 10;
+	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
+	        kolorea[zbkApostua] = kolorea[zbkApostua] + 20;
+	        apostuOrain = apostuOrain + 20;
+	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
+	        kolorea[zbkApostua] = kolorea[zbkApostua] + 50;
+	        apostuOrain = apostuOrain + 50;
+	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
+	        kolorea[zbkApostua] = kolorea[zbkApostua] + 100;
+	        apostuOrain = apostuOrain + 100;
+	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
+	        kolorea[zbkApostua] = kolorea[zbkApostua] + 500;
+	        apostuOrain = apostuOrain + 500;
+	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
+	        kolorea[zbkApostua] = kolorea[zbkApostua] + 1000;
+	        apostuOrain = apostuOrain + 1000;
+	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
+	    } else {
+	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
+	    }
+	    return apostuOrain;
+	}
+
 
 }

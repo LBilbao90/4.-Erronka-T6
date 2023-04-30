@@ -1,5 +1,4 @@
 package Testak;
-//package Testak;
 //
 //import static org.junit.jupiter.api.Assertions.*;
 //
