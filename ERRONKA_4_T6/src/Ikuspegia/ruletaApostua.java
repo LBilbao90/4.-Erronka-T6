@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Ikuspegia.ruletaJokoa.OKButtonListener;
+import Kontrolatzailea.metodoak;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -739,7 +740,7 @@ public class ruletaApostua extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, zbk);
+				apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, zbk);
 			
 			System.out.println("zbk[0] = " + zbk[0]);
 			System.out.println("zbk[1] = " + zbk[1]);
@@ -753,7 +754,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, zbk);
+				apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, zbk);
 				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				
 			}
@@ -764,7 +765,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, zbk);
+				apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, zbk);
 				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				
 			}
@@ -773,7 +774,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_3.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 3, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 3, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -781,7 +782,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_4.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 4, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 4, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -789,7 +790,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_5.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 5, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 5, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -797,7 +798,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_6.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 6, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 6, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -805,7 +806,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_7.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 7, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 7, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -813,7 +814,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_8.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 8, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 8, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -821,7 +822,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_9.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 9, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 9, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -829,7 +830,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_10.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 10, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 10, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -837,7 +838,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_11.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 11, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 11, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -845,7 +846,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_12.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 12, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 12, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -853,7 +854,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_13.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 13, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 13, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -861,7 +862,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_14.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 14, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 14, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -869,7 +870,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_15.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 15, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 15, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -877,7 +878,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_16.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 16, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 16, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -885,7 +886,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_17.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 17, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 17, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -893,7 +894,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_18.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 18, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 18, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -901,7 +902,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_19.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 19, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 19, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -909,7 +910,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_20.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 20, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 20, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -917,7 +918,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_21.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 21, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 21, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -925,7 +926,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_22.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 22, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 22, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -933,7 +934,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_23.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 23, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 23, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -941,7 +942,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_24.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 24, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 24, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -949,7 +950,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_25.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 25, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 25, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -957,7 +958,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_26.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 26, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 26, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -965,7 +966,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_27.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 27, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 27, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -973,7 +974,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_28.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 28, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 28, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -981,7 +982,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_29.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 29, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 29, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -989,7 +990,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_30.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 30, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 30, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -997,7 +998,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_31.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 31, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 31, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -1005,7 +1006,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_32.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 32, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 32, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -1013,7 +1014,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_33.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 33, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 33, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -1021,7 +1022,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_34.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 34, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 34, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -1029,7 +1030,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_35.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 35, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 35, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -1037,7 +1038,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_36.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 36, zbk);
+		        apostuOrain = metodoak.apostuaZBK(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 36, zbk);
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 		    }
 		});
@@ -1047,7 +1048,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenakEskerrEskuin);
+				apostuOrain = metodoak.apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenakEskerrEskuin);
 				
 				System.out.println("dozenakEskerrEskuin[0] = " + dozenakEskerrEskuin[0]);
 				System.out.println("dozenakEskerrEskuin[1] = " + dozenakEskerrEskuin[1]);
@@ -1061,7 +1062,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenakEskerrEskuin);
+				apostuOrain = metodoak.apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenakEskerrEskuin);
 				
 				System.out.println("dozenakEskerrEskuin[0] = " + dozenakEskerrEskuin[0]);
 				System.out.println("dozenakEskerrEskuin[1] = " + dozenakEskerrEskuin[1]);
@@ -1075,7 +1076,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenakEskerrEskuin);
+				apostuOrain = metodoak.apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenakEskerrEskuin);
 				
 				System.out.println("dozenakEskerrEskuin[0] = " + dozenakEskerrEskuin[0]);
 				System.out.println("dozenakEskerrEskuin[1] = " + dozenakEskerrEskuin[1]);
@@ -1090,7 +1091,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenak);
+				apostuOrain = metodoak.apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenak);
 				
 				System.out.println("dozenak[0] = " + dozenak[0]);
 				System.out.println("dozenak[1] = " + dozenak[1]);
@@ -1104,7 +1105,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenak);
+				apostuOrain = metodoak.apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenak);
 				
 				System.out.println("dozenak[0] = " + dozenak[0]);
 				System.out.println("dozenak[1] = " + dozenak[1]);
@@ -1119,7 +1120,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenak);
+				apostuOrain = metodoak.apostuaEskerEskuin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenak);
 				
 				System.out.println("dozenak[0] = " + dozenak[0]);
 				System.out.println("dozenak[1] = " + dozenak[1]);
@@ -1134,7 +1135,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, taulaErdia);
+				apostuOrain = metodoak.apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, taulaErdia);
 				
 				System.out.println("taulaErdia[0] = " + taulaErdia[0]);
 				System.out.println("taulaErdia[1] = " + taulaErdia[1]);
@@ -1148,7 +1149,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, taulaErdia);
+				apostuOrain = metodoak.apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, taulaErdia);
 				
 				System.out.println("taulaErdia[0] = " + taulaErdia[0]);
 				System.out.println("taulaErdia[1] = " + taulaErdia[1]);
@@ -1162,7 +1163,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, bakoitiBikoiti);
+				apostuOrain = metodoak.apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, bakoitiBikoiti);
 				
 				System.out.println("bakoitiBikoiti[0] = " + bakoitiBikoiti[0]);
 				System.out.println("bakoitiBikoiti[1] = " + bakoitiBikoiti[1]);
@@ -1176,7 +1177,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, bakoitiBikoiti);
+				apostuOrain = metodoak.apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, bakoitiBikoiti);
 				
 				System.out.println("bakoitiBikoiti[0] = " + bakoitiBikoiti[0]);
 				System.out.println("bakoitiBikoiti[1] = " + bakoitiBikoiti[1]);
@@ -1190,7 +1191,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, kolorea);
+				apostuOrain = metodoak.apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, kolorea);
 				
 				System.out.println("kolorea[0] = " + kolorea[0]);
 				System.out.println("kolorea[1] = " + kolorea[1]);
@@ -1203,7 +1204,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, kolorea);
+				apostuOrain = metodoak.apostuErdia(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, kolorea);
 				
 				System.out.println("kolorea[0] = " + kolorea[0]);
 				System.out.println("kolorea[1] = " + kolorea[1]);
@@ -1213,168 +1214,5 @@ public class ruletaApostua extends JFrame {
 		});	
 
 	}
-	
-	public int apostuaZBK(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
-	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
-	        zbk[zbkApostua] = zbk[zbkApostua] + 10;
-	        apostuOrain = apostuOrain + 10;
-	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
-	        zbk[zbkApostua] = zbk[zbkApostua] + 20;
-	        apostuOrain = apostuOrain + 20;
-	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
-	        zbk[zbkApostua] = zbk[zbkApostua] + 50;
-	        apostuOrain = apostuOrain + 50;
-	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
-	        zbk[zbkApostua] = zbk[zbkApostua] + 100;
-	        apostuOrain = apostuOrain + 100;
-	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
-	        zbk[zbkApostua] = zbk[zbkApostua] + 500;
-	        apostuOrain = apostuOrain + 500;
-	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
-	        zbk[zbkApostua] = zbk[zbkApostua] + 1000;
-	        apostuOrain = apostuOrain + 1000;;
-	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
-	    } else {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
-	    }
-	    return apostuOrain;
-	}
-	
-	public int apostuaEskerEskuin(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenakEskerrEskuin) {
-	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
-	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 10;
-	        apostuOrain = apostuOrain + 10;
-	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
-	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 20;
-	        apostuOrain = apostuOrain + 20;
-	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
-	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 50;
-	        apostuOrain = apostuOrain + 50;
-	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
-	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 100;
-	        apostuOrain = apostuOrain + 100;
-	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
-	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 500;
-	        apostuOrain = apostuOrain + 500;
-	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
-	        dozenakEskerrEskuin[zbkApostua] = dozenakEskerrEskuin[zbkApostua] + 1000;
-	        apostuOrain = apostuOrain + 1000;
-	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
-	    } else {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
-	    }
-	    return apostuOrain;
-	}
-	
-	public int apostuaDozena(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenak) {
-	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
-	        dozenak[zbkApostua] = dozenak[zbkApostua] + 10;
-	        apostuOrain = apostuOrain + 10;
-	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
-	        dozenak[zbkApostua] = dozenak[zbkApostua] + 20;
-	        apostuOrain = apostuOrain + 20;
-	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
-	        dozenak[zbkApostua] = dozenak[zbkApostua] + 50;
-	        apostuOrain = apostuOrain + 50;
-	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
-	        dozenak[zbkApostua] = dozenak[zbkApostua] + 100;
-	        apostuOrain = apostuOrain + 100;
-	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
-	        dozenak[zbkApostua] = dozenak[zbkApostua] + 500;
-	        apostuOrain = apostuOrain + 500;
-	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
-	        dozenak[zbkApostua] = dozenak[zbkApostua] + 1000;
-	        apostuOrain = apostuOrain + 1000;
-	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
-	    } else {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
-	    }
-	    return apostuOrain;
-	}
-	
-	public int apostuErdia(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] taulaErdia) {
-	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
-	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 10;
-	        apostuOrain = apostuOrain + 10;
-	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
-	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 20;
-	        apostuOrain = apostuOrain + 20;
-	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
-	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 50;
-	        apostuOrain = apostuOrain + 50;
-	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
-	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 100;
-	        apostuOrain = apostuOrain + 100;
-	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
-	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 500;
-	        apostuOrain = apostuOrain + 500;
-	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
-	        taulaErdia[zbkApostua] = taulaErdia[zbkApostua] + 1000;
-	        apostuOrain = apostuOrain + 1000;
-	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
-	    } else {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
-	    }
-	    return apostuOrain;
-	}
-	
-	public int apostuBakoitiBikoiti(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] bakoitiBikoiti) {
-	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
-	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 10;
-	        apostuOrain = apostuOrain + 10;
-	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
-	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 20;
-	        apostuOrain = apostuOrain + 20;
-	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
-	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 50;
-	        apostuOrain = apostuOrain + 50;
-	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
-	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 100;
-	        apostuOrain = apostuOrain + 100;
-	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
-	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 500;
-	        apostuOrain = apostuOrain + 500;
-	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
-	        bakoitiBikoiti[zbkApostua] = bakoitiBikoiti[zbkApostua] + 1000;
-	        apostuOrain = apostuOrain + 1000;
-	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
-	    } else {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
-	    }
-	    return apostuOrain;
-	}
-	
-	public int apostuKolorea(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] kolorea) {
-	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
-	        kolorea[zbkApostua] = kolorea[zbkApostua] + 10;
-	        apostuOrain = apostuOrain + 10;
-	    } else if (rdbtnApostu20.isSelected() && pertsonaApostuMax >= (apostuOrain + 20)) {
-	        kolorea[zbkApostua] = kolorea[zbkApostua] + 20;
-	        apostuOrain = apostuOrain + 20;
-	    } else if (rdbtnApostu50.isSelected() && pertsonaApostuMax >= (apostuOrain + 50)) {
-	        kolorea[zbkApostua] = kolorea[zbkApostua] + 50;
-	        apostuOrain = apostuOrain + 50;
-	    } else if (rdbtnApostu100.isSelected() && pertsonaApostuMax >= (apostuOrain + 100)) {
-	        kolorea[zbkApostua] = kolorea[zbkApostua] + 100;
-	        apostuOrain = apostuOrain + 100;
-	    } else if (rdbtnApostu500.isSelected() && pertsonaApostuMax >= (apostuOrain + 500)) {
-	        kolorea[zbkApostua] = kolorea[zbkApostua] + 500;
-	        apostuOrain = apostuOrain + 500;
-	    } else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
-	        kolorea[zbkApostua] = kolorea[zbkApostua] + 1000;
-	        apostuOrain = apostuOrain + 1000;
-	    } else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Aukeratu apostu kantitate bat.");
-	    } else {
-	        JOptionPane.showMessageDialog(rdbtnApostu10, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu");
-	    }
-	    return apostuOrain;
-	}
-
 
 }

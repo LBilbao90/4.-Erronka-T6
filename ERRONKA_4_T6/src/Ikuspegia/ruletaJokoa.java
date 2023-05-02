@@ -18,6 +18,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import Kontrolatzailea.metodoak;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -119,23 +122,23 @@ public class ruletaJokoa extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int pasatakoDenbora = (int) (System.currentTimeMillis() - hasieraDenbora) / 1000;
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(0), timerDelay.get(1), kont, timer1, timer2);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(1), timerDelay.get(2), kont, timer1, timer2);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(2), timerDelay.get(3), kont, timer2, timer3);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(3), timerDelay.get(4), kont, timer3, timer4);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(4), timerDelay.get(5), kont, timer4, timer5);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(5), timerDelay.get(6), kont, timer5, timer6);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(6), timerDelay.get(7), kont, timer6, timer7);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(7), timerDelay.get(8), kont, timer7, timer8);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(8), timerDelay.get(9), kont, timer8, timer9);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(9), timerDelay.get(10), kont, timer9, timer10);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(10), timerDelay.get(11), kont, timer10, timer11);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(11), timerDelay.get(12), kont, timer11, timer12);
-                denboraAraberaTimer(pasatakoDenbora, timerDelay.get(12), timerDelay.get(13), kont, timer12, timer13);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(0), timerDelay.get(1), kont, timer1, timer2);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(1), timerDelay.get(2), kont, timer1, timer2);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(2), timerDelay.get(3), kont, timer2, timer3);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(3), timerDelay.get(4), kont, timer3, timer4);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(4), timerDelay.get(5), kont, timer4, timer5);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(5), timerDelay.get(6), kont, timer5, timer6);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(6), timerDelay.get(7), kont, timer6, timer7);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(7), timerDelay.get(8), kont, timer7, timer8);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(8), timerDelay.get(9), kont, timer8, timer9);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(9), timerDelay.get(10), kont, timer9, timer10);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(10), timerDelay.get(11), kont, timer10, timer11);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(11), timerDelay.get(12), kont, timer11, timer12);
+                metodoak.denboraAraberaTimer(pasatakoDenbora, timerDelay.get(12), timerDelay.get(13), kont, timer12, timer13);
                 if (pasatakoDenbora >= timerDelay.get(13) && pasatakoDenbora < timerDelay.get(14) && kont == 1) {
                 	kont--;
                 	timer13.stop();
-                    unekoZenbakia = ruletakoZbkKalkulatu(angelu);
+                    unekoZenbakia = metodoak.ruletakoZbkKalkulatu(angelu);
                     System.out.println("Ruleta emaitza: " + unekoZenbakia);
                     unekoZenbakia = 0;
                     erakutsiMezua(unekoZenbakia);
@@ -166,30 +169,6 @@ public class ruletaJokoa extends JPanel {
         g2d.drawImage(irudi, at, null);
         }
     
-    // Ruletan irten den zenbakia kalkulatzen du, ruletaren angeluaren eta zenbakien ordenen arabera.
-    public static int ruletakoZbkKalkulatu(double angelu) {
-    	int[] ruletakoZbk = {26, 3, 35, 12, 28, 7, 29, 18, 22, 9, 31, 14, 20, 1, 33, 16, 24, 5, 10, 23, 8, 30, 11, 36, 13, 27, 6, 34, 17, 25, 2, 21, 4, 19, 15, 32, 0};
-
-        int zenbakiGuztiak = ruletakoZbk.length;
-        
-        double unekoAngeluGraduak = Math.toDegrees(angelu);
-        
-        // Angelua ajustatzen du 0 eta 360 tartean.
-        while (unekoAngeluGraduak < 0) {
-        	unekoAngeluGraduak += 360;
-        }
-        while (unekoAngeluGraduak >= 360) {
-        	unekoAngeluGraduak -= 360;
-        }
-        // Erruletako zenbakiak konpontzean angeluari dagokion indizea kalkulatzea
-        int i = (int) Math.floor(unekoAngeluGraduak / (360.0 / zenbakiGuztiak));
-        
-        // Kalkulatutako indizeari dagokion zenbakia lortzea
-        int zbk = ruletakoZbk[i];
-        
-        return zbk;
-    }
-
 	// Timer' objektu bat sortzen du.
     private Timer sortuTimer(int delay, double angeluHanditzea) {
         return new Timer(delay, new ActionListener() {
@@ -199,14 +178,6 @@ public class ruletaJokoa extends JPanel {
                 repaint();
             }
         });
-    }
-
-    // 'if'aren barruan sartzen bada, Timer bat gelditzeko eta beste bat asiko da.
-    public static void denboraAraberaTimer(int pasatakoDenbora, int denborHasiera, int denboraBukaera, int kont, Timer timerStop, Timer timerStart) {
-    	if (pasatakoDenbora >= denborHasiera && pasatakoDenbora < denboraBukaera && kont == 1) {
-            timerStop.stop();
-            timerStart.start();
-        }
     }
     
 //    public static void main(String[] args) {
