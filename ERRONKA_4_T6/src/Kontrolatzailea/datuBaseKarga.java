@@ -15,10 +15,11 @@ import Modelo.Maila;
 public class datuBaseKarga {
 
     public static void karga() {
-        final String url = "jdbc:mysql://localhost:3306/kasinoa";
+        final String url = "jdbc:mysql://localhost:3306/kasinoa"; //url de la base de datos de phpmyadmin
         final String erabiltzaileKontsulta = "*";
         final String langileKontsulta = "*";
         final String mailaKontsulta = "*";
+        
         Connection connection = null;
         ArrayList<Erabiltzaile> erabiltzaileak = new ArrayList<Erabiltzaile>();
         ArrayList<Admin> langileak = new ArrayList<Admin>();
@@ -26,17 +27,18 @@ public class datuBaseKarga {
 
 
         try {
-            connection = DriverManager.getConnection(url, "root", "");
+            connection = DriverManager.getConnection(url, "root", ""); //usuario y contraseña user: root password: 
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs;
             
             // Mailak
-            rs = stmt.executeQuery("SELECT " + mailaKontsulta + " FROM maila;");
-            while (rs.next()) {
+            rs = stmt.executeQuery("SELECT " + mailaKontsulta + " FROM maila;"); //kontsulta
+            
+            while (rs.next()) { //kontsultaren informazio linea bakoitzeko (rs.next)
             	Maila maila = new Maila();
-                maila.setId_maila (rs.getInt(1));
-                maila.setMaila_izena (rs.getString(2));
-                maila.setApostu_max (rs.getDouble(3));
+                maila.setId_maila (rs.getInt(1)); //lehenengo datua(izatenda primary key edo id)
+                maila.setMaila_izena (rs.getString(2));//bigarren datua
+                maila.setApostu_max (rs.getDouble(3));//hirugarren datua
                 
                 mailak.add(maila);
             }
@@ -90,6 +92,8 @@ public class datuBaseKarga {
             e.printStackTrace();
         }
         
+        
+        //LOGS
         System.out.println("MAILAK:");
         for (Maila maila : mailak) {
             System.out.println(maila.toString());
@@ -104,5 +108,7 @@ public class datuBaseKarga {
         for (Admin admin : langileak) {
             System.out.println(admin.toString());
         }
+        
+        
     }
 }
