@@ -61,13 +61,9 @@ public class Erabiltzaile extends Pertsona{
 
 	@Override
 	public String toString() {
-		return "Erablitzaile [\ndiru_kopuru_historikoa="
-				+ diru_kopuru_historikoa + "\ndiru_kopuru_momentukoa=" + diru_kopuru_momentukoa + "\nNAN=" + NAN
-				+ "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna=" + jaioteguna + "\nherrialdea="
-				+ herrialdea + "\nprobintzia=" + probintzia
-				+ "\nherria=" + herria + "\npostaKodea=" + postaKodea + "\nposta_elektronikoa="
-				+ "\npasahitza=" + pasahitza + "\ntlf_zenabkia=" + tlf_zenabkia + "]";
+		return "Erabiltzaile [NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena + ", jaioteguna=" + jaioteguna
+				+ ", herrialdea=" + herrialdea + ", probintzia=" + probintzia + ", herria=" + herria + ", postaKodea="
+				+ postaKodea + ", pasahitza=" + pasahitza + ", tlf_zenabkia=" + tlf_zenabkia + ", diru_kopuru_historikoa=" + diru_kopuru_historikoa + ", diru_kopuru_momentukoa="
+				+ diru_kopuru_momentukoa + "]";
 	}
-	
-	
 }

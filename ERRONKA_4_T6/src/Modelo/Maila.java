@@ -26,6 +26,9 @@ public class Maila {
 		return maila_izena;
 	}
 
+	public void setMaila_izena(String maila_izena) {
+		this.maila_izena = maila_izena;
+	}
 
 	public double getApostu_max() {
 		return apostu_max;
@@ -39,21 +42,13 @@ public class Maila {
 		return id_maila;
 	}
 
-	public void setMaila_izena(String maila_izena) {
-		this.maila_izena = maila_izena;
-	}
-
-
-
 	public void setId_maila(int id_maila) {
 		this.id_maila = id_maila;
 	}
 
-
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_maila, apostu_max, maila_izena);
+		return Objects.hash(apostu_max, id_maila, maila_izena);
 	}
 
 	@Override
@@ -65,15 +60,14 @@ public class Maila {
 		if (getClass() != obj.getClass())
 			return false;
 		Maila other = (Maila) obj;
-		return Objects.equals(id_maila, other.id_maila);
+		return Double.doubleToLongBits(apostu_max) == Double.doubleToLongBits(other.apostu_max)
+				&& id_maila == other.id_maila && Objects.equals(maila_izena, other.maila_izena);
 	}
 
 	@Override
 	public String toString() {
-		return "Maila [maila_izena=" + maila_izena + "\napostu_max=" + apostu_max
-				 + "\nid_maila=" + id_maila +"]";
+		return "Maila [maila_izena=" + maila_izena + ", apostu_max=" + apostu_max + ", id_maila=" + id_maila + "]";
 	}
-	
-	
+
 }
 

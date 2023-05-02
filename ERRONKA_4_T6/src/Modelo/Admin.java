@@ -10,9 +10,21 @@ public class Admin extends Pertsona {
 	private int id_langile;
 	private int id_kasino;
 	
-	public Admin(String nAN, String izena, String abizena, String jaioteguna, String herrialdea,
-			 String probintzia, String herria, String postaKodea,
-			String pasahitza, String tlf_zenabkia, int id_maila, String kargua, Double soldata, int id_langile, int id_kasino) {
+	public Admin(String nAN, 
+			String izena, 
+			String abizena, 
+			String jaioteguna, 
+			String herrialdea,
+			String probintzia, 
+			String herria, 
+			String postaKodea,
+			String pasahitza, 
+			String tlf_zenabkia, 
+			int id_maila, 
+			String kargua, 
+			Double soldata, 
+			int id_langile, 
+			int id_kasino) {
 		super(nAN, izena, abizena, jaioteguna, herrialdea, probintzia, herria, postaKodea, pasahitza, tlf_zenabkia, id_maila);
 		this.kargua = kargua;
 		this.soldata = soldata;
@@ -79,11 +91,11 @@ public class Admin extends Pertsona {
 
 	@Override
 	public String toString() {
-		return "Admin [kargua=" + kargua + "\nsoldata=" + soldata + "\nid_langile=" + id_langile + "\nid_kasino="
-				+ id_kasino + "\nNAN=" + NAN + "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna="
-				+ jaioteguna + "\nherrialdea=" + herrialdea 
-				+ "\nprobintzia=" + probintzia + "\nherria=" + herria + "\npostaKodea=" + postaKodea
-				 + "\npasahitza=" + pasahitza + "\ntlf_zenabkia="
-				+ tlf_zenabkia + "]";
+		return "Admin [kargua=" + kargua + ", soldata=" + soldata + ", id_langile=" + id_langile + ", id_kasino="
+				+ id_kasino + "NAN=" + NAN +  ", izena=" + izena + ", abizena=" + abizena + ", jaioteguna=" + jaioteguna
+						+  ", herrialdea=" + herrialdea + ", probintzia=" + probintzia + ", herria=" + herria + ", postaKodea="
+						+ postaKodea + ", pasahitza=" + pasahitza + ", tlf_zenabkia=" + tlf_zenabkia + "]";
 	}
+
+
 }

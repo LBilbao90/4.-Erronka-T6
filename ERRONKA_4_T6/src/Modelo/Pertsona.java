@@ -156,6 +156,15 @@ public abstract class Pertsona extends Maila{
 		return Objects.equals(NAN, other.NAN);
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Pertsona [NAN=" + NAN + ", izena=" + izena + ", abizena=" + abizena + ", jaioteguna=" + jaioteguna
+				+ ", herrialdea=" + herrialdea + ", probintzia=" + probintzia + ", herria=" + herria + ", postaKodea="
+				+ postaKodea + ", pasahitza=" + pasahitza + ", tlf_zenabkia=" + tlf_zenabkia + "]";
+	}
+	
 //	@Override
 //	public String toString() {
 //		return "Pertsona [NAN=" + NAN + "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna=" + jaioteguna
@@ -163,6 +172,7 @@ public abstract class Pertsona extends Maila{
 //				+ probintzia + "\nherria=" + herria + "\npostaKodea=" + postaKodea + "\nposta_elektronikoa="
 //				+ posta_elektronikoa + "\npasahitza=" + pasahitza + "\ntlf_zenabkia=" + tlf_zenabkia + "]";
 //	}
+
 	
 	
 	

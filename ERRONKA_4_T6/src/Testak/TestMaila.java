@@ -1,62 +1,68 @@
-
 package Testak;
+import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.Test;
 
-import java.util.ArrayList;
-
-import org.junit.jupiter.api.Test;
-
-import Modelo.Erabiltzaile;
 import Modelo.Maila;
 
-class TestMaila {
-	String maila_izena = "Bronce";
-	double biderkatzailea = 2;
-	int kopurua = 4;
-	String NAN = "48987755P";
-	int id_maila = 1;
-	ArrayList<Erabiltzaile> erabiltzaile = new ArrayList<Erabiltzaile>();
-	Maila maila = new Maila(maila_izena, biderkatzailea, kopurua, NAN, id_maila, erabiltzaile);
-	Maila maila1 = new Maila(maila_izena, biderkatzailea, kopurua, NAN, id_maila, erabiltzaile);
+public class TestMaila {
+
 	@Test
-	void testGettesSetters() {
-		maila.setNAN(NAN);
-		maila.setMaila_izena(maila_izena);
-		maila.setBiderkatzailea(biderkatzailea);
-		maila.setKopurua(kopurua);
-		maila.setId_maila(id_maila);
-		maila.setErabiltzaile(erabiltzaile);
-		assertEquals(maila.getNAN(),NAN);
-		assertEquals(maila.getBiderkatzailea(),biderkatzailea);
-		assertEquals(maila.getId_maila(),id_maila);
-		assertEquals(maila.getMaila_izena(),maila_izena);
-		assertEquals(maila.getKopurua(),kopurua);
-		assertEquals(maila.getErabiltzaile(),erabiltzaile);
+	public void testConstructorWithArguments() {
+		Maila maila = new Maila("Maila 1", 100.0, 1);
+		assertEquals("Maila 1", maila.getMaila_izena());
+		assertEquals(100.0, maila.getApostu_max(), 0);
+		assertEquals(1, maila.getId_maila());
 	}
+
 	@Test
-	void testToString() {
-		String expected = "Maila [maila_izena=" + maila_izena + "\nbiderkatzailea=" + biderkatzailea + "\nkopurua=" + kopurua
-				+ "\nNAN=" + NAN + "\nid_maila=" + id_maila + ""+erabiltzaile+"]";
-		assertEquals(expected,maila.toString());
+	public void testConstructorWithId() {
+		Maila maila = new Maila(2);
+		assertEquals(2, maila.getId_maila());
 	}
+
 	@Test
-	void testHashcode() {
-	      int hashCode = maila.hashCode();
-	      assertEquals(-1951604249, hashCode);
+	public void testSetAndGetMailaIzena() {
+		Maila maila = new Maila();
+		maila.setMaila_izena("Maila 2");
+		assertEquals("Maila 2", maila.getMaila_izena());
 	}
+
 	@Test
-	void testEqualsTrue() {
-		Maila maila = new Maila(maila_izena, biderkatzailea, kopurua, NAN, id_maila, erabiltzaile);
-	    Maila maila1 = new Maila(maila_izena, biderkatzailea, kopurua, NAN, id_maila, erabiltzaile);
-	    assertTrue(maila.equals(maila1));
+	public void testSetAndGetApostuMax() {
+		Maila maila = new Maila();
+		maila.setApostu_max(200.0);
+		assertEquals(200.0, maila.getApostu_max(), 0);
 	}
+
 	@Test
-	void testEqualsFalse() {
-		Maila maila = new Maila(maila_izena, biderkatzailea, kopurua, NAN, id_maila, erabiltzaile);
-        Maila maila1 = new Maila("k", 3, 6, "48987766V", 9, erabiltzaile );
-        assertFalse(maila.equals(maila1));
+	public void testSetAndGetIdMaila() {
+		Maila maila = new Maila();
+		maila.setId_maila(3);
+		assertEquals(3, maila.getId_maila());
+	}
+
+	@Test
+	public void testEqualsAndHashCode() {
+		Maila maila1 = new Maila("Maila 1", 100.0, 1);
+		Maila maila2 = new Maila("Maila 2", 200.0, 2);
+		Maila maila3 = new Maila("Maila 1", 100.0, 1);
+		
+		// Test equals method
+		assertTrue(maila1.equals(maila3));
+		assertFalse(maila1.equals(maila2));
+		assertFalse(maila1.equals(null));
+		assertFalse(maila1.equals(new Object()));
+		
+		// Test hashCode method
+		assertEquals(maila1.hashCode(), maila3.hashCode());
+		assertNotEquals(maila1.hashCode(), maila2.hashCode());
+	}
+
+	@Test
+	public void testToString() {
+		Maila maila = new Maila("Maila 1", 100.0, 1);
+		String expected = "Maila [maila_izena=Maila 1, apostu_max=100.0, id_maila=1]";
+		assertEquals(expected, maila.toString());
 	}
 }
