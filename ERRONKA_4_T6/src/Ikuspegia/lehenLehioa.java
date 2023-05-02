@@ -87,7 +87,7 @@ public class lehenLehioa extends JFrame {
 			public void run() {
 				try {
 					//lehenLehioa frame = new lehenLehioa();
-				//	lehenLehioaframe.setUndecorated(true);
+					lehenLehioaframe.setUndecorated(true);
 
 					lehenLehioaframe.setVisible(true);
 				} catch (Exception e) {
@@ -199,26 +199,6 @@ public class lehenLehioa extends JFrame {
 	    itxiLogin.setBorderPainted(false);
 	    itxiLogin.setFocusPainted(false);
 	    login.add(itxiLogin);
-	    
-	    JButton eskutatuLogoBai = new JButton("");
-	    eskutatuLogoBai.setIcon(begiaBai);
-	    eskutatuLogoBai.setBounds(200, 10, 110, 100);
-	    eskutatuLogoBai.setOpaque(false);
-	    eskutatuLogoBai.setContentAreaFilled(false);
-	    eskutatuLogoBai.setBorderPainted(false);
-	    eskutatuLogoBai.setFocusPainted(false);
-	    eskutatuLogoBai.setVisible(false);
-	    eskutatuLogoBai.setEnabled(false);
-	    login.add(eskutatuLogoBai);
-	    
-	    JButton eskutatuLogoEz = new JButton("");
-	    eskutatuLogoEz.setIcon(begiaEz);
-	    eskutatuLogoEz.setBounds(200, 10, 110, 100);
-	    eskutatuLogoEz.setOpaque(false);
-	    eskutatuLogoEz.setContentAreaFilled(false);
-	    eskutatuLogoEz.setBorderPainted(false);
-	    eskutatuLogoEz.setFocusPainted(false);
-	    login.add(eskutatuLogoEz);
 	    
 	    JLabel imgBannerLogin = new JLabel(new ImageIcon("img/banner.jpg"));
 	    imgBannerLogin.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
@@ -403,30 +383,6 @@ public class lehenLehioa extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
-			}
-		});
-	    
-		//'bukatu img' botoia 'login' panelean dagoena. Aplikazioa bukatzen du.
-	    eskutatuLogoBai.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				eskutatuLogoBai.setVisible(false);
-				eskutatuLogoBai.setEnabled(false);
-				eskutatuLogoEz.setVisible(true);
-				eskutatuLogoEz.setEnabled(true);
-				lehenLehioaframe.setUndecorated(true);
-			}
-		});
-	    
-		//'bukatu img' botoia 'login' panelean dagoena. Aplikazioa bukatzen du.
-	    eskutatuLogoEz.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				eskutatuLogoBai.setVisible(true);
-				eskutatuLogoBai.setEnabled(true);
-				eskutatuLogoEz.setVisible(false);
-				eskutatuLogoEz.setEnabled(false);
-				lehenLehioaframe.setUndecorated(false);
 			}
 		});
 	    
