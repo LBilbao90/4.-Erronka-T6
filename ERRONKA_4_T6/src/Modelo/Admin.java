@@ -10,15 +10,18 @@ public class Admin extends Pertsona {
 	private int id_langile;
 	private int id_kasino;
 	
-	public Admin(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
-			String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,
-			String pasahitza, String tlf_zenabkia, String kargua, Double soldata, int id_langile, int id_kasino) {
-		super(nAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa, probintzia, herria, postaKodea,
-				posta_elektronikoa, pasahitza, tlf_zenabkia);
+	public Admin(String nAN, String izena, String abizena, String jaioteguna, String herrialdea,
+			 String probintzia, String herria, String postaKodea,
+			String pasahitza, String tlf_zenabkia, int id_maila, String kargua, Double soldata, int id_langile, int id_kasino) {
+		super(nAN, izena, abizena, jaioteguna, herrialdea, probintzia, herria, postaKodea, pasahitza, tlf_zenabkia, id_maila);
 		this.kargua = kargua;
 		this.soldata = soldata;
 		this.id_langile = id_langile;
 		this.id_kasino = id_kasino;
+	}
+	
+	public Admin() {
+		super();
 	}
 
 	public String getKargua() {
@@ -78,9 +81,9 @@ public class Admin extends Pertsona {
 	public String toString() {
 		return "Admin [kargua=" + kargua + "\nsoldata=" + soldata + "\nid_langile=" + id_langile + "\nid_kasino="
 				+ id_kasino + "\nNAN=" + NAN + "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna="
-				+ jaioteguna + "\nherrialdea=" + herrialdea + "\nautonomia_erkidegoa=" + autonomia_erkidegoa
+				+ jaioteguna + "\nherrialdea=" + herrialdea 
 				+ "\nprobintzia=" + probintzia + "\nherria=" + herria + "\npostaKodea=" + postaKodea
-				+ "\nposta_elektronikoa=" + posta_elektronikoa + "\npasahitza=" + pasahitza + "\ntlf_zenabkia="
+				 + "\npasahitza=" + pasahitza + "\ntlf_zenabkia="
 				+ tlf_zenabkia + "]";
 	}
 }

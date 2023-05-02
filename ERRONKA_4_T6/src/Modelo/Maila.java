@@ -1,40 +1,38 @@
 package Modelo;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Maila {
 	private String maila_izena;
-	private double biderkatzailea;
-	private int kopurua;
-	private String NAN;
-	private int id_maila;
-	private ArrayList<Erabiltzaile> Erabiltzaile;
+	private double apostu_max;
+	protected int id_maila;
 
-	public Maila(String maila_izena, double biderkatzailea, int kopurua, String nAN, int id_maila,
-			ArrayList<Erabiltzaile> erabiltzaile) {
+	public Maila(String maila_izena, double apostu_max, int id_maila) {
+		super();
 		this.maila_izena = maila_izena;
-		this.biderkatzailea = biderkatzailea;
-		this.kopurua = kopurua;
-		NAN = nAN;
+		this.apostu_max = apostu_max;
 		this.id_maila = id_maila;
-		Erabiltzaile = erabiltzaile;
+	}
+
+	public Maila(int id_maila) {
+		super();
+		this.id_maila = id_maila;
+	}
+
+	public Maila() {
 	}
 
 	public String getMaila_izena() {
 		return maila_izena;
 	}
 
-	public double getBiderkatzailea() {
-		return biderkatzailea;
+
+	public double getApostu_max() {
+		return apostu_max;
 	}
 
-	public int getKopurua() {
-		return kopurua;
-	}
-
-	public String getNAN() {
-		return NAN;
+	public void setApostu_max(double apostu_max) {
+		this.apostu_max = apostu_max;
 	}
 
 	public int getId_maila() {
@@ -45,33 +43,17 @@ public class Maila {
 		this.maila_izena = maila_izena;
 	}
 
-	public void setBiderkatzailea(double biderkatzailea) {
-		this.biderkatzailea = biderkatzailea;
-	}
 
-	public void setKopurua(int kopurua) {
-		this.kopurua = kopurua;
-	}
-
-	public void setNAN(String nAN) {
-		this.NAN = nAN;
-	}
 
 	public void setId_maila(int id_maila) {
 		this.id_maila = id_maila;
 	}
 
-	public ArrayList<Erabiltzaile> getErabiltzaile() {
-		return Erabiltzaile;
-	}
 
-	public void setErabiltzaile(ArrayList<Erabiltzaile> erabiltzaile) {
-		Erabiltzaile = erabiltzaile;
-	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(NAN, biderkatzailea, id_maila, kopurua, maila_izena, Erabiltzaile);
+		return Objects.hash(id_maila, apostu_max, maila_izena);
 	}
 
 	@Override
@@ -88,9 +70,10 @@ public class Maila {
 
 	@Override
 	public String toString() {
-		return "Maila [maila_izena=" + maila_izena + "\nbiderkatzailea=" + biderkatzailea + "\nkopurua=" + kopurua
-				+ "\nNAN=" + NAN + "\nid_maila=" + id_maila + ""+Erabiltzaile+"]";
+		return "Maila [maila_izena=" + maila_izena + "\napostu_max=" + apostu_max
+				 + "\nid_maila=" + id_maila +"]";
 	}
 	
 	
 }
+

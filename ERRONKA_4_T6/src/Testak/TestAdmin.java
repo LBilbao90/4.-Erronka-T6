@@ -13,18 +13,15 @@ class TestAdmin {
 	@Test
 	public void testGettersAndSetters() {
 		Date date = new Date();
-		Admin a = new Admin("12345678A", "Jon", "Aguirre", date, "Espainia", "Euskadi", "Gipuzkoa", "Donostia", "20001", "jaguirre@gmail.com", "1234", "123456789", "Kargua", 2000.0, 1, 1);
+		Admin a = new Admin("12345678A", "Jon", "Aguirre", "1999-05-05", "Espainia", "Gipuzkoa", "Donostia", "20001", "1234", "123456789", "Kargua", 2000.0, 1, 1);
 		
 		assertEquals("12345678A", a.getNAN());
 		assertEquals("Jon", a.getIzena());
 		assertEquals("Aguirre", a.getAbizena());
-		assertEquals(date, a.getJaioteguna());
+		assertEquals("1999-05-05", a.getJaioteguna());
 		assertEquals("Espainia", a.getHerrialdea());
-		assertEquals("Euskadi", a.getAutonomia_erkidegoa());
-		assertEquals("Gipuzkoa", a.getProbintzia());
 		assertEquals("Donostia", a.getHerria());
 		assertEquals("20001", a.getPostaKodea());
-		assertEquals("jaguirre@gmail.com", a.getPosta_elektronikoa());
 		assertEquals("1234", a.getPasahitza());
 		assertEquals("123456789", a.getTlf_zenabkia());
 		assertEquals("Kargua", a.getKargua());
@@ -35,14 +32,11 @@ class TestAdmin {
 		a.setNAN("87654321Z");
 		a.setIzena("Aimar");
 		a.setAbizena("Pelea");
-		Date newDate = new Date();
-		a.setJaioteguna(newDate);
+		a.setJaioteguna("1999-05-05");
 		a.setHerrialdea("Espainia");
-		a.setAutonomia_erkidegoa("Euskadi");
 		a.setProbintzia("Bizkaia");
 		a.setHerria("Basauri");
 		a.setPostaKodea("48970");
-		a.setPosta_elektronikoa("aimar.peleaar@elorrieta-errekamari.com");
 		a.setPasahitza("badBunny100pre");
 		a.setTlf_zenabkia("634411850");
 		a.setKargua("Admin");
@@ -53,13 +47,11 @@ class TestAdmin {
 		assertEquals("87654321Z", a.getNAN());
 		assertEquals("Aimar", a.getIzena());
 		assertEquals("Pelea", a.getAbizena());
-		assertEquals(newDate, a.getJaioteguna());
+		assertEquals("1999-05-05", a.getJaioteguna());
 		assertEquals("Espainia", a.getHerrialdea());
-		assertEquals("Euskadi", a.getAutonomia_erkidegoa());
 		assertEquals("Bizkaia", a.getProbintzia());
 		assertEquals("Basauri", a.getHerria());
 		assertEquals("48970", a.getPostaKodea());
-		assertEquals("aimar.peleaar@elorrieta-errekamari.com", a.getPosta_elektronikoa());
 		assertEquals("badBunny100pre", a.getPasahitza());
 		assertEquals("634411850", a.getTlf_zenabkia());
 		assertEquals("Admin", a.getKargua());

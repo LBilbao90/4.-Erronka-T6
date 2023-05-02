@@ -3,35 +3,44 @@ package Modelo;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class Pertsona {
+public abstract class Pertsona extends Maila{
 
 	protected String NAN;
 	protected String izena;
 	protected String abizena;
-	protected Date jaioteguna;
+	protected String jaioteguna;
 	protected String herrialdea;
-	protected String autonomia_erkidegoa;
+	//protected String autonomia_erkidegoa;
 	protected String probintzia;
 	protected String herria;
 	protected String postaKodea;
-	protected String posta_elektronikoa;
+	//protected String posta_elektronikoa;
 	protected String pasahitza;
 	protected String tlf_zenabkia;
 	
-	public Pertsona(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,String pasahitza, String tlf_zenabkia) {
-		NAN = nAN;
+	public Pertsona(String nAN, String izena, String abizena, String jaioteguna, String herrialdea, String probintzia, String herria, String postaKodea,String pasahitza, String tlf_zenabkia, int id_maila) {
+		super(id_maila);
+		this.NAN = nAN;
 		this.izena = izena;
 		this.abizena = abizena;
 		this.jaioteguna = jaioteguna;
 		this.herrialdea = herrialdea;
-		this.autonomia_erkidegoa = autonomia_erkidegoa;
+		//this.autonomia_erkidegoa = autonomia_erkidegoa;
 		this.probintzia = probintzia;
 		this.herria = herria;
 		this.postaKodea = postaKodea;
-		this.posta_elektronikoa = posta_elektronikoa;
+		//this.posta_elektronikoa = posta_elektronikoa;
 		this.pasahitza = pasahitza;
 		this.tlf_zenabkia = tlf_zenabkia;
 	}
+	
+	
+
+	public Pertsona() {
+		super();
+	}
+
+
 
 	public String getNAN() {
 		return NAN;
@@ -45,7 +54,7 @@ public abstract class Pertsona {
 		return abizena;
 	}
 
-	public Date getJaioteguna() {
+	public String getJaioteguna() {
 		return jaioteguna;
 	}
 
@@ -53,9 +62,9 @@ public abstract class Pertsona {
 		return herrialdea;
 	}
 
-	public String getAutonomia_erkidegoa() {
-		return autonomia_erkidegoa;
-	}
+//	public String getAutonomia_erkidegoa() {
+//		return autonomia_erkidegoa;
+//	}
 
 	public String getProbintzia() {
 		return probintzia;
@@ -69,9 +78,9 @@ public abstract class Pertsona {
 		return postaKodea;
 	}
 
-	public String getPosta_elektronikoa() {
-		return posta_elektronikoa;
-	}
+//	public String getPosta_elektronikoa() {
+//		return posta_elektronikoa;
+//	}
 
 	public String getPasahitza() {
 		return pasahitza;
@@ -93,7 +102,7 @@ public abstract class Pertsona {
 		this.abizena = abizena;
 	}
 
-	public void setJaioteguna(Date jaioteguna) {
+	public void setJaioteguna(String jaioteguna) {
 		this.jaioteguna = jaioteguna;
 	}
 
@@ -101,9 +110,9 @@ public abstract class Pertsona {
 		this.herrialdea = herrialdea;
 	}
 
-	public void setAutonomia_erkidegoa(String autonomia_erkidegoa) {
-		this.autonomia_erkidegoa = autonomia_erkidegoa;
-	}
+//	public void setAutonomia_erkidegoa(String autonomia_erkidegoa) {
+//		this.autonomia_erkidegoa = autonomia_erkidegoa;
+//	}
 
 	public void setProbintzia(String probintzia) {
 		this.probintzia = probintzia;
@@ -117,9 +126,9 @@ public abstract class Pertsona {
 		this.postaKodea = postaKodea;
 	}
 
-	public void setPosta_elektronikoa(String posta_elektronikoa) {
-		this.posta_elektronikoa = posta_elektronikoa;
-	}
+//	public void setPosta_elektronikoa(String posta_elektronikoa) {
+//		this.posta_elektronikoa = posta_elektronikoa;
+//	}
 
 	public void setPasahitza(String pasahitza) {
 		this.pasahitza = pasahitza;
@@ -131,8 +140,8 @@ public abstract class Pertsona {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(NAN, abizena, autonomia_erkidegoa, herria, herrialdea, izena, jaioteguna, pasahitza,
-				postaKodea, posta_elektronikoa, probintzia, tlf_zenabkia);
+		return Objects.hash(NAN, abizena, herria, herrialdea, izena, jaioteguna, pasahitza,
+				postaKodea, probintzia, tlf_zenabkia);
 	}
 
 	@Override
@@ -160,3 +169,4 @@ public abstract class Pertsona {
 	
 	
 }
+

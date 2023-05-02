@@ -4,28 +4,21 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Erabiltzaile extends Pertsona{
-	private String erabiltzaile_izena;
 	private double diru_kopuru_historikoa;
 	private double diru_kopuru_momentukoa;
-	private Maila maila;
 	
-	public Erabiltzaile(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea,
-			String autonomia_erkidegoa, String probintzia, String herria, String postaKodea, String posta_elektronikoa,
-			String pasahitza, String tlf_zenabkia, String erabiltzaile_izena, double diru_kopuru_historikoa,
-			double diru_kopuru_momentukoa, Maila maila) {
-		super(nAN, izena, abizena, jaioteguna, herrialdea, autonomia_erkidegoa, probintzia, herria, postaKodea,
-				posta_elektronikoa, pasahitza, tlf_zenabkia);
-		this.erabiltzaile_izena = erabiltzaile_izena;
+	public Erabiltzaile(String nAN, String izena, String abizena, String jaioteguna, String herrialdea, String probintzia, String herria, String postaKodea,
+			String pasahitza, String tlf_zenabkia, int id_maila, double diru_kopuru_historikoa,
+			double diru_kopuru_momentukoa) {
+		super(nAN, izena, abizena, jaioteguna, herrialdea, probintzia, herria, postaKodea, pasahitza, tlf_zenabkia, id_maila);
 		this.diru_kopuru_historikoa = diru_kopuru_historikoa;
 		this.diru_kopuru_momentukoa = diru_kopuru_momentukoa;
-		this.maila = maila;
 	}
-	public String getErabiltzaile_izena() {
-		return erabiltzaile_izena;
+
+	public Erabiltzaile() {
+		super();
 	}
-	public void setErabiltzaile_izena(String erabiltzaile_izena) {
-		this.erabiltzaile_izena = erabiltzaile_izena;
-	}
+
 	public double getDiru_kopuru_historikoa() {
 		return diru_kopuru_historikoa;
 	}
@@ -38,15 +31,9 @@ public class Erabiltzaile extends Pertsona{
 	public void setDiru_kopuru_momentukoa(double diru_kopuru_momentukoa) {
 		this.diru_kopuru_momentukoa = diru_kopuru_momentukoa;
 	}
-	public Maila getMaila() {
-		return maila;
-	}
-	public void setMaila(Maila maila) {
-		this.maila = maila;
-	}
-	
+
 	public String erakutsi() {
-		return "Datuak:\n" +erabiltzaile_izena+"\ndiru kopuru historikoa:"+diru_kopuru_historikoa
+		return "Datuak:\n" +"\ndiru kopuru historikoa:"+diru_kopuru_historikoa
 				+"\ndiru kopuru momentukoa:"+diru_kopuru_momentukoa;
 	}
 
@@ -54,7 +41,7 @@ public class Erabiltzaile extends Pertsona{
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(diru_kopuru_historikoa, diru_kopuru_momentukoa, erabiltzaile_izena);
+		result = prime * result + Objects.hash(diru_kopuru_historikoa, diru_kopuru_momentukoa);
 		return result;
 	}
 
@@ -69,17 +56,16 @@ public class Erabiltzaile extends Pertsona{
 		Erabiltzaile other = (Erabiltzaile) obj;
 		return Double.doubleToLongBits(diru_kopuru_historikoa) == Double.doubleToLongBits(other.diru_kopuru_historikoa)
 				&& Double.doubleToLongBits(diru_kopuru_momentukoa) == Double
-						.doubleToLongBits(other.diru_kopuru_momentukoa)
-				&& Objects.equals(erabiltzaile_izena, other.erabiltzaile_izena);
+						.doubleToLongBits(other.diru_kopuru_momentukoa);
 	}
 
 	@Override
 	public String toString() {
-		return "Erablitzaile [erabiltzaile_izena=" + erabiltzaile_izena + "\ndiru_kopuru_historikoa="
+		return "Erablitzaile [\ndiru_kopuru_historikoa="
 				+ diru_kopuru_historikoa + "\ndiru_kopuru_momentukoa=" + diru_kopuru_momentukoa + "\nNAN=" + NAN
 				+ "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna=" + jaioteguna + "\nherrialdea="
-				+ herrialdea + "\nautonomia_erkidegoa=" + autonomia_erkidegoa + "\nprobintzia=" + probintzia
-				+ "\nherria=" + herria + "\npostaKodea=" + postaKodea + "\nposta_elektronikoa=" + posta_elektronikoa
+				+ herrialdea + "\nprobintzia=" + probintzia
+				+ "\nherria=" + herria + "\npostaKodea=" + postaKodea + "\nposta_elektronikoa="
 				+ "\npasahitza=" + pasahitza + "\ntlf_zenabkia=" + tlf_zenabkia + "]";
 	}
 	
