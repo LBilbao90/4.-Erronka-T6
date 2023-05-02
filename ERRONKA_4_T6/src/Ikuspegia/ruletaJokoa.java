@@ -140,9 +140,9 @@ public class ruletaJokoa extends JPanel {
                 	timer13.stop();
                     unekoZenbakia = metodoak.ruletakoZbkKalkulatu(angelu);
                     System.out.println("Ruleta emaitza: " + unekoZenbakia);
-                    unekoZenbakia = 0;
+//                    unekoZenbakia = 0;
                     erakutsiMezua(unekoZenbakia);
-                    unekoZenbakia = 0;
+//                    unekoZenbakia = 0;
                 }
             }
         }).start();

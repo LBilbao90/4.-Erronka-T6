@@ -350,5 +350,69 @@ public class metodoak {
             timerStart.start();
         }
     }
-
+    
+    
+    /**
+	 * String bat pasatuko diogu metodoari, pasahitza izango dela. Metodoa egingo duena izango da 
+	 * konprobatu eta betetzen baditu baldintza batzuk gure pasahitza segurua izateko.
+	 * @param pasahitza (String)
+	 * @return True bueltatuko digu, pasahitza zuzena bada. Pasahitza ez bada zuzen false bueltatuko digu.
+	 */
+	public static boolean pasahitzaKonprobatu(String pasahitza) {
+	    int minLuzera = 6;
+	    int maxLuzera = 16;
+	    boolean pasahitzaZuzena= false;
+	    boolean mayuskulaDauka = false;
+	    boolean minuskulaDauka = false;
+	    boolean zenbakiakDauka = false;
+	    
+	    if (pasahitza.length() >= minLuzera && pasahitza.length() <= maxLuzera) {
+	        for (char c : pasahitza.toCharArray()) {
+	            if (Character.isLowerCase(c)) {
+	            	minuskulaDauka = true;
+	            } else if (Character.isUpperCase(c)) {
+	            	mayuskulaDauka = true;
+	            } else if (Character.isDigit(c)) {
+	            	zenbakiakDauka = true;
+	            }
+	        }
+	    }
+	    if(mayuskulaDauka==true & minuskulaDauka==true & zenbakiakDauka==true) {
+	    	pasahitzaZuzena=true;
+	    }else {
+	    	pasahitzaZuzena=false;
+	    }
+	    return pasahitzaZuzena;
+	}
+	
+	 public static boolean nanBalidatu(String nan) {
+	        // Comprobazten du ea NAN-ren luzeera 9 den
+	        if (nan.length() != 9) {
+	            return false;
+	        }
+	        
+	        //Atera NAN zenbakia eta letra
+	        String zenbakia = nan.substring(0, 8);
+	        String letra = nan.substring(8);
+	        
+	        // Egiaztatu NAN zenbakia baliozkoa den
+	        try {
+	            Integer.parseInt(zenbakia);
+	        } catch (NumberFormatException e) {
+	            return false;
+	        }
+	        
+	        // NAN zenbakiari dagokion letra kalkulatzea
+	        String letrak = "TRWAGMYFPDXBNJZSQVHLCKE";
+	        int indizea = Integer.parseInt(zenbakia) % 23;
+	        char kalkulatutakoLetra = letrak.charAt(indizea);
+	        
+	        // Egiaztatu NANaren letra baliozkoa den
+	        if (letra.charAt(0) != kalkulatutakoLetra) {
+	            return false;
+	        }
+	        
+	        // Hona iritsiz gero, NANa baliozkoa da
+	        return true;
+	    }
 }

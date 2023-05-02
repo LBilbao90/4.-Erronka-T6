@@ -13,7 +13,7 @@ import Modelo.Erabiltzaile;
 import Modelo.Maila;
 
 public class datuBaseKarga {
-
+	
     public static void karga() {
         final String url = "jdbc:mysql://localhost:3306/kasinoa"; //url de la base de datos de phpmyadmin
         final String erabiltzaileKontsulta = "*";
@@ -25,9 +25,8 @@ public class datuBaseKarga {
         ArrayList<Admin> langileak = new ArrayList<Admin>();
         ArrayList<Maila> mailak = new ArrayList<Maila>();
 
-
         try {
-            connection = DriverManager.getConnection(url, "root", ""); //usuario y contraseña user: root password: 
+            connection = DriverManager.getConnection(url, "root", ""); //usuario y contraseï¿½a user: root password: 
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs;
             
@@ -63,7 +62,7 @@ public class datuBaseKarga {
 
                 erabiltzaileak.add(erabiltzaile);
             }
-
+            
             // Langileak
             rs = stmt.executeQuery("SELECT " + langileKontsulta + " FROM langile_kontua;");
             while (rs.next()) {
@@ -93,22 +92,22 @@ public class datuBaseKarga {
         }
         
         
-        //LOGS
-        System.out.println("MAILAK:");
-        for (Maila maila : mailak) {
-            System.out.println(maila.toString());
-        }
-        
-        System.out.println("\nERABILTZAILEAK:");
-        for (Erabiltzaile erabiltzaile : erabiltzaileak) {
-            System.out.println(erabiltzaile.toString());
-        }
-        
-        System.out.println("\nLANGILEAK:");
-        for (Admin admin : langileak) {
-            System.out.println(admin.toString());
-        }
-        
+//        //LOGS
+//        System.out.println("MAILAK:");
+//        for (Maila maila : mailak) {
+//            System.out.println(maila.toString());
+//        }
+//        
+//        System.out.println("\nERABILTZAILEAK:");
+//        for (Erabiltzaile erabiltzaile : erabiltzaileak) {
+//            System.out.println(erabiltzaile.toString());
+//        }
+//        
+//        System.out.println("\nLANGILEAK:");
+//        for (Admin admin : langileak) {
+//            System.out.println(admin.toString());
+//        }
+//        
         
     }
 }
