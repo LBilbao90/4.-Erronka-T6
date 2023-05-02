@@ -13,7 +13,7 @@ class TestAdmin {
 	@Test
 	public void testGettersAndSetters() {
 		Date date = new Date();
-		Admin a = new Admin("12345678A", "Jon", "Aguirre", "1999-05-05", "Espainia", "Gipuzkoa", "Donostia", "20001", "1234", "123456789", "Kargua", 2000.0, 1, 1);
+		Admin a = new Admin("12345678A", "Jon", "Aguirre", "1999-05-05", "Espainia", "Gipuzkoa", "Donostia", "20001", "1234", "123456789", null, 2000.0, 1, 1);
 		
 		assertEquals("12345678A", a.getNAN());
 		assertEquals("Jon", a.getIzena());
