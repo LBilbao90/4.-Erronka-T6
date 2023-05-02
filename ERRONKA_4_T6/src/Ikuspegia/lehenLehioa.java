@@ -87,7 +87,7 @@ public class lehenLehioa extends JFrame {
 			public void run() {
 				try {
 					//lehenLehioa frame = new lehenLehioa();
-					lehenLehioaframe.setUndecorated(true);
+//					lehenLehioaframe.setUndecorated(true);
 
 					lehenLehioaframe.setVisible(true);
 				} catch (Exception e) {

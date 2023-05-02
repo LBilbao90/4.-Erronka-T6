@@ -13,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -35,6 +38,12 @@ public class ruletaApostua extends JFrame {
     private int[] bakoitiBikoiti = new int [2];
     private int[] kolorea = new int [2];
     
+    Set<Integer> gorriak = new HashSet<>(List.of(1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36));
+    Set<Integer> beltzak = new HashSet<>(List.of(2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35));
+    
+    Set<Integer> eskerrEskuin1 = new HashSet<>(List.of(1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34));
+    Set<Integer> eskerrEskuin2 = new HashSet<>(List.of(2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35));
+    Set<Integer> eskerrEskuin3 = new HashSet<>(List.of(3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36));
     private int ruletaEmaitza;
     
 
@@ -481,7 +490,7 @@ public class ruletaApostua extends JFrame {
 				Arrays.fill(taulaErdia, 0);
 				Arrays.fill(bakoitiBikoiti, 0);
 				Arrays.fill(kolorea, 0);
-				
+				JOptionPane.showMessageDialog(btnApostuaEzabatu, "Apostua zuzen ezabatu da");
 			}
 		});
 		
@@ -661,10 +670,13 @@ public class ruletaApostua extends JFrame {
 		    			ruletaEmaitza = ruletaJokoa.getUnekoZenbakia();
 		    			int guztiraIrabaziak = 0;
 		    			// Kolorea konprobatu
-		    			if (ruletaEmaitza == 1 || ruletaEmaitza == 3 || ruletaEmaitza == 5 || ruletaEmaitza == 7 || ruletaEmaitza == 9 || ruletaEmaitza == 12 || ruletaEmaitza == 14 || ruletaEmaitza == 16 || ruletaEmaitza == 18 || ruletaEmaitza == 19 || ruletaEmaitza == 21 || ruletaEmaitza == 23 || ruletaEmaitza == 25 || ruletaEmaitza == 27 || ruletaEmaitza == 30 || ruletaEmaitza == 32 || ruletaEmaitza == 34 || ruletaEmaitza == 36 && kolorea[0] >= 10) {
-		    				guztiraIrabaziak += kolorea[0] * 2;
-		    			} else if (ruletaEmaitza == 2 || ruletaEmaitza == 4 || ruletaEmaitza == 6 || ruletaEmaitza == 8 || ruletaEmaitza == 10 || ruletaEmaitza == 11 || ruletaEmaitza == 13 || ruletaEmaitza == 15 || ruletaEmaitza == 17 || ruletaEmaitza == 20 || ruletaEmaitza == 22 || ruletaEmaitza == 24 || ruletaEmaitza == 26 || ruletaEmaitza == 28 || ruletaEmaitza == 29 || ruletaEmaitza == 31 || ruletaEmaitza == 33 || ruletaEmaitza == 35 && kolorea[1] >= 10) {
-		    				guztiraIrabaziak += kolorea[1] * 2;
+		    			System.out.println(ruletaEmaitza);
+		    			System.out.println(kolorea[0]);
+		    			System.out.println(kolorea[1]);
+		    			if (gorriak.contains(ruletaEmaitza) && kolorea[0] >= 1) {
+		    			    guztiraIrabaziak += kolorea[0] * 2;
+		    			} else if (beltzak.contains(ruletaEmaitza) && kolorea[1] >= 1) {
+		    			    guztiraIrabaziak += kolorea[1] * 2;
 		    			}
 		    			// Zenbakia konprobatu
 		    			if (ruletaEmaitza != 0 && zbk[ruletaEmaitza] != 0) {
@@ -673,17 +685,20 @@ public class ruletaApostua extends JFrame {
 
 		    			// Dozenetan konprobatu apostuak
 		    			int dozena = (ruletaEmaitza - 1) / 12;  // Ze dozenatan irten den zenbakia kalkulatzen du
+		    			System.out.println("Dozena: " + dozena);
 		    			if (dozenak[dozena] != 0) {
+		    				System.out.println("Bai: "  + dozenak[dozena]);
 		    			    guztiraIrabaziak += dozenak[dozena] * 3;  // 3 * apostua
 		    			}
 
-		    			if (ruletaEmaitza == 1 || ruletaEmaitza == 4 || ruletaEmaitza == 7 || ruletaEmaitza == 10 || ruletaEmaitza == 13 || ruletaEmaitza == 16 || ruletaEmaitza == 19 || ruletaEmaitza == 22 || ruletaEmaitza == 25 || ruletaEmaitza == 28 || ruletaEmaitza == 31 || ruletaEmaitza == 43 && dozenakEskerrEskuin[0] >= 10) {
-		    				guztiraIrabaziak = dozenakEskerrEskuin[0] * 3; // 3 * apostua
-		    			} else if (ruletaEmaitza == 2 || ruletaEmaitza == 5 || ruletaEmaitza == 8 || ruletaEmaitza == 11 || ruletaEmaitza == 14 || ruletaEmaitza == 17 || ruletaEmaitza == 20 || ruletaEmaitza == 23 || ruletaEmaitza == 26 || ruletaEmaitza == 29 || ruletaEmaitza == 32 || ruletaEmaitza == 35 && dozenakEskerrEskuin[1] >= 10) {
-	    			    	guztiraIrabaziak += dozenakEskerrEskuin[1] * 3; // 3 * apostua
-	    			    } else if (ruletaEmaitza == 3 || ruletaEmaitza == 6 || ruletaEmaitza == 9 || ruletaEmaitza == 12 || ruletaEmaitza == 15 || ruletaEmaitza == 18 || ruletaEmaitza == 21 || ruletaEmaitza == 24 || ruletaEmaitza == 27 || ruletaEmaitza == 30 || ruletaEmaitza == 33 || ruletaEmaitza == 36 && dozenakEskerrEskuin[2] >= 10) {
-	    			    	guztiraIrabaziak += dozenakEskerrEskuin[2] * 3; // 3 * apostua
-	    			    }
+		    			System.out.println(dozenakEskerrEskuin[0]);
+		    			if (eskerrEskuin1.contains(ruletaEmaitza) && dozenakEskerrEskuin[0] >= 1) {
+		    			    guztiraIrabaziak = dozenakEskerrEskuin[0] * 3; // 3 * apostua
+		    			} else if (eskerrEskuin2.contains(ruletaEmaitza) && dozenakEskerrEskuin[1] >= 1) {
+		    			    guztiraIrabaziak += dozenakEskerrEskuin[1] * 3; // 3 * apostua
+		    			} else if (eskerrEskuin3.contains(ruletaEmaitza) && dozenakEskerrEskuin[2] >= 1) {
+		    			    guztiraIrabaziak += dozenakEskerrEskuin[2] * 3; // 3 * apostua
+		    			}
 
 		    			// Taulen erdikaldea apostua konprobatu
 		    			int erdia = (ruletaEmaitza > 18) ? 1 : 0;  // Zenbakia 18 baino handiagoa den konprobatzen du.
