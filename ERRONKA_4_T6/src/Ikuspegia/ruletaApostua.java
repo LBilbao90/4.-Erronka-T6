@@ -687,7 +687,6 @@ public class ruletaApostua extends JFrame {
 		    			int dozena = (ruletaEmaitza - 1) / 12;  // Ze dozenatan irten den zenbakia kalkulatzen du
 		    			System.out.println("Dozena: " + dozena);
 		    			if (dozenak[dozena] != 0) {
-		    				System.out.println("Bai: "  + dozenak[dozena]);
 		    			    guztiraIrabaziak += dozenak[dozena] * 3;  // 3 * apostua
 		    			}
 
