@@ -20,6 +20,6 @@ private static ArrayList<Maila> mailak;
         
 		datuBaseKarga.karga();
 		System.out.println(datuBaseKarga.getErabiltzaileak());
-	
+
     }
 }

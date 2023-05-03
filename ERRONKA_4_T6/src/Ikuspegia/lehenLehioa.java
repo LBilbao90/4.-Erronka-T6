@@ -106,7 +106,7 @@ public class lehenLehioa extends JFrame {
 	    //Pantaila handian agertu ahal izateko
 	    setResizable(false);
 	    
-	    setTitle("Elorrieta Kasinoa Â©");
+	    setTitle("Elorrieta Kasinoa ©");
 	    
 	 // Lehen lehioaren dimentsioak aldatu
 		setBounds((screenSize.width - screenWidth) / 2, (screenSize.height - screenHeight) / 2, screenWidth, screenHeight);
@@ -178,7 +178,7 @@ public class lehenLehioa extends JFrame {
 	    txtErabiltzailea.setEditable(false);
 	    txtErabiltzailea.setBorder(null);
 	    txtErabiltzailea.setBounds((int) (screenWidth*0.10), (int) (screenHeight*0.25), (int) (screenWidth*0.25), 69);
-	    txtErabiltzailea.setText("ERABILTZAILEA:");
+	    txtErabiltzailea.setText("NAN:");
 	    txtErabiltzailea.setFont(new Font("Tahoma", Font.BOLD, 30));
 	    
 	    txtPasahitza = new JTextField();
@@ -374,10 +374,10 @@ public class lehenLehioa extends JFrame {
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, e);
-	            setTitle("Hasi saioa | Elorrieta Kasinoa Â©");
+	            setTitle("Hasi saioa | Elorrieta Kasinoa ©");
 	        }
 		});	
-		
+
 		//'bukatu img' botoia 'login' panelean dagoena. Aplikazioa bukatzen du.
 	    itxiLogin.addActionListener(new ActionListener() {
 			@Override
@@ -389,26 +389,36 @@ public class lehenLehioa extends JFrame {
 		btnEzErregistratua.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, e);
-	            setTitle("Erregistroa | Elorrieta Kasinoa Â©");
+	            setTitle("Erregistroa | Elorrieta Kasinoa ©");
 	            }
 	        });
 		
 		//Login botoia akzioak
 		btnLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    	    if (textErabiltzailea.getText().equals("") || passwordLogin.getText().equals("")) {
-	    	    	JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa Â©", JOptionPane.ERROR_MESSAGE);
-	    	    	} else {
-	    	    		metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
-	    	    		setTitle("Jokoak | Elorrieta Kasinoa Â©");
-	    	    		}
+	    		
+			        String erabiltzailea = textErabiltzailea.getText();
+			        char[] pasahitza = passwordLogin.getPassword();
+			        System.out.println(erabiltzailea + "    " + pasahitza);
+			        boolean loginOndo = metodoak.loginBalidazioa(erabiltzailea, pasahitza);
+			        
+			        if (loginOndo) {
+			        	textErabiltzailea.setText("");
+			        	passwordLogin.setText("");
+			        	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    	    		setTitle("Jokoak | Elorrieta Kasinoa ©");
+			        } else {
+			        	textErabiltzailea.setText("");
+			        	passwordLogin.setText("");
+		    	    	JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+			        }
 	    	    }
 	    	});
 		
 		btnLoginBuelta.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    	    	metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
-	    	    	setTitle("Hasi saioa | Elorrieta Kasinoa Â©");
+	    	    	setTitle("Hasi saioa | Elorrieta Kasinoa ©");
 	    	    	}
 	    	});
 		
@@ -425,11 +435,11 @@ public class lehenLehioa extends JFrame {
 	    btnErregistratu.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    	    if (textNAN.getText().equals("") || textIzena.getText().equals("") || textAbizena.getText().equals("") || textPasahitzaErregistratu.getText().equals("") || textJaiotzeData.getText().equals("") || textHerria.getText().equals("") || textProbintzia.getText().equals("") || textHerria.getText().equals("") || textPostaKodea.getText().equals("") || textTelefonoa.getText().equals("")) {
-	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa Â©", JOptionPane.ERROR_MESSAGE);
+	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
 	    	    } else {
-	    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa Â©", JOptionPane.INFORMATION_MESSAGE);
+	    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
 	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
-	    	    	setTitle("Jokoak | Elorrieta Kasinoa Â©");
+	    	    	setTitle("Jokoak | Elorrieta Kasinoa ©");
 	    	    }
 	    	}
 	    });
@@ -446,7 +456,7 @@ public class lehenLehioa extends JFrame {
 	    btnJokotikLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
-	    		setTitle("Hasi saioa | Elorrieta Kasinoa Â©");
+	    		setTitle("Hasi saioa | Elorrieta Kasinoa ©");
 	    	}
 	    });
 	    
@@ -474,7 +484,7 @@ public class lehenLehioa extends JFrame {
 	    //BlackJack botoiaren akzioak
 	    btnBlackJackJokoa.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-    	    	JOptionPane.showMessageDialog(jokoak, "Laster egongo da prest, barkatu eragozpenak.\r\n", "Elorrieta Kasinoa Â©", JOptionPane.WARNING_MESSAGE);
+    	    	JOptionPane.showMessageDialog(jokoak, "Laster egongo da prest, barkatu eragozpenak.\r\n", "Elorrieta Kasinoa ©", JOptionPane.WARNING_MESSAGE);
 	    	}	
 	    });
 	    

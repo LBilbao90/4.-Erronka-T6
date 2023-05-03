@@ -57,7 +57,7 @@ public class datuBaseKarga {
             // Erabiltzaileak
             rs = stmt.executeQuery("SELECT " + erabiltzaileKontsulta + " FROM erabiltzaile_kontua;");
             while (rs.next()) {
-                Erabiltzaile erabiltzaile = new Erabiltzaile();
+            	Erabiltzaile erabiltzaile = new Erabiltzaile();
                 erabiltzaile.setNAN (rs.getString(1));
                 erabiltzaile.setId_maila(rs.getInt(2));
                 erabiltzaile.setDiru_kopuru_historikoa(rs.getDouble(3));
@@ -91,7 +91,7 @@ public class datuBaseKarga {
                 admin.setPostaKodea(rs.getString(10));
                 admin.setTlf_zenabkia(rs.getString(11));
                 admin.setKargua(rs.getString(12));
-                admin.setSoldata(rs.getDouble(13));
+               // admin.setSoldata(rs.getDouble(13));
                 admin.setPasahitza(rs.getString(14));
                 
                 langileak.add(admin); 

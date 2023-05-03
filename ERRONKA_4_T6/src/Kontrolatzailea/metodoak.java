@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 import Ikuspegia.ruletaApostua;
 import Ikuspegia.ruletaJokoa;
 import Ikuspegia.ruletaJokoa.OKButtonListener;
+import Modelo.Erabiltzaile;
 
 
 public class metodoak {
@@ -415,4 +416,15 @@ public class metodoak {
 	        // Hona iritsiz gero, NANa baliozkoa da
 	        return true;
 	    }
+	 
+	 	public static boolean loginBalidazioa(String erabiltzailea, char[] pasahitza) {
+	 		datuBaseKarga.karga();
+		    for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+		        if (erabiltzaile.getNAN().equals(erabiltzailea) && erabiltzaile.getPasahitza().equals(new String(pasahitza))) {
+		            return true;
+		        }
+		    }
+		    
+		    return false;
+		}
 }
