@@ -8,6 +8,9 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,6 +20,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.border.LineBorder;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 import Ikuspegia.ruletaApostua;
 import Ikuspegia.ruletaJokoa;
@@ -427,4 +433,34 @@ public class metodoak {
 		    
 		    return false;
 		}
+	 	
+	 	public  boolean erregistroaInsert(ArrayList<Erabiltzaile> erabiltzaile, String NAN, String izena, String abizen, String pass, String passErrepikatu, String jaiotzeData, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk) {
+	        boolean erregistratuta = false;
+	        boolean existitu=false;
+	        
+	        for(int i=0;i<bezeroak.length && !existitu;i++) {
+	            if(bezeroak[i].getId_bezero().equalsIgnoreCase(id)) {
+	                existitu=true;
+	            }
+	        }
+	        if(!existitu) {
+	            Connection conn;                    
+	            try {
+	                String url = "jdbc:mysql://localhost:3306/db_zinema";
+	                conn = (Connection) DriverManager.getConnection (url, "root","");
+	                Statement comando = (Statement) conn.createStatement();                     
+	                                        
+	                comando.executeUpdate( "INSERT INTO bezeroa VALUES ('"+id+"','"+izena+"','"+abizen+"',"+adina+",'"+sexua+"','"+nan+"','"+pass+"');");
+	                erregistratuta=true;
+	                conn.close();
+	            }catch(SQLException ex) {
+	                    System.out.println("SQLException: "+ ex.getMessage());
+	                    System.out.println("SQLState: "+ ex.getSQLState());
+	                    System.out.println("ErrorCode: "+ ex.getErrorCode());
+	            }
+	        }
+	        return erregistratuta;
+	    }
+	 	
+	 	
 }

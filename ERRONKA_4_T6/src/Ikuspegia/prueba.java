@@ -19,7 +19,7 @@ private static ArrayList<Maila> mailak;
         mailak = new ArrayList<>();
         
 		datuBaseKarga.karga();
-		System.out.println(datuBaseKarga.getErabiltzaileak());
+		System.out.println(datuBaseKarga.getLangileak());
 
     }
 }
