@@ -8,6 +8,7 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import javax.swing.border.LineBorder;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import com.toedter.calendar.JDateChooser;
 
 import Ikuspegia.ruletaApostua;
 import Ikuspegia.ruletaJokoa;
@@ -137,7 +139,7 @@ public class metodoak {
 	    return textField;
 	}
 	
-	public static JTextArea createTextFieldBete (int x, int y, int width, int height, Font font,JPanel erregistratu) {
+	public static JTextArea createTextFieldBete ( int x, int y, int width, int height, Font font,JPanel erregistratu) {
 		JTextArea JTextArea = new JTextArea();
 		JTextArea.setBounds(x, y, width, height);
 		JTextArea.setFont(font);
@@ -422,7 +424,23 @@ public class metodoak {
 	        // Hona iritsiz gero, NANa baliozkoa da
 	        return true;
 	    }
-	 
+	  
+	 	public static boolean zbkDa(String texto) {
+		    try {
+		        Integer.parseInt(texto);
+		        return true;
+		    } catch (NumberFormatException e) {
+		        return false; 
+		    }
+		}
+	 	
+	 	public static boolean jaiotzeDataOndo(String jaiotzeData) {
+	 	    String dataForma = "\\d{4}-\\d{2}-\\d{2}";
+	 	    
+	 	    return jaiotzeData.matches(dataForma);
+	 	}
+
+
 	 	public static boolean loginBalidazioa(String erabiltzailea, char[] pasahitza) {
 	 		datuBaseKarga.karga();
 		    for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
@@ -434,23 +452,31 @@ public class metodoak {
 		    return false;
 		}
 	 	
-	 	public  boolean erregistroaInsert(ArrayList<Erabiltzaile> erabiltzaile, String NAN, String izena, String abizen, String pass, String passErrepikatu, String jaiotzeData, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk) {
-	        boolean erregistratuta = false;
-	        boolean existitu=false;
-	        
-	        for(int i=0;i<bezeroak.length && !existitu;i++) {
-	            if(bezeroak[i].getId_bezero().equalsIgnoreCase(id)) {
-	                existitu=true;
-	            }
-	        }
+	 	
+	 	
+	 	public static boolean erregistroaInsert(String NAN, String izena, String abizena, String pasahitza, String jaiotzeData, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk) {
+	 	    boolean erregistratuta = false;
+	 	    boolean existitu = false;
+
+	 	    datuBaseKarga.karga();
+	 	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
+	 	    
+	 	    for (Erabiltzaile erabiltzaile : erabiltzaileak) {
+	 	        System.err.println(erabiltzaile.getNAN());
+	 	        System.err.println(NAN);
+	 	        if (erabiltzaile.getNAN().equals(NAN)) {
+	 	            existitu = true;
+	 	            System.out.println("Existitzen da");
+	 	            break;
+	 	        }
+	 	    }
 	        if(!existitu) {
 	            Connection conn;                    
 	            try {
-	                String url = "jdbc:mysql://localhost:3306/db_zinema";
+	                String url = "jdbc:mysql://localhost:3306/kasinoa";
 	                conn = (Connection) DriverManager.getConnection (url, "root","");
 	                Statement comando = (Statement) conn.createStatement();                     
-	                                        
-	                comando.executeUpdate( "INSERT INTO bezeroa VALUES ('"+id+"','"+izena+"','"+abizen+"',"+adina+",'"+sexua+"','"+nan+"','"+pass+"');");
+	                comando.executeUpdate( "INSERT INTO erabiltzaile_kontua VALUES ('"+NAN+"','"+1+"','"+30+"',"+30+",'"+telefonoZbk+"','"+postaKodea+"','"+herrialdea+"','"+probintzia+"','"+herria+"','"+jaiotzeData+"','"+abizena+"','"+izena+"','"+pasahitza+"');");
 	                erregistratuta=true;
 	                conn.close();
 	            }catch(SQLException ex) {

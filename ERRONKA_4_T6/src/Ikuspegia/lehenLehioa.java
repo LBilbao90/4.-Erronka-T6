@@ -8,6 +8,10 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -15,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
 
 import javax.swing.JButton;
@@ -25,6 +30,10 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
+
+import org.jdatepicker.JDatePicker;
+
+import com.toedter.calendar.JDateChooser;
 
 import Ikuspegia.ruletaApostua.btnJokoetaraBueltatuListener;
 
@@ -43,7 +52,6 @@ public class lehenLehioa extends JFrame {
 	private JTextField txtIzena;
 	private JTextField txtAbizena;
 	private JTextField txtPasahitzaErregistratu;
-//	private JTextField txtErrepikatuPasahitza;
 	private JTextField txtJaiotzeData;
 	private JTextField txtHerrialdea;
 	private JTextField txtProbintzia;
@@ -55,7 +63,7 @@ public class lehenLehioa extends JFrame {
 	private JTextArea textAbizena;
 	private JPasswordField textPasahitzaErregistratu;
 	private JTextArea textErrepikatuPasahitza;
-	private JTextArea textJaiotzeData;
+	private JDatePicker dateJaiotzaData;
 	private JTextArea textHerrialdea;
 	private JTextArea textProbintzia;
 	private JTextArea textHerria;
@@ -153,7 +161,7 @@ public class lehenLehioa extends JFrame {
 	    txt1.setFont(new Font("Tahoma", Font.BOLD, 30));
 	    sarrera.add(txt1, gbcTxt1);
 
-	    // Restricciones para el botÃ³n
+	    // Restricciones para el botón
 	    GridBagConstraints gbcBtn = new GridBagConstraints();
 	    gbcBtn.gridx = 0;
 	    gbcBtn.gridy = 0;
@@ -263,7 +271,7 @@ public class lehenLehioa extends JFrame {
 	    
 	    //erregistroa testuak
 	    txtNAN = metodoak.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
-	    txtIzena = metodoak.createTextFieldTestua("Izena:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtIzena = metodoak.createTextFieldTestua("Nickname:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
 	    txtAbizena = metodoak.createTextFieldTestua("Abizena:", (int) (screenWidth*0.07), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
 	    txtPasahitzaErregistratu = metodoak.createTextFieldTestua("Pasahitza:", (int) (screenWidth*0.07), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
 	    txtJaiotzeData = metodoak.createTextFieldTestua("Jaiotze data:", (int) (screenWidth*0.07), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
@@ -278,8 +286,22 @@ public class lehenLehioa extends JFrame {
 	    textIzena = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
 	    textAbizena = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
 	    textPasahitzaErregistratu = metodoak.createPasswordFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
-//	    textErrepikatuPasahitza = metodoak.createTextFieldBete(73, 437, 382, 59, new Font("Tahoma", Font.PLAIN, 40), erregistratu);
-	    textJaiotzeData = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    JDateChooser dateJaiotzaData = new JDateChooser();
+        dateJaiotzaData.setBounds((int) (screenWidth*0.25), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30);
+        Font font = new Font("Arial", Font.PLAIN, 12);
+        dateJaiotzaData.setFont(font);
+        
+        // Momentuko data artzeko
+        LocalDate momentukoData = LocalDate.now();
+
+        // Data minimoa. 18 urte,
+        LocalDate dataMin = momentukoData.minusYears(18);
+
+        // LocalDate aldatzeko Date-ra.
+        Date dataMinJDateChooser = Date.from(dataMin.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dateJaiotzaData.setMaxSelectableDate(dataMinJDateChooser);
+        erregistratu.add(dateJaiotzaData);
+	    
 	    textHerrialdea = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
 	    textProbintzia = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
 	    textHerria = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
@@ -291,7 +313,7 @@ public class lehenLehioa extends JFrame {
 	    textIzena.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textAbizena.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textPasahitzaErregistratu.setBorder(new LineBorder(new Color(0, 0, 0)));
-	    textJaiotzeData.setBorder(new LineBorder(new Color(0, 0, 0)));
+	 //   textJaiotzeData.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textHerrialdea.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textProbintzia.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textHerria.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -396,29 +418,38 @@ public class lehenLehioa extends JFrame {
 		//Login botoia akzioak
 		btnLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		
-			        String erabiltzailea = textErabiltzailea.getText();
-			        char[] pasahitza = passwordLogin.getPassword();
-			        System.out.println(erabiltzailea + "    " + pasahitza);
-			        boolean loginOndo = metodoak.loginBalidazioa(erabiltzailea, pasahitza);
+	    		String erabiltzailea = textErabiltzailea.getText();
+	    		char[] pasahitza = passwordLogin.getPassword();
+	    		System.out.println(erabiltzailea + "    " + pasahitza);
+	    		boolean loginOndo = metodoak.loginBalidazioa(erabiltzailea, pasahitza);
 			        
-			        if (loginOndo) {
-			        	textErabiltzailea.setText("");
-			        	passwordLogin.setText("");
-			        	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
-	    	    		setTitle("Jokoak | Elorrieta Kasinoa ©");
-			        } else {
-			        	textErabiltzailea.setText("");
-			        	passwordLogin.setText("");
-		    	    	JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
-			        }
-	    	    }
+	    		if (loginOndo) {
+	    			textErabiltzailea.setText("");
+	    			passwordLogin.setText("");
+	    			metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    			setTitle("Jokoak | Elorrieta Kasinoa ©");
+	    		} else {
+	    			textErabiltzailea.setText("");
+	    			passwordLogin.setText("");
+	    			JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+	    			}
+	    	    }	
 	    	});
 		
 		btnLoginBuelta.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    	    	metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
 	    	    	setTitle("Hasi saioa | Elorrieta Kasinoa ©");
+	    		    textNAN.setText("");
+	    		    textIzena.setText("");
+	    		    textAbizena.setText("");
+	    		    textPasahitzaErregistratu.setText("");
+	    		    dateJaiotzaData.setDate(null);
+	    		    textHerrialdea.setText("");
+	    		    textProbintzia.setText("");
+	    		    textHerria.setText("");
+	    		    textPostaKodea.setText("");
+	    		    textTelefonoa.setText("");
 	    	    	}
 	    	});
 		
@@ -434,13 +465,57 @@ public class lehenLehioa extends JFrame {
 	    //Erregistratu botoiaren akzioak
 	    btnErregistratu.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    	    if (textNAN.getText().equals("") || textIzena.getText().equals("") || textAbizena.getText().equals("") || textPasahitzaErregistratu.getText().equals("") || textJaiotzeData.getText().equals("") || textHerria.getText().equals("") || textProbintzia.getText().equals("") || textHerria.getText().equals("") || textPostaKodea.getText().equals("") || textTelefonoa.getText().equals("")) {
+	    		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    		
+	    		String NAN = textNAN.getText();
+	    		String izena = textIzena.getText();
+	    		String abizena = textAbizena.getText();
+	    		String pasahitza = textPasahitzaErregistratu.getText();
+	    		Date jaiotzeData;
+	    		String jaiotzeDataString = "";
+	    		try {
+	    			jaiotzeData = dateJaiotzaData.getDate();
+	    			jaiotzeDataString = sdf.format(jaiotzeData);
+	    		} catch (NullPointerException ex) {
+	    		    System.err.println("Ez da datarik aukeratu");
+	    		}
+	    		String herrialdea = textHerrialdea.getText();
+	    		String probintzia = textProbintzia.getText();
+	    		String herria = textHerria.getText();
+	    		String postaKodea = textPostaKodea.getText();
+	    		String telefonoZbk = textTelefonoa.getText();
+	    		System.out.println("NANa hau da: " + NAN);
+	    		
+	    		System.out.println(jaiotzeDataString);
+	    		if (NAN.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || jaiotzeDataString.isEmpty() || herrialdea.isEmpty() || probintzia.isEmpty() || herria.isEmpty() || postaKodea.isEmpty() || telefonoZbk.isEmpty()) {
 	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
-	    	    } else {
-	    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
-	    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
-	    	    	setTitle("Jokoak | Elorrieta Kasinoa ©");
-	    	    }
+	    	    } else if (metodoak.nanBalidatu(NAN)) {
+	    	    	if (metodoak.zbkDa(postaKodea)) {
+				    	    if(!metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
+				    	    	JOptionPane.showMessageDialog(erregistratu, "Badirudi dagoeneko badagoela kontu bat sortuta " + NAN + " NANarekin.\r\nDagoeneko erregistratuta bazaude hasi saioa, eta bestela erregistraru gabeko NAN bat erabili.", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+				    	    } else {
+				    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ©"	, JOptionPane.INFORMATION_MESSAGE);
+				    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+				    	    	setTitle("Jokoak | Elorrieta Kasinoa ©");
+				    		    textNAN.setText("");
+				    		    textIzena.setText("");
+				    		    textAbizena.setText("");
+				    		    textPasahitzaErregistratu.setText("");
+				    		    dateJaiotzaData.setDate(null);
+				    		    textHerrialdea.setText("");
+				    		    textProbintzia.setText("");
+				    		    textHerria.setText("");
+				    		    textPostaKodea.setText("");
+				    		    textTelefonoa.setText("");
+				    	    }
+	    	    	} else {
+	    	    		JOptionPane.showMessageDialog(erregistratu, "Posta kode okerra.", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+	    	    	}
+	    		} else {
+	    			JOptionPane.showMessageDialog(erregistratu, "NAN okerra.", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+	    		}
+	    		
+
 	    	}
 	    });
 	    
