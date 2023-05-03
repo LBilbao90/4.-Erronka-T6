@@ -73,8 +73,6 @@ public class lehenLehioa extends JFrame {
 	
     private ImageIcon irtenImg = new ImageIcon("img/bukatu.png");
     private ImageIcon atzeraGezia = new ImageIcon("img/atzeraGezia.png");
-    private ImageIcon begiaBai = new ImageIcon("img/begiaBai.png");
-    private ImageIcon begiaEz = new ImageIcon("img/begiaEz.png");
 	
 	// Pantailaren dimentsioak lortu
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
