@@ -33,27 +33,46 @@ public class TestDatuBaseKarga2 {
         // Call the karga() method
         datuBaseKarga.karga();
 
-        // Check that the ArrayLists have been populated with data
-        assertNotNull("erabiltzaileak is null", erabiltzaileak);
-        assertNotNull("langileak is null", langileak);
-        assertNotNull("mailak is null", mailak);
-
-        // Check that the ArrayLists contain the expected number of objects
-        assertEquals("erabiltzaileak size is incorrect", erabiltzaileak.size(), 2);
-        assertEquals("langileak size is incorrect", langileak.size(), 1);
-        assertEquals("mailak size is incorrect", mailak.size(), 3);
-
-        // Check that the objects in the ArrayLists have been initialized correctly
-        // For example, check that the first Maila object has the expected values
-        Maila maila1 = mailak.get(0);
-        assertEquals("maila1 id_maila is incorrect", maila1.getId_maila(), 1);
-        assertEquals("maila1 maila_izena is incorrect", maila1.getMaila_izena(), "A");
-        assertEquals("maila1 apostu_max is incorrect", maila1.getApostu_max(), 1000.0, 0.001);
-
-        // Check that the objects in the ArrayLists are of the expected type
-        // For example, check that the first Erabiltzaile object is actually an instance of the Erabiltzaile class
-        assertTrue("erabiltzaileak does not contain Erabiltzaile objects", erabiltzaileak.get(0) instanceof Erabiltzaile);
-        assertTrue("langileak does not contain Admin objects", langileak.get(0) instanceof Admin);
-        assertTrue("mailak does not contain Maila objects", mailak.get(0) instanceof Maila);
+        assertNotNull(erabiltzaileak);
+        assertNotNull(langileak);
+        assertNotNull(mailak);
+        
+        //Mailak konprobatu
+        assertEquals(mailak.get(0).getId_maila(), 1);
+        assertEquals(mailak.get(0).getMaila_izena(), "Maila 1");
+        assertEquals(mailak.get(0).getApostu_max(), 1000.0, 0.0);
+        assertEquals(mailak.get(1).getId_maila(), 2);
+        assertEquals(mailak.get(1).getMaila_izena(), "Maila 2");
+        assertEquals(mailak.get(1).getApostu_max(), 5000.0, 0.0);
+        
+        //Erabiltzaileak konprobatu
+        assertEquals(erabiltzaileak.get(0).getNAN(), "12345678A");
+        assertEquals(erabiltzaileak.get(0).getId_maila(), 1);
+        assertEquals(erabiltzaileak.get(0).getDiru_kopuru_historikoa(), 10000.0, 0.0);
+        assertEquals(erabiltzaileak.get(0).getDiru_kopuru_momentukoa(), 500.0, 0.0);
+        assertEquals(erabiltzaileak.get(0).getTlf_zenabkia(), "666777888");
+        assertEquals(erabiltzaileak.get(0).getPostaKodea(), "48001");
+        assertEquals(erabiltzaileak.get(0).getHerrialdea(), "Espainia");
+        assertEquals(erabiltzaileak.get(0).getProbintzia(), "Gipuzkoa");
+        assertEquals(erabiltzaileak.get(0).getHerria(), "Donostia");
+        assertEquals(erabiltzaileak.get(0).getJaioteguna(), "2000-01-01");
+        assertEquals(erabiltzaileak.get(0).getAbizena(), "Pérez");
+        assertEquals(erabiltzaileak.get(0).getIzena(), "Juan");
+        assertEquals(erabiltzaileak.get(0).getPasahitza(), "1234");     
+        
+        
+        //Langileak konprobatu
+        assertEquals(langileak.get(0).getId_langile(), 1);
+        assertEquals(langileak.get(0).getId_kasino(), 1);
+        assertEquals(langileak.get(0).getNAN(), "98765432B");
+        assertEquals(langileak.get(0).getIzena(), "Ana");
+        assertEquals(langileak.get(0).getAbizena(), "García");
+        assertEquals(langileak.get(0).getPasahitza(), "admin");
+        assertEquals(langileak.get(1).getId_langile(), 2);
+        assertEquals(langileak.get(1).getId_kasino(), 1);
+        assertEquals(langileak.get(1).getNAN(), "12345678B");
+        assertEquals(langileak.get(1).getIzena(), "Pablo");
+        assertEquals(langileak.get(1).getAbizena(), "López");
+        assertEquals(langileak.get(1).getPasahitza(), "admin");
     }
 }

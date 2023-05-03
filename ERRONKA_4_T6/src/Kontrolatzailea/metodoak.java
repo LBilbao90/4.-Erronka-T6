@@ -288,7 +288,7 @@ public class metodoak {
 	    return apostuOrain;
 	}
 	
-	public int apostuKolorea(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] kolorea) {
+	public static int apostuKolorea(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] kolorea) {
 	    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
 	        kolorea[zbkApostua] = kolorea[zbkApostua] + 10;
 	        apostuOrain = apostuOrain + 10;
