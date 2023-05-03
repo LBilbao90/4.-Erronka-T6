@@ -13,17 +13,29 @@ import Modelo.Erabiltzaile;
 import Modelo.Maila;
 
 public class datuBaseKarga {
-	
-    public static void karga() {
+    static ArrayList<Erabiltzaile> erabiltzaileak = new ArrayList<Erabiltzaile>();
+    static ArrayList<Admin> langileak = new ArrayList<Admin>();
+    static ArrayList<Maila> mailak = new ArrayList<Maila>();
+    
+    public static ArrayList<Erabiltzaile> getErabiltzaileak() {
+		return erabiltzaileak;
+	}
+
+	public static ArrayList<Admin> getLangileak() {
+		return langileak;
+	}
+
+	public static ArrayList<Maila> getMailak() {
+		return mailak;
+	}
+
+	public static void karga() {
         final String url = "jdbc:mysql://localhost:3306/kasinoa"; //url de la base de datos de phpmyadmin
         final String erabiltzaileKontsulta = "*";
         final String langileKontsulta = "*";
         final String mailaKontsulta = "*";
         
         Connection connection = null;
-        ArrayList<Erabiltzaile> erabiltzaileak = new ArrayList<Erabiltzaile>();
-        ArrayList<Admin> langileak = new ArrayList<Admin>();
-        ArrayList<Maila> mailak = new ArrayList<Maila>();
 
         try {
             connection = DriverManager.getConnection(url, "root", ""); //usuario y contrase�a user: root password: 

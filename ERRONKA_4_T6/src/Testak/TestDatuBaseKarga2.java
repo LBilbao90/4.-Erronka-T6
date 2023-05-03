@@ -29,22 +29,28 @@ public class TestDatuBaseKarga2 {
     }
 
     @Test
-    public void testKarga() {
-        // Call the karga() method
+    public void testKargaMaila() {
         datuBaseKarga.karga();
-
-        assertNotNull(erabiltzaileak);
-        assertNotNull(langileak);
-        assertNotNull(mailak);
         
+        assertNotNull(mailak);
+       
         //Mailak konprobatu
         assertEquals(mailak.get(0).getId_maila(), 1);
-        assertEquals(mailak.get(0).getMaila_izena(), "Maila 1");
-        assertEquals(mailak.get(0).getApostu_max(), 1000.0, 0.0);
+        assertEquals(mailak.get(0).getMaila_izena(), "Brontze");
+        assertEquals(mailak.get(2).getApostu_max(), 100.0);
         assertEquals(mailak.get(1).getId_maila(), 2);
-        assertEquals(mailak.get(1).getMaila_izena(), "Maila 2");
-        assertEquals(mailak.get(1).getApostu_max(), 5000.0, 0.0);
+        assertEquals(mailak.get(1).getMaila_izena(), "Zilarra");
+        assertEquals(mailak.get(2).getApostu_max(), 500.0);
+        assertEquals(mailak.get(2).getId_maila(), 3);
+        assertEquals(mailak.get(2).getMaila_izena(), "Urrea");
+        assertEquals(mailak.get(2).getApostu_max(), 1000.0);
         
+    }
+    @Test
+    public void testKargaErabiltzailea() {
+         datuBaseKarga.karga();
+            
+         assertNotNull(erabiltzaileak);
         //Erabiltzaileak konprobatu
         assertEquals(erabiltzaileak.get(0).getNAN(), "12345678A");
         assertEquals(erabiltzaileak.get(0).getId_maila(), 1);
@@ -60,7 +66,12 @@ public class TestDatuBaseKarga2 {
         assertEquals(erabiltzaileak.get(0).getIzena(), "Juan");
         assertEquals(erabiltzaileak.get(0).getPasahitza(), "1234");     
         
-        
+    }
+    @Test
+    public void testKargaLangilea() {
+         datuBaseKarga.karga();
+            
+         assertNotNull(langileak);
         //Langileak konprobatu
         assertEquals(langileak.get(0).getId_langile(), 1);
         assertEquals(langileak.get(0).getId_kasino(), 1);
