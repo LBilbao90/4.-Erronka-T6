@@ -79,7 +79,6 @@ public class lehenLehioa extends JFrame {
 	int screenHeight = (int) (screenSize.height * 0.75);
 	int screenWidth = (int) (screenSize.width * 0.75);
 
-//    ruletaApostua ruleta = new ruletaApostua();
 
     private static lehenLehioa lehenLehioaframe = new lehenLehioa();
     
@@ -416,7 +415,7 @@ public class lehenLehioa extends JFrame {
 		//Login botoia akzioak
 		btnLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		String erabiltzailea = textErabiltzailea.getText();
+	    		String erabiltzailea = textErabiltzailea.getText().toUpperCase();
 	    		char[] pasahitza = passwordLogin.getPassword();
 	    		System.out.println(erabiltzailea + "    " + pasahitza);
 	    		boolean loginOndo = metodoak.loginBalidazioa(erabiltzailea, pasahitza);
@@ -451,7 +450,7 @@ public class lehenLehioa extends JFrame {
 	    	    	}
 	    	});
 		
-		
+		 
 		//'bukatu img' botoia 'erregistrati' panelean dagoena. Aplikazioa bukatzen du.
 	    itxiErregistratu.addActionListener(new ActionListener() {
 			@Override
@@ -465,7 +464,7 @@ public class lehenLehioa extends JFrame {
 	    	public void actionPerformed(ActionEvent e) {
 	    		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	    		
-	    		String NAN = textNAN.getText();
+	    		String NAN = textNAN.getText().toUpperCase();
 	    		String izena = textIzena.getText();
 	    		String abizena = textAbizena.getText();
 	    		String pasahitza = textPasahitzaErregistratu.getText();
