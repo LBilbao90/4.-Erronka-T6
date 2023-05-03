@@ -139,7 +139,7 @@ public class metodoak {
 	    return textField;
 	}
 	
-	public static JTextArea createTextFieldBete ( int x, int y, int width, int height, Font font,JPanel erregistratu) {
+	public static JTextArea createTextFieldBete (int x, int y, int width, int height, Font font,JPanel erregistratu) {
 		JTextArea JTextArea = new JTextArea();
 		JTextArea.setBounds(x, y, width, height);
 		JTextArea.setFont(font);
@@ -323,10 +323,6 @@ public class metodoak {
 	    }
 	    return apostuOrain;
 	}
-	
-	// RULETA JOKOA
-	
-
     
     // Ruletan irten den zenbakia kalkulatzen du, ruletaren angeluaren eta zenbakien ordenen arabera.
     public static int ruletakoZbkKalkulatu(double angelu) {
@@ -462,11 +458,8 @@ public class metodoak {
 	 	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
 	 	    
 	 	    for (Erabiltzaile erabiltzaile : erabiltzaileak) {
-	 	        System.err.println(erabiltzaile.getNAN());
-	 	        System.err.println(NAN);
 	 	        if (erabiltzaile.getNAN().equals(NAN)) {
 	 	            existitu = true;
-	 	            System.out.println("Existitzen da");
 	 	            break;
 	 	        }
 	 	    }
