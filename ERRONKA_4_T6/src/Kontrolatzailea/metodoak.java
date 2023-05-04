@@ -8,6 +8,10 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -496,4 +500,20 @@ public class metodoak {
 	 	    }
 	 	    return tlf_zuzena;
 	 	}
+	 	
+	 	public static void txtIdatzi(String texto) {
+	        File file = new File("src/LOG.txt");
+
+	        try {
+	            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+	            bw.write(texto);
+	            bw.close();
+	            System.out.println("Texto escrito en el archivo.");
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	 	
+	 	
 }

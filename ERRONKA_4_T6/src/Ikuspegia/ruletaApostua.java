@@ -13,7 +13,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -47,7 +49,12 @@ public class ruletaApostua extends JFrame {
     Set<Integer> eskerrEskuin3 = new HashSet<>(List.of(3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36));
     private int ruletaEmaitza;
     
+    Date momentukoData = new Date();
 
+    SimpleDateFormat formaData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String denboraOrduaMomentukoa = formaData.format(momentukoData);
+    
+    String emaitzaApostu;
     Timer timer = new Timer();
 
     private static btnJokoetaraBueltatuListener btnJokoetaraBueltatuListener;
@@ -698,13 +705,18 @@ public class ruletaApostua extends JFrame {
 		    			}
 		    			System.out.println(guztiraIrabaziak);
 		    			if (guztiraIrabaziak > 0 && guztiraIrabaziak > apostuOrain) {
-		    				JOptionPane.showMessageDialog(btnApostuaEgin, "Zorionak! Irabazitakoa: " + guztiraIrabaziak);
+		    				emaitzaApostu = "Zorionak! Irabazitakoa: " + guztiraIrabaziak;
+		    				JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
+		    				
 		    			} else if (guztiraIrabaziak == apostuOrain){
-		    				JOptionPane.showMessageDialog(btnApostuaEgin, "Berdin gelditzen zara");
+		    				emaitzaApostu = "Berdin gelditzen zara";
+		    				JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
 		    			} else {
-		    				 JOptionPane.showMessageDialog(btnApostuaEgin, "Ez duzu ezer irabazi :(");
+		    				emaitzaApostu = "Ez duzu ezer irabazi :(";
+		    				 JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
 		    			}
 		    			
+		    			metodoak.txtIdatzi(denboraOrduaMomentukoa + " | Ruleta emaitza: " + ruletaEmaitza + " | Apostua emaitza: " + emaitzaApostu);
 						apostuOrain = 0;
 						Arrays.fill(zbk, 0);
 						Arrays.fill(dozenak, 0);

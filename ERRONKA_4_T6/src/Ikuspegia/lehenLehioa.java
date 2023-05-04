@@ -78,6 +78,8 @@ public class lehenLehioa extends JFrame {
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	int screenHeight = (int) (screenSize.height * 0.75);
 	int screenWidth = (int) (screenSize.width * 0.75);
+	
+	private String momentukoErabiltzaileNAN = "";
 
 
     private static lehenLehioa lehenLehioaframe = new lehenLehioa();
@@ -420,12 +422,12 @@ public class lehenLehioa extends JFrame {
 		//Login botoia akzioak
 		btnLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		String erabiltzailea = textErabiltzailea.getText().toUpperCase();
+	    		String NAN = textErabiltzailea.getText().toUpperCase();
 	    		char[] pasahitza = passwordLogin.getPassword();
-	    		System.out.println(erabiltzailea + "    " + pasahitza);
-	    		boolean loginOndo = metodoak.loginBalidazioa(erabiltzailea, pasahitza);
+	    		boolean loginOndo = metodoak.loginBalidazioa(NAN, pasahitza);
 			        
 	    		if (loginOndo) {
+	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
 	    			metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
@@ -486,7 +488,6 @@ public class lehenLehioa extends JFrame {
 	    		String herria = textHerria.getText();
 	    		String postaKodea = textPostaKodea.getText();
 	    		String telefonoZbk = textTelefonoa.getText();
-	    		System.out.println("NANa hau da: " + NAN);
 
 	    		if (NAN.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || jaiotzeDataString.isEmpty() || herrialdea.isEmpty() || probintzia.isEmpty() || herria.isEmpty() || postaKodea.isEmpty() || telefonoZbk.isEmpty()) {
 	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
@@ -501,6 +502,7 @@ public class lehenLehioa extends JFrame {
 						    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
 						    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
 						    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
+						    	    	momentukoErabiltzaileNAN = NAN;
 						    		    textNAN.setText("");
 						    		    textIzena.setText("");
 						    		    textAbizena.setText("");
@@ -511,6 +513,7 @@ public class lehenLehioa extends JFrame {
 						    		    textHerria.setText("");
 						    		    textPostaKodea.setText("");
 						    		    textTelefonoa.setText("");
+						    		    System.out.println(momentukoErabiltzaileNAN);
 						    	    } else {
 						    	    	JOptionPane.showMessageDialog(erregistratu, "Badirudi dagoeneko badagoela kontu bat sortuta " + NAN + " NANarekin.\r\nDagoeneko erregistratuta bazaude hasi saioa, eta bestela erregistraru gabeko NAN bat erabili.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
 						    	    }
