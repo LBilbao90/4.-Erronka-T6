@@ -8,6 +8,8 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -17,6 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import org.junit.Test;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 import Ikuspegia.ruletaApostua;
 import Kontrolatzailea.datuBaseKarga;
@@ -576,14 +581,31 @@ public class TestMetodoak {
     @Test
     public void testErregistroaInsert() {
     	datuBaseKarga.karga();
+    	String NAN = "45983123Y";
+    	String izena = "Unax";
+    	String abizena = "Zulaika";
+    	String pasahitza = "elorrieta00";
+    	String jaiotzeData = "2004-03-09";
+    	String herria = "Elgoibar";
+    	String probintzia = "Gipuzkoa";
+    	String herrialdea = "Euskla Herria";
+    	String postaKodea = "20870";
+    	String telefonoZbk = "666999666";
     	
-    	// assertTrue-eko lehen bariablea aldatu behar da proba kasu bakoitza egitarakoan,
-    	// metodoaren erabiltzen duelako eta NAN horrekin erabiltzaile berri bat egiten du,
-    	// NAN bera uzten bada, hurrengo proban errorea emango du.
-    	assertTrue(metodoak.erregistroaInsert("45983123Y", "Unax", "Zulaika", "elorrieta00", "2004-03-09", "Euskal Herria", "Gipuzkoa", "Elgoibar", "20870", "666999666"));
+    	assertTrue(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeData, herrialdea, probintzia, herria, postaKodea, telefonoZbk));
     	assertFalse(metodoak.erregistroaInsert("12345678A", "jgarcia", "Garcia", "elorrieta00", "1990-01-01", "Gipuzkoa", "Gipuzkoa", "Donostia", "12345", "666999666"));
 
-    	
-    }
-    
+    	Connection conn;
+    	 try {
+    		 String url = "jdbc:mysql://localhost:3306/kasinoa";
+             conn = (Connection) DriverManager.getConnection (url, "root","");
+             Statement comando = (Statement) conn.createStatement();                     
+             comando.executeUpdate("DELETE FROM erabiltzaile_kontua WHERE NAN='" + NAN + "';");
+             conn.close();
+         }catch(SQLException ex) {
+        	 System.out.println("SQLException: "+ ex.getMessage());
+        	 System.out.println("SQLState: "+ ex.getSQLState());
+        	 System.out.println("ErrorCode: "+ ex.getErrorCode());
+         }	
+    } 
 }
