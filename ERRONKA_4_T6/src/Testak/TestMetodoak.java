@@ -608,4 +608,20 @@ public class TestMetodoak {
         	 System.out.println("ErrorCode: "+ ex.getErrorCode());
          }	
     } 
+    
+    
+    @Test
+    public void testTlfZuzena() {
+        assertTrue(metodoak.tlfZenbakia("123456789"));
+    }
+
+    @Test
+    public void testTlfLuzeeraOkerra() {
+        assertFalse(metodoak.tlfZenbakia("12345678"));
+    }
+
+    @Test
+    public void testTlfLetrekin() {
+        assertFalse(metodoak.tlfZenbakia("12a456789"));
+    }
 }

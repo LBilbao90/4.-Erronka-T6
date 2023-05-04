@@ -487,7 +487,8 @@ public class lehenLehioa extends JFrame {
 	    		if (NAN.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || jaiotzeDataString.isEmpty() || herrialdea.isEmpty() || probintzia.isEmpty() || herria.isEmpty() || postaKodea.isEmpty() || telefonoZbk.isEmpty()) {
 	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
 	    	    } else if (metodoak.nanBalidatu(NAN)) {
-	    	    	if (metodoak.zbkDa(postaKodea) && postaKodea.length() == 5) {
+	    	    	if(metodoak.tlfZenbakia(telefonoZbk)==true) {
+	    	    		if (metodoak.zbkDa(postaKodea) && postaKodea.length() == 5) {
 				    	    if(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 				    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
 				    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
@@ -508,11 +509,13 @@ public class lehenLehioa extends JFrame {
 	    	    	} else {
 	    	    		JOptionPane.showMessageDialog(erregistratu, "Posta kode okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
 	    	    	}
+	    	    	} else {
+	    	    		JOptionPane.showMessageDialog(erregistratu, "Telefono zenbaki okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	    	    	}
+	    	    	
 	    		} else {
 	    			JOptionPane.showMessageDialog(erregistratu, "NAN okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
 	    		}
-	    		
-
 	    	}
 	    });
 	    

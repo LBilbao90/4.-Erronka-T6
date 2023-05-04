@@ -481,5 +481,19 @@ public class metodoak {
 	        return erregistratuta;
 	    }
 	 	
-	 	
+	 	public static boolean tlfZenbakia (String tlf) {
+	 		boolean tlf_zuzena= true;
+	 	    // Konprobatu 9ko luzeera daukala
+	 	    if (tlf.length() != 9) {
+	 	    	tlf_zuzena= false;
+	 	    }
+	 	    
+	 	    // Konprobatu ea guztia zenbakiak diren
+	 	    for (int i = 0; i < tlf.length(); i++) {
+	 	        if (!Character.isDigit(tlf.charAt(i))) {
+	 	        	tlf_zuzena= false;
+	 	        }
+	 	    }
+	 	    return tlf_zuzena;
+	 	}
 }
