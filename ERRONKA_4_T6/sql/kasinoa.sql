@@ -61,7 +61,7 @@ CREATE TABLE `erabiltzaile_kontua` (
   `diru_kopuru_momentukoa` double UNSIGNED NOT NULL,
   `tlf_zenbakia` char(9) NOT NULL,
   `posta_Kodea` int(10) UNSIGNED NOT NULL,
-  `herialdea` varchar(100) NOT NULL,
+  `herrialdea` varchar(100) NOT NULL,
   `probintzia` varchar(100) NOT NULL,
   `herria` varchar(50) NOT NULL,
   `jaiotze_data` date NOT NULL DEFAULT current_timestamp(),
@@ -74,7 +74,7 @@ CREATE TABLE `erabiltzaile_kontua` (
 -- Volcado de datos para la tabla `erabiltzaile_kontua`
 --
 
-INSERT INTO `erabiltzaile_kontua` (`NAN`, `id_maila`, `diru_kopuru_historikoa`, `diru_kopuru_momentukoa`, `tlf_zenbakia`, `posta_Kodea`, `herialdea`, `probintzia`, `herria`, `jaiotze_data`, `abizena`, `erabiltzaile_izena`, `pasahitza`) VALUES
+INSERT INTO `erabiltzaile_kontua` (`NAN`, `id_maila`, `diru_kopuru_historikoa`, `diru_kopuru_momentukoa`, `tlf_zenbakia`, `posta_Kodea`, `herrialdea`, `probintzia`, `herria`, `jaiotze_data`, `abizena`, `erabiltzaile_izena`, `pasahitza`) VALUES
 ('12345678Z', 1, 30, 30, '666999666', 20870, 'Euskal Herria', 'Gipuzkoa', 'Elgoibar', '2000-01-01', 'ProbaKontua1', 'ProbaKontua1', 'Elorrieta00'),
 ('23456789D', 1, 30, 30, '999666999', 20870, 'Euskal Herria', 'Gipuzkoa', 'Elgoibar', '2001-02-02', 'ProbaKontua2', 'ProbaKontua2', 'Elorrieta00');
 

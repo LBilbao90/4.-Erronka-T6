@@ -485,6 +485,35 @@ public class metodoak {
 	        return erregistratuta;
 	    }
 	 	
+	 	public static boolean erabiltzaileUpdate(String NAN, String erabiltzaileIzena, String pasahitza, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk) {
+	 	    boolean modificado = false;
+	 	    Connection conn;
+	 	    try {
+	 	    	String url = "jdbc:mysql://localhost:3306/kasinoa";
+                conn = (Connection) DriverManager.getConnection (url, "root","");
+                Statement comando = (Statement) conn.createStatement();      
+                
+                comando.executeUpdate("UPDATE erabiltzaile_kontua SET erabiltzaile_izena = '" + erabiltzaileIzena + "', pasahitza = '" + pasahitza + "', herialdea = '" + herrialdea + "', probintzia = '" + probintzia + "', herria = '" + herria + "', posta_Kodea = '" + postaKodea + "', tlf_zenbakia = '" + telefonoZbk + "' WHERE NAN = '" + NAN + "'");
+
+
+	 	        int rowsAffected = comando.getUpdateCount();
+	 	        if (rowsAffected > 0) {
+	 	            modificado = true;
+	 	            System.out.println("ondo");
+	 	        } else {
+	 	        	System.err.println("gaizki");
+	 	        }
+
+	 	        conn.close();
+	 	    } catch (SQLException ex) {
+	 	        System.out.println("SQLException: " + ex.getMessage());
+	 	        System.out.println("SQLState: " + ex.getSQLState());
+	 	        System.out.println("ErrorCode: " + ex.getErrorCode());
+	 	    }
+	 	    return modificado;
+	 	}
+
+	 	
 	 	public static boolean tlfZenbakia (String tlf) {
 	 		boolean tlf_zuzena= true;
 	 	    // Konprobatu 9ko luzeera daukala
@@ -521,5 +550,38 @@ public class metodoak {
 	 			e.printStackTrace();
 	 		}
 	 	}
+	 	
+	 	public static boolean baliozkoEremuak(String NAN, String izena, String abizena, String pasahitza, String jaiotzeDataString, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk, JPanel erregistratu) {
+	 	    if (NAN.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || jaiotzeDataString.isEmpty() || herrialdea.isEmpty() || probintzia.isEmpty() || herria.isEmpty() || postaKodea.isEmpty() || telefonoZbk.isEmpty()) {
+	 	        JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	 	        return false;
+	 	    } else if (metodoak.nanBalidatu(NAN)) {
+	 	        if (izena.length() < 4) {
+	 	            JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile izenak gutxienez 4 karaktere eduki behar ditu.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	 	            return false;
+	 	        } else {
+	 	            if (metodoak.pasahitzaKonprobatu(pasahitza)) {
+	 	                if (metodoak.tlfZenbakia(telefonoZbk) == true) {
+	 	                    if (metodoak.zbkDa(postaKodea) && postaKodea.length() == 5) {
+	 	                        return true;
+	 	                    } else {
+	 	                        JOptionPane.showMessageDialog(erregistratu, "Posta kode okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	 	                        return false;
+	 	                    }
+	 	                } else {
+	 	                    JOptionPane.showMessageDialog(erregistratu, "Telefono zenbaki okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	 	                    return false;
+	 	                }
+	 	            } else {
+	 	                JOptionPane.showMessageDialog(erregistratu, "Pasahitzak ez ditu baldintza denak betetzen.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	 	                return false;
+	 	            }
+	 	        }
+	 	    } else {
+	 	        JOptionPane.showMessageDialog(erregistratu, "NAN okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	 	        return false;
+	 	    }
+	 	}
+
 	 	
 }

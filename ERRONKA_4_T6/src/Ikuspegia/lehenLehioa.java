@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -21,6 +22,8 @@ import javax.swing.border.EmptyBorder;
 
 import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
+import Modelo.Erabiltzaile;
+import Modelo.Pertsona;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -62,7 +65,6 @@ public class lehenLehioa extends JFrame {
 	private JTextArea textIzena;
 	private JTextArea textAbizena;
 	private JPasswordField textPasahitzaErregistratu;
-	private JTextArea textErrepikatuPasahitza;
 	private JDatePicker dateJaiotzaData;
 	private JTextArea textHerrialdea;
 	private JTextArea textProbintzia;
@@ -70,6 +72,17 @@ public class lehenLehioa extends JFrame {
 	private JTextArea textPostaKodea;
 	private JTextArea textTelefonoa;
 	private JTextField textJokoak;
+	private JTextArea textNAN2;
+	private JTextArea textIzena2;
+	private JTextArea textAbizena2;
+	private JPasswordField textPasahitza2;
+	private JDatePicker dateJaiotzaData2;
+	private JTextArea textHerrialdea2;
+	private JTextArea textProbintzia2;
+	private JTextArea textHerria2;
+	private JTextArea textPostaKodea2;
+	private JTextArea textTelefonoa2;
+	private JTextField textJokoak2;
 	
     private ImageIcon irtenImg = new ImageIcon("img/bukatu.png");
     private ImageIcon atzeraGezia = new ImageIcon("img/atzeraGezia.png");
@@ -320,7 +333,6 @@ public class lehenLehioa extends JFrame {
 	    textIzena.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textAbizena.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textPasahitzaErregistratu.setBorder(new LineBorder(new Color(0, 0, 0)));
-	 //   textJaiotzeData.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textHerrialdea.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textProbintzia.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textHerria.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -399,6 +411,94 @@ public class lehenLehioa extends JFrame {
 	    btnBlackJackJokoa.setContentAreaFilled(false); // make the content area of the button transparent
 	    btnBlackJackJokoa.setBorderPainted(false); // remove the border of the button
 	    jokoak.add(btnBlackJackJokoa);
+	    
+	    //erabiltzaileDatuak panelera joateko botoia
+	    JButton btnJokotikErabiltzaileDatu = new JButton("Nire datuak aldatu");
+	    btnJokotikErabiltzaileDatu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    btnJokotikErabiltzaileDatu.setBounds((int) (screenWidth*0.80), (int) (screenHeight*0.80), (int) (screenWidth*0.17), 50);
+	    btnJokotikErabiltzaileDatu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	    jokoak.add(btnJokotikErabiltzaileDatu);
+	    
+	    JPanel erabiltzaileDatuak = new JPanel();
+	    erabiltzaileDatuak.setBorder(null);
+	    erabiltzaileDatuak.setBounds(0, 0, screenWidth, screenHeight);
+	    contentPane.add(erabiltzaileDatuak);
+	    erabiltzaileDatuak.setLayout(null);
+	    
+	  //erabiltzaileDatuak testuak
+	    txtNAN = metodoak.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtIzena = metodoak.createTextFieldTestua("Nickname:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtIzena.setToolTipText("Gutxienez 4 karaktereko luzeera eduki behar du erabiltzaile izenak");
+	    txtAbizena = metodoak.createTextFieldTestua("Abizena:", (int) (screenWidth*0.07), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtPasahitzaErregistratu = metodoak.createTextFieldTestua("Pasahitza:", (int) (screenWidth*0.07), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtPasahitzaErregistratu.setToolTipText("Gutxienes 6 karaktereko luzeera eta gehienez 32 karaktere. Maiuskula 1, minuskula 1 eta zenbaki 1");
+	    txtJaiotzeData = metodoak.createTextFieldTestua("Jaiotze data:", (int) (screenWidth*0.07), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtHerrialdea = metodoak.createTextFieldTestua("Herrialdea:", (int) (screenWidth*0.52), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtProbintzia = metodoak.createTextFieldTestua("Probintzia:", (int) (screenWidth*0.52), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtHerria = metodoak.createTextFieldTestua("Herria:", (int) (screenWidth*0.52), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtPostaKodea = metodoak.createTextFieldTestua("Posta kodea:", (int) (screenWidth*0.52), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtPostaKodea.setToolTipText("5 zenbaki eduki behar ditu");
+	    txtTelefonoa = metodoak.createTextFieldTestua("Telefonoa:", (int) (screenWidth*0.52), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);	
+	    txtTelefonoa.setToolTipText("9 zenbaki eduki behar ditu");
+	    
+	    //erregistroa betetzeko textField
+	    textNAN2 = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textIzena2 = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textIzena2.setToolTipText("Gutxienez 4 karaktereko luzeera eduki behar du erabiltzaile izenak");
+	    textAbizena2 = metodoak.createTextFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textPasahitza2 = metodoak.createPasswordFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textPasahitza2.setToolTipText("Gutxienes 6 karaktereko luzeera eta gehienez 32 karaktere. Maiuskula 1, minuskula 1 eta zenbaki 1");
+	    JDateChooser dateJaiotzaData2 = new JDateChooser();
+	    dateJaiotzaData2.setBounds((int) (screenWidth*0.25), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30);
+        font = new Font("Arial", Font.PLAIN, 12);
+        dateJaiotzaData2.setFont(font);
+        // Momentuko data artzeko
+        momentukoData = LocalDate.now();
+        // Data minimoa. 18 urte,
+        dataMin = momentukoData.minusYears(18);
+        // LocalDate aldatzeko Date-ra.
+        dataMinJDateChooser = Date.from(dataMin.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dateJaiotzaData.setMaxSelectableDate(dataMinJDateChooser);
+        erabiltzaileDatuak.add(dateJaiotzaData2);
+        dateJaiotzaData2.setEnabled(false);
+	    textHerrialdea2 = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textProbintzia2 = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textHerria2 = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textPostaKodea2 = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textPostaKodea2.setToolTipText("5 zenbaki eduki behar ditu");
+	    textTelefonoa2 = metodoak.createTextFieldBete((int) (screenWidth*0.72), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);	
+	    textTelefonoa2.setToolTipText("9 zenbaki eduki behar ditu");
+	    
+	    textNAN2.setEnabled(false);
+	    textAbizena2.setEnabled(false);
+        dateJaiotzaData2.setEnabled(false);
+
+	    // erabiltzaileDatuak textFieldak borde beltzarekin
+	    textNAN.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textIzena.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textAbizena.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textPasahitzaErregistratu.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textHerrialdea.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textProbintzia.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textHerria.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textPostaKodea.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    textTelefonoa.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    
+	    // erabiltzaileDatuak aldatzeko botoia
+	    JButton btnAldatuErabiltzaileDatu = new JButton("Aldaketak aplikatu");
+	    btnAldatuErabiltzaileDatu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    btnAldatuErabiltzaileDatu.setOpaque(false); // transparente
+	    btnAldatuErabiltzaileDatu.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
+	    erabiltzaileDatuak.add(btnAldatuErabiltzaileDatu);
+	    
+		// Jokoak buelatzeko botoia
+	    JButton btnJokoraBuelta = new JButton("");
+	    btnJokoraBuelta.setIcon(atzeraGezia);
+	    btnJokoraBuelta.setContentAreaFilled(false);
+	    btnJokoraBuelta.setBorderPainted(false);
+	    btnJokoraBuelta.setFocusPainted(false);
+	    btnJokoraBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.20), 70);
+	    erabiltzaileDatuak.add(btnJokoraBuelta);
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
@@ -491,47 +591,27 @@ public class lehenLehioa extends JFrame {
 	    		String herria = textHerria.getText();
 	    		String postaKodea = textPostaKodea.getText();
 	    		String telefonoZbk = textTelefonoa.getText();
-
-	    		if (NAN.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || jaiotzeDataString.isEmpty() || herrialdea.isEmpty() || probintzia.isEmpty() || herria.isEmpty() || postaKodea.isEmpty() || telefonoZbk.isEmpty()) {
-	    	    	JOptionPane.showMessageDialog(erregistratu, "Mesedez, bete aurreko eremu guztiak", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-	    	    } else if (metodoak.nanBalidatu(NAN)) {
-	    	    	if (izena.length() < 4) {
-	    	    		JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile izenak gutxienez 4 karaktere eduki behar ditu.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-	    	    	} else {
-	    	    		if (metodoak.pasahitzaKonprobatu(pasahitza)) {
-	    	    			if(metodoak.tlfZenbakia(telefonoZbk)==true) {
-			    	    		if (metodoak.zbkDa(postaKodea) && postaKodea.length() == 5) {
-						    	    if(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
-						    	    	JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
-						    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
-						    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
-						    	    	momentukoErabiltzaileNAN = NAN;
-						    		    textNAN.setText("");
-						    		    textIzena.setText("");
-						    		    textAbizena.setText("");
-						    		    textPasahitzaErregistratu.setText("");
-						    		    dateJaiotzaData.setDate(null);
-						    		    textHerrialdea.setText("");
-						    		    textProbintzia.setText("");
-						    		    textHerria.setText("");
-						    		    textPostaKodea.setText("");
-						    		    textTelefonoa.setText("");
-						    		    System.out.println(momentukoErabiltzaileNAN);
-						    	    } else {
-						    	    	JOptionPane.showMessageDialog(erregistratu, "Badirudi dagoeneko badagoela kontu bat sortuta " + NAN + " NANarekin.\r\nDagoeneko erregistratuta bazaude hasi saioa, eta bestela erregistraru gabeko NAN bat erabili.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-						    	    }
-				    	    	} else {
-				    	    		JOptionPane.showMessageDialog(erregistratu, "Posta kode okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-				    	    	}
-			    	    	} else {
-			    	    		JOptionPane.showMessageDialog(erregistratu, "Telefono zenbaki okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-			    	    	}
-	    	    		} else {
-	    	    			JOptionPane.showMessageDialog(erregistratu, "Pasahitzak ez ditu baldintza denak betetzen.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-	    	    		}
-	    	    	}
-	    		} else {
-	    			JOptionPane.showMessageDialog(erregistratu, "NAN okerra.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+	
+	    		if(metodoak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
+	    			if(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
+		    			JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
+		    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
+		    	    	momentukoErabiltzaileNAN = NAN;
+		    		    textNAN.setText("");
+		    		    textIzena.setText("");
+		    		    textAbizena.setText("");
+		    		    textPasahitzaErregistratu.setText("");
+		    		    dateJaiotzaData.setDate(null);
+		    		    textHerrialdea.setText("");
+		    		    textProbintzia.setText("");
+		    		    textHerria.setText("");
+		    		    textPostaKodea.setText("");
+		    		    textTelefonoa.setText("");
+		    		    System.out.println(momentukoErabiltzaileNAN);
+	    			} else {
+		    	    	JOptionPane.showMessageDialog(erregistratu, "Badirudi dagoeneko badagoela kontu bat sortuta " + NAN + " NANarekin.\r\nDagoeneko erregistratuta bazaude hasi saioa, eta bestela erregistraru gabeko NAN bat erabili.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+		    	    }
 	    		}
 	    	}
 	    });
@@ -580,6 +660,54 @@ public class lehenLehioa extends JFrame {
 	    	}	
 	    });
 	    
+	    // 'Login'era 'jokoak'etik
+	    btnJokotikErabiltzaileDatu.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		metodoak.btn3secDelay(erabiltzaileDatuak, 0, sarrera, login, erregistratu, jokoak, e);
+	    		setTitle("Erabiltzaile Datuak | Elorrieta Kasinoa �");
+	    		
+	    		datuBaseKarga.karga();
+	 	 	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
+
+		 	 	Erabiltzaile erabiltzailea = null;
+	
+		 	 	for (Erabiltzaile erabiltzaile : erabiltzaileak) {
+		 	 	    if (erabiltzaile.getNAN().equals(momentukoErabiltzaileNAN)) {
+		 	 	    	erabiltzailea = erabiltzaile;
+		 	 	        break;
+		 	 	    }
+		 	 	}
+	 	 	    
+	 	 	    for (Erabiltzaile erabiltzaile : erabiltzaileak) {
+	 	 	        if (erabiltzaile.getNAN().equals(momentukoErabiltzaileNAN)) {
+	 	 	            break;
+	 	 	        }
+	 	 	    }
+	    		
+	    		textNAN2.setText(momentukoErabiltzaileNAN);
+	    		textIzena2.setText(erabiltzailea.getIzena());
+	    		textAbizena2.setText(erabiltzailea.getAbizena());
+	    		textPasahitza2.setText(erabiltzailea.getPasahitza());
+	    		dateJaiotzaData2.setDate(erabiltzailea.getJaioteguna());
+	    		textHerrialdea2.setText(erabiltzailea.getHerrialdea());
+	    		textProbintzia2.setText(erabiltzailea.getProbintzia());
+	    		textHerria2.setText(erabiltzailea.getHerria());
+	    		textPostaKodea2.setText(erabiltzailea.getPostaKodea());
+	    		textTelefonoa2.setText(erabiltzailea.getTlf_zenabkia());
+//    		    textNAN2.setVisible(true);
+//    		    textIzena2.setVisible(true);
+//    		    textAbizena2.setVisible(true);
+//    		    textPasahitza2.setVisible(true);
+//    		    dateJaiotzaData2.setVisible(true);
+//    		    textHerrialdea2.setVisible(true);
+//    		    textProbintzia2.setVisible(true);
+//    		    textHerria2.setVisible(true);
+//    		    textPostaKodea2.setVisible(true);
+//    		    textTelefonoa2.setVisible(true);
+//    		    btnAldatuErabiltzaileDatu.setVisible(true);
+	    	}
+	    });
+	    
 	    ruletaApostua.setBtnJokoetaraBueltatuListener(new btnJokoetaraBueltatuListener() {
 			
 			@Override
@@ -597,5 +725,80 @@ public class lehenLehioa extends JFrame {
 				metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, null);
 			}
 		});	
+	    
+	    btnJokoraBuelta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+    	    	setTitle("Hasi saioa | Elorrieta Kasinoa �");
+    		    textNAN.setText("");
+    		    textIzena.setText("");
+    		    textAbizena.setText("");
+    		    textPasahitzaErregistratu.setText("");
+    		    dateJaiotzaData.setDate(null);
+    		    textHerrialdea.setText("");
+    		    textProbintzia.setText("");
+    		    textHerria.setText("");
+    		    textPostaKodea.setText("");
+    		    textTelefonoa.setText("");
+			}
+		});
+	    
+	    //Erregistratu botoiaren akzioak
+	    btnAldatuErabiltzaileDatu.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    		
+	    		String NAN = textNAN2.getText().toUpperCase();
+	    		String izena = textIzena2.getText();
+	    		String abizena = textAbizena2.getText();
+	    		String pasahitza = textPasahitza2.getText();
+	    		Date jaiotzeData;
+	    		String jaiotzeDataString = "";
+	    		try {
+	    			jaiotzeData = dateJaiotzaData2.getDate();
+	    			jaiotzeDataString = sdf.format(jaiotzeData);
+	    		} catch (NullPointerException ex) {
+	    		    System.err.println("Ez da datarik aukeratu");
+	    		}
+	    		String herrialdea = textHerrialdea2.getText();
+	    		String probintzia = textProbintzia2.getText();
+	    		String herria = textHerria2.getText();
+	    		String postaKodea = textPostaKodea2.getText();
+	    		String telefonoZbk = textTelefonoa2.getText();
+
+	    		if(metodoak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
+	    			if(metodoak.erabiltzaileUpdate(NAN, izena, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
+		    			JOptionPane.showMessageDialog(erregistratu, textIzena2.getText()+ ", aldaketak zuzen gorde dira.", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
+		    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
+		    	    	momentukoErabiltzaileNAN = NAN;
+		    		    textNAN2.setText("");
+		    		    textIzena2.setText("");
+		    		    textAbizena2.setText("");
+		    		    textPasahitza2.setText("");
+		    		    dateJaiotzaData2.setDate(null);
+		    		    textHerrialdea2.setText("");
+		    		    textProbintzia2.setText("");
+		    		    textHerria2.setText("");
+		    		    textPostaKodea2.setText("");
+		    		    textTelefonoa2.setText("");
+//		    		    textNAN2.setVisible(false);
+//		    		    textIzena2.setVisible(false);
+//		    		    textAbizena2.setVisible(false);
+//		    		    textPasahitza2.setVisible(false);
+//		    		    dateJaiotzaData2.setVisible(false);
+//		    		    textHerrialdea2.setVisible(false);
+//		    		    textProbintzia2.setVisible(false);
+//		    		    textHerria2.setVisible(false);
+//		    		    textPostaKodea2.setVisible(false);
+//		    		    textTelefonoa2.setVisible(false);
+//		    		    btnAldatuErabiltzaileDatu.setVisible(false);
+//		    		    System.out.println(momentukoErabiltzaileNAN);
+	    			} else {
+		    	    	JOptionPane.showMessageDialog(erregistratu, NAN + ", ezin izan dira aldaketak egin", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+		    	    }
+	    		}
+	    	}
+	    });
 	}
 }

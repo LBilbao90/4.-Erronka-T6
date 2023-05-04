@@ -602,21 +602,60 @@ public class TestMetodoak {
     	String telefonoZbk = "666999666";
     	
     	assertTrue(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeData, herrialdea, probintzia, herria, postaKodea, telefonoZbk));
-    	assertFalse(metodoak.erregistroaInsert("12345678A", "ProbaKontua1", "ProbaKontua1", "Elorrieta00", "2000-01-01", "Euskal Herria", "Gipuzkoa", "Elgoibar", "20870", "666999666"));
+    	assertFalse(metodoak.erregistroaInsert("12345678Z", "ProbaKontua1", "ProbaKontua1", "Elorrieta00", "2000-01-01", "Euskal Herria", "Gipuzkoa", "Elgoibar", "20870", "666999666"));
 
     	Connection conn;
     	 try {
     		 String url = "jdbc:mysql://localhost:3306/kasinoa";
              conn = (Connection) DriverManager.getConnection (url, "root","");
-             Statement comando = (Statement) conn.createStatement();                     
-             comando.executeUpdate("DELETE FROM erabiltzaile_kontua WHERE NAN='" + NAN + "';");
+             Statement stmt = (Statement) conn.createStatement();                     
+             stmt.executeUpdate("DELETE FROM erabiltzaile_kontua WHERE NAN='" + NAN + "';");
              conn.close();
          }catch(SQLException ex) {
         	 System.out.println("SQLException: "+ ex.getMessage());
         	 System.out.println("SQLState: "+ ex.getSQLState());
         	 System.out.println("ErrorCode: "+ ex.getErrorCode());
          }	
-    } 
+    	 
+    }
+    
+    @Test
+    public void testErabiltzaileUpdate() {
+        String NAN = "87654321X";
+        String erabiltzaileIzena = "ProbaTest1";
+        String pasahitza = "Elorrieta00";
+        String herrialdea = "Euskadi";
+        String probintzia = "Gipuzkoa";
+        String herria = "Elgoibar";
+        String postaKodea = "20870";
+        String telefonoZbk = "333444333";
+
+        // Testeatzeko erabiltzailea sortu
+    	Connection conn;
+        try {
+        	String url = "jdbc:mysql://localhost:3306/kasinoa";
+        	conn = (Connection) DriverManager.getConnection (url, "root","");
+            Statement stmt = (Statement) conn.createStatement();  
+            stmt.executeUpdate("INSERT INTO erabiltzaile_kontua (NAN, diru_kopuru_historikoa, diru_kopuru_momentukoa, abizena, erabiltzaile_izena, pasahitza, herialdea, probintzia, herria, posta_Kodea, tlf_zenbakia) VALUES ('" + NAN + "', '" + 30 +  "', '" + 30 + "', '" + "ProbaAbizen" + "', '" + erabiltzaileIzena + "', '" + pasahitza + "', '" + herrialdea + "', '" + probintzia + "', '" + herria + "', '" + postaKodea + "', '" + telefonoZbk + "')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Izena aldatzen den konprobatu
+        String erabiltzaileIzena2 = "ProbaTest2";
+        assertTrue(metodoak.erabiltzaileUpdate(NAN, erabiltzaileIzena2, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk));
+
+        // Datu basetik probaKasua borratu
+    	Connection conn2;
+        try {
+        	String url = "jdbc:mysql://localhost:3306/kasinoa";
+        	conn2 = (Connection) DriverManager.getConnection (url, "root","");
+            Statement stmt = (Statement) conn2.createStatement(); 
+            stmt.executeUpdate("DELETE FROM erabiltzaile_kontua WHERE NAN = '" + NAN + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     
     @Test
@@ -681,5 +720,39 @@ public class TestMetodoak {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+    }
+    
+    @Test
+    public void testBaliozkoEremuak() {
+    	JPanel erregistratu = new JPanel();
+    	String NAN = "12345678Z";
+    	String Izena = "Proba";
+    	String Abizena = "Kontua";
+    	String Pasahitza = "Elorrieta00";
+    	String JaiotzeDataString = "2000-01-01";
+    	String Herrialdea = "Euskadi";
+    	String Probintzia = "Gipuzkoa";
+    	String Herria = "Elgoibar";
+    	String PostaKodea = "20870";
+    	String TelefonoZbk = "666999666";
+    	
+    	// Dena ondo
+    	assertTrue(metodoak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+    	// NAN hutsik
+    	assertFalse(metodoak.baliozkoEremuak("", Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+    	// Izena hutsik
+    	assertFalse(metodoak.baliozkoEremuak(NAN, "", Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+    	// Izena 4 karaktera baino gutxiago
+    	assertFalse(metodoak.baliozkoEremuak(NAN, "Pr", Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+    	// Pasahitzak ez du kondizio guztiak betetzen
+    	assertFalse(metodoak.baliozkoEremuak(NAN, Izena, Abizena, "Elorrieta", JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+    	// Telefono gaizki
+    	assertFalse(metodoak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, "12345678", erregistratu));
+    	// Posta kode luzeera gutxi
+    	assertFalse(metodoak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, "1234", TelefonoZbk, erregistratu));
+    	// Posta kode gaizki, letra bat duelako.
+    	assertFalse(metodoak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, "12A45", TelefonoZbk, erregistratu));
+    	// NAN gaizki
+    	assertFalse(metodoak.baliozkoEremuak("12345678A", Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
     }
 }

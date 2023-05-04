@@ -8,7 +8,7 @@ public abstract class Pertsona extends Maila{
 	protected String NAN;
 	protected String izena;
 	protected String abizena;
-	protected String jaioteguna;
+	protected Date jaioteguna;
 	protected String herrialdea;
 	//protected String autonomia_erkidegoa;
 	protected String probintzia;
@@ -18,12 +18,12 @@ public abstract class Pertsona extends Maila{
 	protected String pasahitza;
 	protected String tlf_zenabkia;
 	
-	public Pertsona(String nAN, String izena, String abizena, String jaioteguna, String herrialdea, String probintzia, String herria, String postaKodea,String pasahitza, String tlf_zenabkia, int id_maila) {
+	public Pertsona(String nAN, String izena, String abizena, Date string, String herrialdea, String probintzia, String herria, String postaKodea,String pasahitza, String tlf_zenabkia, int id_maila) {
 		super(id_maila);
 		this.NAN = nAN;
 		this.izena = izena;
 		this.abizena = abizena;
-		this.jaioteguna = jaioteguna;
+		this.jaioteguna = string;
 		this.herrialdea = herrialdea;
 		//this.autonomia_erkidegoa = autonomia_erkidegoa;
 		this.probintzia = probintzia;
@@ -54,7 +54,7 @@ public abstract class Pertsona extends Maila{
 		return abizena;
 	}
 
-	public String getJaioteguna() {
+	public Date getJaioteguna() {
 		return jaioteguna;
 	}
 
@@ -102,8 +102,8 @@ public abstract class Pertsona extends Maila{
 		this.abizena = abizena;
 	}
 
-	public void setJaioteguna(String jaioteguna) {
-		this.jaioteguna = jaioteguna;
+	public void setJaioteguna(Date string) {
+		this.jaioteguna = string;
 	}
 
 	public void setHerrialdea(String herrialdea) {

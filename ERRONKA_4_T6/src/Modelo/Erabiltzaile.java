@@ -7,7 +7,7 @@ public class Erabiltzaile extends Pertsona{
 	private double diru_kopuru_historikoa;
 	private double diru_kopuru_momentukoa;
 	
-	public Erabiltzaile(String nAN, String izena, String abizena, String jaioteguna, String herrialdea, String probintzia, String herria, String postaKodea,
+	public Erabiltzaile(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea, String probintzia, String herria, String postaKodea,
 			String pasahitza, String tlf_zenabkia, int id_maila, double diru_kopuru_historikoa,
 			double diru_kopuru_momentukoa) {
 		super(nAN, izena, abizena, jaioteguna, herrialdea, probintzia, herria, postaKodea, pasahitza, tlf_zenabkia, id_maila);

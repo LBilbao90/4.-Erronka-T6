@@ -67,7 +67,7 @@ public class datuBaseKarga {
                 erabiltzaile.setHerrialdea(rs.getString(7));
                 erabiltzaile.setProbintzia(rs.getString(8));
                 erabiltzaile.setHerria(rs.getString(9));
-                erabiltzaile.setJaioteguna(rs.getString(10));
+                erabiltzaile.setJaioteguna(rs.getDate(10));
                 erabiltzaile.setAbizena(rs.getString(11));
                 erabiltzaile.setIzena(rs.getString(12));
                 erabiltzaile.setPasahitza(rs.getString(13));
@@ -84,7 +84,7 @@ public class datuBaseKarga {
                 admin.setNAN (rs.getString(3));
                 admin.setIzena(rs.getString(4));
                 admin.setAbizena(rs.getString(5));
-                admin.setJaioteguna(rs.getString(6));
+                admin.setJaioteguna(rs.getDate(6));
                 admin.setHerrialdea(rs.getString(7));
                 admin.setProbintzia(rs.getString(8));
                 admin.setHerria(rs.getString(9));
