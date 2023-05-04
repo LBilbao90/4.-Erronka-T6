@@ -483,6 +483,7 @@ public class ruletaApostua extends JFrame {
 		
 		JButton btnApostuaEzabatu = new JButton("Apostuak ezabatu");
 		btnApostuaEzabatu.setBounds(641, 341, 136, 50);
+		btnApostuaEzabatu.setEnabled(false);
 		contentPane.add(btnApostuaEzabatu);
 		
 		// 'lehenLehioa' klaseko 'jokuak' lehiora bueltatzen da botoia exekutatzean.
@@ -607,7 +608,6 @@ public class ruletaApostua extends JFrame {
 						rdbtnApostu500.setEnabled(true);
 						rdbtnApostu1000.setEnabled(true);
 						btnJokoetaraBueltatu.setEnabled(true);
-		    			btnApostuaEzabatu.setEnabled(true);
 		    			btn_1_18.setEnabled(true);
 		    			btn_19_36.setEnabled(true);
 		    			btn_even.setEnabled(true);
@@ -661,6 +661,8 @@ public class ruletaApostua extends JFrame {
 		    			
 		    			ruletaEmaitza = ruletaJokoa.getUnekoZenbakia();
 		    			int guztiraIrabaziak = 0;
+		    			int guztiraApostua = 0;
+		    			String azkenEmaitza = "";
 		    			// Kolorea konprobatu
 		    			System.out.println(ruletaEmaitza);
 		    			System.out.println(kolorea[0]);
@@ -715,7 +717,21 @@ public class ruletaApostua extends JFrame {
 		    				 JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu + " :(");
 		    			}
 		    			
-		    			metodoak.txtIdatzi(denboraOrduaMomentukoa + " | Erabiltzailea: " + lehenLehioa.getMomentukoErabiltzaileNAN() + " | Ruleta emaitza: " + ruletaEmaitza + " | Apostua emaitza: " + emaitzaApostu);
+		    			guztiraApostua += metodoak.gehituApostuak(zbk);
+
+
+		    			guztiraApostua += metodoak.gehituApostuak(dozenak);
+		    			guztiraApostua += metodoak.gehituApostuak(dozenakEskerrEskuin);
+		    			guztiraApostua += metodoak.gehituApostuak(taulaErdia);
+		    			guztiraApostua += metodoak.gehituApostuak(bakoitiBikoiti);
+		    			guztiraApostua += metodoak.gehituApostuak(kolorea);
+		    			
+		    			if ((guztiraIrabaziak - guztiraApostua) >= 0) {
+		    				azkenEmaitza = "+" + (guztiraIrabaziak - guztiraApostua);
+		    			} else {
+		    				azkenEmaitza = Integer.toString(guztiraIrabaziak - guztiraApostua);
+		    			}
+		    			metodoak.txtIdatzi(denboraOrduaMomentukoa + " | Erabiltzaile NAN: " + lehenLehioa.getMomentukoErabiltzaileNAN() + " | Ruleta emaitza: " + ruletaEmaitza + " | Guztira apostatutako kantitatea: " + guztiraApostua + " | Apostua emaitza: " + emaitzaApostu + " | Azken balantzea: " + azkenEmaitza );
 						apostuOrain = 0;
 						Arrays.fill(zbk, 0);
 						Arrays.fill(dozenak, 0);
@@ -760,6 +776,7 @@ public class ruletaApostua extends JFrame {
 				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
@@ -773,6 +790,7 @@ public class ruletaApostua extends JFrame {
 				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
@@ -786,6 +804,7 @@ public class ruletaApostua extends JFrame {
 				System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
@@ -797,6 +816,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -808,6 +828,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -819,6 +840,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -830,6 +852,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -841,6 +864,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -852,6 +876,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -863,6 +888,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -874,6 +900,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -885,6 +912,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -896,6 +924,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -907,6 +936,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -918,6 +948,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -929,6 +960,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -940,6 +972,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -951,6 +984,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -962,6 +996,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -973,6 +1008,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -984,6 +1020,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -995,6 +1032,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1006,6 +1044,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1017,6 +1056,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1028,6 +1068,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1039,6 +1080,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1050,6 +1092,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1061,6 +1104,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1072,6 +1116,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1083,6 +1128,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1094,6 +1140,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1105,6 +1152,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1116,6 +1164,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1127,6 +1176,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1138,6 +1188,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1149,6 +1200,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1160,6 +1212,7 @@ public class ruletaApostua extends JFrame {
 		        System.out.println("Momentu onetan " + apostuOrain + " apostatu duzu guztira");
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 		    }
 		});
@@ -1178,6 +1231,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
@@ -1196,6 +1250,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
@@ -1214,6 +1269,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}
@@ -1233,6 +1289,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
@@ -1251,6 +1308,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}
@@ -1270,6 +1328,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}
@@ -1288,6 +1347,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}
@@ -1306,6 +1366,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}
@@ -1324,6 +1385,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}
@@ -1342,6 +1404,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}
@@ -1360,6 +1423,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
@@ -1377,6 +1441,7 @@ public class ruletaApostua extends JFrame {
 				
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
 					btnApostuaEgin.setEnabled(true);
+					btnApostuaEzabatu.setEnabled(true);
 				}
 				
 			}

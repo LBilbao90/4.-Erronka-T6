@@ -501,12 +501,20 @@ public class metodoak {
 	 	    return tlf_zuzena;
 	 	}
 	 	
+	 	public static int gehituApostuak(int[] apostua) {
+	 	    int guztira = 0;
+	 	    for (int i = 0; i < apostua.length; i++) {
+	 	    	guztira += apostua[i];
+	 	    }
+	 	    return guztira;
+	 	}
+
+	 	
 	 	public static void txtIdatzi(String testua) {
 	 		File file = new File("src/LOG.txt");
 	 		try {
 	 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
 	 			bw.write("\n" + testua);
-//	 			bw.write("\n");
 	 			bw.close();
 	 		} catch (IOException e) {
 	 			e.printStackTrace();

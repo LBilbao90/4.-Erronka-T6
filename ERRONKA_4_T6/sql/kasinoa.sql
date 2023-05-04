@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2023 a las 12:34:12
+-- Tiempo de generación: 04-05-2023 a las 15:32:25
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -35,13 +35,6 @@ CREATE TABLE `apostua` (
   `apostu_emaitza` enum('irabazi','galdu') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `apostua`
---
-
-INSERT INTO `apostua` (`id_apostu`, `NAN`, `id_joko`, `apostu_kantitatea`, `apostu_emaitza`) VALUES
-(1, '12345678A', 1, 100, 'irabazi');
-
 -- --------------------------------------------------------
 
 --
@@ -62,7 +55,7 @@ CREATE TABLE `apostu_emaitza` (
 --
 
 CREATE TABLE `erabiltzaile_kontua` (
-  `NAN` varchar(9) NOT NULL,
+  `NAN` varchar(10) NOT NULL,
   `id_maila` int(10) UNSIGNED DEFAULT NULL,
   `diru_kopuru_historikoa` double UNSIGNED NOT NULL,
   `diru_kopuru_momentukoa` double UNSIGNED NOT NULL,
@@ -71,7 +64,7 @@ CREATE TABLE `erabiltzaile_kontua` (
   `herialdea` varchar(100) NOT NULL,
   `probintzia` varchar(100) NOT NULL,
   `herria` varchar(50) NOT NULL,
-  `jaiotze_data` timestamp NOT NULL DEFAULT current_timestamp(),
+  `jaiotze_data` date NOT NULL DEFAULT current_timestamp(),
   `abizena` varchar(50) NOT NULL,
   `erabiltzaile_izena` varchar(50) NOT NULL,
   `pasahitza` varchar(100) NOT NULL
@@ -82,7 +75,8 @@ CREATE TABLE `erabiltzaile_kontua` (
 --
 
 INSERT INTO `erabiltzaile_kontua` (`NAN`, `id_maila`, `diru_kopuru_historikoa`, `diru_kopuru_momentukoa`, `tlf_zenbakia`, `posta_Kodea`, `herialdea`, `probintzia`, `herria`, `jaiotze_data`, `abizena`, `erabiltzaile_izena`, `pasahitza`) VALUES
-('12345678A', 2, 1000, 505, '666999666', 12345, 'Gipuzkoa', 'Gipuzkoa', 'Donostia', '1989-12-31 23:00:00', 'Garcia', 'jgarcia', 'elorrieta00');
+('12345678Z', 1, 30, 30, '666999666', 20870, 'Euskal Herria', 'Gipuzkoa', 'Elgoibar', '2000-01-01', 'ProbaKontua1', 'ProbaKontua1', 'Elorrieta00'),
+('23456789D', 1, 30, 30, '999666999', 20870, 'Euskal Herria', 'Gipuzkoa', 'Elgoibar', '2001-02-02', 'ProbaKontua2', 'ProbaKontua2', 'Elorrieta00');
 
 -- --------------------------------------------------------
 
@@ -135,25 +129,6 @@ CREATE TABLE `kasino_erabiltzaile` (
   `id_Kasino` int(11) DEFAULT NULL,
   `NAN` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `kasino_erabiltzaile`
---
-
-INSERT INTO `kasino_erabiltzaile` (`id_Kasino`, `NAN`) VALUES
-(1, '12345678A');
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `kasino_info`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `kasino_info` (
-`Kasinoren Izena` varchar(70)
-,`Joko kopurua` bigint(21)
-,`Betebehar batazbestekoa` decimal(14,4)
-);
 
 -- --------------------------------------------------------
 
@@ -240,15 +215,6 @@ INSERT INTO `maila` (`id_maila`, `izena`, `apostua_max`) VALUES
 DROP TABLE IF EXISTS `apostu_emaitza`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `apostu_emaitza`  AS SELECT `erabiltzaile_kontua`.`erabiltzaile_izena` AS `erabiltzaile_izena`, `jokoak`.`JokoIzena` AS `JokoIzena`, `apostua`.`apostu_kantitatea` AS `apostu_kantitatea`, `apostua`.`apostu_emaitza` AS `apostu_emaitza` FROM ((`erabiltzaile_kontua` join `apostua` on(`erabiltzaile_kontua`.`NAN` = `apostua`.`NAN`)) join `jokoak` on(`apostua`.`id_joko` = `jokoak`.`id_joko`))  ;
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `kasino_info`
---
-DROP TABLE IF EXISTS `kasino_info`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kasino_info`  AS SELECT `k`.`Izena` AS `Kasinoren Izena`, count(`j`.`id_joko`) AS `Joko kopurua`, avg(`j`.`MaxApostu`) AS `Betebehar batazbestekoa` FROM (`kasino` `k` left join `jokoak` `j` on(`k`.`id_Kasino` = `j`.`id_Kasino`)) GROUP BY `k`.`id_Kasino``id_Kasino`  ;
 
 -- --------------------------------------------------------
 
