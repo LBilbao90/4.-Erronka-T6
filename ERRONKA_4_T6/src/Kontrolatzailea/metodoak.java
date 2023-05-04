@@ -365,7 +365,7 @@ public class metodoak {
 	 */
 	public static boolean pasahitzaKonprobatu(String pasahitza) {
 	    int minLuzera = 6;
-	    int maxLuzera = 16;
+	    int maxLuzera = 32;
 	    boolean pasahitzaZuzena= false;
 	    boolean mayuskulaDauka = false;
 	    boolean minuskulaDauka = false;
