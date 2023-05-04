@@ -8,8 +8,17 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -593,7 +602,7 @@ public class TestMetodoak {
     	String telefonoZbk = "666999666";
     	
     	assertTrue(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeData, herrialdea, probintzia, herria, postaKodea, telefonoZbk));
-    	assertFalse(metodoak.erregistroaInsert("12345678A", "jgarcia", "Garcia", "elorrieta00", "1990-01-01", "Gipuzkoa", "Gipuzkoa", "Donostia", "12345", "666999666"));
+    	assertFalse(metodoak.erregistroaInsert("12345678A", "ProbaKontua1", "ProbaKontua1", "Elorrieta00", "2000-01-01", "Euskal Herria", "Gipuzkoa", "Elgoibar", "20870", "666999666"));
 
     	Connection conn;
     	 try {
@@ -623,5 +632,54 @@ public class TestMetodoak {
     @Test
     public void testTlfLetrekin() {
         assertFalse(metodoak.tlfZenbakia("12a456789"));
+    }
+    
+    @Test
+    public void testGehituApostuak() {
+    	int[] apostua1 = {};
+        int[] apostua2 = {5};
+        int[] apostua3 = {2, 4, 6, 8, 10};
+        
+        int emaiza1 = metodoak.gehituApostuak(apostua1);
+        int emaitza2 = metodoak.gehituApostuak(apostua2);
+        int emaitza3 = metodoak.gehituApostuak(apostua3);
+        
+        assertEquals(0, emaiza1);
+        assertEquals(5, emaitza2);
+        assertEquals(30, emaitza3);
+    }
+    
+    @Test
+    public void testTxtIdatzi() {
+    	String testTestua = "Test";
+    	File testTxt = new File("src/LOG.txt");
+    	
+    	metodoak.txtIdatzi(testTestua);
+    	
+    	assertTrue(testTxt.exists());
+    	
+    	List<String> lerroak = new ArrayList<>();
+    	try (BufferedReader br = new BufferedReader(new FileReader(testTxt))) {
+    		String line;
+    		while ((line = br.readLine()) != null) {
+    			lerroak.add(line);
+    		}
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+
+//        // Azken lerroa testTestua alderatu.
+//        assertEquals(testTestua, lerroak.get(lerroak.size() - 1));
+//
+//        // LOG.txt-ko azen lerroa ezabatau
+//        lerroak.remove(lerroak.size() - 1);
+//        try (BufferedWriter bw = new BufferedWriter(new FileWriter(testTxt))) {
+//            for (String line : lerroak) {
+//                bw.write(line);
+//                bw.newLine();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }

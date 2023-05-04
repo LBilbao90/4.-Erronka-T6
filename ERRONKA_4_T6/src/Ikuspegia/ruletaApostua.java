@@ -718,8 +718,6 @@ public class ruletaApostua extends JFrame {
 		    			}
 		    			
 		    			guztiraApostua += metodoak.gehituApostuak(zbk);
-
-
 		    			guztiraApostua += metodoak.gehituApostuak(dozenak);
 		    			guztiraApostua += metodoak.gehituApostuak(dozenakEskerrEskuin);
 		    			guztiraApostua += metodoak.gehituApostuak(taulaErdia);

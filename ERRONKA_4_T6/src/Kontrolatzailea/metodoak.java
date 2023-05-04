@@ -502,18 +502,19 @@ public class metodoak {
 	 	}
 	 	
 	 	public static int gehituApostuak(int[] apostua) {
-	 	    int guztira = 0;
-	 	    for (int i = 0; i < apostua.length; i++) {
-	 	    	guztira += apostua[i];
-	 	    }
-	 	    return guztira;
+	 		int guztira = 0;
+	 		//buklea 'apostua' guztietatik pasatzeko eta dena 'guztira' gordeko da.
+	 		for (int i = 0; i < apostua.length; i++) {
+	 			guztira += apostua[i];
+	 		}
+	 		return guztira;
 	 	}
 
 	 	
 	 	public static void txtIdatzi(String testua) {
-	 		File file = new File("src/LOG.txt");
+	 		File txt = new File("src/LOG.txt");
 	 		try {
-	 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+	 			BufferedWriter bw = new BufferedWriter(new FileWriter(txt, true));
 	 			bw.write("\n" + testua);
 	 			bw.close();
 	 		} catch (IOException e) {
