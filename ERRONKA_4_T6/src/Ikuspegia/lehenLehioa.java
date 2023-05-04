@@ -79,10 +79,13 @@ public class lehenLehioa extends JFrame {
 	int screenHeight = (int) (screenSize.height * 0.75);
 	int screenWidth = (int) (screenSize.width * 0.75);
 	
-	private String momentukoErabiltzaileNAN = "";
+	protected static String momentukoErabiltzaileNAN = "";
 
+    public static String getMomentukoErabiltzaileNAN() {
+		return momentukoErabiltzaileNAN;
+	}
 
-    private static lehenLehioa lehenLehioaframe = new lehenLehioa();
+	private static lehenLehioa lehenLehioaframe = new lehenLehioa();
     
     ruletaApostua ruletaFrame = new ruletaApostua();
 

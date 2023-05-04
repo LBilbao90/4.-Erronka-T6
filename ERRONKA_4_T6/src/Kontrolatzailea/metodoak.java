@@ -501,19 +501,16 @@ public class metodoak {
 	 	    return tlf_zuzena;
 	 	}
 	 	
-	 	public static void txtIdatzi(String texto) {
-	        File file = new File("src/LOG.txt");
-
-	        try {
-	            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-	            bw.write(texto);
-	            bw.close();
-	            System.out.println("Texto escrito en el archivo.");
-
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	 	
+	 	public static void txtIdatzi(String testua) {
+	 		File file = new File("src/LOG.txt");
+	 		try {
+	 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+	 			bw.write("\n" + testua);
+//	 			bw.write("\n");
+	 			bw.close();
+	 		} catch (IOException e) {
+	 			e.printStackTrace();
+	 		}
+	 	}
 	 	
 }

@@ -607,7 +607,6 @@ public class ruletaApostua extends JFrame {
 						rdbtnApostu500.setEnabled(true);
 						rdbtnApostu1000.setEnabled(true);
 						btnJokoetaraBueltatu.setEnabled(true);
-		            	btnApostuaEgin.setEnabled(true);
 		    			btnApostuaEzabatu.setEnabled(true);
 		    			btn_1_18.setEnabled(true);
 		    			btn_19_36.setEnabled(true);
@@ -712,11 +711,11 @@ public class ruletaApostua extends JFrame {
 		    				emaitzaApostu = "Berdin gelditzen zara";
 		    				JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
 		    			} else {
-		    				emaitzaApostu = "Ez duzu ezer irabazi :(";
-		    				 JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
+		    				emaitzaApostu = "Ez duzu ezer irabazi";
+		    				 JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu + " :(");
 		    			}
 		    			
-		    			metodoak.txtIdatzi(denboraOrduaMomentukoa + " | Ruleta emaitza: " + ruletaEmaitza + " | Apostua emaitza: " + emaitzaApostu);
+		    			metodoak.txtIdatzi(denboraOrduaMomentukoa + " | Erabiltzailea: " + lehenLehioa.getMomentukoErabiltzaileNAN() + " | Ruleta emaitza: " + ruletaEmaitza + " | Apostua emaitza: " + emaitzaApostu);
 						apostuOrain = 0;
 						Arrays.fill(zbk, 0);
 						Arrays.fill(dozenak, 0);
@@ -730,6 +729,7 @@ public class ruletaApostua extends JFrame {
 	            }
 			});
 		btnApostuaEgin.setBounds(641, 400, 136, 50);
+		btnApostuaEgin.setEnabled(false);
 		contentPane.add(btnApostuaEgin);
 		
 		btnApostuaEzabatu.addActionListener(new ActionListener() {
@@ -739,7 +739,7 @@ public class ruletaApostua extends JFrame {
 				apostuKantitatea.clearSelection();
 				apostuOrain = 0;
 				Arrays.fill(zbk, 0);
-				Arrays.fill(dozenak, 0);
+				Arrays.fill(dozenak, 0);	
 				Arrays.fill(dozenakEskerrEskuin, 0);
 				Arrays.fill(taulaErdia, 0);
 				Arrays.fill(bakoitiBikoiti, 0);
