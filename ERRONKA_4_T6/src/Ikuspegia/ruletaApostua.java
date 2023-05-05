@@ -664,27 +664,20 @@ public class ruletaApostua extends JFrame {
 		    			int guztiraApostua = 0;
 		    			String azkenEmaitza = "";
 		    			// Kolorea konprobatu
-		    			System.out.println(ruletaEmaitza);
-		    			System.out.println(kolorea[0]);
-		    			System.out.println(kolorea[1]);
 		    			if (gorriak.contains(ruletaEmaitza) && kolorea[0] >= 1) {
 		    			    guztiraIrabaziak += kolorea[0] * 2;
 		    			} else if (beltzak.contains(ruletaEmaitza) && kolorea[1] >= 1) {
 		    			    guztiraIrabaziak += kolorea[1] * 2;
 		    			}
 		    			// Zenbakia konprobatu
-		    			if (ruletaEmaitza != 0 && zbk[ruletaEmaitza] != 0) {
-		    			    guztiraIrabaziak += zbk[ruletaEmaitza] * 36;  // 36 * apostua
-		    			}
+		    			guztiraIrabaziak += zbk[ruletaEmaitza] * 36;  // 36 * apostua
 
 		    			// Dozenetan konprobatu apostuak
 		    			int dozena = (ruletaEmaitza - 1) / 12;  // Ze dozenatan irten den zenbakia kalkulatzen du
-		    			System.out.println("Dozena: " + dozena);
 		    			if (dozenak[dozena] != 0) {
 		    			    guztiraIrabaziak += dozenak[dozena] * 3;  // 3 * apostua
 		    			}
 
-		    			System.out.println(dozenakEskerrEskuin[0]);
 		    			if (eskerrEskuin1.contains(ruletaEmaitza) && dozenakEskerrEskuin[0] >= 1) {
 		    			    guztiraIrabaziak = dozenakEskerrEskuin[0] * 3; // 3 * apostua
 		    			} else if (eskerrEskuin2.contains(ruletaEmaitza) && dozenakEskerrEskuin[1] >= 1) {

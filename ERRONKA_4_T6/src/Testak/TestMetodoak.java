@@ -144,7 +144,7 @@ public class TestMetodoak {
 		int height = 30;
 		Font font = new Font("Arial", Font.PLAIN, 12);
 		JPanel erregistratu = new JPanel();
-		JTextArea jTextArea = metodoak.createTextFieldBete(x, y, width, height, font, erregistratu);
+		JTextArea jTextArea = metodoak.createTextArea(x, y, width, height, font, erregistratu);
 		 
 		assertEquals(x, jTextArea.getBounds().x);
 		assertEquals(y, jTextArea.getBounds().y);
@@ -636,9 +636,12 @@ public class TestMetodoak {
         	String url = "jdbc:mysql://localhost:3306/kasinoa";
         	conn = (Connection) DriverManager.getConnection (url, "root","");
             Statement stmt = (Statement) conn.createStatement();  
-            stmt.executeUpdate("INSERT INTO erabiltzaile_kontua (NAN, diru_kopuru_historikoa, diru_kopuru_momentukoa, abizena, erabiltzaile_izena, pasahitza, herialdea, probintzia, herria, posta_Kodea, tlf_zenbakia) VALUES ('" + NAN + "', '" + 30 +  "', '" + 30 + "', '" + "ProbaAbizen" + "', '" + erabiltzaileIzena + "', '" + pasahitza + "', '" + herrialdea + "', '" + probintzia + "', '" + herria + "', '" + postaKodea + "', '" + telefonoZbk + "')");
+            stmt.executeUpdate("INSERT INTO erabiltzaile_kontua (NAN, "
+            		+ "diru_kopuru_historikoa, diru_kopuru_momentukoa, abizena, erabiltzaile_izena, pasahitza, herrialdea, probintzia, herria, posta_Kodea, tlf_zenbakia) VALUES ('" + NAN + "', '" + 30 +  "', '" + 30 + "', '" + "ProbaAbizen" + "', '" + erabiltzaileIzena + "', '" + pasahitza + "', '" + herrialdea + "', '" + probintzia + "', '" + herria + "', '" + postaKodea + "', '" + telefonoZbk + "')");
         } catch (SQLException e) {
-            e.printStackTrace();
+       	 System.out.println("SQLException: "+ e.getMessage());
+       	 System.out.println("SQLState: "+ e.getSQLState());
+       	 System.out.println("ErrorCode: "+ e.getErrorCode());
         }
 
         // Izena aldatzen den konprobatu

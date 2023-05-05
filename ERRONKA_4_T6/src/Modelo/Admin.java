@@ -13,7 +13,7 @@ public class Admin extends Pertsona {
 	public Admin(String nAN, 
 			String izena, 
 			String abizena, 
-			String jaioteguna, 
+			Date jaioteguna, 
 			String herrialdea,
 			String probintzia, 
 			String herria, 

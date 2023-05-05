@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Erabiltzaile extends Pertsona{
-	private double diru_kopuru_historikoa;
-	private double diru_kopuru_momentukoa;
+	private static double diru_kopuru_historikoa;
+	private static double diru_kopuru_momentukoa;
 	
 	public Erabiltzaile(String nAN, String izena, String abizena, Date jaioteguna, String herrialdea, String probintzia, String herria, String postaKodea,
 			String pasahitza, String tlf_zenabkia, int id_maila, double diru_kopuru_historikoa,
@@ -19,13 +19,13 @@ public class Erabiltzaile extends Pertsona{
 		super();
 	}
 
-	public double getDiru_kopuru_historikoa() {
+	public static double getDiru_kopuru_historikoa() {
 		return diru_kopuru_historikoa;
 	}
 	public void setDiru_kopuru_historikoa(double diru_kopuru_historikoa) {
 		this.diru_kopuru_historikoa = diru_kopuru_historikoa;
 	}
-	public double getDiru_kopuru_momentukoa() {
+	public static double getDiru_kopuru_momentukoa() {
 		return diru_kopuru_momentukoa;
 	}
 	public void setDiru_kopuru_momentukoa(double diru_kopuru_momentukoa) {
