@@ -89,10 +89,11 @@ public class datuBaseKarga {
                 admin.setProbintzia(rs.getString(8));
                 admin.setHerria(rs.getString(9));
                 admin.setPostaKodea(rs.getString(10));
-                admin.setTlf_zenabkia(rs.getString(11));
-                admin.setKargua(rs.getString(12));
-               // admin.setSoldata(rs.getDouble(13));
-                admin.setPasahitza(rs.getString(14));
+                admin.setPostaElektronikoa(rs.getString(11));
+                admin.setTlf_zenabkia(rs.getString(12));
+                admin.setKargua(rs.getString(13));
+                admin.setSoldata(rs.getDouble(14));
+                admin.setPasahitza(rs.getString(15));
                 
                 langileak.add(admin); 
 

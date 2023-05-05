@@ -33,6 +33,7 @@ import com.toedter.calendar.JDateChooser;
 import Ikuspegia.ruletaApostua;
 import Ikuspegia.ruletaJokoa;
 import Ikuspegia.ruletaJokoa.OKButtonListener;
+import Modelo.Admin;
 import Modelo.Erabiltzaile;
 
 
@@ -445,6 +446,19 @@ public class metodoak {
 	 		datuBaseKarga.karga();
 		    for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
 		        if (erabiltzaile.getNAN().equals(erabiltzailea) && erabiltzaile.getPasahitza().equals(new String(pasahitza))) {
+		            return true;
+		        }
+		    }
+		    
+		    return false;
+		}
+	 	
+	 	public static boolean loginBalidazioaAdmin(String admin, char[] pasahitza) {
+	 		datuBaseKarga.karga();
+		    for (Admin adminintratzailea : datuBaseKarga.getLangileak()) {
+		    	System.out.println(adminintratzailea.getNAN());
+		        if (adminintratzailea.getNAN().equals(admin) && adminintratzailea.getPasahitza().equals(new String(pasahitza))) {
+		        	System.out.println(adminintratzailea.getNAN());
 		            return true;
 		        }
 		    }

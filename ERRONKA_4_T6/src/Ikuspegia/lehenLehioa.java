@@ -504,6 +504,12 @@ public class lehenLehioa extends JFrame {
 	    btnJokoraBuelta.setFocusPainted(false);
 	    btnJokoraBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.20), 70);
 	    erabiltzaileDatuak.add(btnJokoraBuelta);
+	    
+	    JPanel langilePanela = new JPanel();
+	    langilePanela.setBorder(null);
+	    langilePanela.setBounds(0, 0, screenWidth, screenHeight);
+	    contentPane.add(langilePanela);
+	    langilePanela.setLayout(null);
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
@@ -532,14 +538,21 @@ public class lehenLehioa extends JFrame {
 	    	public void actionPerformed(ActionEvent e) {
 	    		String NAN = textErabiltzailea.getText().toUpperCase();
 	    		char[] pasahitza = passwordLogin.getPassword();
-	    		boolean loginOndo = metodoak.loginBalidazioa(NAN, pasahitza);
-			        
-	    		if (loginOndo) {
+	    		boolean loginOndoErabiltzaile = metodoak.loginBalidazioa(NAN, pasahitza);
+	    		boolean loginOndoAdmin = metodoak.loginBalidazioaAdmin(NAN, pasahitza);
+
+			    
+	    		if (loginOndoErabiltzaile) {
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
 	    			metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
 	    			setTitle("Jokoak | Elorrieta Kasinoa �");
+	    		} else if(loginOndoAdmin){
+	    			momentukoErabiltzaileNAN = NAN;
+	    			textErabiltzailea.setText("");
+	    			passwordLogin.setText("");
+	    			metodoak.btn3secDelay(langilePanela, 0, sarrera, login, erregistratu, jokoak, e);
 	    		} else {
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");

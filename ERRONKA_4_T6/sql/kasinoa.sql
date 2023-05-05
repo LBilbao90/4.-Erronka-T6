@@ -168,7 +168,7 @@ CREATE TABLE `langile_kontua` (
   `NAN` varchar(9) DEFAULT NULL,
   `Izena` varchar(20) NOT NULL,
   `Abizena` varchar(50) NOT NULL,
-  `Jaiotze_data` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Jaiotze_data` date NOT NULL DEFAULT current_timestamp(),
   `Herrialdea` varchar(100) NOT NULL,
   `Probintzia` varchar(100) NOT NULL,
   `Herria` varchar(50) NOT NULL,
@@ -176,15 +176,16 @@ CREATE TABLE `langile_kontua` (
   `Posta_elektronikoa` varchar(100) NOT NULL,
   `tlf_zenbakia` char(9) NOT NULL,
   `Kargu` varchar(50) NOT NULL,
-  `Soldata` double UNSIGNED NOT NULL
+  `Soldata` double UNSIGNED NOT NULL,
+  `Pasahitza` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `langile_kontua`
 --
 
-INSERT INTO `langile_kontua` (`id_Langile`, `id_Kasino`, `NAN`, `Izena`, `Abizena`, `Jaiotze_data`, `Herrialdea`, `Probintzia`, `Herria`, `Posta_Kodea`, `Posta_elektronikoa`, `tlf_zenbakia`, `Kargu`, `Soldata`) VALUES
-(1, 1, '12343678A', 'Jon', 'Doe', '1979-12-31 23:00:00', 'Spain', 'Barcelona', 'Barcelona', 8001, 'jon.doe@example.com', '123456789', 'Manager', 50000);
+INSERT INTO `langile_kontua` (`id_Langile`, `id_Kasino`, `NAN`, `Izena`, `Abizena`, `Jaiotze_data`, `Herrialdea`, `Probintzia`, `Herria`, `Posta_Kodea`, `Posta_elektronikoa`, `tlf_zenbakia`, `Kargu`, `Soldata`, `Pasahitza`) VALUES
+(1, 1, '73264894A', 'Unax', 'Zulaika', '2001-01-01', 'Euskadi', 'Gipuzkoa', 'Elgoibar', 20870, 'unax.zulaikafu@elorrieta-errekamari.com', '606407364', 'Manager', 50000, 'Admin00');
 
 -- --------------------------------------------------------
 
