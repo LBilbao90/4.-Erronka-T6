@@ -32,6 +32,7 @@ public class Admin extends Pertsona {
 		this.soldata = soldata;
 		this.id_langile = id_langile;
 		this.id_kasino = id_kasino;
+		this.postaElektronikoa= postaElString;
 	}
 	
 	public Admin() {
