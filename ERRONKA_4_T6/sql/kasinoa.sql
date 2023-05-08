@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2023 a las 15:32:25
+-- Tiempo de generación: 08-05-2023 a las 10:28:01
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -32,8 +32,17 @@ CREATE TABLE `apostua` (
   `NAN` varchar(9) DEFAULT NULL,
   `id_joko` int(11) DEFAULT NULL,
   `apostu_kantitatea` int(11) NOT NULL,
-  `apostu_emaitza` enum('Irabazi', 'Berdin', 'Galdu') NOT NULL
+  `apostu_emaitza` enum('Irabazi','Berdin','Galdu') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `apostua`
+--
+
+INSERT INTO `apostua` (`id_apostu`, `NAN`, `id_joko`, `apostu_kantitatea`, `apostu_emaitza`) VALUES
+(1, '12345678Z', 1, 50, 'Irabazi'),
+(2, '12345678Z', 1, 10, 'Galdu'),
+(3, '12345678Z', 1, 20, 'Berdin');
 
 -- --------------------------------------------------------
 
@@ -45,7 +54,7 @@ CREATE TABLE `apostu_emaitza` (
 `erabiltzaile_izena` varchar(50)
 ,`JokoIzena` varchar(50)
 ,`apostu_kantitatea` int(11)
-,`apostu_emaitza` enum('irabazi','galdu')
+,`apostu_emaitza` enum('Irabazi','Berdin','Galdu')
 );
 
 -- --------------------------------------------------------
@@ -64,7 +73,7 @@ CREATE TABLE `erabiltzaile_kontua` (
   `herrialdea` varchar(100) NOT NULL,
   `probintzia` varchar(100) NOT NULL,
   `herria` varchar(50) NOT NULL,
-  `jaiotze_data` date NOT NULL DEFAULT current_timestamp(),
+  `jaiotze_data` date NOT NULL,
   `abizena` varchar(50) NOT NULL,
   `erabiltzaile_izena` varchar(50) NOT NULL,
   `pasahitza` varchar(100) NOT NULL
@@ -168,7 +177,7 @@ CREATE TABLE `langile_kontua` (
   `NAN` varchar(9) DEFAULT NULL,
   `Izena` varchar(20) NOT NULL,
   `Abizena` varchar(50) NOT NULL,
-  `Jaiotze_data` date NOT NULL DEFAULT current_timestamp(),
+  `Jaiotze_data` date NOT NULL,
   `Herrialdea` varchar(100) NOT NULL,
   `Probintzia` varchar(100) NOT NULL,
   `Herria` varchar(50) NOT NULL,
@@ -296,7 +305,7 @@ ALTER TABLE `maila`
 -- AUTO_INCREMENT de la tabla `apostua`
 --
 ALTER TABLE `apostua`
-  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `jokoak`

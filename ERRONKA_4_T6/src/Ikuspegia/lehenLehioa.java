@@ -423,8 +423,7 @@ public class lehenLehioa extends JFrame {
 	    erabiltzaileDatuak.setBorder(null);
 	    erabiltzaileDatuak.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(erabiltzaileDatuak);
-	    erabiltzaileDatuak.setLayout(null);
-	    
+	    erabiltzaileDatuak.setLayout(null);    
 	    
 	    JButton itxiAldatuDatuak = new JButton("");
 	    itxiAldatuDatuak.setIcon(irtenImg);
@@ -514,11 +513,27 @@ public class lehenLehioa extends JFrame {
 	    btnJokoraBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.20), 70);
 	    erabiltzaileDatuak.add(btnJokoraBuelta);
 	    
+	    
+	    // Langile panela
 	    JPanel langilePanela = new JPanel();
 	    langilePanela.setBorder(null);
 	    langilePanela.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(langilePanela);
 	    langilePanela.setLayout(null);
+	    
+	    JButton itxiLangilePanela = new JButton("");
+	    itxiLangilePanela.setIcon(irtenImg);
+	    itxiLangilePanela.setBounds(10, 10, 110, 100);
+	    itxiLangilePanela.setOpaque(false);
+	    itxiLangilePanela.setContentAreaFilled(false);
+	    itxiLangilePanela.setBorderPainted(false);
+	    itxiLangilePanela.setFocusPainted(false);
+	    langilePanela.add(itxiLangilePanela);
+	    
+	    JLabel imgBannerLangilePanela = new JLabel(new ImageIcon("img/banner.jpg"));
+	    imgBannerLangilePanela.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
+	    langilePanela.add(imgBannerLangilePanela);
+	    
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
