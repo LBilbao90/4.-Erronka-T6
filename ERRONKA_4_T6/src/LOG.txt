@@ -1,9 +1,3 @@
-2023-05-04 15:13:53 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 17 | Guztira apostatutako kantitatea: 70 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -30
-2023-05-04 15:16:07 | Erabiltzaile NAN: 23456789D | Ruleta emaitza: 34 | Guztira apostatutako kantitatea: 70 | Apostua emaitza: Zorionak! Irabazitakoa: 80 | Azken balantzea: +10
-2023-05-04 15:16:07 | Erabiltzaile NAN: 23456789D | Ruleta emaitza: 34 | Guztira apostatutako kantitatea: 70 | Apostua emaitza: Zorionak! Irabazitakoa: 80 | Azken balantzea: +10
-2023-05-04 20:27:04 | Erabiltzaile NAN: 72575489R | Ruleta emaitza: 23 | Guztira apostatutako kantitatea: 10 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10
-2023-05-05 09:52:10 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 20 | Guztira apostatutako kantitatea: 30 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10
-2023-05-05 09:52:10 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 36 | Guztira apostatutako kantitatea: 10 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10
-2023-05-05 10:42:44 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 18 | Guztira apostatutako kantitatea: 370 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10
-2023-05-05 10:42:44 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 1 | Guztira apostatutako kantitatea: 10 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10
-2023-05-05 10:52:44 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 13 | Guztira apostatutako kantitatea: 290 | Apostua emaitza: Zorionak! Irabazitakoa: 360 | Azken balantzea: +70
+2023-05-08 09:37:21 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 2 | Guztira apostatutako kantitatea: 50 | Apostua emaitza: Zorionak! Irabazitakoa: 70 | Azken balantzea: +20
+2023-05-08 09:37:21 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 30 | Guztira apostatutako kantitatea: 20 | Apostua emaitza: Berdin gelditzen zara | Azken balantzea: +0
+2023-05-08 09:37:21 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 33 | Guztira apostatutako kantitatea: 50 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -50

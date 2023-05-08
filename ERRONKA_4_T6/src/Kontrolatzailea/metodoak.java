@@ -524,6 +524,29 @@ public class metodoak {
 	 	    }
 	 	    return modificado;
 	 	}
+	 	
+	 	public static boolean apostuaInsert(String NAN, int id_joko, int apostuKantitate, String apostuEmaitza) {
+	 	    boolean erregistratuta = false;
+	 	    boolean existitu = false;
+
+	 	    datuBaseKarga.karga();
+
+	 	    Connection conn;                    
+	 	    try {
+	 	        String url = "jdbc:mysql://localhost:3306/kasinoa";
+	 	        conn = (Connection) DriverManager.getConnection(url, "root", "");
+	 	        Statement stmt = (Statement) conn.createStatement();                     
+	 	        stmt.executeUpdate("INSERT INTO apostua(NAN, id_joko, apostu_kantitatea, apostu_emaitza) VALUES ('" + NAN + "', '" + id_joko + "', '" + apostuKantitate + "', '" + apostuEmaitza + "');");
+	 	        erregistratuta = true;
+	 	        conn.close();
+	 	    } catch(SQLException ex) {
+	 	        System.out.println("SQLException: "+ ex.getMessage());
+	 	        System.out.println("SQLState: "+ ex.getSQLState());
+	 	        System.out.println("ErrorCode: "+ ex.getErrorCode());
+	 	    }
+	 	    return erregistratuta;
+	 	}
+
 
 	 	
 	 	public static boolean tlfZenbakia (String tlf) {

@@ -32,7 +32,7 @@ CREATE TABLE `apostua` (
   `NAN` varchar(9) DEFAULT NULL,
   `id_joko` int(11) DEFAULT NULL,
   `apostu_kantitatea` int(11) NOT NULL,
-  `apostu_emaitza` enum('irabazi','galdu') NOT NULL
+  `apostu_emaitza` enum('Irabazi', 'Berdin', 'Galdu') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -296,7 +296,7 @@ ALTER TABLE `maila`
 -- AUTO_INCREMENT de la tabla `apostua`
 --
 ALTER TABLE `apostua`
-  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `jokoak`

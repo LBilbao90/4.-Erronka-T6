@@ -17,6 +17,11 @@ public class Kasinoa {
 		this.telefonoa = telefonoa;
 		this.jokoak = jokoak;
 	}
+	
+	public Kasinoa(int id_kasinoa) {
+	    this.id_kasinoa = id_kasinoa;
+	}
+	
 	public int getId_kasinoa() {
 		return id_kasinoa;
 	}

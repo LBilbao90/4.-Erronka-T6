@@ -55,6 +55,7 @@ public class ruletaApostua extends JFrame {
     String denboraOrduaMomentukoa = formaData.format(momentukoData);
     
     String emaitzaApostu;
+    String emaitza;
     Timer timer = new Timer();
 
     private static btnJokoetaraBueltatuListener btnJokoetaraBueltatuListener;
@@ -701,14 +702,19 @@ public class ruletaApostua extends JFrame {
 		    			if (guztiraIrabaziak > 0 && guztiraIrabaziak > apostuOrain) {
 		    				emaitzaApostu = "Zorionak! Irabazitakoa: " + guztiraIrabaziak;
 		    				JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
+		    				emaitza = "Irabazi";
 		    				
 		    			} else if (guztiraIrabaziak == apostuOrain){
 		    				emaitzaApostu = "Berdin gelditzen zara";
 		    				JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
+		    				emaitza = "Berdin";
 		    			} else {
 		    				emaitzaApostu = "Ez duzu ezer irabazi";
 		    				 JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu + " :(");
+		    				 emaitza = "Galdu";
 		    			}
+		    			
+		    			metodoak.apostuaInsert(lehenLehioa.getMomentukoErabiltzaileNAN(), 1, apostuOrain, emaitza);
 		    			
 		    			guztiraApostua += metodoak.gehituApostuak(zbk);
 		    			guztiraApostua += metodoak.gehituApostuak(dozenak);

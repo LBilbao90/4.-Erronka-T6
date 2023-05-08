@@ -10,12 +10,14 @@ import com.mysql.jdbc.Statement;
 
 import Modelo.Admin;
 import Modelo.Erabiltzaile;
+import Modelo.Jokoak;
 import Modelo.Maila;
 
 public class datuBaseKarga {
     static ArrayList<Erabiltzaile> erabiltzaileak = new ArrayList<Erabiltzaile>();
     static ArrayList<Admin> langileak = new ArrayList<Admin>();
     static ArrayList<Maila> mailak = new ArrayList<Maila>();
+    static ArrayList<Jokoak> joko = new ArrayList<Jokoak>();
     
     public static ArrayList<Erabiltzaile> getErabiltzaileak() {
 		return erabiltzaileak;
@@ -29,11 +31,21 @@ public class datuBaseKarga {
 		return mailak;
 	}
 
+	public static ArrayList<Jokoak> getJoko() {
+		return joko;
+	}
+
 	public static void karga() {
         final String url = "jdbc:mysql://localhost:3306/kasinoa"; //url de la base de datos de phpmyadmin
         final String erabiltzaileKontsulta = "*";
         final String langileKontsulta = "*";
+        final String jokoak = "*";
         final String mailaKontsulta = "*";
+        
+        mailak.clear();
+        erabiltzaileak.clear();
+        langileak.clear();
+        joko.clear();
         
         Connection connection = null;
 
@@ -97,6 +109,18 @@ public class datuBaseKarga {
                 
                 langileak.add(admin); 
 
+                }
+            
+            // Jokoak
+            rs = stmt.executeQuery("SELECT " + jokoak + " FROM jokoak;");
+            while (rs.next()) {
+                Jokoak jokoa = new Jokoak(1);
+                jokoa.setId_jokoak(rs.getInt(1));
+                jokoa.setJokoIzena(rs.getString(3));;
+                jokoa.setMaxApostu(rs.getDouble(4));
+                jokoa.setIzena(rs.getString(4));
+                
+                joko.add(jokoa);
                 }
 
             connection.close();

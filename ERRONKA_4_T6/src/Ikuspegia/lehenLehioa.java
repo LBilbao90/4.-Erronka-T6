@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
+import Modelo.Admin;
 import Modelo.Erabiltzaile;
 import Modelo.Pertsona;
 
@@ -686,7 +687,7 @@ public class lehenLehioa extends JFrame {
 	    		
 	    		datuBaseKarga.karga();
 	 	 	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
-
+	 	 	    ArrayList<Admin> aminn = datuBaseKarga.getLangileak();
 		 	 	Erabiltzaile erabiltzailea = null;
 	
 		 	 	for (Erabiltzaile erabiltzaile : erabiltzaileak) {
