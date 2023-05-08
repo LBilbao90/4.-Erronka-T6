@@ -103,7 +103,7 @@ public class Admin extends Pertsona {
 	@Override
 	public String toString() {
 		return "Admin [kargua=" + kargua + ", soldata=" + soldata + ", id_langile=" + id_langile + ", id_kasino="
-				+ id_kasino + "NAN=" + NAN +  ", izena=" + izena + ", abizena=" + abizena + ", jaioteguna=" + jaioteguna
+				+ id_kasino + ", NAN=" + NAN +  ", izena=" + izena + ", abizena=" + abizena + ", jaioteguna=" + jaioteguna
 						+  ", herrialdea=" + herrialdea + ", probintzia=" + probintzia + ", herria=" + herria + ", postaKodea="
 						+ postaKodea + ", pasahitza=" + pasahitza + ", tlf_zenabkia=" + tlf_zenabkia + ", postaElektronikoa=" + postaElektronikoa + "]";
 	}

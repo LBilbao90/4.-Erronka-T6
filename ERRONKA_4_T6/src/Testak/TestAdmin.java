@@ -133,8 +133,8 @@ class TestAdmin {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-        Admin admin = new Admin("12345678A", "John", "Doe", jaioteguna, "Spain", "Madrid", "Madrid", "28001","password", "555555555", 1, "Administrator", 1500.0, 123, 456, "admin@gmail.com");
-        String expected = "Admin [kargua=Administrator, soldata=1500.0, id_langile=123, id_kasino=456NAN=12345678A, izena=John, abizena=Doe, jaioteguna=01/01/2000, herrialdea=Spain, probintzia=Madrid, herria=Madrid, postaKodea=28001, pasahitza=password, tlf_zenabkia=555555555, postaElektronikoa=admin@gmail.com]";
+        Admin admin = new Admin("12345678A", "John", "Doe", jaioteguna, "Spain", "Madrid", "Madrid", "28001","password", "555555555", 1, "Administrator", 1500.0, 1, 1, "admin@gmail.com");
+        String expected = "Admin [kargua=Administrator, soldata=1500.0, id_langile=1, id_kasino=1, NAN=12345678A, izena=John, abizena=Doe, jaioteguna="+jaioteguna+", herrialdea=Spain, probintzia=Madrid, herria=Madrid, postaKodea=28001, pasahitza=password, tlf_zenabkia=555555555, postaElektronikoa=admin@gmail.com]";
         assertEquals(expected, admin.toString());
     }
 }
