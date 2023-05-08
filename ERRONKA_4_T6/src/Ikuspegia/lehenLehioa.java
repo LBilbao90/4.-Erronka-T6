@@ -32,6 +32,8 @@ import javax.swing.JTextField;
 import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
@@ -534,6 +536,24 @@ public class lehenLehioa extends JFrame {
 	    imgBannerLangilePanela.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
 	    langilePanela.add(imgBannerLangilePanela);
 	    
+	 // Obtener la lista de erabiltzaileak desde la clase datuBase
+	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
+
+	    // Crear un modelo de tabla utilizando la lista de erabiltzaileak
+	    ErabiltzaileTableModel tableModel = new ErabiltzaileTableModel(erabiltzaileak);
+
+	    // Crear una instancia de la JTable utilizando el modelo de tabla
+	    JTable table = new JTable(tableModel);
+
+	    // Agregar JScrollPane a la tabla para permitir desplazamiento vertical
+	    JScrollPane scrollPane = new JScrollPane(table);
+
+		 // Establecer tamaño y posición del JScrollPane
+		 scrollPane.setBounds(300, 300, 800, 300);
+	
+		 // Agregar JScrollPane al JPanel
+		 langilePanela.add(scrollPane);
+
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
