@@ -30,6 +30,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import com.toedter.calendar.JDateChooser;
 
+import Ikuspegia.lehenLehioa;
 import Ikuspegia.ruletaApostua;
 import Ikuspegia.ruletaJokoa;
 import Ikuspegia.ruletaJokoa.OKButtonListener;
@@ -442,28 +443,58 @@ public class metodoak {
 	 	}
 
 
-	 	public static boolean loginBalidazioa(String erabiltzailea, char[] pasahitza) {
+	 	public static int loginBalidazioa(String erabiltzailea, char[] pasahitza) {
 	 		datuBaseKarga.karga();
+	 		boolean erabiltzaileZuzena = false;
+	 		
 		    for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
 		        if (erabiltzaile.getNAN().equals(erabiltzailea) && erabiltzaile.getPasahitza().equals(new String(pasahitza))) {
-		            return true;
+		        	erabiltzaileZuzena = true;
+		        	if (erabiltzaile.getId_maila() == 1) {
+		        		JOptionPane.showMessageDialog(null, "Administratzaile batek zure kontua blokeatu du", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+		        		// ezer
+		        		return 2;
+		        	} else if (erabiltzaile.getId_maila() == 2) {
+		        		String[] botoiak = {"Bai", "Ez"};
+				        
+				        int baja = JOptionPane.showOptionDialog(null, "Zure kontua desblokeatu nahi duzu?", "Konfirmazio mezua", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoiak, botoiak[0]);
+				        
+				        if (baja == JOptionPane.YES_OPTION) {
+				        	System.out.println(metodoak.erabiltzaileMailaUpdate(lehenLehioa.getMomentukoErabiltzaileNAN(), 3));
+				            // true
+				            return 1;
+				        } else {
+				        	// ezer
+				            return 2;
+				        }
+		        	} else {
+		        		// true
+		        		return 1;
+		        	}
 		        }
 		    }
-		    
-		    return false;
+		    if (erabiltzaileZuzena == false) {
+		    	 JOptionPane.showMessageDialog(null, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+		    	 return 2;
+		    }
+		    // false
+		    return 0;
 		}
 	 	
 	 	public static boolean loginBalidazioaAdmin(String admin, char[] pasahitza) {
 	 		datuBaseKarga.karga();
+	 		boolean adminZuzena = false;
+	 		
 		    for (Admin adminintratzailea : datuBaseKarga.getLangileak()) {
-		    	System.out.println(adminintratzailea.getMaila_izena());
-		    	System.out.println(adminintratzailea.getId_maila());
 		        if (adminintratzailea.getNAN().equals(admin) && adminintratzailea.getPasahitza().equals(new String(pasahitza))) {
+		        	adminZuzena = true;
 		        	System.out.println(adminintratzailea.getNAN());
 		            return true;
 		        }
 		    }
-		    
+		    if (!adminZuzena) {
+		    	JOptionPane.showMessageDialog(null, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+		    }
 		    return false;
 		}
 	 	
@@ -546,6 +577,32 @@ public class metodoak {
 	 	        System.out.println("ErrorCode: "+ ex.getErrorCode());
 	 	    }
 	 	    return erregistratuta;
+	 	}
+	 	
+	 	public static boolean erabiltzaileMailaUpdate(String NAN, int Maila) {
+	 	    boolean modificado = false;
+	 	    Connection conn;
+	 	    try {
+	 	    	String url = "jdbc:mysql://localhost:3306/kasinoa";
+                conn = (Connection) DriverManager.getConnection (url, "root","");
+                Statement stmt = (Statement) conn.createStatement();      
+                
+                stmt.executeUpdate("UPDATE erabiltzaile_kontua SET id_maila = '" + Maila + "' WHERE NAN = '" + NAN + "'");
+
+
+	 	        int rowsAffected = stmt.getUpdateCount();
+	 	        if (rowsAffected > 0) {
+	 	            modificado = true;
+	 	        } else {
+	 	        }
+
+	 	        conn.close();
+	 	    } catch (SQLException ex) {
+	 	        System.out.println("SQLException: " + ex.getMessage());
+	 	        System.out.println("SQLState: " + ex.getSQLState());
+	 	        System.out.println("ErrorCode: " + ex.getErrorCode());
+	 	    }
+	 	    return modificado;
 	 	}
 
 

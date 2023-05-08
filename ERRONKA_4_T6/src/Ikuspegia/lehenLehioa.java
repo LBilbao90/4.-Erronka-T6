@@ -28,6 +28,7 @@ import Modelo.Pertsona;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 import java.awt.Dimension;
 import java.awt.Color;
@@ -36,6 +37,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.jdatepicker.JDatePicker;
 
@@ -499,12 +502,20 @@ public class lehenLehioa extends JFrame {
 	    textPostaKodea.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textTelefonoa.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    
+	    
 	    // erabiltzaileDatuak aldatzeko botoia
 	    JButton btnAldatuErabiltzaileDatu = new JButton("Aldaketak aplikatu");
 	    btnAldatuErabiltzaileDatu.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	    btnAldatuErabiltzaileDatu.setOpaque(false); // transparente
-	    btnAldatuErabiltzaileDatu.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
+	    btnAldatuErabiltzaileDatu.setBounds((int) (screenWidth*0.65), (int) (screenHeight*0.80), (int) (screenWidth*0.30), 40);
 	    erabiltzaileDatuak.add(btnAldatuErabiltzaileDatu);
+	    
+	    // erabiltzaileDatuak aldatzeko botoia
+	    JButton btnBlokeatuKontua = new JButton("Blokeatu kontua");
+	    btnBlokeatuKontua.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    btnBlokeatuKontua.setOpaque(false); // transparente
+	    btnBlokeatuKontua.setBounds((int) (screenWidth*0.325), (int) (screenHeight*0.80), (int) (screenWidth*0.25), 40);
+	    erabiltzaileDatuak.add(btnBlokeatuKontua);
 	    
 		// Jokoak buelatzeko botoia
 	    JButton btnJokoraBuelta = new JButton("");
@@ -548,11 +559,34 @@ public class lehenLehioa extends JFrame {
 	    // Agregar JScrollPane a la tabla para permitir desplazamiento vertical
 	    JScrollPane scrollPane = new JScrollPane(table);
 
-		 // Establecer tama�o y posici�n del JScrollPane
-		 scrollPane.setBounds(300, 300, 800, 300);
+		 // Establecer tama�o y posici�n del JScrollPane
+		 scrollPane.setBounds((int)(screenWidth*0.1), (int)(screenHeight*0.3), 800, 300);
 	
 		 // Agregar JScrollPane al JPanel
 		 langilePanela.add(scrollPane);
+		// Crear un nuevo listener de selección de fila
+		 ListSelectionListener rowSelectedListener = new ListSelectionListener() {
+		     public void valueChanged(ListSelectionEvent event) {
+		         if (!event.getValueIsAdjusting()) {
+		             // Obtener la fila seleccionada
+		             int selectedRow = table.getSelectedRow();
+
+		             // Imprimir información del usuario seleccionado
+		             Erabiltzaile erabiltzaile = erabiltzaileak.get(selectedRow);
+		             System.out.println(erabiltzaile.toString());
+		         }
+		     }
+		 };
+
+		 // Obtener el modelo de selección de la tabla
+		 ListSelectionModel selectionModel = table.getSelectionModel();
+
+		 // Remover cualquier listener de selección anterior
+		 selectionModel.removeListSelectionListener(rowSelectedListener);
+
+		 // Agregar el nuevo listener de selección de fila
+		 selectionModel.addListSelectionListener(rowSelectedListener);
+
 
 
 		btnSarrera.addActionListener(new ActionListener() {
@@ -581,18 +615,25 @@ public class lehenLehioa extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		String NAN = textErabiltzailea.getText().toUpperCase();
+	    		momentukoErabiltzaileNAN = NAN;
 	    		char[] pasahitza = passwordLogin.getPassword();
-	    		boolean loginOndoErabiltzaile = metodoak.loginBalidazioa(NAN, pasahitza);
-	    		boolean loginOndoAdmin = metodoak.loginBalidazioaAdmin(NAN, pasahitza);
+	    		int loginOndoErabiltzaile = metodoak.loginBalidazioa(NAN, pasahitza);
+	    		boolean loginOndoAdmin = false;
+	    		if (loginOndoErabiltzaile == 0) {
+	    			loginOndoAdmin = metodoak.loginBalidazioaAdmin(NAN, pasahitza);
+	    		}
+	    		
 
 			    
-	    		if (loginOndoErabiltzaile) {
+	    		if (loginOndoErabiltzaile == 1) {
+	    			
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
 	    			metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
 	    			setTitle("Jokoak | Elorrieta Kasinoa �");
-	    		} else if(loginOndoAdmin){
+	    		} 
+	    		else if(loginOndoAdmin){
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
@@ -600,7 +641,6 @@ public class lehenLehioa extends JFrame {
 	    		} else {
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
-	    			JOptionPane.showMessageDialog(erregistratu, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
 	    			}
 	    	    }	
 	    	});
@@ -819,5 +859,20 @@ public class lehenLehioa extends JFrame {
 	    		}
 	    	}
 	    });
+	    
+	    btnBlokeatuKontua.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				   String[] botoiak = {"Bai", "Ez"};
+			        
+			        int baja = JOptionPane.showOptionDialog(null, "Ziur zaude zure kontua blokeatu nahi duzula?", "Konfirmazio mezua", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoiak, botoiak[0]);
+			        
+			        if (baja == JOptionPane.YES_OPTION) {
+			            metodoak.erabiltzaileMailaUpdate(momentukoErabiltzaileNAN, 2);
+			            metodoak.btn3secDelay(login, baja, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+			        } else {
+			            System.out.println("Ados");
+			        }
+			}
+		});
 	}
 }

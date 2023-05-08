@@ -46,9 +46,18 @@ public class ErabiltzaileTableModel extends AbstractTableModel {
             case 4:
                 return erabiltzaile.getDiru_kopuru_momentukoa();
             case 5:
-                return erabiltzaile.getMaila_izena();
+            	if (erabiltzaile.getId_maila() == 1) {
+            		return "Brontze";
+            	} else if (erabiltzaile.getId_maila() == 2) {
+            		return "Zilarra";
+            	} else if (erabiltzaile.getId_maila() == 3) {
+            		return "Urrea";
+            	}
+                 
             default:
                 return null;
         }
+        
+        
     }
 }
