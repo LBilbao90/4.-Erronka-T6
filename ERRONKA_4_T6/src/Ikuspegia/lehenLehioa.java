@@ -365,7 +365,6 @@ public class lehenLehioa extends JFrame {
 	    jokoak.setLayout(null);
 	    
 	    JButton itxiJokoak = new JButton("");
-	    ImageIcon irtenImg = new ImageIcon("img/bukatu.png");
 	    itxiJokoak.setIcon(irtenImg);
 	    itxiJokoak.setBounds(10, 10, 110, 100);
 	    itxiJokoak.setOpaque(false);
@@ -426,10 +425,19 @@ public class lehenLehioa extends JFrame {
 	    contentPane.add(erabiltzaileDatuak);
 	    erabiltzaileDatuak.setLayout(null);
 	    
+	    
+	    JButton itxiAldatuDatuak = new JButton("");
+	    itxiAldatuDatuak.setIcon(irtenImg);
+	    itxiAldatuDatuak.setBounds(10, 10, 110, 100);
+	    itxiAldatuDatuak.setOpaque(false);
+	    itxiAldatuDatuak.setContentAreaFilled(false);
+	    itxiAldatuDatuak.setBorderPainted(false);
+	    itxiAldatuDatuak.setFocusPainted(false);
+	    erabiltzaileDatuak.add(itxiAldatuDatuak);
+	    
 	    JLabel imgBannerErabiltzaileDatuak = new JLabel(new ImageIcon("img/banner.jpg"));
 	    imgBannerErabiltzaileDatuak.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
 	    erabiltzaileDatuak.add(imgBannerErabiltzaileDatuak);
-	   // erabiltzaileDatuak.add(imgBannerLogin);
 	    
 	  //erabiltzaileDatuak testuak
 	    txtNAN = metodoak.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
