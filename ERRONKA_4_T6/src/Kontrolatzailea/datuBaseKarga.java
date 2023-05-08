@@ -11,6 +11,8 @@ import com.mysql.jdbc.Statement;
 import Modelo.Admin;
 import Modelo.Erabiltzaile;
 import Modelo.Jokoak;
+import Modelo.KasinoErabiltzaile;
+import Modelo.Kasinoa;
 import Modelo.Maila;
 
 public class datuBaseKarga {
@@ -18,6 +20,8 @@ public class datuBaseKarga {
     static ArrayList<Admin> langileak = new ArrayList<Admin>();
     static ArrayList<Maila> mailak = new ArrayList<Maila>();
     static ArrayList<Jokoak> joko = new ArrayList<Jokoak>();
+    static ArrayList<Kasinoa> Kasinoa = new ArrayList<Kasinoa>();
+    static ArrayList<KasinoErabiltzaile> KasinoErabiltzaile = new ArrayList<KasinoErabiltzaile>();
     
     public static ArrayList<Erabiltzaile> getErabiltzaileak() {
 		return erabiltzaileak;
@@ -35,12 +39,22 @@ public class datuBaseKarga {
 		return joko;
 	}
 
+	public static ArrayList<Kasinoa> getKasino() {
+		return Kasinoa;
+	}
+
+	public static ArrayList<KasinoErabiltzaile> getKasinoErabiltzaile() {
+		return KasinoErabiltzaile;
+	}
+
 	public static void karga() {
         final String url = "jdbc:mysql://localhost:3306/kasinoa"; //url de la base de datos de phpmyadmin
         final String erabiltzaileKontsulta = "*";
         final String langileKontsulta = "*";
         final String jokoak = "*";
         final String mailaKontsulta = "*";
+        final String kasinoa = "*";
+        final String kasino_erabiltzaile = "*";
         
         mailak.clear();
         erabiltzaileak.clear();
@@ -116,11 +130,33 @@ public class datuBaseKarga {
             while (rs.next()) {
                 Jokoak jokoa = new Jokoak(1);
                 jokoa.setId_jokoak(rs.getInt(1));
-                jokoa.setJokoIzena(rs.getString(3));;
+                jokoa.setJokoIzena(rs.getString(3));
                 jokoa.setMaxApostu(rs.getDouble(4));
                 jokoa.setIzena(rs.getString(4));
                 
                 joko.add(jokoa);
+                }
+            
+            // Kasinoa
+            rs = stmt.executeQuery("SELECT " + kasinoa + " FROM kasino;");
+            while (rs.next()) {
+                Kasinoa kasino = new Kasinoa();
+                kasino.setId_kasinoa(rs.getInt(1));
+                kasino.setIzena(rs.getString(2));
+                kasino.setHelbidea(rs.getString(3));
+                kasino.setTelefonoa(rs.getInt(4));
+                
+                Kasinoa.add(kasino);
+                }
+            
+            // Kasinoa Erabiltzaile
+            rs = stmt.executeQuery("SELECT " + kasino_erabiltzaile + " FROM kasino_erabiltzaile;");
+            while (rs.next()) {
+            	KasinoErabiltzaile kasinoErabiltzaile = new KasinoErabiltzaile();
+            	kasinoErabiltzaile.setId_Kasino(rs.getInt(1));
+            	kasinoErabiltzaile.setNAN(rs.getString(2));
+                
+            	KasinoErabiltzaile.add(kasinoErabiltzaile);
                 }
 
             connection.close();

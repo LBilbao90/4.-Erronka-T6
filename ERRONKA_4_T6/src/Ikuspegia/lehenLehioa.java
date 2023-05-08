@@ -12,8 +12,10 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,9 +26,13 @@ import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
 import Modelo.Admin;
 import Modelo.Erabiltzaile;
+import Modelo.KasinoErabiltzaile;
+import Modelo.Kasinoa;
+import Modelo.Maila;
 import Modelo.Pertsona;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
@@ -39,6 +45,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 import org.jdatepicker.JDatePicker;
 
@@ -502,7 +509,6 @@ public class lehenLehioa extends JFrame {
 	    textPostaKodea.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    textTelefonoa.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    
-	    
 	    // erabiltzaileDatuak aldatzeko botoia
 	    JButton btnAldatuErabiltzaileDatu = new JButton("Aldaketak aplikatu");
 	    btnAldatuErabiltzaileDatu.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -526,7 +532,6 @@ public class lehenLehioa extends JFrame {
 	    btnJokoraBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.20), 70);
 	    erabiltzaileDatuak.add(btnJokoraBuelta);
 	    
-	    
 	    // Langile panela
 	    JPanel langilePanela = new JPanel();
 	    langilePanela.setBorder(null);
@@ -543,49 +548,282 @@ public class lehenLehioa extends JFrame {
 	    itxiLangilePanela.setFocusPainted(false);
 	    langilePanela.add(itxiLangilePanela);
 	    
+	    //Administratzailetik Login
+	    JButton btnAdminLogin = new JButton("Login");
+	    btnAdminLogin.setFont(new Font("Tahoma", Font.PLAIN, 25));
+	    btnAdminLogin.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.12), 50);
+	    btnAdminLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	    langilePanela.add(btnAdminLogin);
+	    
+	    JButton btnAdminBlokeatu = new JButton("Blokeatu kontua");
+	    btnAdminBlokeatu.setFont(new Font("Tahoma", Font.PLAIN, 15));
+	    btnAdminBlokeatu.setOpaque(false); // transparente
+	    btnAdminBlokeatu.setBounds((int) (screenWidth*0.75), (int) (screenHeight*0.775), (int) (screenWidth*0.20), 30);
+	    langilePanela.add(btnAdminBlokeatu);
+	    
+	    JButton btnAdminDesblokeatu = new JButton("Desblokeatu kontua");
+	    btnAdminDesblokeatu.setFont(new Font("Tahoma", Font.PLAIN, 15));
+	    btnAdminDesblokeatu.setOpaque(false); // transparente
+	    btnAdminDesblokeatu.setBounds((int) (screenWidth*0.75), (int) (screenHeight*0.875), (int) (screenWidth*0.20), 30);
+	    langilePanela.add(btnAdminDesblokeatu);
+	    
 	    JLabel imgBannerLangilePanela = new JLabel(new ImageIcon("img/banner.jpg"));
 	    imgBannerLangilePanela.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
 	    langilePanela.add(imgBannerLangilePanela);
 	    
-	 // Obtener la lista de erabiltzaileak desde la clase datuBase
-	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
+	    // Datu base karga
+	    datuBaseKarga.karga();
+	    
+	 	// Kasino lista
+	    ArrayList<Kasinoa> kasinoak = datuBaseKarga.getKasino();
 
-	    // Crear un modelo de tabla utilizando la lista de erabiltzaileak
-	    ErabiltzaileTableModel tableModel = new ErabiltzaileTableModel(erabiltzaileak);
+	    // Kasinoen izenak gordetzeko Arraya
+	    String[] kasinoDenak = new String[kasinoak.size() + 1];
 
-	    // Crear una instancia de la JTable utilizando el modelo de tabla
-	    JTable table = new JTable(tableModel);
+	    // "Kasino denak" aukera
+	    kasinoDenak[0] = "Kasino denak";
 
-	    // Agregar JScrollPane a la tabla para permitir desplazamiento vertical
-	    JScrollPane scrollPane = new JScrollPane(table);
+	    // Kasino lista bete izen guztiekin
+	    for (int i = 0; i < kasinoak.size(); i++) {
+	    	kasinoDenak[i+1] = kasinoak.get(i).getIzena();
+	    }
+	    
+	    JComboBox<String> comboBoxKasino = new JComboBox<>(kasinoDenak);
+	    comboBoxKasino.setBounds((int) (screenWidth*0.02), (int) (screenHeight*0.25), 175, 30);
+	    comboBoxKasino.setSelectedIndex(-1);
+	    langilePanela.add(comboBoxKasino);
+	    
+	    JComboBox<String> comboBoxMaila = new JComboBox<>();
+	    comboBoxMaila.setBounds((int) (screenWidth*0.02), (int) (screenHeight*0.5), 175, 30);
+	    comboBoxMaila.setEnabled(false);
+	    langilePanela.add(comboBoxMaila);
 
-		 // Establecer tama�o y posici�n del JScrollPane
-		 scrollPane.setBounds((int)(screenWidth*0.1), (int)(screenHeight*0.3), 800, 300);
-	
-		 // Agregar JScrollPane al JPanel
-		 langilePanela.add(scrollPane);
-		// Crear un nuevo listener de selección de fila
-		 ListSelectionListener rowSelectedListener = new ListSelectionListener() {
-		     public void valueChanged(ListSelectionEvent event) {
-		         if (!event.getValueIsAdjusting()) {
-		             // Obtener la fila seleccionada
-		             int selectedRow = table.getSelectedRow();
+	    // Mailen listak
+	    ArrayList<Maila> mailak = datuBaseKarga.getMailak();
 
-		             // Imprimir información del usuario seleccionado
-		             Erabiltzaile erabiltzaile = erabiltzaileak.get(selectedRow);
-		             System.out.println(erabiltzaile.toString());
-		         }
-		     }
-		 };
+	    // Maila lista bete maila guztiekin
+	    String[] mailaDenak = new String[mailak.size()];
 
-		 // Obtener el modelo de selección de la tabla
-		 ListSelectionModel selectionModel = table.getSelectionModel();
+	    // Maila lista bete maila izenekin
+	    for (int i = 0; i < mailaDenak.length; i++) {
+	        mailaDenak[i] = mailak.get(i).getMaila_izena();
+	    }
+	    
+	    // comboBox-era gehitu aukerak
+	    comboBoxMaila.setModel(new DefaultComboBoxModel<>(mailaDenak));
+	    comboBoxMaila.setSelectedIndex(-1);
+	    
+	    // Taula
+        JTable erabiltzaileTaula = new JTable();
+        JScrollPane scrollPane = new JScrollPane(erabiltzaileTaula);
+        scrollPane.setBounds((int) (screenWidth*0.2), (int) (screenHeight*0.25), (int) (screenWidth*0.65), (int) (screenHeight*0.5));
+        langilePanela.add(scrollPane);
+        langilePanela.setLayout(null);
 
-		 // Remover cualquier listener de selección anterior
-		 selectionModel.removeListSelectionListener(rowSelectedListener);
+        // Zutabe izenak
+        String[] zutabeIzenak = {"Izena", "Abizena", "NAN", "Maila", "Momentuko Dirua", "Diru Historikoa"};
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(zutabeIzenak);
+        erabiltzaileTaula.setModel(model);
+        
 
-		 // Agregar el nuevo listener de selección de fila
-		 selectionModel.addListSelectionListener(rowSelectedListener);
+    	// comboBoxKasino actionListener
+    	comboBoxKasino.addActionListener(new ActionListener() {
+    	    @Override
+    	    public void actionPerformed(ActionEvent e) {
+    	        // Aukeratutako kasinoaren izena
+    	        String kasinoIzena = (String) comboBoxKasino.getSelectedItem();
+
+    	        // Bilatu hautatutako izenari dagokion Kasinoa objektua
+    	        Kasinoa aukeratutakoKasinoa = null;
+    	        if (!kasinoIzena.equals("Kasino denak")) {
+    	        	comboBoxMaila.setSelectedIndex(-1);
+    	        	comboBoxMaila.setEnabled(true);
+    	            for (Kasinoa kasinoa : kasinoak) {
+    	                if (kasinoa.getIzena().equals(kasinoIzena)) {
+    	                	aukeratutakoKasinoa = kasinoa;
+    	                    break;
+    	                }
+    	            }
+    	        }
+
+    	        // Taula garbitu
+    	        model.setRowCount(0);
+
+    	        // Gehitu erabiltzaileei dagozkien errenkadak
+    	        if (kasinoIzena.equals("Kasino denak")) {
+    	        	comboBoxMaila.setEnabled(false);
+    	            // Erabiltzaile guztiak erakutsi
+    	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+    	                String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                model.addRow(errenkada);
+    	            }
+    	        } else {
+    	        	comboBoxMaila.setSelectedIndex(-1);
+    	        	comboBoxMaila.setEnabled(true);
+    	            // Aukeratutako kasinoko erabiltzaileak erakutsi
+    	            if (aukeratutakoKasinoa != null) {
+    	                for (KasinoErabiltzaile ke : datuBaseKarga.getKasinoErabiltzaile()) {
+    	                    if (ke.getId_Kasino() == aukeratutakoKasinoa.getId_kasinoa()) {
+    	                        for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+    	                            if (erabiltzaile.getNAN().equals(ke.getNAN())) {
+    	                            	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                                boolean erabiltzaileErantsia = false;
+    	                                for (int i = 0; i < model.getRowCount(); i++) {
+    	                                    if (model.getValueAt(i, 2).equals(erabiltzaile.getNAN())) {
+    	                                    	erabiltzaileErantsia = true;
+    	                                        break;
+    	                                    }
+    	                                }
+    	                                if (!erabiltzaileErantsia) {
+    	                                	model.addRow(errenkada);
+    	                                }
+    	                                break;
+    	                            }
+    	                        }
+    	                    }
+    	                }
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	// JComboBox2 actionListener
+    	comboBoxMaila.addActionListener(new ActionListener() {
+    	    @Override
+    	    public void actionPerformed(ActionEvent e) {
+    	        // Aukeratutako mailaren izena berreskuratu
+    	        String mailaIzena = (String) comboBoxMaila.getSelectedItem();
+
+    	        // Bilatu hautatutako izenari dagokion Maila objektua
+    	        Maila aukeratutakoMaila = null;
+    	        for (Maila maila : mailak) {
+    	            if (maila.getMaila_izena().equals(mailaIzena)) {
+    	            	aukeratutakoMaila = maila;
+    	                break;
+    	            }
+    	        }
+
+    	        // JComboBox1-en aukeratutako kasinoaren izena berreskuratu
+    	        String kasinoIzena = (String) comboBoxKasino.getSelectedItem();
+
+    	        // Bilatu hautatutako izenari dagokion Kasinoa
+    	        Kasinoa aukeratutakoKasinoa = null;
+    	        if (!kasinoIzena.equals("Kasino denak")) {
+    	            for (Kasinoa kasinoa : kasinoak) {
+    	                if (kasinoa.getIzena().equals(kasinoIzena)) {
+    	                	aukeratutakoKasinoa = kasinoa;
+    	                    break;
+    	                }
+    	            }
+    	        }
+
+    	        // Taula garbitu
+    	        model.setRowCount(0);
+
+    	        // Gehitu erabiltzaileei dagozkien errenkadak
+    	        if (aukeratutakoMaila != null) {
+    	            if (aukeratutakoKasinoa != null) {
+    	            	// Aukeratutako Kasino eta mailari dagokion erabiltzaileak erakutsi
+    	                for (KasinoErabiltzaile kasinoErabiltzaile : datuBaseKarga.getKasinoErabiltzaile()) {
+    	                    if (kasinoErabiltzaile.getId_Kasino() == aukeratutakoKasinoa.getId_kasinoa()) {
+    	                        for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+    	                            if (erabiltzaile.getNAN().equals(kasinoErabiltzaile.getNAN()) && erabiltzaile.getId_maila() == aukeratutakoMaila.getId_maila()) {
+    	                            	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                                boolean erabiltzaileErantsia = false;
+    	                                for (int i = 0; i < model.getRowCount(); i++) {
+    	                                    if (model.getValueAt(i, 2).equals(erabiltzaile.getNAN())) {
+    	                                    	erabiltzaileErantsia = true;
+    	                                        break;
+    	                                    }
+    	                                }
+    	                                if (!erabiltzaileErantsia) {
+    	                                    model.addRow(errenkada);
+    	                                }
+    	                                break;
+    	                            }
+    	                        }
+    	                    }
+    	                }
+    	            } else {
+    	                // Erakutsi kasino guztien erabiltzaileak aukeratutako mailan
+    	                for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+    	                    if (erabiltzaile.getId_maila() == aukeratutakoMaila.getId_maila()) {
+    	                    	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                        boolean erabiltzaileErantsia = false;
+    	                        for (int i = 0; i < model.getRowCount(); i++) {
+    	                            if (model.getValueAt(i, 2).equals(erabiltzaile.getNAN())) {
+    	                            	erabiltzaileErantsia = true;
+    	                                break;
+    	                            }
+    	                        }
+                                if (!erabiltzaileErantsia) {
+                                    model.addRow(errenkada);
+                                }
+                                break;
+    	                    }
+    	                }
+    	            }
+    	        }
+    	    }
+    	    
+    	});
+    	
+    	btnAdminBlokeatu.addActionListener(new ActionListener() {
+    	    @Override
+    	    public void actionPerformed(ActionEvent e) {
+    	        int aukeratutakoErrenkada = erabiltzaileTaula.getSelectedRow();
+    	        boolean blokeatuta = false;
+    	        if (aukeratutakoErrenkada != -1) { // errenkada bat badago aukeratuta
+    	            String nan = (String) erabiltzaileTaula.getValueAt(aukeratutakoErrenkada, 2);
+    	            System.out.println(nan);
+    	            
+    	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+    	                if (erabiltzaile.getNAN().equals(nan) && erabiltzaile.getId_maila() == 1) {
+    	                	JOptionPane.showMessageDialog(jokoak,"Une honetarako, kontu hau blokeatuta dago: " + nan, "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+    	                	blokeatuta = true;
+    	                	break;
+    	                	}  
+    	                }
+    	                
+        	        if (!blokeatuta) {
+        	        	metodoak.erabiltzaileMailaUpdate(nan, 1);
+			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen blokeatu da kontua", "Elorrieta Kasinoa �", JOptionPane.INFORMATION_MESSAGE);
+		    	        datuBaseKarga.karga();
+        	        }
+        	        comboBoxKasino.setSelectedIndex(0);
+        	        comboBoxMaila.setSelectedIndex(-1);
+    	        }
+    	    }
+    	});
+    	
+    	btnAdminDesblokeatu.addActionListener(new ActionListener() {
+    	    @Override
+    	    public void actionPerformed(ActionEvent e) {
+    	        int aukeratutakoErrenkada = erabiltzaileTaula.getSelectedRow();
+    	        boolean desblokeatuta = false;
+    	        if (aukeratutakoErrenkada != -1) { // errekada bat badago aukeratuta
+    	            String nan = (String) erabiltzaileTaula.getValueAt(aukeratutakoErrenkada, 2);
+    	            System.out.println(nan);
+    	            
+    	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+    	                if (erabiltzaile.getNAN().equals(nan) && erabiltzaile.getId_maila() == 1) {
+    	                	metodoak.erabiltzaileMailaUpdate(nan, 3);
+    			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen desblokeatu da kontua", "Elorrieta Kasinoa �", JOptionPane.INFORMATION_MESSAGE);
+    			        	datuBaseKarga.karga();
+    	                	desblokeatuta = true;
+    	                	break;
+    	                	}  
+    	                }
+    	                
+        	        if (!desblokeatuta) {
+			        	JOptionPane.showMessageDialog(jokoak, nan + " ezin izan da desblokeatu kontua", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
+        	        }
+        	        comboBoxKasino.setSelectedIndex(0);
+        	        comboBoxMaila.setSelectedIndex(-1);
+    	        }
+    	    }
+    	});
 
 
 
@@ -626,7 +864,7 @@ public class lehenLehioa extends JFrame {
 
 			    
 	    		if (loginOndoErabiltzaile == 1) {
-	    			
+	    			metodoak.kasinoErabiltzaileInsert(NAN, 1);
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
@@ -872,6 +1110,20 @@ public class lehenLehioa extends JFrame {
 			        } else {
 			            System.out.println("Ados");
 			        }
+			}
+		});
+	    
+		//'bukatu img' botoia 'langilePanela' panelean dagoena. Aplikazioa bukatzen du.
+	    itxiLangilePanela.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+	    
+	    btnAdminLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, langilePanela, e);
 			}
 		});
 	}

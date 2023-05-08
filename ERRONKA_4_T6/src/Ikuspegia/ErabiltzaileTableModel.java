@@ -15,6 +15,16 @@ public class ErabiltzaileTableModel extends AbstractTableModel {
         this.erabiltzaileak = erabiltzaileak;
     }
 
+    public void setErabiltzaileak(List<Erabiltzaile> erabiltzaileak) {
+        this.erabiltzaileak = erabiltzaileak;
+        fireTableDataChanged();
+    }
+
+    public void setColumnNames(String[] columnNames) {
+        this.columnNames = columnNames;
+        fireTableStructureChanged();
+    }
+
     @Override
     public int getRowCount() {
         return erabiltzaileak.size();

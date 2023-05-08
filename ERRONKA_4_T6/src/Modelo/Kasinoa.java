@@ -8,7 +8,7 @@ public class Kasinoa {
 	protected String izena;
 	protected String helbidea;
 	protected int telefonoa;
-	private ArrayList<Jokuak> jokoak; 
+	private ArrayList<Jokuak> jokoak;
 	
 	public Kasinoa(int id_kasinoa, String izena, String helbidea, int telefonoa, ArrayList<Jokuak> jokoak) {
 		this.id_kasinoa = id_kasinoa;
@@ -20,6 +20,9 @@ public class Kasinoa {
 	
 	public Kasinoa(int id_kasinoa) {
 	    this.id_kasinoa = id_kasinoa;
+	}
+	
+	public Kasinoa() {
 	}
 	
 	public int getId_kasinoa() {

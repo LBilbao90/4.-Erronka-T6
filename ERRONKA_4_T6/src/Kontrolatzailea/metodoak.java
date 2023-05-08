@@ -36,6 +36,7 @@ import Ikuspegia.ruletaJokoa;
 import Ikuspegia.ruletaJokoa.OKButtonListener;
 import Modelo.Admin;
 import Modelo.Erabiltzaile;
+import Modelo.KasinoErabiltzaile;
 
 
 public class metodoak {
@@ -445,11 +446,9 @@ public class metodoak {
 
 	 	public static int loginBalidazioa(String erabiltzailea, char[] pasahitza) {
 	 		datuBaseKarga.karga();
-	 		boolean erabiltzaileZuzena = false;
 	 		
 		    for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
 		        if (erabiltzaile.getNAN().equals(erabiltzailea) && erabiltzaile.getPasahitza().equals(new String(pasahitza))) {
-		        	erabiltzaileZuzena = true;
 		        	if (erabiltzaile.getId_maila() == 1) {
 		        		JOptionPane.showMessageDialog(null, "Administratzaile batek zure kontua blokeatu du", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
 		        		// ezer
@@ -472,10 +471,6 @@ public class metodoak {
 		        		return 1;
 		        	}
 		        }
-		    }
-		    if (erabiltzaileZuzena == false) {
-		    	 JOptionPane.showMessageDialog(null, "Erabiltzaile edo pasahitz okerra", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-		    	 return 2;
 		    }
 		    // false
 		    return 0;
@@ -604,6 +599,35 @@ public class metodoak {
 	 	    }
 	 	    return modificado;
 	 	}
+	 	
+	 	public static void kasinoErabiltzaileInsert(String NAN, int id_kasino) {
+	 	    boolean existitu = false;
+
+	 	    datuBaseKarga.karga();
+	 	    ArrayList<KasinoErabiltzaile> kasinoErabiltzaile = datuBaseKarga.getKasinoErabiltzaile();
+	 	    
+	 	    for (KasinoErabiltzaile kasEr : kasinoErabiltzaile) {
+	 	    	if (kasEr.getNAN().equals(NAN) && Integer.valueOf(kasEr.getId_Kasino()).equals(id_kasino)) {
+	 	    	    existitu = true;
+	 	    	    break;
+	 	    	}
+
+	 	    }
+	        if(!existitu) {
+	            Connection conn;                    
+	            try {
+	                String url = "jdbc:mysql://localhost:3306/kasinoa";
+	                conn = (Connection) DriverManager.getConnection (url, "root","");
+	                Statement stmt = (Statement) conn.createStatement();                     
+	                stmt.executeUpdate( "INSERT INTO kasino_erabiltzaile VALUES ('"+id_kasino+"','"+NAN+"');");
+	                conn.close();
+	            }catch(SQLException ex) {
+	                    System.out.println("SQLException: "+ ex.getMessage());
+	                    System.out.println("SQLState: "+ ex.getSQLState());
+	                    System.out.println("ErrorCode: "+ ex.getErrorCode());
+	            }
+	        }
+	    }
 
 
 	 	
