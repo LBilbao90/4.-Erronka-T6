@@ -182,7 +182,7 @@ CREATE TABLE `langile_kontua` (
   `Probintzia` varchar(100) NOT NULL,
   `Herria` varchar(50) NOT NULL,
   `Posta_Kodea` int(10) UNSIGNED NOT NULL,
-  `Posta_elektronikoa` varchar(100) NOT NULL,
+  `Posta_elektronikoa` varchar(100) NOT NULL UNIQUE,
   `tlf_zenbakia` char(9) NOT NULL,
   `Kargu` varchar(50) NOT NULL,
   `Soldata` double UNSIGNED NOT NULL,
