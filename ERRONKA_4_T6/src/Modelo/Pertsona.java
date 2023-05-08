@@ -40,8 +40,6 @@ public abstract class Pertsona extends Maila{
 		super();
 	}
 
-
-
 	public String getNAN() {
 		return NAN;
 	}

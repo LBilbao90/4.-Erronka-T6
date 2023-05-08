@@ -456,7 +456,8 @@ public class metodoak {
 	 	public static boolean loginBalidazioaAdmin(String admin, char[] pasahitza) {
 	 		datuBaseKarga.karga();
 		    for (Admin adminintratzailea : datuBaseKarga.getLangileak()) {
-		    	System.out.println(adminintratzailea.getNAN());
+		    	System.out.println(adminintratzailea.getMaila_izena());
+		    	System.out.println(adminintratzailea.getId_maila());
 		        if (adminintratzailea.getNAN().equals(admin) && adminintratzailea.getPasahitza().equals(new String(pasahitza))) {
 		        	System.out.println(adminintratzailea.getNAN());
 		            return true;

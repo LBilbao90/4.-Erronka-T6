@@ -32,6 +32,8 @@ import javax.swing.JTextField;
 import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
@@ -365,7 +367,6 @@ public class lehenLehioa extends JFrame {
 	    jokoak.setLayout(null);
 	    
 	    JButton itxiJokoak = new JButton("");
-	    ImageIcon irtenImg = new ImageIcon("img/bukatu.png");
 	    itxiJokoak.setIcon(irtenImg);
 	    itxiJokoak.setBounds(10, 10, 110, 100);
 	    itxiJokoak.setOpaque(false);
@@ -424,12 +425,20 @@ public class lehenLehioa extends JFrame {
 	    erabiltzaileDatuak.setBorder(null);
 	    erabiltzaileDatuak.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(erabiltzaileDatuak);
-	    erabiltzaileDatuak.setLayout(null);
+	    erabiltzaileDatuak.setLayout(null);    
+	    
+	    JButton itxiAldatuDatuak = new JButton("");
+	    itxiAldatuDatuak.setIcon(irtenImg);
+	    itxiAldatuDatuak.setBounds(10, 10, 110, 100);
+	    itxiAldatuDatuak.setOpaque(false);
+	    itxiAldatuDatuak.setContentAreaFilled(false);
+	    itxiAldatuDatuak.setBorderPainted(false);
+	    itxiAldatuDatuak.setFocusPainted(false);
+	    erabiltzaileDatuak.add(itxiAldatuDatuak);
 	    
 	    JLabel imgBannerErabiltzaileDatuak = new JLabel(new ImageIcon("img/banner.jpg"));
 	    imgBannerErabiltzaileDatuak.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
 	    erabiltzaileDatuak.add(imgBannerErabiltzaileDatuak);
-	   // erabiltzaileDatuak.add(imgBannerLogin);
 	    
 	  //erabiltzaileDatuak testuak
 	    txtNAN = metodoak.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
@@ -506,11 +515,45 @@ public class lehenLehioa extends JFrame {
 	    btnJokoraBuelta.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.20), 70);
 	    erabiltzaileDatuak.add(btnJokoraBuelta);
 	    
+	    
+	    // Langile panela
 	    JPanel langilePanela = new JPanel();
 	    langilePanela.setBorder(null);
 	    langilePanela.setBounds(0, 0, screenWidth, screenHeight);
 	    contentPane.add(langilePanela);
 	    langilePanela.setLayout(null);
+	    
+	    JButton itxiLangilePanela = new JButton("");
+	    itxiLangilePanela.setIcon(irtenImg);
+	    itxiLangilePanela.setBounds(10, 10, 110, 100);
+	    itxiLangilePanela.setOpaque(false);
+	    itxiLangilePanela.setContentAreaFilled(false);
+	    itxiLangilePanela.setBorderPainted(false);
+	    itxiLangilePanela.setFocusPainted(false);
+	    langilePanela.add(itxiLangilePanela);
+	    
+	    JLabel imgBannerLangilePanela = new JLabel(new ImageIcon("img/banner.jpg"));
+	    imgBannerLangilePanela.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
+	    langilePanela.add(imgBannerLangilePanela);
+	    
+	 // Obtener la lista de erabiltzaileak desde la clase datuBase
+	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
+
+	    // Crear un modelo de tabla utilizando la lista de erabiltzaileak
+	    ErabiltzaileTableModel tableModel = new ErabiltzaileTableModel(erabiltzaileak);
+
+	    // Crear una instancia de la JTable utilizando el modelo de tabla
+	    JTable table = new JTable(tableModel);
+
+	    // Agregar JScrollPane a la tabla para permitir desplazamiento vertical
+	    JScrollPane scrollPane = new JScrollPane(table);
+
+		 // Establecer tamaño y posición del JScrollPane
+		 scrollPane.setBounds(300, 300, 800, 300);
+	
+		 // Agregar JScrollPane al JPanel
+		 langilePanela.add(scrollPane);
+
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {

@@ -1,3 +1,7 @@
-2023-05-08 09:37:21 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 2 | Guztira apostatutako kantitatea: 50 | Apostua emaitza: Zorionak! Irabazitakoa: 70 | Azken balantzea: +20
-2023-05-08 09:37:21 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 30 | Guztira apostatutako kantitatea: 20 | Apostua emaitza: Berdin gelditzen zara | Azken balantzea: +0
-2023-05-08 09:37:21 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 33 | Guztira apostatutako kantitatea: 50 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -50
+
+2023-05-08 10:10:47 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 20 | Guztira apostatutako kantitatea: 50 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10
+2023-05-08 10:10:47 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 7 | Guztira apostatutako kantitatea: 50 | Apostua emaitza: Zorionak! Irabazitakoa: 70 | Azken balantzea: +20
+2023-05-08 10:10:47 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 16 | Guztira apostatutako kantitatea: 20 | Apostua emaitza: Berdin gelditzen zara | Azken balantzea: +0
+2023-05-08 10:24:25 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 32 | Guztira apostatutako kantitatea: 50 | Apostua emaitza: Zorionak! Irabazitakoa: 80 | Azken balantzea: +30
+2023-05-08 10:24:25 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 29 | Guztira apostatutako kantitatea: 10 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10
+2023-05-08 10:24:25 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 22 | Guztira apostatutako kantitatea: 20 | Apostua emaitza: Berdin gelditzen zara | Azken balantzea: +0
