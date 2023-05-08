@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `kasinoa`
 --
-
+create database kasinoa;
+use kasinoa;
 -- --------------------------------------------------------
 
 --
@@ -245,7 +246,7 @@ DROP TABLE IF EXISTS `langile_info`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `langile_info`  AS SELECT `lk`.`NAN` AS `NAN`, `lk`.`Izena` AS `Izena`, `lk`.`Abizena` AS `Abizena`, `lk`.`Kargu` AS `Kargu`, `lk`.`Soldata` AS `Soldata`, `k`.`Izena` AS `Kasinoren Izena` FROM (`langile_kontua` `lk` join `kasino` `k` on(`lk`.`id_Kasino` = `k`.`id_Kasino`))  ;
 
 --
--- Índices para tablas volcadas 
+-- Índices para tablas volcadas
 --
 
 --
@@ -288,7 +289,6 @@ ALTER TABLE `kasino_erabiltzaile`
 --
 ALTER TABLE `langile_kontua`
   ADD PRIMARY KEY (`id_Langile`),
-  ADD UNIQUE KEY `Posta_elektronikoa` (`Posta_elektronikoa`),
   ADD KEY `fk_Id_Kasino` (`id_Kasino`);
 
 --
