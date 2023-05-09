@@ -514,7 +514,7 @@ public class metodoak {
 	                String url = "jdbc:mysql://localhost:3306/kasinoa";
 	                conn = (Connection) DriverManager.getConnection (url, "root","");
 	                Statement stmt = (Statement) conn.createStatement();                     
-	                stmt.executeUpdate( "INSERT INTO erabiltzaile_kontua VALUES ('"+NAN+"','"+1+"','"+30+"',"+30+",'"+telefonoZbk+"','"+postaKodea+"','"+herrialdea+"','"+probintzia+"','"+herria+"','"+jaiotzeData+"','"+abizena+"','"+izena+"','"+pasahitza+"');");
+	                stmt.executeUpdate( "INSERT INTO erabiltzaile_kontua VALUES ('"+NAN+"','"+3+"','"+30+"',"+30+",'"+telefonoZbk+"','"+postaKodea+"','"+herrialdea+"','"+probintzia+"','"+herria+"','"+jaiotzeData+"','"+abizena+"','"+izena+"','"+pasahitza+"');");
 	                erregistratuta=true;
 	                conn.close();
 	            }catch(SQLException ex) {

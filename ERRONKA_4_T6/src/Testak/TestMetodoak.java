@@ -802,7 +802,8 @@ public class TestMetodoak {
              Statement stmt = (Statement) conn.createStatement();
              ResultSet rs;
              rs= stmt.executeQuery("SELECT id_apostu from apostua WHERE NAN='" + NAN + "'order by id_apostu desc limit 1;");
-             Statement stmt2 = (Statement) conn.createStatement();                     
+             Statement stmt2 = (Statement) conn.createStatement();
+             rs.next();
              stmt2.executeUpdate("DELETE FROM apostua WHERE id_apostu='"+  rs.getInt("id_apostu") + "';");
              conn.close();
          }catch(SQLException ex) {
