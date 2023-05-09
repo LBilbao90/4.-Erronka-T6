@@ -936,6 +936,7 @@ public class lehenLehioa extends JFrame {
 	    			if(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 		    			JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
 		    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+		    	    	metodoak.kasinoErabiltzaileInsert(NAN, 1);
 		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
 		    	    	momentukoErabiltzaileNAN = NAN;
 		    		    textNAN.setText("");
