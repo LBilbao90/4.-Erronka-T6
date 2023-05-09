@@ -8,16 +8,16 @@ public class apostuak {
 	
 	/**
 	 * Apostu kantitate bat ezartzen zaio zenbaki zehatz bateri metodo hau erabiliz.
-	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton.
-	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa.
-	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da.
-	 * @param zbkApostua | Ze zenbakitan egin den apostua zehazten du.
-	 * @param zbk | Zenbaki bakoitzaren apostu kantitatea gordetzen duen Array-a.
+	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa. (double)
+	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da. (int)
+	 * @param zbkApostua | Ze zenbakitan egin den apostua zehazten du. (int)
+	 * @param zbk | Zenbaki bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
 	 */
 	public static int apostuaZBK(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
@@ -53,16 +53,16 @@ public class apostuak {
 		
 	/**
 	 * Apostu kantitate bat ezartzen zaio Eskerretik Eskuinera doazen dozeneri metodo hau erabiliz.
-	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton.
-	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa.
-	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da.
-	 * @param zbkApostua | Ze dozenatan egin den apostua zehazten du.
-	 * @param dozenakEskerrEskuin | Eskerretik eskuinera doazen dozena bakoitzaren apostu kantitatea gordetzen duen Array-a.
+	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa. (double)
+	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da. (int)
+	 * @param zbkApostua | Ze dozenatan egin den apostua zehazten du. (int)
+	 * @param dozenakEskerrEskuin | Eskerretik eskuinera doazen dozena bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
 	 */
 	public static int apostuaEskerEskuin(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenakEskerrEskuin) {
@@ -98,16 +98,16 @@ public class apostuak {
 
 	/**
 	 * Apostu kantitate bat ezartzen zaio Dozeneri metodo hau erabiliz.
-	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton.
-	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa.
-	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da.
-	 * @param zbkApostua | Ze dozenatan egin den apostua zehazten du.
-	 * @param dozenak | Dozena bakoitzaren apostu kantitatea gordetzen duen Array-a.
+	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa. (double)
+	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da. (int)
+	 * @param zbkApostua | Ze dozenatan egin den apostua zehazten du. (int)
+	 * @param dozenak | Dozena bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
 	 */
 	public static int apostuaDozena(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenak) {
@@ -143,16 +143,16 @@ public class apostuak {
 	
 	/**
 	 * Apostu kantitate bat ezartzen zaio taularen erdiari metodo hau erabiliz.
-	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton.
-	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa.
-	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da.
-	 * @param zbkApostua | Taularen ze aldean egin den apostua zehazten du.
-	 * @param taulaErdia | Taularen alde bakoitzaren apostu kantitatea gordetzen duen Array-a.
+	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa. (double)
+	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da. (int)
+	 * @param zbkApostua | Taularen ze aldean egin den apostua zehazten du. (int)
+	 * @param taulaErdia | Taularen alde bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
 	 */
 	public static int apostuErdia(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] taulaErdia) {
@@ -188,16 +188,16 @@ public class apostuak {
 	
 	/**
 	 * Apostu kantitate bat ezartzen zaio zenbaki bakoiti edo bikoitieri metodo hau erabiliz.
-	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton.
-	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa.
-	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da.
-	 * @param zbkApostua | Bakoiti edo bikoiti zenbakietan egin den apostua zehazten du.
-	 * @param bakoitiBikoiti | Bakoiti eta bikoiti zenbakietan apostu kantitatea gordetzen duen Array-a.
+	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa. (double)
+	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da. (int)
+	 * @param zbkApostua | Bakoiti edo bikoiti zenbakietan egin den apostua zehazten du. (int)
+	 * @param bakoitiBikoiti | Bakoiti eta bikoiti zenbakietan apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
 	 */
 	public static int apostuBakoitiBikoiti(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] bakoitiBikoiti) {
@@ -233,16 +233,16 @@ public class apostuak {
 
 	/**
 	 * Apostu kantitate bat ezartzen zaio koloreeri (gorri edo beltz) metodo hau erabiliz.
-	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton.
-	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton.
-	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa.
-	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da.
-	 * @param zbkApostua | Gorri edo beltzetan egin den apostua zehazten du.
-	 * @param kolorea | Bakoiti eta bikoiti zenbakietan apostu kantitatea gordetzen duen Array-a.
+	 * @param rdbtnApostu10 | Botoi taldean 10-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu20 | Botoi taldean 20-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu50 | Botoi taldean 50-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu100 | Botoi taldean 100-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu500 | Botoi taldean 500-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param rdbtnApostu1000 | Botoi taldean 1000-eko apostua kantitatea esartzen duen radioButton. (JRadioButton)
+	 * @param pertsonaApostuMax | Erabiltzaileak egin ahal duen apostu maximoa. (double)
+	 * @param apostuOrain | Egindako apostu kantitatea bertan gordetzen da. (int)
+	 * @param zbkApostua | Gorri edo beltzetan egin den apostua zehazten du. (int)
+	 * @param kolorea | Bakoiti eta bikoiti zenbakietan apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
 	 */
 	public static int apostuKolorea(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] kolorea) {

@@ -102,7 +102,6 @@ public class TestBalidazioak {
 	    
 	    @Test
 	    public void testBaliozkoEremuak() {
-	    	JPanel erregistratu = new JPanel();
 	    	String NAN = "12345678Z";
 	    	String Izena = "Proba";
 	    	String Abizena = "Kontua";
@@ -115,23 +114,23 @@ public class TestBalidazioak {
 	    	String TelefonoZbk = "666999666";
 	    	
 	    	// Dena ondo
-	    	assertTrue(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+	    	assertTrue(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk));
 	    	// NAN hutsik
-	    	assertFalse(balidazioak.baliozkoEremuak("", Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak("", Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk));
 	    	// Izena hutsik
-	    	assertFalse(balidazioak.baliozkoEremuak(NAN, "", Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak(NAN, "", Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk));
 	    	// Izena 4 karaktera baino gutxiago
-	    	assertFalse(balidazioak.baliozkoEremuak(NAN, "Pr", Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak(NAN, "Pr", Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk));
 	    	// Pasahitzak ez du kondizio guztiak betetzen
-	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, "Elorrieta", JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, "Elorrieta", JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk));
 	    	// Telefono gaizki
-	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, "12345678", erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, "12345678"));
 	    	// Posta kode luzeera gutxi
-	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, "1234", TelefonoZbk, erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, "1234", TelefonoZbk));
 	    	// Posta kode gaizki, letra bat duelako.
-	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, "12A45", TelefonoZbk, erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak(NAN, Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, "12A45", TelefonoZbk));
 	    	// NAN gaizki
-	    	assertFalse(balidazioak.baliozkoEremuak("12345678A", Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
+	    	assertFalse(balidazioak.baliozkoEremuak("12345678A", Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk));
 	    }
 	    
 }

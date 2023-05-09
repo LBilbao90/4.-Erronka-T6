@@ -943,7 +943,7 @@ public class lehenLehioa extends JFrame {
 	    		String postaKodea = textPostaKodea.getText();
 	    		String telefonoZbk = textTelefonoa.getText();
 	
-	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
+	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 	    			if(datuBaseEraldaketak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 		    			JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
 		    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
@@ -1097,7 +1097,7 @@ public class lehenLehioa extends JFrame {
 	    		String postaKodea = textPostaKodea2.getText();
 	    		String telefonoZbk = textTelefonoa2.getText();
 
-	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
+	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 	    			if(datuBaseEraldaketak.erabiltzaileUpdate(NAN, izena, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 		    			JOptionPane.showMessageDialog(erregistratu, textIzena2.getText()+ ", aldaketak zuzen gorde dira.", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
 		    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
