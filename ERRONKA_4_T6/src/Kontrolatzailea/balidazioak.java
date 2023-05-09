@@ -1,5 +1,7 @@
 package Kontrolatzailea;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -78,36 +80,46 @@ public class balidazioak {
 	}
  	
  	public static int loginBalidazioaErabiltzaile(String erabiltzailea, char[] pasahitza) {
- 		datuBaseKarga.karga();
- 		KasinoErabiltzaile ke = new KasinoErabiltzaile();
-	    for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
-	        if (erabiltzaile.getNAN().equals(erabiltzailea) && erabiltzaile.getPasahitza().equals(new String(pasahitza))) {
-	        	if (erabiltzaile.getId_maila() == 1) {
-	        		JOptionPane.showMessageDialog(null, "Administratzaile batek zure kontua blokeatu du", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
-	        		// ezer
-	        		return 2;
-	        	} else if (erabiltzaile.getId_maila() == 2) {
-	        		String[] botoiak = {"Bai", "Ez"};
-			        
-			        int baja = JOptionPane.showOptionDialog(null, "Zure kontua desblokeatu nahi duzu?", "Konfirmazio mezua", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoiak, botoiak[0]);
-			        
-			        if (baja == JOptionPane.YES_OPTION) {
-			        	System.out.println(datuBaseEraldaketak.erabiltzaileMailaUpdate(lehenLehioa.getMomentukoErabiltzaileNAN(), 3));
-			            // true
-			            return 1;
-			        } else {
-			        	// ezer
-			            return 2;
-			        }
-	        	} else {
-	        		// true
-	        		return 1;
-	        	}
-	        }
-	    }
-	    // false
-	    return 0;
-	}
+        datuBaseKarga.karga();
+        ArrayList<KasinoErabiltzaile> kasinoErabiltzaile = datuBaseKarga.getKasinoErabiltzaile();
+        for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
+            if (erabiltzaile.getNAN().equals(erabiltzailea) && erabiltzaile.getPasahitza().equals(new String(pasahitza))) {
+                boolean kasino1 = false;
+                for (KasinoErabiltzaile ke : datuBaseKarga.getKasinoErabiltzaile()) {
+                    if (ke.getNAN().equals(erabiltzaile.getNAN()) && ke.getId_Kasino() == 1) {
+                        kasino1 = true;
+                        break;
+                    }
+                }
+                if (kasino1) {
+                    if (erabiltzaile.getId_maila() == 1) {
+                        JOptionPane.showMessageDialog(null, "Administratzaile batek zure kontua blokeatu du", "Elorrieta Kasinoa", JOptionPane.ERROR_MESSAGE);
+                        // ezer
+                        return 2;
+                    } else if (erabiltzaile.getId_maila() == 2) {
+                        String[] botoiak = {"Bai", "Ez"};
+                        int baja = JOptionPane.showOptionDialog(null, "Zure kontua desblokeatu nahi duzu?", "Konfirmazio mezua", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoiak, botoiak[0]);
+                        if (baja == JOptionPane.YES_OPTION) {
+                            System.out.println(datuBaseEraldaketak.erabiltzaileMailaUpdate(lehenLehioa.getMomentukoErabiltzaileNAN(), 3));
+                            // true
+                            return 1;
+                        } else {
+                            // ezer
+                            return 2;
+                        }
+                    } else {
+                        // true
+                        return 1;
+                    }
+                } else {
+                    // Ez dago lehen kasinoa
+                    // ezer
+                    return 0;
+                }
+            }
+        }
+       return 0;
+    }
  	
 	/**
 	 * String bat pasatuko diogu metodoari, pasahitza izango dela. Metodoa egingo duena izango da 
