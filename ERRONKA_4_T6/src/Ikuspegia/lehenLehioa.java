@@ -22,8 +22,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Kontrolatzailea.balidazioak;
+import Kontrolatzailea.datuBaseEraldaketak;
 import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
+import Kontrolatzailea.windowBuilder;
 import Modelo.Admin;
 import Modelo.Erabiltzaile;
 import Modelo.KasinoErabiltzaile;
@@ -299,27 +302,27 @@ public class lehenLehioa extends JFrame {
 	    erregistratu.add(imgBannerErregistratu);
 	    
 	    //erregistroa testuak
-	    txtNAN = metodoak.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
-	    txtIzena = metodoak.createTextFieldTestua("Nickname:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtNAN = windowBuilder.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtIzena = windowBuilder.createTextFieldTestua("Nickname:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
 	    txtIzena.setToolTipText("Gutxienez 4 karaktereko luzeera eduki behar du erabiltzaile izenak");
-	    txtAbizena = metodoak.createTextFieldTestua("Abizena:", (int) (screenWidth*0.07), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
-	    txtPasahitzaErregistratu = metodoak.createTextFieldTestua("Pasahitza:", (int) (screenWidth*0.07), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtAbizena = windowBuilder.createTextFieldTestua("Abizena:", (int) (screenWidth*0.07), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtPasahitzaErregistratu = windowBuilder.createTextFieldTestua("Pasahitza:", (int) (screenWidth*0.07), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
 	    txtPasahitzaErregistratu.setToolTipText("Gutxienes 6 karaktereko luzeera eta gehienez 32 karaktere. Maiuskula 1, minuskula 1 eta zenbaki 1");
-	    txtJaiotzeData = metodoak.createTextFieldTestua("Jaiotze data:", (int) (screenWidth*0.07), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
-	    txtHerrialdea = metodoak.createTextFieldTestua("Herrialdea:", (int) (screenWidth*0.52), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
-	    txtProbintzia = metodoak.createTextFieldTestua("Probintzia:", (int) (screenWidth*0.52), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
-	    txtHerria = metodoak.createTextFieldTestua("Herria:", (int) (screenWidth*0.52), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
-	    txtPostaKodea = metodoak.createTextFieldTestua("Posta kodea:", (int) (screenWidth*0.52), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtJaiotzeData = windowBuilder.createTextFieldTestua("Jaiotze data:", (int) (screenWidth*0.07), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtHerrialdea = windowBuilder.createTextFieldTestua("Herrialdea:", (int) (screenWidth*0.52), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtProbintzia = windowBuilder.createTextFieldTestua("Probintzia:", (int) (screenWidth*0.52), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtHerria = windowBuilder.createTextFieldTestua("Herria:", (int) (screenWidth*0.52), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
+	    txtPostaKodea = windowBuilder.createTextFieldTestua("Posta kodea:", (int) (screenWidth*0.52), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);
 	    txtPostaKodea.setToolTipText("5 zenbaki eduki behar ditu");
-	    txtTelefonoa = metodoak.createTextFieldTestua("Telefonoa:", (int) (screenWidth*0.52), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);	
+	    txtTelefonoa = windowBuilder.createTextFieldTestua("Telefonoa:", (int) (screenWidth*0.52), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erregistratu);	
 	    txtTelefonoa.setToolTipText("9 zenbaki eduki behar ditu");
 	    
 	    //erregistroa betetzeko textField
-	    textNAN = metodoak.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
-	    textIzena = metodoak.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textNAN = windowBuilder.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textIzena = windowBuilder.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
 	    textIzena.setToolTipText("Gutxienez 4 karaktereko luzeera eduki behar du erabiltzaile izenak");
-	    textAbizena = metodoak.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
-	    textPasahitzaErregistratu = metodoak.createPasswordFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textAbizena = windowBuilder.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textPasahitzaErregistratu = windowBuilder.createPasswordFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
 	    textPasahitzaErregistratu.setToolTipText("Gutxienes 6 karaktereko luzeera eta gehienez 32 karaktere. Maiuskula 1, minuskula 1 eta zenbaki 1");
 	    JDateChooser dateJaiotzaData = new JDateChooser();
         dateJaiotzaData.setBounds((int) (screenWidth*0.25), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30);
@@ -334,12 +337,12 @@ public class lehenLehioa extends JFrame {
         dateJaiotzaData.setMaxSelectableDate(dataMinJDateChooser);
         erregistratu.add(dateJaiotzaData);
 	    
-	    textHerrialdea = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
-	    textProbintzia = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
-	    textHerria = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
-	    textPostaKodea = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textHerrialdea = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textProbintzia = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textHerria = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
+	    textPostaKodea = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);
 	    textPostaKodea.setToolTipText("5 zenbaki eduki behar ditu");
-	    textTelefonoa = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);	
+	    textTelefonoa = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erregistratu);	
 	    textTelefonoa.setToolTipText("9 zenbaki eduki behar ditu");
 	    
 	    //erregistroko textFieldak borde beltzarekin
@@ -369,7 +372,7 @@ public class lehenLehioa extends JFrame {
 	    btnErregistratu.setBounds((int) (screenWidth*0.525), (int) (screenHeight*0.80), (int) (screenWidth*0.40), 40);
 	    erregistratu.add(btnErregistratu);
 	    
-	    metodoak.createTextFieldTestua("(Bete itzazu aurreko eremuak guztiak erregistratu ahal izateko)", (int) (screenWidth*0.54), (int) (screenHeight*0.75), (int) (screenWidth*0.40), 40, new Font("Tahoma", Font.PLAIN, 15), erregistratu);
+	    windowBuilder.createTextFieldTestua("(Bete itzazu aurreko eremuak guztiak erregistratu ahal izateko)", (int) (screenWidth*0.54), (int) (screenHeight*0.75), (int) (screenWidth*0.40), 40, new Font("Tahoma", Font.PLAIN, 15), erregistratu);
 	   
 	    //Jokoak panela
 	    JPanel jokoak = new JPanel();
@@ -452,27 +455,27 @@ public class lehenLehioa extends JFrame {
 	    erabiltzaileDatuak.add(imgBannerErabiltzaileDatuak);
 	    
 	  //erabiltzaileDatuak testuak
-	    txtNAN = metodoak.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
-	    txtIzena = metodoak.createTextFieldTestua("Nickname:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtNAN = windowBuilder.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtIzena = windowBuilder.createTextFieldTestua("Nickname:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
 	    txtIzena.setToolTipText("Gutxienez 4 karaktereko luzeera eduki behar du erabiltzaile izenak");
-	    txtAbizena = metodoak.createTextFieldTestua("Abizena:", (int) (screenWidth*0.07), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
-	    txtPasahitzaErregistratu = metodoak.createTextFieldTestua("Pasahitza:", (int) (screenWidth*0.07), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtAbizena = windowBuilder.createTextFieldTestua("Abizena:", (int) (screenWidth*0.07), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtPasahitzaErregistratu = windowBuilder.createTextFieldTestua("Pasahitza:", (int) (screenWidth*0.07), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
 	    txtPasahitzaErregistratu.setToolTipText("Gutxienes 6 karaktereko luzeera eta gehienez 32 karaktere. Maiuskula 1, minuskula 1 eta zenbaki 1");
-	    txtJaiotzeData = metodoak.createTextFieldTestua("Jaiotze data:", (int) (screenWidth*0.07), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
-	    txtHerrialdea = metodoak.createTextFieldTestua("Herrialdea:", (int) (screenWidth*0.52), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
-	    txtProbintzia = metodoak.createTextFieldTestua("Probintzia:", (int) (screenWidth*0.52), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
-	    txtHerria = metodoak.createTextFieldTestua("Herria:", (int) (screenWidth*0.52), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
-	    txtPostaKodea = metodoak.createTextFieldTestua("Posta kodea:", (int) (screenWidth*0.52), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtJaiotzeData = windowBuilder.createTextFieldTestua("Jaiotze data:", (int) (screenWidth*0.07), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtHerrialdea = windowBuilder.createTextFieldTestua("Herrialdea:", (int) (screenWidth*0.52), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtProbintzia = windowBuilder.createTextFieldTestua("Probintzia:", (int) (screenWidth*0.52), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtHerria = windowBuilder.createTextFieldTestua("Herria:", (int) (screenWidth*0.52), (int) (screenHeight*0.42), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
+	    txtPostaKodea = windowBuilder.createTextFieldTestua("Posta kodea:", (int) (screenWidth*0.52), (int) (screenHeight*0.52), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
 	    txtPostaKodea.setToolTipText("5 zenbaki eduki behar ditu");
-	    txtTelefonoa = metodoak.createTextFieldTestua("Telefonoa:", (int) (screenWidth*0.52), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);	
+	    txtTelefonoa = windowBuilder.createTextFieldTestua("Telefonoa:", (int) (screenWidth*0.52), (int) (screenHeight*0.62), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);	
 	    txtTelefonoa.setToolTipText("9 zenbaki eduki behar ditu");
 	    
 	    //erregistroa betetzeko textField
-	    textNAN2 = metodoak.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
-	    textIzena2 = metodoak.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textNAN2 = windowBuilder.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textIzena2 = windowBuilder.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
 	    textIzena2.setToolTipText("Gutxienez 4 karaktereko luzeera eduki behar du erabiltzaile izenak");
-	    textAbizena2 = metodoak.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
-	    textPasahitza2 = metodoak.createPasswordFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textAbizena2 = windowBuilder.createTextArea((int) (screenWidth*0.25), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textPasahitza2 = windowBuilder.createPasswordFieldBete((int) (screenWidth*0.25), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
 	    textPasahitza2.setToolTipText("Gutxienes 6 karaktereko luzeera eta gehienez 32 karaktere. Maiuskula 1, minuskula 1 eta zenbaki 1");
 	    JDateChooser dateJaiotzaData2 = new JDateChooser();
 	    dateJaiotzaData2.setBounds((int) (screenWidth*0.25), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30);
@@ -487,12 +490,12 @@ public class lehenLehioa extends JFrame {
         dateJaiotzaData.setMaxSelectableDate(dataMinJDateChooser);
         erabiltzaileDatuak.add(dateJaiotzaData2);
         dateJaiotzaData2.setEnabled(false);
-	    textHerrialdea2 = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
-	    textProbintzia2 = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
-	    textHerria2 = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
-	    textPostaKodea2 = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textHerrialdea2 = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.215), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textProbintzia2 = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.315), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textHerria2 = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.415), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
+	    textPostaKodea2 = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.515), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);
 	    textPostaKodea2.setToolTipText("5 zenbaki eduki behar ditu");
-	    textTelefonoa2 = metodoak.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);	
+	    textTelefonoa2 = windowBuilder.createTextArea((int) (screenWidth*0.72), (int) (screenHeight*0.615), (int) (screenWidth*0.20), 30, new Font("Tahoma", Font.PLAIN, 25), erabiltzaileDatuak);	
 	    textTelefonoa2.setToolTipText("9 zenbaki eduki behar ditu");
 	    
 	    textNAN2.setEnabled(false);
@@ -788,7 +791,7 @@ public class lehenLehioa extends JFrame {
     	                }
     	                
         	        if (!blokeatuta) {
-        	        	metodoak.erabiltzaileMailaUpdate(nan, 1);
+        	        	datuBaseEraldaketak.erabiltzaileMailaUpdate(nan, 1);
 			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen blokeatu da kontua", "Elorrieta Kasinoa �", JOptionPane.INFORMATION_MESSAGE);
 		    	        datuBaseKarga.karga();
         	        }
@@ -809,7 +812,7 @@ public class lehenLehioa extends JFrame {
     	            
     	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                if (erabiltzaile.getNAN().equals(nan) && erabiltzaile.getId_maila() == 1) {
-    	                	metodoak.erabiltzaileMailaUpdate(nan, 3);
+    	                	datuBaseEraldaketak.erabiltzaileMailaUpdate(nan, 3);
     			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen desblokeatu da kontua", "Elorrieta Kasinoa �", JOptionPane.INFORMATION_MESSAGE);
     			        	datuBaseKarga.karga();
     	                	desblokeatuta = true;
@@ -830,7 +833,7 @@ public class lehenLehioa extends JFrame {
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            metodoak.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, e);
+	        	windowBuilder.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, e);
 	            setTitle("Hasi saioa | Elorrieta Kasinoa �");
 	        }
 		});	
@@ -845,7 +848,7 @@ public class lehenLehioa extends JFrame {
 	    
 		btnEzErregistratua.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            metodoak.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, e);
+	        	windowBuilder.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, e);
 	            setTitle("Erregistroa | Elorrieta Kasinoa �");
 	            }
 	        });
@@ -856,27 +859,27 @@ public class lehenLehioa extends JFrame {
 	    		String NAN = textErabiltzailea.getText().toUpperCase();
 	    		momentukoErabiltzaileNAN = NAN;
 	    		char[] pasahitza = passwordLogin.getPassword();
-	    		int loginOndoErabiltzaile = metodoak.loginBalidazioa(NAN, pasahitza);
+	    		int loginOndoErabiltzaile = balidazioak.loginBalidazioaErabiltzaile(NAN, pasahitza);
 	    		boolean loginOndoAdmin = false;
 	    		if (loginOndoErabiltzaile == 0) {
-	    			loginOndoAdmin = metodoak.loginBalidazioaAdmin(NAN, pasahitza);
+	    			loginOndoAdmin = balidazioak.loginBalidazioaAdmin(NAN, pasahitza);
 	    		}
 	    		
 
 			    
 	    		if (loginOndoErabiltzaile == 1) {
-	    			metodoak.kasinoErabiltzaileInsert(NAN, 1);
+	    			datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, 1);
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
-	    			metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
 	    			setTitle("Jokoak | Elorrieta Kasinoa �");
 	    		} 
 	    		else if(loginOndoAdmin){
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
-	    			metodoak.btn3secDelay(langilePanela, 0, sarrera, login, erregistratu, jokoak, e);
+	    			windowBuilder.btn3secDelay(langilePanela, 0, sarrera, login, erregistratu, jokoak, e);
 	    		} else {
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
@@ -886,7 +889,7 @@ public class lehenLehioa extends JFrame {
 		
 		btnLoginBuelta.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    	    	metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
+	    		windowBuilder.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
 	    	    	setTitle("Hasi saioa | Elorrieta Kasinoa �");
 	    		    textNAN.setText("");
 	    		    textIzena.setText("");
@@ -936,11 +939,11 @@ public class lehenLehioa extends JFrame {
 	    		String postaKodea = textPostaKodea.getText();
 	    		String telefonoZbk = textTelefonoa.getText();
 	
-	    		if(metodoak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
-	    			if(metodoak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
+	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
+	    			if(datuBaseEraldaketak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 		    			JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
-		    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
-		    	    	metodoak.kasinoErabiltzaileInsert(NAN, 1);
+		    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+		    			datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, 1);
 		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
 		    	    	momentukoErabiltzaileNAN = NAN;
 		    		    textNAN.setText("");
@@ -972,7 +975,7 @@ public class lehenLehioa extends JFrame {
 	    // 'Login'era 'jokoak'etik
 	    btnJokotikLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
+	    		windowBuilder.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
 	    		setTitle("Hasi saioa | Elorrieta Kasinoa �");
 	    	}
 	    });
@@ -1008,7 +1011,7 @@ public class lehenLehioa extends JFrame {
 	    // 'Login'era 'jokoak'etik
 	    btnJokotikErabiltzaileDatu.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		metodoak.btn3secDelay(erabiltzaileDatuak, 0, sarrera, login, erregistratu, jokoak, e);
+	    		windowBuilder.btn3secDelay(erabiltzaileDatuak, 0, sarrera, login, erregistratu, jokoak, e);
 	    		setTitle("Erabiltzaile Datuak | Elorrieta Kasinoa �");
 	    		
 	    		datuBaseKarga.karga();
@@ -1056,13 +1059,13 @@ public class lehenLehioa extends JFrame {
 						}
 					}
 				});
-				metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, null);
+				windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, null);
 			}
 		});	
 	    
 	    btnJokoraBuelta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+				windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
     	    	setTitle("Hasi saioa | Elorrieta Kasinoa �");
 			}
 		});
@@ -1090,10 +1093,10 @@ public class lehenLehioa extends JFrame {
 	    		String postaKodea = textPostaKodea2.getText();
 	    		String telefonoZbk = textTelefonoa2.getText();
 
-	    		if(metodoak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
-	    			if(metodoak.erabiltzaileUpdate(NAN, izena, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
+	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk, erregistratu)) {
+	    			if(datuBaseEraldaketak.erabiltzaileUpdate(NAN, izena, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 		    			JOptionPane.showMessageDialog(erregistratu, textIzena2.getText()+ ", aldaketak zuzen gorde dira.", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
-		    	    	metodoak.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+		    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
 		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
 		    	    	momentukoErabiltzaileNAN = NAN;
 	    			} else {
@@ -1110,8 +1113,8 @@ public class lehenLehioa extends JFrame {
 			        int baja = JOptionPane.showOptionDialog(null, "Ziur zaude zure kontua blokeatu nahi duzula?", "Konfirmazio mezua", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoiak, botoiak[0]);
 			        
 			        if (baja == JOptionPane.YES_OPTION) {
-			            metodoak.erabiltzaileMailaUpdate(momentukoErabiltzaileNAN, 2);
-			            metodoak.btn3secDelay(login, baja, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+			        	datuBaseEraldaketak.erabiltzaileMailaUpdate(momentukoErabiltzaileNAN, 2);
+			            windowBuilder.btn3secDelay(login, baja, sarrera, login, erregistratu, erabiltzaileDatuak, e);
 			        } else {
 			            System.out.println("Ados");
 			        }
@@ -1128,7 +1131,7 @@ public class lehenLehioa extends JFrame {
 	    
 	    btnAdminLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				metodoak.btn3secDelay(login, 0, sarrera, login, erregistratu, langilePanela, e);
+				windowBuilder.btn3secDelay(login, 0, sarrera, login, erregistratu, langilePanela, e);
 			}
 		});
 	}

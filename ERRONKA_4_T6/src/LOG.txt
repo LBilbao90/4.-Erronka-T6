@@ -11,32 +11,4 @@
 2023-05-08 14:21:55 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 24 | Guztira apostatutako kantitatea: 1000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -600
 2023-05-08 14:21:55 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 18 | Guztira apostatutako kantitatea: 700 | Apostua emaitza: Zorionak! Irabazitakoa: 800 | Azken balantzea: +100
 2023-05-08 14:21:55 | Erabiltzaile NAN: 12345678Z | Ruleta emaitza: 7 | Guztira apostatutako kantitatea: 1000 | Apostua emaitza: Zorionak! Irabazitakoa: 1400 | Azken balantzea: +400
-
-
-
-
-
-
-
-
-
-
-RULETA EMAITZA 0 IRABAZI eta apostatu dut, Gorria, 1 to 18, par, eta lehen dozena.
-2023-05-08 15:38:01 | Erabiltzaile NAN: 23456789D | Ruleta emaitza: 0 | Guztira apostatutako kantitatea: 1000 | Apostua emaitza: Zorionak! Irabazitakoa: 2100 | Azken balantzea: +1100
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
-Test
+2023-05-09 14:12:00 | Erabiltzaile NAN: 79144847F | Ruleta emaitza: 9 | Guztira apostatutako kantitatea: 1000 | Apostua emaitza: Berdin gelditzen zara | Azken balantzea: +0
