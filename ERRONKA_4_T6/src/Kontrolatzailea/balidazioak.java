@@ -25,6 +25,7 @@ public class balidazioak {
 	 * @param postaKodea | Erabiltzailearen posta kodea. (String)
 	 * @param telefonoZbk | Erabiltzailearen telefono zenbakia. (String)
 	 * @return Eremu guztiak zuzen badaude 'true' bueltatuko da, bestela 'false'
+	 * @author 6.Taldea
 	 */
 	public static boolean baliozkoEremuak(String NAN, String izena, String abizena, String pasahitza, String jaiotzeDataString, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk) {
  	    // Konprobatu ez dagoela hutsik
@@ -63,6 +64,7 @@ public class balidazioak {
  	 * Telefono zenbaki zuzena izate ikusten du metodoak. (luzeera 9 eta dena zenbakiak)
  	 * @param tlf | Erabiltzaileak sartutako telefono zenbakia. (String)
  	 * @return telefono zenbaki zuzena bada 'true' bueltatuko du, bestela 'false'
+ 	 * @author 6.Taldea
  	 */
  	public static boolean tlfZenbakia (String tlf) {
  		boolean tlf_zuzena= true;
@@ -85,6 +87,7 @@ public class balidazioak {
  	 * @param admin | Administratzailearen NAN-a artuko du. (String)
  	 * @param pasahitza | Administratzailearen pasahitza artuko du. (char[])
  	 * @return NANa eta pasahitza bat badatoz datu-basekoekin 'true' bueltatuko du, bestela 'false'
+ 	 * @author 6.Taldea
  	 */
  	public static boolean loginBalidazioaAdmin(String admin, char[] pasahitza) {
  		datuBaseKarga.karga();
@@ -110,6 +113,7 @@ public class balidazioak {
  	 * @param erabiltzailea | Erabiltzailearen NAN-a artuko du. (String)
  	 * @param pasahitza | Erabiltzailearen pasahitza artuko du. (char[])
  	 * @return '0' bueltatuko du ez badago 'id_kasino == 1'-en (Lehen kasinoan) edo ezin bada desblokeatu kontua. '1' bueltatuko du normal ahal dugunean hasi saioa edo kontua deblokeatu dugunean. '2' bueltatuko du kontua administratzaile batek blokeatu badu edo ez duelako nahi bere kontua desblokeatu.
+ 	 * @author 6.Taldea
  	 */
  	public static int loginBalidazioaErabiltzaile(String erabiltzailea, char[] pasahitza) {
         datuBaseKarga.karga();
@@ -154,6 +158,7 @@ public class balidazioak {
  	 * Erabiltzailearen pasahitza balidatzen du.
  	 * @param pasahitza | Erabiltzaileare pasahitza. (String)
  	 * @return Pasahitza zuzena den kasuan 'true' bueltatuko du, bestela 'false'.
+ 	 * @author 6.Taldea
  	 */
 	public static boolean pasahitzaKonprobatu(String pasahitza) {
 		// Baldintzak zehazten dira
@@ -192,6 +197,7 @@ public class balidazioak {
 	 * Erabiltzailearen NAN-a balidatzen du.
 	 * @param nan | Erabiltzailearen NAN-a. (String)
 	 * @return NAN-a zuzena bada 'true' bueltatuko du, bestela 'false'
+	 * @author 6.Taldea
 	 */
 	 public static boolean nanBalidatu(String nan) {
 	        // NAN-aren luzeera 9 den egiaztatzen du.
@@ -237,6 +243,7 @@ public class balidazioak {
 	 	 * Pasatutako jaiotze data formato egokian dagoen egiaztatzen du.
 	 	 * @param jaiotzeData | Erabiltzailearen jaiotzeData. (String)
 	 	 * @return jaiotze datak formato egokia badu 'true' bueltatuko du.
+	 	 * @author 6.Taldea
 	 	 */
 	 	public static boolean jaiotzeDataOndo(String jaiotzeData) {
 	 		// dataren formatoa. ('YYYY-MM-DD')

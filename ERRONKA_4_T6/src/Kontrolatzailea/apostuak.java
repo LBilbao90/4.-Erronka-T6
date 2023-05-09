@@ -19,6 +19,7 @@ public class apostuak {
 	 * @param zbkApostua | Ze zenbakitan egin den apostua zehazten du. (int)
 	 * @param zbk | Zenbaki bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
+	 * @author 6.Taldea
 	 */
 	public static int apostuaZBK(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
 		/* 
@@ -64,6 +65,7 @@ public class apostuak {
 	 * @param zbkApostua | Ze dozenatan egin den apostua zehazten du. (int)
 	 * @param dozenakEskerrEskuin | Eskerretik eskuinera doazen dozena bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
+	 * @author 6.Taldea
 	 */
 	public static int apostuaEskerEskuin(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenakEskerrEskuin) {
 		/* 
@@ -109,6 +111,7 @@ public class apostuak {
 	 * @param zbkApostua | Ze dozenatan egin den apostua zehazten du. (int)
 	 * @param dozenak | Dozena bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
+	 * @author 6.Taldea
 	 */
 	public static int apostuaDozena(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] dozenak) {
 		/* 
@@ -154,6 +157,7 @@ public class apostuak {
 	 * @param zbkApostua | Taularen ze aldean egin den apostua zehazten du. (int)
 	 * @param taulaErdia | Taularen alde bakoitzaren apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
+	 * @author 6.Taldea
 	 */
 	public static int apostuErdia(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] taulaErdia) {
 		/* 
@@ -199,6 +203,7 @@ public class apostuak {
 	 * @param zbkApostua | Bakoiti edo bikoiti zenbakietan egin den apostua zehazten du. (int)
 	 * @param bakoitiBikoiti | Bakoiti eta bikoiti zenbakietan apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
+	 * @author 6.Taldea
 	 */
 	public static int apostuBakoitiBikoiti(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] bakoitiBikoiti) {
 		/* 
@@ -244,6 +249,7 @@ public class apostuak {
 	 * @param zbkApostua | Gorri edo beltzetan egin den apostua zehazten du. (int)
 	 * @param kolorea | Bakoiti eta bikoiti zenbakietan apostu kantitatea gordetzen duen Array-a. (int[])
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
+	 * @author 6.Taldea
 	 */
 	public static int apostuKolorea(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] kolorea) {
 		/* 
