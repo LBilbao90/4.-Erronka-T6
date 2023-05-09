@@ -30,6 +30,7 @@ import javax.swing.JRadioButton;
 import java.awt.Font;
 
 public class ruletaApostua extends JFrame {
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
     ruletaJokoa ruleta = new ruletaJokoa();

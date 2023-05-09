@@ -95,7 +95,6 @@ public class TestDatuBaseEraldaketak {
     	datuBaseKarga.karga();
     	int id_kasino = 1;
     	String NAN = "45983123Y";
-    	
     	assertTrue(datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, id_kasino));
     	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("12345678Z",1));
     	Connection conn;

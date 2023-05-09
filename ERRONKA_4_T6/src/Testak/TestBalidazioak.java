@@ -84,7 +84,7 @@ public class TestBalidazioak {
 	    	assertFalse(balidazioak.loginBalidazioaErabiltzaile("12345678A", "123".toCharArray()));
 	    	assertFalse(balidazioak.loginBalidazioaErabiltzaile("12345678M", "elorrieta00".toCharArray()));
 	    }
-	    
+	
 	    @Test
 	    public void testTlfZuzena() {
 	        assertTrue(balidazioak.tlfZenbakia("123456789"));

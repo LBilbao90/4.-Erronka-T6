@@ -26,7 +26,7 @@ public class datuBaseKarga {
     public static ArrayList<Erabiltzaile> getErabiltzaileak() {
 		return erabiltzaileak;
 	}
-
+    
 	public static ArrayList<Admin> getLangileak() {
 		return langileak;
 	}

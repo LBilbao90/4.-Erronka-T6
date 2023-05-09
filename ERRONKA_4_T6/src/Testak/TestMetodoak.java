@@ -46,7 +46,7 @@ public class TestMetodoak {
   		int ZbkKalkulatu = metodoak.ruletakoZbkKalkulatu(Math.toRadians(-45));
 		assertEquals(4, ZbkKalkulatu);
 	}
-    
+  
     @Test
     public void testGehituApostuak() {
     	int[] apostua1 = {};

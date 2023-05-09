@@ -20,7 +20,7 @@ public class windowBuilder {
             } catch (InterruptedException ex) {
                 System.out.println(e);
             }
-		
+	
         windowBuilder.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak, ruleta);
 		
 	}

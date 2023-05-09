@@ -9,7 +9,7 @@ import Modelo.Erabiltzaile;
 import Modelo.KasinoErabiltzaile;
 
 public class balidazioak {
-	
+
 	public static boolean baliozkoEremuak(String NAN, String izena, String abizena, String pasahitza, String jaiotzeDataString, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk, JPanel erregistratu) {
  	    // Konprobatu ez dagoela hutsik
  		if (NAN.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || jaiotzeDataString.isEmpty() || herrialdea.isEmpty() || probintzia.isEmpty() || herria.isEmpty() || postaKodea.isEmpty() || telefonoZbk.isEmpty()) {

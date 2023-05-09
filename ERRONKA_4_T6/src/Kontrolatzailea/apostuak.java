@@ -5,7 +5,7 @@ import javax.swing.JRadioButton;
 
 public class apostuak {
 	// RULETA APOSTUA
-	
+
 		public static int apostuaZBK(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, int pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
 		    if (rdbtnApostu10.isSelected() && pertsonaApostuMax >= (apostuOrain + 10)) {
 		        zbk[zbkApostua] = zbk[zbkApostua] + 10;

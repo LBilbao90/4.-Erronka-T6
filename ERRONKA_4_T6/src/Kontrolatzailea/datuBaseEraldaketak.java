@@ -11,7 +11,6 @@ import Modelo.Erabiltzaile;
 import Modelo.KasinoErabiltzaile;
 
 public class datuBaseEraldaketak {
-	
 		
 	public static boolean erregistroaInsert(String NAN, String izena, String abizena, String pasahitza, String jaiotzeData, String herrialdea, String probintzia, String herria, String postaKodea, String telefonoZbk) {
 	    boolean erregistratuta = false;

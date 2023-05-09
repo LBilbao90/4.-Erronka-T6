@@ -22,7 +22,7 @@ import Kontrolatzailea.metodoak;
 import Kontrolatzailea.windowBuilder;
 
 public class TestWindowBuilder {
-
+	
 	@Test
 	public void testBtn3secDelayTest() {
 		JPanel erakutsi = new JPanel();

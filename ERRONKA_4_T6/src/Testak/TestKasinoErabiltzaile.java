@@ -30,7 +30,7 @@ public class TestKasinoErabiltzaile {
         String expected = "12345678A";
         assertEquals(expected, user.getNAN());
     }
-
+    
     @Test
     public void testSetNAN() {
         KasinoErabiltzaile user = new KasinoErabiltzaile(1, "12345678A");

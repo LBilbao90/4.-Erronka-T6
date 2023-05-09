@@ -39,7 +39,7 @@ public class TestDatuBaseKarga {
         assertEquals("jgarcia", erabiltzaileak.get(0).getIzena());
         assertEquals("elorrieta00", erabiltzaileak.get(0).getPasahitza());
     }
-    
+   
     @Test
     public void testLangileak() {
         assertEquals(1, langileak.size());

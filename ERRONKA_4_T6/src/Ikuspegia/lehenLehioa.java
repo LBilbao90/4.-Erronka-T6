@@ -62,7 +62,7 @@ import java.awt.Cursor;
 import java.awt.Insets;
 
 public class lehenLehioa extends JFrame {
-
+	
 	private JPanel contentPane;
 	private JTextField txtErabiltzailea;
 	private JTextField txtPasahitza;

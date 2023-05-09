@@ -43,7 +43,7 @@ public class ruletaJokoa extends JPanel {
 	public void setUnekoZenbakia(int unekoZenbakia) {
 		this.unekoZenbakia = unekoZenbakia;
 	}
-
+	
 	// Biratu botoia getter
     public static JButton getBtnBiratu() {
         return btnBiratu;
