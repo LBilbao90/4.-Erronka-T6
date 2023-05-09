@@ -675,7 +675,7 @@ public class ruletaApostua extends JFrame {
 
 		    			// Dozenetan konprobatu apostuak
 		    			int dozena = (ruletaEmaitza - 1) / 12;  // Ze dozenatan irten den zenbakia kalkulatzen du
-		    			if (dozenak[dozena] != 0) {
+		    			if (dozenak[dozena] != 0 && ruletaEmaitza != 0) {
 		    			    guztiraIrabaziak += dozenak[dozena] * 3;  // 3 * apostua
 		    			}
 
@@ -689,13 +689,13 @@ public class ruletaApostua extends JFrame {
 
 		    			// Taulen erdikaldea apostua konprobatu
 		    			int erdia = (ruletaEmaitza > 18) ? 1 : 0;  // Zenbakia 18 baino handiagoa den konprobatzen du.
-		    			if (taulaErdia[erdia] != 0) {
+		    			if (taulaErdia[erdia] != 0 && ruletaEmaitza != 0) {
 		    			    guztiraIrabaziak += taulaErdia[erdia] * 2;  // 2 * apostua
 		    			}
 
 		    			// Bakoitia edo bikoitia den konprobatzen du
 		    			int paridad = ruletaEmaitza % 2;  // Zenbakia bakoiti (0) edo bikoiti (1) den konprobatzen du
-		    			if (bakoitiBikoiti[paridad] != 0) {
+		    			if (bakoitiBikoiti[paridad] != 0 && ruletaEmaitza != 0) {
 		    			    guztiraIrabaziak += bakoitiBikoiti[paridad] * 2;  // 2 * apostua
 		    			}
 		    			System.out.println(guztiraIrabaziak);
