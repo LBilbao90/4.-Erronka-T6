@@ -30,6 +30,7 @@ import Modelo.KasinoErabiltzaile;
 import Modelo.Kasinoa;
 import Modelo.Maila;
 import Modelo.Pertsona;
+import Salbuespenak.Salbuespena;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -921,10 +922,13 @@ public class lehenLehioa extends JFrame {
 	    		Date jaiotzeData;
 	    		String jaiotzeDataString = "";
 	    		try {
-	    			jaiotzeData = dateJaiotzaData.getDate();
-	    			jaiotzeDataString = sdf.format(jaiotzeData);
-	    		} catch (NullPointerException ex) {
-	    		    System.err.println("Ez da datarik aukeratu");
+	    		    jaiotzeData = dateJaiotzaData.getDate();
+	    		    if (jaiotzeData == null) {
+	    		        throw new Salbuespena("Ez da datarik aukeratu");
+	    		    }
+	    		    jaiotzeDataString = sdf.format(jaiotzeData);
+	    		} catch (Salbuespena ex) {
+	    		    System.err.println(ex.getMessage());
 	    		}
 	    		String herrialdea = textHerrialdea.getText();
 	    		String probintzia = textProbintzia.getText();
