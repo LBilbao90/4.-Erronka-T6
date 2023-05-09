@@ -14,7 +14,6 @@ public class KasinoErabiltzaile {
 	}
 	
 	public KasinoErabiltzaile() {
-		
 	}
 	
 	public int getId_Kasino() {

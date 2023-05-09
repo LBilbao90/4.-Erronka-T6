@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -758,4 +759,61 @@ public class TestMetodoak {
     	// NAN gaizki
     	assertFalse(metodoak.baliozkoEremuak("12345678A", Izena, Abizena, Pasahitza, JaiotzeDataString, Herrialdea, Probintzia, Herria, PostaKodea, TelefonoZbk, erregistratu));
     }
+    
+    @Test
+    public void testKasinoErabiltzaileInsert() {
+    	datuBaseKarga.karga();
+    	int id_kasino = 1;
+    	String NAN = "45983123Y";
+    	
+    	assertTrue(metodoak.kasinoErabiltzaileInsert(NAN, id_kasino));
+    	assertFalse(metodoak.kasinoErabiltzaileInsert("12345678Z",1));
+    	Connection conn;
+    	 try {
+    		 String url = "jdbc:mysql://localhost:3306/kasinoa";
+             conn = (Connection) DriverManager.getConnection (url, "root","");
+             Statement stmt = (Statement) conn.createStatement();                     
+             stmt.executeUpdate("DELETE FROM kasinoErabiltzaile WHERE NAN='" + NAN + "';");
+             conn.close();
+         }catch(SQLException ex) {
+        	 System.out.println("SQLException: "+ ex.getMessage());
+        	 System.out.println("SQLState: "+ ex.getSQLState());
+        	 System.out.println("ErrorCode: "+ ex.getErrorCode());
+         }	
+    	 
+    }
+    
+    
+    @Test
+    public void testApostuaInsert() {
+    	datuBaseKarga.karga();
+    	String NAN="12345678Z";
+    	int id_joko= 1;
+    	int apostuKantitate= 100;
+    	String apostuEmaitza= "Irabazi";
+    	
+    	assertTrue(metodoak.apostuaInsert(NAN, id_joko, apostuKantitate, apostuEmaitza));
+    	assertFalse(metodoak.apostuaInsert("73264894A",2, 500, "Berdin"));
+    	
+    	Connection conn;
+    	 try {
+    		 String url = "jdbc:mysql://localhost:3306/kasinoa";
+             conn = (Connection) DriverManager.getConnection (url, "root","");
+             Statement stmt = (Statement) conn.createStatement();
+             ResultSet rs;
+             rs= stmt.executeQuery("SELECT id_apostu from apostua WHERE NAN='" + NAN + "'order by id_apostu desc limit 1;");
+             Statement stmt2 = (Statement) conn.createStatement();                     
+             stmt2.executeUpdate("DELETE FROM apostua WHERE id_apostu='"+  rs.getInt("id_apostu") + "';");
+             conn.close();
+         }catch(SQLException ex) {
+        	 System.out.println("SQLException: "+ ex.getMessage());
+        	 System.out.println("SQLState: "+ ex.getSQLState());
+        	 System.out.println("ErrorCode: "+ ex.getErrorCode());
+         }	
+    	 
+   }
+    
+    
+    
+    
 }
