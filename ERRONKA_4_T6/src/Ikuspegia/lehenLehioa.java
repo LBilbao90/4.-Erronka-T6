@@ -864,8 +864,6 @@ public class lehenLehioa extends JFrame {
 	    		if (loginOndoErabiltzaile == 0) {
 	    			loginOndoAdmin = balidazioak.loginBalidazioaAdmin(NAN, pasahitza);
 	    		}
-	    		
-
 			    
 	    		if (loginOndoErabiltzaile == 1) {
 	    			datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, 1);
@@ -873,6 +871,12 @@ public class lehenLehioa extends JFrame {
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
 	    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    			
+	    		    double apostuMax = metodoak.ApostuMax(datuBaseKarga.getErabiltzaileak(), momentukoErabiltzaileNAN);
+	    		    ruletaApostua.setPertsonaApostuMax(apostuMax);
+	    		    ruletaApostua.setLblApostuMax((int) apostuMax);
+	    			
+	    			
 	    			setTitle("Jokoak | Elorrieta Kasinoa �");
 	    		} 
 	    		else if(loginOndoAdmin){

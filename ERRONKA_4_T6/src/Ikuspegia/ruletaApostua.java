@@ -7,9 +7,11 @@ import javax.swing.border.EmptyBorder;
 import Ikuspegia.ruletaJokoa.OKButtonListener;
 import Kontrolatzailea.apostuak;
 import Kontrolatzailea.datuBaseEraldaketak;
+import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
 import Kontrolatzailea.apostuak;
 import Kontrolatzailea.txtIdatzi;
+import Modelo.Erabiltzaile;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -35,7 +37,7 @@ public class ruletaApostua extends JFrame {
 	private JPanel contentPane;
     ruletaJokoa ruleta = new ruletaJokoa();
     private int apostuOrain;
-    private int pertsonaApostuMax = 1000;
+   // private int pertsonaApostuMax = 1000;
     private boolean blokeatu = false;
 
     // 37 sortzen ditugu, taulan 0 tik 36 zenbaki daudelako.
@@ -62,6 +64,23 @@ public class ruletaApostua extends JFrame {
     String emaitzaApostu;
     String emaitza;
     Timer timer = new Timer();
+    
+    private static double pertsonaApostuMax;
+    
+    public static double getPertsonaApostuMax() {
+		return pertsonaApostuMax;
+	}
+
+	public static void setPertsonaApostuMax(double pertsonaApostuMax) {
+		ruletaApostua.pertsonaApostuMax = pertsonaApostuMax;
+	}
+    
+    private static JLabel lblApostuMax;
+
+    public static void setLblApostuMax(int apostuMax) {
+        lblApostuMax.setText("Apostu Max: " + apostuMax);
+    }
+
 
     private static btnJokoetaraBueltatuListener btnJokoetaraBueltatuListener;
 
@@ -94,7 +113,6 @@ public class ruletaApostua extends JFrame {
 	 * @param string 
 	 */
 	public ruletaApostua() {
-		
 		setTitle("Apostua | Ruleta | Elorrieta Kasinoa ©");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -487,6 +505,9 @@ public class ruletaApostua extends JFrame {
 		btn_1_18.setBorder(null);
 		contentPane.add(btn_1_18);
 		
+		JButton btnApostuaEgin = new JButton("Apostua bukatu");
+		btnApostuaEgin.setEnabled(false);
+		
 		JButton btnApostuaEzabatu = new JButton("Apostuak ezabatu");
 		btnApostuaEzabatu.setBounds(641, 341, 136, 50);
 		btnApostuaEzabatu.setEnabled(false);
@@ -500,11 +521,13 @@ public class ruletaApostua extends JFrame {
 					btnJokoetaraBueltatuListener.onJokoetaraBueltatu();
 					apostuOrain = 0;
 					Arrays.fill(zbk, 0);
-					Arrays.fill(dozenak, 0);
+					Arrays.fill(dozenak, 0);	
 					Arrays.fill(dozenakEskerrEskuin, 0);
 					Arrays.fill(taulaErdia, 0);
 					Arrays.fill(bakoitiBikoiti, 0);
 					Arrays.fill(kolorea, 0);
+					btnApostuaEzabatu.setEnabled(false);
+					btnApostuaEgin.setEnabled(false);
 					apostuKantitatea.clearSelection();
 					}
 				}
@@ -517,13 +540,12 @@ public class ruletaApostua extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("img/ruletaTablero.jpg"));
 		lblNewLabel.setBounds(10, 137, 627, 313);
 		contentPane.add(lblNewLabel);
-		   
-		JLabel lblNewLabel_1 = new JLabel("Apostu Max: " + pertsonaApostuMax);
-		lblNewLabel_1.setBounds(656, 11, 121, 37);
-		contentPane.add(lblNewLabel_1);
+		
+		lblApostuMax = new JLabel("Apostu Max: " + metodoak.ApostuMax(datuBaseKarga.getErabiltzaileak(), denboraOrduaMomentukoa));
+		lblApostuMax.setBounds(656, 11, 121, 37);
+		contentPane.add(lblApostuMax);
        
-		JButton btnApostuaEgin = new JButton("Apostua bukatu");
-		btnApostuaEgin.setEnabled(false);
+		
 		btnApostuaEgin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				blokeatu = true;
@@ -763,6 +785,7 @@ public class ruletaApostua extends JFrame {
 				Arrays.fill(taulaErdia, 0);
 				Arrays.fill(bakoitiBikoiti, 0);
 				Arrays.fill(kolorea, 0);
+				btnApostuaEzabatu.setEnabled(false);
 				btnApostuaEgin.setEnabled(false);
 				JOptionPane.showMessageDialog(btnApostuaEzabatu, "Apostua zuzen ezabatu da");
 			}

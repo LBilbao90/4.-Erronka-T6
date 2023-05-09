@@ -37,6 +37,7 @@ import Ikuspegia.ruletaJokoa.OKButtonListener;
 import Modelo.Admin;
 import Modelo.Erabiltzaile;
 import Modelo.KasinoErabiltzaile;
+import Modelo.Maila;
 
 
 public class metodoak {
@@ -83,4 +84,21 @@ public class metodoak {
  		return guztira;
  	}
  	
+ 	public static double ApostuMax(ArrayList<Erabiltzaile> erabiltzaileak, String NAN) {
+ 	    double apostuMax = 0.0;
+
+ 	    for (Erabiltzaile erabiltzaile : erabiltzaileak) {
+ 	        if (erabiltzaile.getNAN().equals(NAN)) {
+ 	            int idMaila = erabiltzaile.getId_maila();
+ 	            for (Maila maila : datuBaseKarga.getMailak()) {
+ 	                if (maila.getId_maila() == idMaila) {
+ 	                    apostuMax = maila.getApostu_max();
+ 	                    break;
+ 	                }
+ 	            }
+ 	            break;
+ 	        }
+ 	    }
+ 	    return apostuMax;
+ 	}
 }

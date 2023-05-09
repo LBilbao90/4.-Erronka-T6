@@ -10,11 +10,9 @@ public abstract class Pertsona extends Maila{
 	protected static String abizena;
 	protected Date jaioteguna;
 	protected String herrialdea;
-	//protected String autonomia_erkidegoa;
 	protected String probintzia;
 	protected String herria;
 	protected String postaKodea;
-	//protected String posta_elektronikoa;
 	protected String pasahitza;
 	protected String tlf_zenabkia;
 	
@@ -25,11 +23,9 @@ public abstract class Pertsona extends Maila{
 		this.abizena = abizena;
 		this.jaioteguna = string;
 		this.herrialdea = herrialdea;
-		//this.autonomia_erkidegoa = autonomia_erkidegoa;
 		this.probintzia = probintzia;
 		this.herria = herria;
 		this.postaKodea = postaKodea;
-		//this.posta_elektronikoa = posta_elektronikoa;
 		this.pasahitza = pasahitza;
 		this.tlf_zenabkia = tlf_zenabkia;
 	}
