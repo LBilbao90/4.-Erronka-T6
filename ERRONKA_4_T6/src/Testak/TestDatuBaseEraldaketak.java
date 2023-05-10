@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -17,6 +18,7 @@ import Kontrolatzailea.metodoak;
 import Kontrolatzailea.datuBaseEraldaketak;
 
 public class TestDatuBaseEraldaketak {
+	
     @Test
     public void testErregistroaInsert() {
     	datuBaseKarga.karga();
@@ -93,24 +95,27 @@ public class TestDatuBaseEraldaketak {
     @Test
     public void testKasinoErabiltzaileInsert() {
     	datuBaseKarga.karga();
-    	int id_kasino = 1;
-    	String NAN = "45983123Y";
-    	assertTrue(datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, id_kasino));
-    	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("12345678Z",1));
+    	String NAN= "55560803W";
+    	int id_Kasino = 1;
+    
+    	assertTrue(datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, id_Kasino));
+    	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("73264894A", 0));
+
     	Connection conn;
-    	 try {
-    		 String url = "jdbc:mysql://localhost:3306/kasinoa";
-             conn = (Connection) DriverManager.getConnection (url, "root","");
-             Statement stmt = (Statement) conn.createStatement();                     
-             stmt.executeUpdate("DELETE FROM kasinoErabiltzaile WHERE NAN='" + NAN + "';");
-             conn.close();
-         }catch(SQLException ex) {
-        	 System.out.println("SQLException: "+ ex.getMessage());
-        	 System.out.println("SQLState: "+ ex.getSQLState());
-        	 System.out.println("ErrorCode: "+ ex.getErrorCode());
-         }	
-    	 
-    }
+	   	try {
+	   		String url = "jdbc:mysql://localhost:3306/kasinoa";
+	        conn = (Connection) DriverManager.getConnection (url, "root","");
+            Statement stmt = (Statement) conn.createStatement();
+            stmt.executeUpdate("DELETE FROM kasino_erabiltzaile WHERE NAN='"+  NAN + "';");
+            conn.close();
+	        }catch(SQLException ex) {
+	       	 System.out.println("SQLException: "+ ex.getMessage());
+	       	 System.out.println("SQLState: "+ ex.getSQLState());
+	       	 System.out.println("ErrorCode: "+ ex.getErrorCode());
+	        }	
+   	 
+  }
+
     
     
     @Test
@@ -142,6 +147,46 @@ public class TestDatuBaseEraldaketak {
          }	
     	 
    }
+    
+    @Test
+    public void testErabiltzaileMailaUpdate() {
+        String NAN = "87654321X";
+        String erabiltzaileIzena = "ProbaTest1";
+        String pasahitza = "Elorrieta00";
+        String herrialdea = "Euskadi";
+        String probintzia = "Gipuzkoa";
+        String herria = "Elgoibar";
+        String postaKodea = "20870";
+        String telefonoZbk = "333444333";
+        int maila= 3;
+        // Testeatzeko erabiltzailea sortu
+    	Connection conn;
+        try {
+        	String url = "jdbc:mysql://localhost:3306/kasinoa";
+        	conn = (Connection) DriverManager.getConnection (url, "root","");
+            Statement stmt = (Statement) conn.createStatement();  
+            stmt.executeUpdate("INSERT INTO erabiltzaile_kontua (NAN, "
+            		+ "diru_kopuru_historikoa, diru_kopuru_momentukoa, abizena, erabiltzaile_izena, pasahitza, herrialdea, probintzia, herria, posta_Kodea, tlf_zenbakia, id_maila) VALUES ('" + NAN + "', '" + 30 +  "', '" + 30 + "', '" + "ProbaAbizen" + "', '" + erabiltzaileIzena + "', '" + pasahitza + "', '" + herrialdea + "', '" + probintzia + "', '" + herria + "', '" + postaKodea + "', '" + telefonoZbk + "', '" + maila +  "')");        } catch (SQLException e) {
+       	 System.out.println("SQLException: "+ e.getMessage());
+       	 System.out.println("SQLState: "+ e.getSQLState());
+       	 System.out.println("ErrorCode: "+ e.getErrorCode());
+        }
+
+        // Izena aldatzen den konprobatu
+        int maila2 = 1;
+        assertTrue(datuBaseEraldaketak.erabiltzaileMailaUpdate(NAN, maila2));
+
+        // Datu basetik probaKasua borratu
+    	Connection conn2;
+        try {
+        	String url = "jdbc:mysql://localhost:3306/kasinoa";
+        	conn2 = (Connection) DriverManager.getConnection (url, "root","");
+            Statement stmt = (Statement) conn2.createStatement(); 
+            stmt.executeUpdate("DELETE FROM erabiltzaile_kontua WHERE NAN = '" + NAN + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     
 }

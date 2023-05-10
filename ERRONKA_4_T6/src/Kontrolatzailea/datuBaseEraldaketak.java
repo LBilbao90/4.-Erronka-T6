@@ -117,7 +117,8 @@ public class datuBaseEraldaketak {
 	    return modificado;
 	}
 	
-	public static void kasinoErabiltzaileInsert(String NAN, int id_kasino) {
+	public static boolean kasinoErabiltzaileInsert(String NAN, int id_kasino) {
+	    boolean insert = false;
 	    boolean existitu = false;
 
 	    datuBaseKarga.karga();
@@ -128,23 +129,22 @@ public class datuBaseEraldaketak {
 	    	    existitu = true;
 	    	    break;
 	    	}
-
 	    }
-    if(!existitu) {
-        Connection conn;                    
-        try {
-            String url = "jdbc:mysql://localhost:3306/kasinoa";
-            conn = (Connection) DriverManager.getConnection (url, "root","");
-            Statement stmt = (Statement) conn.createStatement();                     
-            stmt.executeUpdate( "INSERT INTO kasino_erabiltzaile VALUES ('"+id_kasino+"','"+NAN+"');");
-            conn.close();
-        }catch(SQLException ex) {
-                System.out.println("SQLException: "+ ex.getMessage());
-                System.out.println("SQLState: "+ ex.getSQLState());
-                System.out.println("ErrorCode: "+ ex.getErrorCode());
-        }
-    }
-}
-
-
+	    if(!existitu) {
+	        Connection conn;                    
+	        try {
+	            String url = "jdbc:mysql://localhost:3306/kasinoa";
+	            conn = (Connection) DriverManager.getConnection (url, "root","");
+	            Statement stmt = (Statement) conn.createStatement();                     
+	            stmt.executeUpdate("INSERT INTO kasino_erabiltzaile VALUES ('"+NAN+"','"+id_kasino+"');");
+		        insert = true;
+	            conn.close();
+	        }catch(SQLException ex) {
+	                System.out.println("SQLException: "+ ex.getMessage());
+	                System.out.println("SQLState: "+ ex.getSQLState());
+	                System.out.println("ErrorCode: "+ ex.getErrorCode());
+	        }
+	    }
+	    return insert;
+	}
 }
