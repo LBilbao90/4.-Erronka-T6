@@ -961,6 +961,10 @@ public class lehenLehioa extends JFrame {
 		    		    textPostaKodea.setText("");
 		    		    textTelefonoa.setText("");
 		    		    momentukoErabiltzaileNAN = NAN;
+		    		    
+		    		    double apostuMax = metodoak.ApostuMax(datuBaseKarga.getErabiltzaileak(), momentukoErabiltzaileNAN);
+		    		    ruletaApostua.setPertsonaApostuMax(apostuMax);
+		    		    ruletaApostua.setLblApostuMax((int) apostuMax);
 	    			} else {
 		    	    	JOptionPane.showMessageDialog(erregistratu, "Badirudi dagoeneko badagoela kontu bat sortuta " + NAN + " NANarekin.\r\nDagoeneko erregistratuta bazaude hasi saioa, eta bestela erregistraru gabeko NAN bat erabili.", "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
 		    	    }

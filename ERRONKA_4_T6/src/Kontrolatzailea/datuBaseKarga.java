@@ -47,6 +47,10 @@ public class datuBaseKarga {
 		return KasinoErabiltzaile;
 	}
 
+	
+	/*
+	 * Datu baseko informazioa ArrayList desberdinetan gordetzen dira. (Maila, erabiltzaile_kontua, langile_kontua, jokoak, kasinoak, kasino_erabiltzaile.)
+	 */
 	public static void karga() {
         final String url = "jdbc:mysql://localhost:3306/kasinoa"; //url de la base de datos de phpmyadmin
         final String erabiltzaileKontsulta = "*";
