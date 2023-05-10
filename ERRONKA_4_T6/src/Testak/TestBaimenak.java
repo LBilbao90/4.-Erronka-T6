@@ -22,7 +22,7 @@ class TestBaimenak {
 	ArrayList<Pertsona> pertsona = new ArrayList<Pertsona>();
 
 	//KONSTRUKTOREA
-		Baimena baimena_test_konstruktorea = new Baimena(erabiltzailea, baimen_mota, bukaera_data, bukaera_data, pertsona);
+	Baimena baimena_test_konstruktorea = new Baimena(erabiltzailea, baimen_mota, bukaera_data, bukaera_data, pertsona);
 
 
 

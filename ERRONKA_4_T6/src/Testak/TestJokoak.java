@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Modelo.Jokoak;
-import Modelo.Jokuak;
 
 public class TestJokoak {
 
@@ -16,7 +15,7 @@ public class TestJokoak {
 
     @Before
     public void setUp() throws Exception {
-        ArrayList<Jokuak> jokuak = new ArrayList<Jokuak>();
+        ArrayList<Jokoak> jokuak = new ArrayList<Jokoak>();
         jokoak = new Jokoak(1, "Kasino Berri", "Kasino Kalea 1", 123456789, jokuak);
         jokoak.setId_jokoak(1);
         jokoak.setJokoIzena("Slotak");
@@ -58,7 +57,7 @@ public class TestJokoak {
 
     @Test
     public void testEquals() {
-        Jokoak jokoak2 = new Jokoak(1, "Kasino Berri", "Kasino Kalea 1", 123456789, new ArrayList<Jokuak>());
+        Jokoak jokoak2 = new Jokoak(1, "Kasino Berri", "Kasino Kalea 1", 123456789, new ArrayList<Jokoak>());
         jokoak2.setId_jokoak(1);
         jokoak2.setJokoIzena("Slotak");
         jokoak2.setMaxApostu(50.0);
@@ -67,12 +66,12 @@ public class TestJokoak {
     
     @Test
     public void testHashCode() {
-        Jokoak jokoak1 = new Jokoak(1, "Kasino Berri", "Kasino Kalea 1", 123456789, new ArrayList<Jokuak>());
+        Jokoak jokoak1 = new Jokoak(1, "Kasino Berri", "Kasino Kalea 1", 123456789, new ArrayList<Jokoak>());
         jokoak1.setId_jokoak(1);
         jokoak1.setJokoIzena("Slotak");
         jokoak1.setMaxApostu(50.0);
 
-        Jokoak jokoak2 = new Jokoak(1, "Kasino Berri", "Kasino Kalea 1", 123456789, new ArrayList<Jokuak>());
+        Jokoak jokoak2 = new Jokoak(1, "Kasino Berri", "Kasino Kalea 1", 123456789, new ArrayList<Jokoak>());
         jokoak2.setId_jokoak(1);
         jokoak2.setJokoIzena("Slotak");
         jokoak2.setMaxApostu(50.0);

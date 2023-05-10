@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Objects;
 
-public class Ruleta implements Jokuak{
+public class Ruleta{
 	
 	protected int apustu_kopuru_max;
 	protected int apustua;
@@ -45,18 +45,6 @@ public class Ruleta implements Jokuak{
 	@Override
 	public String toString() {
 		return "Ruleta apustu_kopuru_max=" + apustu_kopuru_max + "/n apustua=" + apustua + "";
-	}
-
-	@Override
-	public void jokatu() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void erakutsiJokuak() {
-		// TODO Auto-generated method stub
-		
 	}
 }
 

@@ -138,4 +138,3 @@ class TestAdmin {
         assertEquals(expected, admin.toString());
     }
 }
-

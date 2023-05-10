@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Kontrolatzailea.metodoak;
 import Kontrolatzailea.txtIdatzi;
 
 public class TestTxtIdatzi {

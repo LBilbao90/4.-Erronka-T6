@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Modelo.Erabiltzaile;
@@ -105,7 +104,6 @@ public class TestErabiltzaile {
     		try {
     			jaioteguna = dateFormat.parse("2000-01-01");
     		} catch (ParseException e) {
-    			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
             Erabiltzaile e1 = new Erabiltzaile("12345678A", "Juan", "García", jaioteguna, "España", "Madrid", "Madrid", "28001", "password", "123456789", 1, 100.0, 50.0);
