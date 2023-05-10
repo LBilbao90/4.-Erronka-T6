@@ -112,7 +112,7 @@ public class balidazioak {
  	 * Erabiltzailearen logina balidatzen du, eta kontua blokeatuta badago mezua erakusten du.
  	 * @param erabiltzailea | Erabiltzailearen NAN-a artuko du. (String)
  	 * @param pasahitza | Erabiltzailearen pasahitza artuko du. (char[])
- 	 * @return '0' bueltatuko du ez badago 'id_kasino == 1'-en (Lehen kasinoan) edo ezin bada desblokeatu kontua. '1' bueltatuko du normal ahal dugunean hasi saioa edo kontua deblokeatu dugunean. '2' bueltatuko du kontua administratzaile batek blokeatu badu edo ez duelako nahi bere kontua desblokeatu.
+ 	 * @return '0' bueltatuko du ez badago 'id_kasino == 1'-en (Lehen kasinoan) edo ezin bada desblokeatu kontua. '1' bueltatuko du normal ahal dugunean hasi saioa edo kontua desblokeatu dugunean. '2' bueltatuko du kontua administratzaile batek blokeatu badu edo ez duelako nahi bere kontua desblokeatu.
  	 * @author 6.Taldea
  	 */
  	public static int loginBalidazioaErabiltzaile(String erabiltzailea, char[] pasahitza) {

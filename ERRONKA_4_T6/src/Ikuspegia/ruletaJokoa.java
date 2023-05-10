@@ -36,7 +36,11 @@ public class ruletaJokoa extends JPanel {
     private Random random = new Random();
     private static JButton btnBiratu;
 
-    public static int getUnekoZenbakia() {
+    public static void setBtnBiratu() {
+		btnBiratu.setEnabled(true);
+	}
+
+	public static int getUnekoZenbakia() {
 		return unekoZenbakia;
 	}
 
@@ -141,8 +145,10 @@ public class ruletaJokoa extends JPanel {
                     unekoZenbakia = metodoak.ruletakoZbkKalkulatu(angelu);
                     System.out.println("Ruleta emaitza: " + unekoZenbakia);
 //                    unekoZenbakia = 0;
+                    btnBiratu.setEnabled(false);
                     erakutsiMezua(unekoZenbakia);
 //                    unekoZenbakia = 0;
+                    
                 }
             }
         }).start();

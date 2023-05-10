@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import javax.swing.JPanel;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import Kontrolatzailea.balidazioak;
@@ -78,12 +79,12 @@ public class TestBalidazioak {
 	    
 	    @Test
 	    public void testLoginBalidazioaErabiltzaile() {
-	    	datuBaseKarga.karga();
-	    	assertTrue(balidazioak.loginBalidazioaErabiltzaile("12345678A", "elorrieta00".toCharArray()));
-	    	assertFalse(balidazioak.loginBalidazioaErabiltzaile("12345678B", "123".toCharArray()));
-	    	assertFalse(balidazioak.loginBalidazioaErabiltzaile("12345678A", "123".toCharArray()));
-	    	assertFalse(balidazioak.loginBalidazioaErabiltzaile("12345678M", "elorrieta00".toCharArray()));
+	        datuBaseKarga.karga();
+	        Assert.assertEquals(0,balidazioak.loginBalidazioaErabiltzaile("12345678A", "elorrieta00".toCharArray()));
+	        Assert.assertEquals(1,balidazioak.loginBalidazioaErabiltzaile("03418239W", "Elorrieta00".toCharArray()));
+	        Assert.assertEquals(2,balidazioak.loginBalidazioaErabiltzaile("79144847F", "Elorrieta00".toCharArray()));
 	    }
+
 	
 	    @Test
 	    public void testTlfZuzena() {

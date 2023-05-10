@@ -628,6 +628,7 @@ public class ruletaApostua extends JFrame {
 	            	//ruletaJokoa klasean 'erakutsiMezua' metodoko mezuko 'OK' botoia sakatzean egingo duena.
 	            	@Override
 					public void onOKButtonPressed() {
+	            		ruletaJokoa.setBtnBiratu();
 						ruletaLehioa.dispose();
 						rdbtnApostu10.setEnabled(true);
 						rdbtnApostu20.setEnabled(true);
