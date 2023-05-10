@@ -25,41 +25,29 @@ public class TestWindowBuilder {
 	
 	@Test
 	public void testBtn3secDelayTest() {
+		
 		JPanel erakutsi = new JPanel();
-		JPanel sarrera = new JPanel();
-		JPanel login = new JPanel();
-		JPanel erregistratu = new JPanel();
 		JPanel jokoak = new JPanel();
 		JPanel ruleta = new JPanel();
 		ruletaApostua ruleta1 = new ruletaApostua();
-		ActionEvent e = new ActionEvent(this, 0, "test");
 		int segundu = 3; 
 	
-		long hasiera = System.currentTimeMillis();
-		windowBuilder.btn3secDelay(erakutsi, segundu, sarrera, login, erregistratu, jokoak, ruleta, e);
-		windowBuilder.btn3secDelay(ruleta1, segundu, sarrera, login, erregistratu, jokoak, ruleta1, e);
-		windowBuilder.btn3secDelay(erakutsi, segundu, sarrera, login, erregistratu, jokoak, e);
-		long amaiera = System.currentTimeMillis();
+		windowBuilder.btn3secDelay(erakutsi, segundu, jokoak);
+		windowBuilder.btn3secDelay(ruleta1, segundu, jokoak);
+		windowBuilder.btn3secDelay(ruleta, segundu);
 	}
 		
 	@Test 
 	public void testHurrengoBtn() {
 		JPanel erakutsi = new JPanel();
-		JPanel sarrera = new JPanel();
-		JPanel login = new JPanel();
-		JPanel erregistratu = new JPanel();
-		JPanel jokoak = new JPanel();
 		JPanel ruleta = new JPanel();
 		ruletaApostua ruleta1 = new ruletaApostua();
-		ActionEvent e = new ActionEvent(this, 0, "test");
-		int segundu = 3; 
 
-		windowBuilder.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak, ruleta);
-	    windowBuilder.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak, ruleta1);
-	    windowBuilder.hurrengoaBtn(ruleta1, sarrera, login, erregistratu, jokoak, ruleta1);
-	    windowBuilder.hurrengoaBtn(ruleta1);
-	    windowBuilder.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak);
+		windowBuilder.hurrengoaBtn(erakutsi, ruleta);
+		windowBuilder.hurrengoaBtn(erakutsi);
+		windowBuilder.hurrengoaBtn(ruleta1, ruleta);
 	}
+	
 	
 	@Test
     public void testCreateTextFieldTestua() {

@@ -6,6 +6,9 @@ import static org.junit.Assert.assertTrue;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -22,7 +25,7 @@ public class TestDatuBaseEraldaketak {
     @Test
     public void testErregistroaInsert() {
     	datuBaseKarga.karga();
-    	String NAN = "45983123Y";
+    	String NAN = "30826097W";
     	String izena = "Unax";
     	String abizena = "Zulaika";
     	String pasahitza = "elorrieta00";
@@ -52,40 +55,43 @@ public class TestDatuBaseEraldaketak {
     }
     
     @Test
-    public void testErabiltzaileUpdate() {
-        String NAN = "87654321X";
-        String erabiltzaileIzena = "ProbaTest1";
-        String pasahitza = "Elorrieta00";
-        String herrialdea = "Euskadi";
-        String probintzia = "Gipuzkoa";
-        String herria = "Elgoibar";
-        String postaKodea = "20870";
-        String telefonoZbk = "333444333";
-
+    public void testErabiltzaileUpdate() throws SQLException {
+			String NAN = "87654321X";
+			int id_maila= 3;
+			String abizena= "ProbaTest1";
+			String erabiltzaileIzena = "ProbaTest1";
+			String pasahitza = "Elorrieta00";
+			String herrialdea = "Euskadi";
+			String probintzia = "Gipuzkoa";
+			String herria = "Elgoibar";
+			String postaKodea = "20870";
+			String telefonoZbk = "333444333";
+			String erabiltzaileIzena2 = "ProbaTest2";
+			Double diru_kopuru_historikoa= 1000.0;
+			Double diru_kopuru_momentukoa= 100.0;
+			
         // Testeatzeko erabiltzailea sortu
     	Connection conn;
         try {
         	String url = "jdbc:mysql://localhost:3306/kasinoa";
         	conn = (Connection) DriverManager.getConnection (url, "root","");
             Statement stmt = (Statement) conn.createStatement();  
-            stmt.executeUpdate("INSERT INTO erabiltzaile_kontua (NAN, "
-            		+ "diru_kopuru_historikoa, diru_kopuru_momentukoa, abizena, erabiltzaile_izena, pasahitza, herrialdea, probintzia, herria, posta_Kodea, tlf_zenbakia) VALUES ('" + NAN + "', '" + 30 +  "', '" + 30 + "', '" + "ProbaAbizen" + "', '" + erabiltzaileIzena + "', '" + pasahitza + "', '" + herrialdea + "', '" + probintzia + "', '" + herria + "', '" + postaKodea + "', '" + telefonoZbk + "')");
+            stmt.executeUpdate("INSERT INTO erabiltzaile_kontua (NAN, id_maila, diru_kopuru_historikoa, diru_kopuru_momentukoa, tlf_zenbakia, posta_Kodea, herrialdea, probintzia, herria, jaiotze_data, abizena, erabiltzaile_izena, pasahitza) VALUES ('" + NAN + "', '" + id_maila +  "', '" + diru_kopuru_historikoa + "', '" + diru_kopuru_momentukoa + "', '" + telefonoZbk + "', '" + postaKodea + "', '" + herrialdea + "', '" + probintzia + "', '" + herria + "', '" + "2001-01-01" + "', '" + abizena +"', '" + erabiltzaileIzena + "', '" + pasahitza +"')");
+          assertTrue(datuBaseEraldaketak.erabiltzaileUpdate(NAN, erabiltzaileIzena2, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk));
         } catch (SQLException e) {
        	 System.out.println("SQLException: "+ e.getMessage());
        	 System.out.println("SQLState: "+ e.getSQLState());
        	 System.out.println("ErrorCode: "+ e.getErrorCode());
         }
+        
 
-        // Izena aldatzen den konprobatu
-        String erabiltzaileIzena2 = "ProbaTest2";
-        assertTrue(datuBaseEraldaketak.erabiltzaileUpdate(NAN, erabiltzaileIzena2, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk));
-
+    	
         // Datu basetik probaKasua borratu
-    	Connection conn2;
+    	Connection conn3;
         try {
         	String url = "jdbc:mysql://localhost:3306/kasinoa";
-        	conn2 = (Connection) DriverManager.getConnection (url, "root","");
-            Statement stmt = (Statement) conn2.createStatement(); 
+        	conn3 = (Connection) DriverManager.getConnection (url, "root","");
+            Statement stmt = (Statement) conn3.createStatement(); 
             stmt.executeUpdate("DELETE FROM erabiltzaile_kontua WHERE NAN = '" + NAN + "'");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,7 +101,7 @@ public class TestDatuBaseEraldaketak {
     @Test
     public void testKasinoErabiltzaileInsert() {
     	datuBaseKarga.karga();
-    	String NAN= "55560803W";
+    	String NAN= "12345678Z";
     	int id_Kasino = 1;
     
     	assertTrue(datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, id_Kasino));
@@ -121,7 +127,7 @@ public class TestDatuBaseEraldaketak {
     @Test
     public void testApostuaInsert() {
     	datuBaseKarga.karga();
-    	String NAN="12345678Z";
+    	String NAN="03418239W";
     	int id_joko= 1;
     	int apostuKantitate= 100;
     	String apostuEmaitza= "Irabazi";
@@ -150,43 +156,10 @@ public class TestDatuBaseEraldaketak {
     
     @Test
     public void testErabiltzaileMailaUpdate() {
-        String NAN = "87654321X";
-        String erabiltzaileIzena = "ProbaTest1";
-        String pasahitza = "Elorrieta00";
-        String herrialdea = "Euskadi";
-        String probintzia = "Gipuzkoa";
-        String herria = "Elgoibar";
-        String postaKodea = "20870";
-        String telefonoZbk = "333444333";
-        int maila= 3;
-        // Testeatzeko erabiltzailea sortu
-    	Connection conn;
-        try {
-        	String url = "jdbc:mysql://localhost:3306/kasinoa";
-        	conn = (Connection) DriverManager.getConnection (url, "root","");
-            Statement stmt = (Statement) conn.createStatement();  
-            stmt.executeUpdate("INSERT INTO erabiltzaile_kontua (NAN, "
-            		+ "diru_kopuru_historikoa, diru_kopuru_momentukoa, abizena, erabiltzaile_izena, pasahitza, herrialdea, probintzia, herria, posta_Kodea, tlf_zenbakia, id_maila) VALUES ('" + NAN + "', '" + 30 +  "', '" + 30 + "', '" + "ProbaAbizen" + "', '" + erabiltzaileIzena + "', '" + pasahitza + "', '" + herrialdea + "', '" + probintzia + "', '" + herria + "', '" + postaKodea + "', '" + telefonoZbk + "', '" + maila +  "')");        } catch (SQLException e) {
-       	 System.out.println("SQLException: "+ e.getMessage());
-       	 System.out.println("SQLState: "+ e.getSQLState());
-       	 System.out.println("ErrorCode: "+ e.getErrorCode());
-        }
-
-        // Izena aldatzen den konprobatu
-        int maila2 = 1;
+    	int maila= 3;
+        int maila2 = 2;
+        String NAN="34567890V";
+        assertTrue(datuBaseEraldaketak.erabiltzaileMailaUpdate(NAN, maila));
         assertTrue(datuBaseEraldaketak.erabiltzaileMailaUpdate(NAN, maila2));
-
-        // Datu basetik probaKasua borratu
-    	Connection conn2;
-        try {
-        	String url = "jdbc:mysql://localhost:3306/kasinoa";
-        	conn2 = (Connection) DriverManager.getConnection (url, "root","");
-            Statement stmt = (Statement) conn2.createStatement(); 
-            stmt.executeUpdate("DELETE FROM erabiltzaile_kontua WHERE NAN = '" + NAN + "'");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
-    
-    
 }

@@ -8,9 +8,9 @@ public class Kasinoa {
 	protected String izena;
 	protected String helbidea;
 	protected int telefonoa;
-	private ArrayList<Jokuak> jokoak;
+	private ArrayList<Jokoak> jokoak;
 	
-	public Kasinoa(int id_kasinoa, String izena, String helbidea, int telefonoa, ArrayList<Jokuak> jokoak) {
+	public Kasinoa(int id_kasinoa, String izena, String helbidea, int telefonoa, ArrayList<Jokoak> jokoak) {
 		this.id_kasinoa = id_kasinoa;
 		this.izena = izena;
 		this.helbidea = helbidea;
@@ -49,10 +49,10 @@ public class Kasinoa {
 	public void setTelefonoa(int telefonoa) {
 		this.telefonoa = telefonoa;
 	}
-	public ArrayList<Jokuak> getJokoak() {
+	public ArrayList<Jokoak> getJokoak() {
 		return jokoak;
 	}
-	public void setJokoak(ArrayList<Jokuak> jokoak) {
+	public void setJokoak(ArrayList<Jokoak> jokoak) {
 		this.jokoak = jokoak;
 	}
 	
