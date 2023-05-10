@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2023 a las 10:28:01
+-- Tiempo de generación: 09-05-2023 a las 19:51:10
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `kasinoa`
 --
-create database kasinoa;
-use kasinoa;
+
 -- --------------------------------------------------------
 
 --
@@ -35,15 +34,6 @@ CREATE TABLE `apostua` (
   `apostu_kantitatea` int(11) NOT NULL,
   `apostu_emaitza` enum('Irabazi','Berdin','Galdu') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `apostua`
---
-
-INSERT INTO `apostua` (`id_apostu`, `NAN`, `id_joko`, `apostu_kantitatea`, `apostu_emaitza`) VALUES
-(1, '12345678Z', 1, 50, 'Irabazi'),
-(2, '12345678Z', 1, 10, 'Galdu'),
-(3, '12345678Z', 1, 20, 'Berdin');
 
 -- --------------------------------------------------------
 
@@ -85,8 +75,12 @@ CREATE TABLE `erabiltzaile_kontua` (
 --
 
 INSERT INTO `erabiltzaile_kontua` (`NAN`, `id_maila`, `diru_kopuru_historikoa`, `diru_kopuru_momentukoa`, `tlf_zenbakia`, `posta_Kodea`, `herrialdea`, `probintzia`, `herria`, `jaiotze_data`, `abizena`, `erabiltzaile_izena`, `pasahitza`) VALUES
-('12345678Z', 1, 30, 30, '666999666', 20870, 'Euskal Herria', 'Gipuzkoa', 'Elgoibar', '2000-01-01', 'ProbaKontua1', 'ProbaKontua1', 'Elorrieta00'),
-('23456789D', 1, 30, 30, '999666999', 20870, 'Euskal Herria', 'Gipuzkoa', 'Elgoibar', '2001-02-02', 'ProbaKontua2', 'ProbaKontua2', 'Elorrieta00');
+('03418239W', 4, 1000, 1000, '663311341', 20870, 'Euskadi', 'Bizkaia', 'Bilbo', '1991-04-20', 'Sainz', 'Max', 'Elorrieta00'),
+('34567890V', 3, 1000, 1000, '612456493', 48830, 'Euskadi', 'Bizkaia', 'Sodupe', '2002-12-31', 'Siranaula', 'Aingeru Daniel', 'Elorrieta00'),
+('41376983Y', 3, 1000, 1000, '701704730', 20870, 'Euskadi', 'Gipuzkoa', 'Elgoibar', '2000-01-01', 'Gil', 'Xabier', 'Elorrieta00'),
+('72323409R', 5, 1000, 1000, '636993814', 48009, 'Euskadi', 'Bizkaia', 'Bilbo', '1991-01-10', 'Zabaleta', 'Aito', 'Elorrieta00'),
+('73813259A', 4, 1000, 1000, '694919686', 48970, 'Euskadi', 'Bizkaia', 'Basauri', '2002-07-21', 'Pelea', 'Aimar', 'Elorrieta00'),
+('92549706Y', 5, 1000, 1000, '624076334', 48970, 'Euskadi', 'Bizkaia', 'Basauri', '1992-09-20', 'Verstappen', 'Niko', 'Elorrieta00');
 
 -- --------------------------------------------------------
 
@@ -106,7 +100,7 @@ CREATE TABLE `jokoak` (
 --
 
 INSERT INTO `jokoak` (`id_joko`, `id_Kasino`, `JokoIzena`, `MaxApostu`) VALUES
-(1, 1, 'Ruleta', 1000),
+(1, 1, 'Ruleta', 10000),
 (2, 1, 'Blackjack', 1000);
 
 -- --------------------------------------------------------
@@ -127,7 +121,8 @@ CREATE TABLE `kasino` (
 --
 
 INSERT INTO `kasino` (`id_Kasino`, `Izena`, `Helbidea`, `Telefonoa`) VALUES
-(1, 'Elorrieta Kasinoa', 'Karmen Kalea 35', '606408012');
+(1, 'Elorrieta Kasinoa', 'Karmen Kalea 35', '606408012'),
+(2, 'Bilbo Kasinoa', 'Abando 2', '640284212');
 
 -- --------------------------------------------------------
 
@@ -139,6 +134,18 @@ CREATE TABLE `kasino_erabiltzaile` (
   `id_Kasino` int(11) DEFAULT NULL,
   `NAN` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `kasino_erabiltzaile`
+--
+
+INSERT INTO `kasino_erabiltzaile` (`id_Kasino`, `NAN`) VALUES
+(1, '34567890V'),
+(1, '03418239W'),
+(1, '72323409R'),
+(2, '92549706Y'),
+(2, '73813259A'),
+(2, '41376983Y');
 
 -- --------------------------------------------------------
 
@@ -183,7 +190,7 @@ CREATE TABLE `langile_kontua` (
   `Probintzia` varchar(100) NOT NULL,
   `Herria` varchar(50) NOT NULL,
   `Posta_Kodea` int(10) UNSIGNED NOT NULL,
-  `Posta_elektronikoa` varchar(100) NOT NULL UNIQUE,
+  `Posta_elektronikoa` varchar(100) NOT NULL,
   `tlf_zenbakia` char(9) NOT NULL,
   `Kargu` varchar(50) NOT NULL,
   `Soldata` double UNSIGNED NOT NULL,
@@ -214,9 +221,11 @@ CREATE TABLE `maila` (
 --
 
 INSERT INTO `maila` (`id_maila`, `izena`, `apostua_max`) VALUES
-(1, 'Brontze', 100),
-(2, 'Zilarra', 500),
-(3, 'Urrea', 1000);
+(1, 'Blokeatuta', 0),
+(2, 'Baja', 0),
+(3, 'Brontze', 1000),
+(4, 'Zilarra', 5000),
+(5, 'Urrea', 10000);
 
 -- --------------------------------------------------------
 
@@ -289,6 +298,7 @@ ALTER TABLE `kasino_erabiltzaile`
 --
 ALTER TABLE `langile_kontua`
   ADD PRIMARY KEY (`id_Langile`),
+  ADD UNIQUE KEY `Posta_elektronikoa` (`Posta_elektronikoa`),
   ADD KEY `fk_Id_Kasino` (`id_Kasino`);
 
 --
@@ -305,7 +315,7 @@ ALTER TABLE `maila`
 -- AUTO_INCREMENT de la tabla `apostua`
 --
 ALTER TABLE `apostua`
-  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `jokoak`
@@ -317,7 +327,7 @@ ALTER TABLE `jokoak`
 -- AUTO_INCREMENT de la tabla `kasino`
 --
 ALTER TABLE `kasino`
-  MODIFY `id_Kasino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_Kasino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `langile_kontua`
@@ -329,7 +339,7 @@ ALTER TABLE `langile_kontua`
 -- AUTO_INCREMENT de la tabla `maila`
 --
 ALTER TABLE `maila`
-  MODIFY `id_maila` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_maila` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
