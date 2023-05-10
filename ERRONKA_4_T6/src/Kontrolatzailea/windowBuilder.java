@@ -17,7 +17,7 @@ public class windowBuilder {
 	/**
 	 * Panela zehatz batzuk erakutsi eta eskutatuko dute pasatako segundu kopurua itxaron ondore.
 	 * @param erakutsi | Erakutsiko den JPanel-a. (Jpanel)
-	 * @param segundu | Itxarongo den segundo kopurua. (int)
+	 * @param segundu | Itxarongo behar den segundo kopurua. (int)
 	 * @param eskutatu | Eskutatuko den JPanel-a. (JPanel)
 	 */
 	public static void btn3secDelay (JPanel erakutsi, int segundu, JPanel eskutatu) {
@@ -32,9 +32,9 @@ public class windowBuilder {
 	}
 
 	/**
-	 * Panela zehatz batzuk erakutsi eta eskutatuko dute pasatako segundu kopurua itxaron ondore.
+	 * Panel zehatz bat erakutsi eta eskutatuko dute pasatako segundu kopurua itxaron ondore.
 	 * @param ruletaApostuaErakutsi | ruleta apostu panela erakutsiko da. (JPanel)
-	 * @param segundu | Itxarongo den segundo kopurua. (int)
+	 * @param segundu | Itxarongo behar den segundo kopurua. (int)
 	 * @param eskutatu | Eskutatuko den JPanel-a. (JPanel)
 	 */
 	public static void btn3secDelay (ruletaApostua ruletaApostuaErakutsi, int segundu, JPanel eskutatu) {
@@ -48,6 +48,11 @@ public class windowBuilder {
 		
 	}
 	
+	/**
+	 * Panel zehatz bat erakutsi dute pasatako segundu kopurua itxaron ondore.
+	 * @param erakutsi | Erakutsiko den JPanel-a. (Jpanel)
+	 * @param segundu | Itxarongo behar den segundo kopurua. (int)
+	 */
 	public static void btn3secDelay (JPanel erakutsi, int segundu) {
         try {
             Thread.sleep(segundu * 1000);
@@ -59,6 +64,11 @@ public class windowBuilder {
 		
 	}
 	
+	/**
+	 * JPanel bat erakutsiko du eta beste bat eskutatu
+	 * @param erakutsi | Erakutsiko den JPanel-a. (JPanel)
+	 * @param eskutatu | Eskutatuko den JPanel-a. (Jpanel)
+	 */
 	public static void hurrengoaBtn (JPanel erakutsi,JPanel eskutatu) {
 		
 		eskutatu.setVisible(false);
@@ -66,12 +76,21 @@ public class windowBuilder {
 	
 	}
 	
+	/**
+	 * JPanel bat erakutsiko du.
+	 * @param erakutsi | Erakutsiko den JPanel-a. (JPanel)
+	 */
 	public static void hurrengoaBtn (JPanel erakutsi) {
 		
 		erakutsi.setVisible(true);
 	
 	}	
 	
+	/**
+	 * ruletaApostu-a erakutsiko du eta beste panel bat eskutatu
+	 * @param erakutsi | ruletaApostua erakutsiko da. (ruletaApostua)
+	 * @param ruleta | Eskutatuko den JPanel-a. (JPanel)
+	 */
 	public static void hurrengoaBtn (ruletaApostua erakutsi, JPanel ruleta) {
 		
 		ruleta.setVisible(false);
@@ -79,6 +98,17 @@ public class windowBuilder {
 	
 	}
 	
+	/**
+	 * JTextField bat sortuko du
+	 * @param text | Edukiko duen testua. (String)
+	 * @param x | 'x' posizioa. (int)
+	 * @param y | 'y' posizioa. (int)
+	 * @param width | zabalera. (int)
+	 * @param height | altuera. (int)
+	 * @param font | letra mota. (Font)
+	 * @param erregistratu | Implementatuko behar den JPanel-a. (JPanel)
+	 * @return JTextField bat bueltatuko du pasatutako tesuarekin, letra mota, tamaina, eta bestelako ezaugarriekin. 
+	 */
 	public static JTextField createTextFieldTestua (String text, int x, int y, int width, int height, Font font,JPanel erregistratu) {
 	    JTextField textField = new JTextField();
 	    textField.setBounds(x, y, width, height);
@@ -92,6 +122,16 @@ public class windowBuilder {
 	    return textField;
 	}
 	
+	/**
+	 * JTextArea bat sortuko du ezaugarri desberinekin.
+	 * @param x | 'x' posizioa. (int)
+	 * @param y | 'y' posizioa. (int)
+	 * @param width | zabalera. (int)
+	 * @param height | altuera. (int)
+	 * @param font | letra mota. (Font)
+	 * @param erregistratu | Implementatuko behar den JPanel-a. (JPanel)
+	 * @return JTextArea bat bueltatuko du pasatutako letra mota, tamaina, eta bestelako ezaugarriekin. 
+	 */
 	public static JTextArea createTextArea(int x, int y, int width, int height, Font font,JPanel erregistratu) {
 		JTextArea JTextArea = new JTextArea();
 		JTextArea.setBounds(x, y, width, height);
@@ -102,6 +142,16 @@ public class windowBuilder {
 	    return JTextArea;
 	}
 	
+	/**
+	 * JPasswordField bat sortuko du ezaugarri desberinekin.
+	 * @param x | 'x' posizioa. (int)
+	 * @param y | 'y' posizioa. (int)
+	 * @param width | zabalera. (int)
+	 * @param height | altuera. (int)
+	 * @param font | letra mota. (Font)
+	 * @param erregistratu | Implementatuko behar den JPanel-a. (JPanel)
+	 * @return JPasswordField bat bueltatuko du pasatutako letra mota, tamaina, eta bestelako ezaugarriekin. 
+	 */
 	public static JPasswordField createPasswordFieldBete (int x, int y, int width, int height, Font font,JPanel erregistratu) {
 		JPasswordField JPasswordField = new JPasswordField();
 		JPasswordField.setBounds(x, y, width, height);
@@ -111,9 +161,4 @@ public class windowBuilder {
 	    JPasswordField.setColumns(10);
 	    return JPasswordField;
 	}
-	
-	
-	
-    
-
 }
