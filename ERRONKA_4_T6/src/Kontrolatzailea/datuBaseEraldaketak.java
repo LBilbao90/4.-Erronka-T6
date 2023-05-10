@@ -186,7 +186,7 @@ public class datuBaseEraldaketak {
 	            String url = "jdbc:mysql://localhost:3306/kasinoa";
 	            conn = (Connection) DriverManager.getConnection (url, "root","");
 	            Statement stmt = (Statement) conn.createStatement();                     
-	            stmt.executeUpdate("INSERT INTO kasino_erabiltzaile VALUES ('"+NAN+"','"+id_kasino+"');");
+	            stmt.executeUpdate("INSERT INTO kasino_erabiltzaile VALUES ('"+id_kasino+"','"+NAN+"');");
 		        insert = true;
 	            conn.close();
 	        }catch(SQLException ex) {

@@ -945,9 +945,11 @@ public class lehenLehioa extends JFrame {
 	
 	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 	    			if(datuBaseEraldaketak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
-		    			JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
+	    				momentukoErabiltzaileNAN = NAN;
+	    				datuBaseEraldaketak.kasinoErabiltzaileInsert(momentukoErabiltzaileNAN, 1);
+	    				JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
 		    			windowBuilder.btn3secDelay(jokoak, 0, erregistratu);
-		    			datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, 1);
+		    			
 		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
 		    	    	momentukoErabiltzaileNAN = NAN;
 		    		    textNAN.setText("");
@@ -960,7 +962,6 @@ public class lehenLehioa extends JFrame {
 		    		    textHerria.setText("");
 		    		    textPostaKodea.setText("");
 		    		    textTelefonoa.setText("");
-		    		    momentukoErabiltzaileNAN = NAN;
 		    		    
 		    		    double apostuMax = metodoak.ApostuMax(datuBaseKarga.getErabiltzaileak(), momentukoErabiltzaileNAN);
 		    		    ruletaApostua.setPertsonaApostuMax(apostuMax);
