@@ -14,94 +14,67 @@ import Ikuspegia.ruletaApostua;
 
 public class windowBuilder {
 	
-	public static void btn3secDelay (JPanel erakutsi, int segundu, JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, JPanel ruleta, ActionEvent e) {
+	/**
+	 * Panela zehatz batzuk erakutsi eta eskutatuko dute pasatako segundu kopurua itxaron ondore.
+	 * @param erakutsi | Erakutsiko den JPanel-a. (Jpanel)
+	 * @param segundu | Itxarongo den segundo kopurua. (int)
+	 * @param eskutatu | Eskutatuko den JPanel-a. (JPanel)
+	 */
+	public static void btn3secDelay (JPanel erakutsi, int segundu, JPanel eskutatu) {
         try {
             Thread.sleep(segundu * 1000);
             } catch (InterruptedException ex) {
-                System.out.println(e);
+                System.out.println(ex);
             }
 	
-        windowBuilder.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak, ruleta);
+        windowBuilder.hurrengoaBtn(erakutsi, eskutatu);
 		
 	}
-	
-	public static void btn3secDelay (ruletaApostua ruletaApostua, int segundu, JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta, ActionEvent e) {
+
+	/**
+	 * Panela zehatz batzuk erakutsi eta eskutatuko dute pasatako segundu kopurua itxaron ondore.
+	 * @param ruletaApostuaErakutsi | ruleta apostu panela erakutsiko da. (JPanel)
+	 * @param segundu | Itxarongo den segundo kopurua. (int)
+	 * @param eskutatu | Eskutatuko den JPanel-a. (JPanel)
+	 */
+	public static void btn3secDelay (ruletaApostua ruletaApostuaErakutsi, int segundu, JPanel eskutatu) {
         try {
             Thread.sleep(segundu * 1000);
             } catch (InterruptedException ex) {
-                System.out.println(e);
+                System.out.println(ex);
             }
 		
-        windowBuilder.hurrengoaBtn(ruletaApostua, sarrera, login, erregistratu, jokoak, ruleta);
+        windowBuilder.hurrengoaBtn(ruletaApostuaErakutsi, eskutatu);
 		
 	}
 	
-	public static void btn3secDelay (JPanel erakutsi, int segundu, JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak,  ActionEvent e) {
+	public static void btn3secDelay (JPanel erakutsi, int segundu) {
         try {
             Thread.sleep(segundu * 1000);
             } catch (InterruptedException ex) {
-                System.out.println(e);
+                System.out.println(ex);
             }
-		
-        windowBuilder.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak);
+	
+        windowBuilder.hurrengoaBtn(erakutsi);
 		
 	}
 	
-	public static void hurrengoaBtn (JPanel erakutsi,JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, JPanel ruleta) {
+	public static void hurrengoaBtn (JPanel erakutsi,JPanel eskutatu) {
 		
-		sarrera.setVisible(false);
-		login.setVisible(false);
-		erregistratu.setVisible(false);
-		jokoak.setVisible(false);
+		eskutatu.setVisible(false);
+		erakutsi.setVisible(true);
+	
+	}
+	
+	public static void hurrengoaBtn (JPanel erakutsi) {
+		
+		erakutsi.setVisible(true);
+	
+	}	
+	
+	public static void hurrengoaBtn (ruletaApostua erakutsi, JPanel ruleta) {
+		
 		ruleta.setVisible(false);
-		erakutsi.setVisible(true);
-	
-	}
-//	public static void btn3secDelay (JPanel erakutsi, int segundu, JPanel sarrera, JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta) {
-//        try {
-//            Thread.sleep(segundu * 1000);
-//            } catch (InterruptedException ex) {
-//                System.out.println(e);
-//            }
-//		
-//        metodoak.hurrengoaBtn(erakutsi, sarrera, login, erregistratu, jokoak, ruleta);
-//		
-//	}
-	
-	public static void hurrengoaBtn (JPanel erakutsi,JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta) {
-		
-		sarrera.setVisible(false);
-		login.setVisible(false);
-		erregistratu.setVisible(false);
-		jokoak.setVisible(false);
-		ruleta.setVisible(false);
-		erakutsi.setVisible(true);
-	}
-	
-	
-	public static void hurrengoaBtn (ruletaApostua erakutsi,JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak, ruletaApostua ruleta) {
-		
-		sarrera.setVisible(false);
-		login.setVisible(false);
-		erregistratu.setVisible(false);
-		jokoak.setVisible(false);
-		ruleta.setVisible(false);
-		erakutsi.setVisible(true);
-	
-	}
-	
-	public static void hurrengoaBtn (ruletaApostua erakutsi) {
-		
-		erakutsi.setVisible(true);
-	
-	}
-	
-	public static void hurrengoaBtn (JPanel erakutsi,JPanel sarrera,JPanel login, JPanel erregistratu, JPanel jokoak) {
-		
-		sarrera.setVisible(false);
-		login.setVisible(false);
-		erregistratu.setVisible(false);
-		jokoak.setVisible(false);
 		erakutsi.setVisible(true);
 	
 	}

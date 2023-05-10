@@ -833,7 +833,7 @@ public class lehenLehioa extends JFrame {
 
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	        	windowBuilder.btn3secDelay(login, 2, sarrera, login, erregistratu, jokoak, e);
+	        	windowBuilder.btn3secDelay(login, 2, sarrera);
 	            setTitle("Hasi saioa | Elorrieta Kasinoa �");
 	        }
 		});	
@@ -848,7 +848,7 @@ public class lehenLehioa extends JFrame {
 	    
 		btnEzErregistratua.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	        	windowBuilder.btn3secDelay(erregistratu, 0, sarrera, login, erregistratu, jokoak, e);
+	        	windowBuilder.btn3secDelay(erregistratu, 0, login);
 	            setTitle("Erregistroa | Elorrieta Kasinoa �");
 	            }
 	        });
@@ -870,7 +870,7 @@ public class lehenLehioa extends JFrame {
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
-	    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+	    			windowBuilder.btn3secDelay(jokoak, 0, login);
 	    			
 	    		    double apostuMax = metodoak.ApostuMax(datuBaseKarga.getErabiltzaileak(), momentukoErabiltzaileNAN);
 	    		    ruletaApostua.setPertsonaApostuMax(apostuMax);
@@ -883,7 +883,7 @@ public class lehenLehioa extends JFrame {
 	    			momentukoErabiltzaileNAN = NAN;
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
-	    			windowBuilder.btn3secDelay(langilePanela, 0, sarrera, login, erregistratu, jokoak, e);
+	    			windowBuilder.btn3secDelay(langilePanela, 0, login);
 	    		} else {
 	    			textErabiltzailea.setText("");
 	    			passwordLogin.setText("");
@@ -893,7 +893,7 @@ public class lehenLehioa extends JFrame {
 		
 		btnLoginBuelta.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		windowBuilder.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
+	    		windowBuilder.btn3secDelay(login, 0, jokoak);
 	    	    	setTitle("Hasi saioa | Elorrieta Kasinoa �");
 	    		    textNAN.setText("");
 	    		    textIzena.setText("");
@@ -946,7 +946,7 @@ public class lehenLehioa extends JFrame {
 	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 	    			if(datuBaseEraldaketak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 		    			JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
-		    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, e);
+		    			windowBuilder.btn3secDelay(jokoak, 0, erregistratu);
 		    			datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, 1);
 		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
 		    	    	momentukoErabiltzaileNAN = NAN;
@@ -979,7 +979,7 @@ public class lehenLehioa extends JFrame {
 	    // 'Login'era 'jokoak'etik
 	    btnJokotikLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		windowBuilder.btn3secDelay(login, 0, sarrera, login, erregistratu, jokoak, e);
+	    		windowBuilder.btn3secDelay(login, 0, jokoak);
 	    		setTitle("Hasi saioa | Elorrieta Kasinoa �");
 	    	}
 	    });
@@ -1015,7 +1015,7 @@ public class lehenLehioa extends JFrame {
 	    // 'Login'era 'jokoak'etik
 	    btnJokotikErabiltzaileDatu.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		windowBuilder.btn3secDelay(erabiltzaileDatuak, 0, sarrera, login, erregistratu, jokoak, e);
+	    		windowBuilder.btn3secDelay(erabiltzaileDatuak, 0, jokoak);
 	    		setTitle("Erabiltzaile Datuak | Elorrieta Kasinoa �");
 	    		
 	    		datuBaseKarga.karga();
@@ -1063,13 +1063,13 @@ public class lehenLehioa extends JFrame {
 						}
 					}
 				});
-				windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, jokoak, null);
+				windowBuilder.btn3secDelay(jokoak, 0, null);
 			}
 		});	
 	    
 	    btnJokoraBuelta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+				windowBuilder.btn3secDelay(jokoak, 0, erabiltzaileDatuak);
     	    	setTitle("Hasi saioa | Elorrieta Kasinoa �");
 			}
 		});
@@ -1100,7 +1100,7 @@ public class lehenLehioa extends JFrame {
 	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 	    			if(datuBaseEraldaketak.erabiltzaileUpdate(NAN, izena, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 		    			JOptionPane.showMessageDialog(erregistratu, textIzena2.getText()+ ", aldaketak zuzen gorde dira.", "Elorrieta Kasinoa �"	, JOptionPane.INFORMATION_MESSAGE);
-		    			windowBuilder.btn3secDelay(jokoak, 0, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+		    			windowBuilder.btn3secDelay(jokoak, 0, erabiltzaileDatuak);
 		    	    	setTitle("Jokoak | Elorrieta Kasinoa �");
 		    	    	momentukoErabiltzaileNAN = NAN;
 	    			} else {
@@ -1118,7 +1118,7 @@ public class lehenLehioa extends JFrame {
 			        
 			        if (baja == JOptionPane.YES_OPTION) {
 			        	datuBaseEraldaketak.erabiltzaileMailaUpdate(momentukoErabiltzaileNAN, 2);
-			            windowBuilder.btn3secDelay(login, baja, sarrera, login, erregistratu, erabiltzaileDatuak, e);
+			            windowBuilder.btn3secDelay(login, 0, erabiltzaileDatuak);
 			        } else {
 			            System.out.println("Ados");
 			        }
@@ -1135,7 +1135,7 @@ public class lehenLehioa extends JFrame {
 	    
 	    btnAdminLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				windowBuilder.btn3secDelay(login, 0, sarrera, login, erregistratu, langilePanela, e);
+				windowBuilder.btn3secDelay(login, 0, langilePanela);
 			}
 		});
 	}

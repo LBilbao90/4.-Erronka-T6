@@ -7,7 +7,7 @@ public abstract class Pertsona extends Maila{
 
 	protected String NAN;
 	protected String izena;
-	protected static String abizena;
+	protected String abizena;
 	protected Date jaioteguna;
 	protected String herrialdea;
 	protected String probintzia;
@@ -44,7 +44,7 @@ public abstract class Pertsona extends Maila{
 		return izena;
 	}
 
-	public static String getAbizena() {
+	public String getAbizena() {
 		return abizena;
 	}
 
