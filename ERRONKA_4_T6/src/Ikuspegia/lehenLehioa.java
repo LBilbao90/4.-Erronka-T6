@@ -893,18 +893,19 @@ public class lehenLehioa extends JFrame {
 		
 		btnLoginBuelta.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		windowBuilder.btn3secDelay(login, 0, jokoak);
-	    	    	setTitle("Hasi saioa | Elorrieta Kasinoa �");
-	    		    textNAN.setText("");
-	    		    textIzena.setText("");
-	    		    textAbizena.setText("");
-	    		    textPasahitzaErregistratu.setText("");
-	    		    dateJaiotzaData.setDate(null);
-	    		    textHerrialdea.setText("");
-	    		    textProbintzia.setText("");
-	    		    textHerria.setText("");
-	    		    textPostaKodea.setText("");
-	    		    textTelefonoa.setText("");
+	    		windowBuilder.btn3secDelay(login, 0, erregistratu);
+	    			
+	    		setTitle("Hasi saioa | Elorrieta Kasinoa �");
+	    		textNAN.setText("");
+	    		textIzena.setText("");
+	    		textAbizena.setText("");
+	    		textPasahitzaErregistratu.setText("");
+	    		dateJaiotzaData.setDate(null);
+	    		textHerrialdea.setText("");
+	    		textProbintzia.setText("");
+	    		textHerria.setText("");
+	    		textPostaKodea.setText("");
+	    		textTelefonoa.setText("");
 	    	    	}
 	    	});
 		
