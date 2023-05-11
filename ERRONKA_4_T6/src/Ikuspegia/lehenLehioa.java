@@ -1068,7 +1068,7 @@ public class lehenLehioa extends JFrame {
 						}
 					}
 				});
-				windowBuilder.btn3secDelay(jokoak, 0, null);
+				windowBuilder.btn3secDelay(jokoak, 0);
 			}
 		});	
 	    

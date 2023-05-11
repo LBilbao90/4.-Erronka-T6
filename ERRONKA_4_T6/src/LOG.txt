@@ -1,0 +1,9 @@
+2023-05-11 08:28:32 | Erabiltzaile NAN: 03418239W | Ruleta emaitza: 25 | Guztira apostatutako kantitatea: 5000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -3000
+2023-05-11 08:28:32 | Erabiltzaile NAN: 03418239W | Ruleta emaitza: 23 | Guztira apostatutako kantitatea: 5000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -3000
+2023-05-11 08:28:32 | Erabiltzaile NAN: 03418239W | Ruleta emaitza: 16 | Guztira apostatutako kantitatea: 5000 | Apostua emaitza: Zorionak! Irabazitakoa: 9000 | Azken balantzea: +4000
+2023-05-11 08:34:03 | Erabiltzaile NAN: 03418239W | Ruleta emaitza: 15 | Guztira apostatutako kantitatea: 3000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -3000
+2023-05-11 08:34:03 | Erabiltzaile NAN: 34567890V | Ruleta emaitza: 25 | Guztira apostatutako kantitatea: 1000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -1000
+2023-05-11 08:34:03 | Erabiltzaile NAN: 72323409R | Ruleta emaitza: 16 | Guztira apostatutako kantitatea: 10000 | Apostua emaitza: Zorionak! Irabazitakoa: 18000 | Azken balantzea: +8000
+2023-05-11 08:34:03 | Erabiltzaile NAN: 72323409R | Ruleta emaitza: 7 | Guztira apostatutako kantitatea: 5000 | Apostua emaitza: Zorionak! Irabazitakoa: 8000 | Azken balantzea: +3000
+2023-05-11 08:34:03 | Erabiltzaile NAN: 34567890V | Ruleta emaitza: 3 | Guztira apostatutako kantitatea: 1000 | Apostua emaitza: Berdin gelditzen zara | Azken balantzea: +0
+2023-05-11 09:03:52 | Erabiltzaile NAN: 72323409R | Ruleta emaitza: 3 | Guztira apostatutako kantitatea: 10000 | Apostua emaitza: Zorionak! Irabazitakoa: 18000 | Azken balantzea: +8000

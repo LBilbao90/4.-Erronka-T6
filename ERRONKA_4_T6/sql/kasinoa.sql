@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2023 a las 19:51:10
+-- Tiempo de generación: 11-05-2023 a las 09:05:24
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -34,6 +34,21 @@ CREATE TABLE `apostua` (
   `apostu_kantitatea` int(11) NOT NULL,
   `apostu_emaitza` enum('Irabazi','Berdin','Galdu') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `apostua`
+--
+
+INSERT INTO `apostua` (`id_apostu`, `NAN`, `id_joko`, `apostu_kantitatea`, `apostu_emaitza`) VALUES
+(1, '03418239W', 1, 5000, 'Galdu'),
+(2, '03418239W', 1, 5000, 'Galdu'),
+(3, '03418239W', 1, 5000, 'Irabazi'),
+(4, '03418239W', 1, 3000, 'Galdu'),
+(5, '34567890V', 1, 1000, 'Galdu'),
+(6, '72323409R', 1, 10000, 'Irabazi'),
+(7, '72323409R', 1, 5000, 'Irabazi'),
+(8, '34567890V', 1, 1000, 'Berdin'),
+(9, '72323409R', 1, 10000, 'Irabazi');
 
 -- --------------------------------------------------------
 
@@ -75,10 +90,10 @@ CREATE TABLE `erabiltzaile_kontua` (
 --
 
 INSERT INTO `erabiltzaile_kontua` (`NAN`, `id_maila`, `diru_kopuru_historikoa`, `diru_kopuru_momentukoa`, `tlf_zenbakia`, `posta_Kodea`, `herrialdea`, `probintzia`, `herria`, `jaiotze_data`, `abizena`, `erabiltzaile_izena`, `pasahitza`) VALUES
-('03418239W', 4, 1000, 1000, '663311341', 20870, 'Euskadi', 'Bizkaia', 'Bilbo', '1991-04-20', 'Sainz', 'Max', 'Elorrieta00'),
+('03418239W', 4, 1000, 1000, '663311341', 20870, 'Euskadi', 'Bizkaia', 'Bilbo', '1991-04-20', 'Sainz', 'Yuki', 'Elorrieta00'),
 ('34567890V', 3, 1000, 1000, '612456493', 48830, 'Euskadi', 'Bizkaia', 'Sodupe', '2002-12-31', 'Siranaula', 'Aingeru Daniel', 'Elorrieta00'),
 ('41376983Y', 3, 1000, 1000, '701704730', 20870, 'Euskadi', 'Gipuzkoa', 'Elgoibar', '2000-01-01', 'Gil', 'Xabier', 'Elorrieta00'),
-('72323409R', 5, 1000, 1000, '636993814', 48009, 'Euskadi', 'Bizkaia', 'Bilbo', '1991-01-10', 'Zabaleta', 'Aito', 'Elorrieta00'),
+('72323409R', 5, 1000, 1000, '636993814', 48009, 'Euskadi', 'Bizkaia', 'Bilbo', '1991-01-10', 'Zabaleta', 'Aitor', 'Elorrieta00'),
 ('73813259A', 4, 1000, 1000, '694919686', 48970, 'Euskadi', 'Bizkaia', 'Basauri', '2002-07-21', 'Pelea', 'Aimar', 'Elorrieta00'),
 ('92549706Y', 5, 1000, 1000, '624076334', 48970, 'Euskadi', 'Bizkaia', 'Basauri', '1992-09-20', 'Verstappen', 'Niko', 'Elorrieta00');
 
@@ -315,7 +330,7 @@ ALTER TABLE `maila`
 -- AUTO_INCREMENT de la tabla `apostua`
 --
 ALTER TABLE `apostua`
-  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_apostu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `jokoak`
