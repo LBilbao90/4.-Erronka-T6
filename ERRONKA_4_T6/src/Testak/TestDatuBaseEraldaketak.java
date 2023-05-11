@@ -21,7 +21,7 @@ public class TestDatuBaseEraldaketak {
     @Test
     public void testErregistroaInsert() {
     	datuBaseKarga.karga();
-    	String NAN = "30826097W";
+    	String NAN = "79144847F";
     	String izena = "Unax";
     	String abizena = "Zulaika";
     	String pasahitza = "elorrieta00";

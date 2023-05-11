@@ -74,12 +74,19 @@ public class TestBalidazioak {
 	    }
 	    
 	    @Test
-	    public void testLoginBalidazioaErabiltzaile() {
-	        datuBaseKarga.karga();
-	        Assert.assertEquals(0,balidazioak.loginBalidazioaErabiltzaile("12345678A", "elorrieta00".toCharArray()));
-	        Assert.assertEquals(1,balidazioak.loginBalidazioaErabiltzaile("03418239W", "Elorrieta00".toCharArray()));
-	        Assert.assertEquals(2,balidazioak.loginBalidazioaErabiltzaile("34567890V", "Elorrieta00".toCharArray()));
-	    }
+	    public void testLoginBalidazioaAdmin() {
+            datuBaseKarga.karga();
+            assertTrue(balidazioak.loginBalidazioaAdmin("73264894A", "Admin00".toCharArray()));
+            assertFalse(balidazioak.loginBalidazioaAdmin("03418239W", "Elorrieta00".toCharArray()));
+        }
+	    
+	    @Test
+        public void testLoginBalidazioaErabiltzaile() {
+            datuBaseKarga.karga();
+            Assert.assertEquals(0,balidazioak.loginBalidazioaErabiltzaile("12345678A", "elorrieta00".toCharArray()));
+            Assert.assertEquals(1,balidazioak.loginBalidazioaErabiltzaile("03418239W", "Elorrieta00".toCharArray()));
+            Assert.assertEquals(2,balidazioak.loginBalidazioaErabiltzaile("34567890V", "Elorrieta00".toCharArray()));
+        }
 
 	
 	    @Test
