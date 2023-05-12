@@ -21,7 +21,7 @@ public class apostuak {
 	 * @return momentuan zenbateko apostu kantitatea dagoen bueltatzen du.
 	 * @author 6.Taldea
 	 */
-	public static int apostuaGehitu(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
+	public static int apostuaGehitu(JRadioButton rdbtnApostu10, JRadioButton rdbtnApostu20, JRadioButton rdbtnApostu50, JRadioButton rdbtnApostu100, JRadioButton rdbtnApostu500, JRadioButton rdbtnApostu1000, JRadioButton rdbtnAllIn,double pertsonaApostuMax, int apostuOrain, int zbkApostua, int[] zbk) {
 		/* 
 		 * if else zekuentzia radio Botoiak aukeratuta dauden begiratzen dute eta horrela baldi bada apostua egin ahal den, momentuko apostua eta pertsonaren apostu maximoaren arabera ikusten du,
 		 * Apostua egin ahal bada, 'zbk' Array-eko zenbakiaren gelaxkan gordeko da apostu kantitatea ('zbkApostua'), eta azkenik 'apostuaOrain' eguneratuko da.
@@ -43,8 +43,11 @@ public class apostuak {
 	    apostuOrain = apostuOrain + 500;
 	} else if (rdbtnApostu1000.isSelected() && pertsonaApostuMax >= (apostuOrain + 1000)) {
 	    zbk[zbkApostua] = zbk[zbkApostua] + 1000;
-	    apostuOrain = apostuOrain + 1000;;
-	} else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected()) { // Ez badago botoirik aukeratuta
+	    apostuOrain = apostuOrain + 1000;
+	}  else if (rdbtnAllIn.isSelected() && pertsonaApostuMax >= (apostuOrain + pertsonaApostuMax)) {
+	    zbk[zbkApostua] = zbk[zbkApostua] + (int) pertsonaApostuMax;
+	    apostuOrain = apostuOrain + (int) pertsonaApostuMax;
+	} else if (!rdbtnApostu10.isSelected() && !rdbtnApostu20.isSelected() && !rdbtnApostu50.isSelected() && !rdbtnApostu100.isSelected() && !rdbtnApostu500.isSelected() && !rdbtnApostu1000.isSelected() && !rdbtnAllIn.isSelected()) { // Ez badago botoirik aukeratuta
 	    JOptionPane.showMessageDialog(null, "Aukeratu apostu kantitate bat.");
 	} else {
 	    JOptionPane.showMessageDialog(null, "Ezin izan da apostua erregistratu. Zure gehieneko apostua " + (int) pertsonaApostuMax + " da eta " + apostuOrain + " apostatu duzu"); // Ezin izan bada apostua bete (apostu kantitateak pertsonak ahal duen apostu maximoa pasatzen du)
