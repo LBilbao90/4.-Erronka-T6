@@ -26,14 +26,14 @@ public class TestDatuBaseKarga {
     
     @Test
     public void testErabiltzaileak() {
-        assertEquals("12345678Z", erabiltzaileak.get(1).getNAN());
-        assertEquals(3, erabiltzaileak.get(1).getId_maila());
-        assertEquals("20870", erabiltzaileak.get(1).getPostaKodea());
-        assertEquals("Euskal Herria", erabiltzaileak.get(1).getHerrialdea());
-        assertEquals("Gipuzkoa", erabiltzaileak.get(1).getProbintzia());
-        assertEquals("Elgoibar", erabiltzaileak.get(1).getHerria());
-        assertEquals("ProbaKontua1", erabiltzaileak.get(1).getAbizena());
-        assertEquals("ProbaKontua1", erabiltzaileak.get(1).getIzena());
+        assertEquals("34567890V", erabiltzaileak.get(1).getNAN());
+        assertEquals(2, erabiltzaileak.get(1).getId_maila());
+        assertEquals("48830", erabiltzaileak.get(1).getPostaKodea());
+        assertEquals("Euskadi", erabiltzaileak.get(1).getHerrialdea());
+        assertEquals("Bizkaia", erabiltzaileak.get(1).getProbintzia());
+        assertEquals("Sodupe", erabiltzaileak.get(1).getHerria());
+        assertEquals("Siranaula", erabiltzaileak.get(1).getAbizena());
+        assertEquals("Aingeru Daniel", erabiltzaileak.get(1).getIzena());
         assertEquals("Elorrieta00", erabiltzaileak.get(1).getPasahitza());
     }
    

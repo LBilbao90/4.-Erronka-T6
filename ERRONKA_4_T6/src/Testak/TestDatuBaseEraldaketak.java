@@ -33,7 +33,7 @@ public class TestDatuBaseEraldaketak {
     	String telefonoZbk = "666999666";
     	
     	assertTrue(datuBaseEraldaketak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeData, herrialdea, probintzia, herria, postaKodea, telefonoZbk));
-    	assertFalse(datuBaseEraldaketak.erregistroaInsert("12345678Z", "ProbaKontua1", "ProbaKontua1", "Elorrieta00", "2000-01-01", "Euskal Herria", "Gipuzkoa", "Elgoibar", "20870", "666999666"));
+    	assertFalse(datuBaseEraldaketak.erregistroaInsert("72323409R", "ProbaKontua1", "ProbaKontua1", "Elorrieta00", "2000-01-01", "Euskal Herria", "Gipuzkoa", "Elgoibar", "20870", "666999666"));
 
     	Connection conn;
     	 try {
@@ -47,7 +47,6 @@ public class TestDatuBaseEraldaketak {
         	 System.out.println("SQLState: "+ ex.getSQLState());
         	 System.out.println("ErrorCode: "+ ex.getErrorCode());
          }	
-    	 
     }
     
     @Test
@@ -97,12 +96,13 @@ public class TestDatuBaseEraldaketak {
     @Test
     public void testKasinoErabiltzaileInsert() {
     	datuBaseKarga.karga();
-    	String NAN= "12345678Z";
+    	String NAN= "03418239W";
     	int id_Kasino = 1;
-    
+    	
     	assertTrue(datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, id_Kasino));
     	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("73264894A", 0));
-
+    	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("03418239W", 1));
+    	
     	Connection conn;
 	   	try {
 	   		String url = "jdbc:mysql://localhost:3306/kasinoa";
@@ -115,7 +115,7 @@ public class TestDatuBaseEraldaketak {
 	       	 System.out.println("SQLState: "+ ex.getSQLState());
 	       	 System.out.println("ErrorCode: "+ ex.getErrorCode());
 	        }	
-   	 
+
   }
 
     
