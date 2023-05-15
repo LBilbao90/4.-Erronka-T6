@@ -97,7 +97,7 @@ public class ruletaApostua extends JFrame {
 	 * @param string 
 	 */
 	public ruletaApostua() {
-		setTitle("Apostua | Ruleta | Elorrieta Kasinoa ©");
+		setTitle("Apostua | Ruleta | Elorrieta Kasinoa ï¿½");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 500);
@@ -545,7 +545,7 @@ public class ruletaApostua extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				blokeatu = true;
 	            // 'ruletaLehioa'aren lehioa sortzen da
-	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa ©");
+	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa ï¿½");
 	            
 	            ruletaLehioa.getContentPane().add(ruleta);
 	            ruletaLehioa.setLocation(900, 150);
@@ -723,7 +723,6 @@ public class ruletaApostua extends JFrame {
 		    			if (bakoitiBikoiti[paridad] != 0 && ruletaEmaitza != 0) {
 		    			    guztiraIrabaziak += bakoitiBikoiti[paridad] * 2;  // 2 * apostua
 		    			}
-		    			System.out.println(guztiraIrabaziak);
 		    			if (guztiraIrabaziak > 0 && guztiraIrabaziak > apostuOrain) {
 		    				emaitzaApostu = "Zorionak! Irabazitakoa: " + guztiraIrabaziak;
 		    				JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);

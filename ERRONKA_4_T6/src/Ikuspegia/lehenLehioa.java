@@ -779,9 +779,7 @@ public class lehenLehioa extends JFrame {
     	        int aukeratutakoErrenkada = erabiltzaileTaula.getSelectedRow();
     	        boolean blokeatuta = false;
     	        if (aukeratutakoErrenkada != -1) { // errenkada bat badago aukeratuta
-    	            String nan = (String) erabiltzaileTaula.getValueAt(aukeratutakoErrenkada, 2);
-    	            System.out.println(nan);
-    	            
+    	            String nan = (String) erabiltzaileTaula.getValueAt(aukeratutakoErrenkada, 2);    	            
     	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                if (erabiltzaile.getNAN().equals(nan) && erabiltzaile.getId_maila() == 1) {
     	                	JOptionPane.showMessageDialog(jokoak,"Kontu hau blokeatuta dago: " + nan, "Elorrieta Kasinoa �", JOptionPane.ERROR_MESSAGE);
@@ -809,9 +807,7 @@ public class lehenLehioa extends JFrame {
     	        int aukeratutakoErrenkada = erabiltzaileTaula.getSelectedRow();
     	        boolean desblokeatuta = false;
     	        if (aukeratutakoErrenkada != -1) { // errekada bat badago aukeratuta
-    	            String nan = (String) erabiltzaileTaula.getValueAt(aukeratutakoErrenkada, 2);
-    	            System.out.println(nan);
-    	            
+    	            String nan = (String) erabiltzaileTaula.getValueAt(aukeratutakoErrenkada, 2);    	            
     	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                if (erabiltzaile.getNAN().equals(nan) && erabiltzaile.getId_maila() == 1) {
     	                	datuBaseEraldaketak.erabiltzaileMailaUpdate(nan, 3);
@@ -1127,8 +1123,6 @@ public class lehenLehioa extends JFrame {
 			        if (baja == JOptionPane.YES_OPTION) {
 			        	datuBaseEraldaketak.erabiltzaileMailaUpdate(momentukoErabiltzaileNAN, 2);
 			            windowBuilder.btn3secDelay(login, 0, erabiltzaileDatuak);
-			        } else {
-			            System.out.println("Ados");
 			        }
 			}
 		});
