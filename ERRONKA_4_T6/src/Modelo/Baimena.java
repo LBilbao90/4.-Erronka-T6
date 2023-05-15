@@ -12,7 +12,7 @@ public class Baimena {
 	private Date bukaera_data;
 	private ArrayList<Pertsona> pertsona;
 	
-	//CONSTRUCTOR
+	//KONSTRUKTOREA
 	public Baimena(String erabiltzailea, int baimen_mota, Date hasiera_data, Date bukaera_data, ArrayList<Pertsona> pertsona) {
 		this.erabiltzailea = erabiltzailea;
 		this.baimen_mota = baimen_mota;
@@ -30,18 +30,18 @@ public class Baimena {
 		this.erabiltzailea = erabiltzailea;
 	}
 
-
 	public int getBaimen_mota() {
 		return baimen_mota;
 	}
+	
 	public void setBaimen_mota(int baimen_mota) {
 		this.baimen_mota = baimen_mota;
 	}
 
-
 	public Date getHasiera_data() {
 		return hasiera_data;
 	}
+	
 	public void setHasiera_data(Date hasiera_data) {
 		this.hasiera_data = hasiera_data;
 	}
@@ -53,64 +53,28 @@ public class Baimena {
 	public void setBukaera_data(Date bukaera_data) {
 		this.bukaera_data = bukaera_data;
 	}
-
-
-	
-
 	
 	public ArrayList<Pertsona> getPertsona() {
 		return pertsona;
 	}
 
-
 	public void setPertsona(ArrayList<Pertsona> pertsona) {
 		this.pertsona = pertsona;
 	}
-
-
-	//METODOAK
-	public int baimena_hartu(int nahai_duen_baimena) {
-		
-		/*if( this.baimen_mota == nahai_duen_baimena) {
-			return baimen_mota;
-		}else{
-			return -1;
-		}*/
-		return nahai_duen_baimena;
-		
-	}
-	
-	
-	public void baimena_kanporatu(int baimena_kanp, String erabiltzailea) {
-		/*
-		if(this.baimen_mota == baimena_kanp && this.erabiltzailea.equalsIgnoreCase(erabiltzailea)) {
-			
-		}else {}
-	*/
-	}
-	
-	
-	public boolean balidatu_erabiltzailea_baimenarako() {
-		
-		return false;
-	}
 	
 
-	//TOESTRING
+	//TO STRING
 	@Override
 	public String toString() {
 		return "Baimena [erabiltzailea=" + erabiltzailea + ", baimen_mota=" + baimen_mota + ", hasiera_data="
 				+ hasiera_data + ", bukaera_data=" + bukaera_data + ", pertsona=" + pertsona + "]";
 	}
-
-	
 	
 	//HASCHODE
 	@Override
 	public int hashCode() {
 		return Objects.hash(baimen_mota, bukaera_data, erabiltzailea, hasiera_data, pertsona);
 	}
-
 
 	//EQUALS
 	@Override
@@ -124,7 +88,4 @@ public class Baimena {
 		Baimena other = (Baimena) obj;
 		return Objects.equals(baimen_mota, other.baimen_mota);
 	}
-				
-	
-
 }

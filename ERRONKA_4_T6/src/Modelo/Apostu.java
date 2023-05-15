@@ -60,7 +60,7 @@ public class Apostu {
 		
 	}
 
-	//TOESTRING
+	//TO STRING
 	
 	@Override
 	public String toString() {

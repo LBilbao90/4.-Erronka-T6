@@ -22,7 +22,6 @@ public class TestErabiltzaile {
 		try {
 			jaioteguna = dateFormat.parse("2000-01-01");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         Erabiltzaile erab = new Erabiltzaile("12345678A", "Jon", "Garcia", jaioteguna, "Espainia", "Gipuzkoa", "Donostia", "20018", "pasahitza", "943123456", 1, 100.0, 20.0);
@@ -48,7 +47,6 @@ public class TestErabiltzaile {
 		try {
 			jaioteguna = dateFormat.parse("2000-01-01");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         Erabiltzaile erab = new Erabiltzaile();

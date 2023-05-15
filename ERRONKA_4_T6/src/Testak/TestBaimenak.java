@@ -43,30 +43,8 @@ class TestBaimenak {
 		assertEquals(baimena_test_konstruktorea.getBaimen_mota() , baimen_mota);
 		assertEquals(baimena_test_konstruktorea.getHasiera_data() , hasiera_data);
 		assertEquals(baimena_test_konstruktorea.getBukaera_data() , bukaera_data);
-
 		assertEquals(baimena_test_konstruktorea.getPertsona() , pertsona);
 	}
-
-
-
-	//METODOAK
-
-	@Test //baimena_artu
-	void test_baimena_artu() {
-
-	}
-
-	@Test //baimena_artu
-	void baimena_kanporatu() {
-
-	}
-
-	@Test //baimena_artu
-	void balidatu_erabiltzailea_baimenarako() {
-
-	}
-
-
 
 	//TOSTRING
 	@Test 
@@ -92,7 +70,6 @@ class TestBaimenak {
 	@Test 
 	void test_baimenak_EqualsFalse() {
 		Date data = new Date();
-		//Pertsona p1 = new Erabiltzaile("12345678L", "pedro", "pascal", data, "bilbo", "San Sebastian", "aragon", "bilbao la vieja", "4444", "si@gmail.com", "123macarron", "123456789", "macarroncito", 44,55, null);
 		Baimena baimena_test_hascode1 = new Baimena("pedro", 1, data, data, pertsona);
 		Baimena baimena_test_hascode2 = new Baimena("unax", 12, data, data, pertsona);
 		assertFalse(baimena_test_hascode1.equals(baimena_test_hascode2));
@@ -101,7 +78,6 @@ class TestBaimenak {
 	@Test 
 	void test_baimenak_True() { 
 		Date data = new Date();
-		//Pertsona p1 = new Erabiltzaile("12345678L", "pedro", "pascal", data, "bilbo", "San Sebastian", "aragon", "bilbao la vieja", "4444", "si@gmail.com", "123macarron", "123456789", "macarroncito", 44,55);
 		Baimena baimena_test_equals1 = new Baimena("pedro", 1, data, data, pertsona);
 		Baimena baimena_test_equals2 = new Baimena("pedro", 1, data, data, pertsona);
 		assertTrue(baimena_test_equals1.equals(baimena_test_equals2));

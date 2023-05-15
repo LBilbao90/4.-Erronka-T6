@@ -115,7 +115,6 @@ class TestApostu {
 		Apostu apustua_test_apustua_egin = new Apostu(id_apustua, id_joko, NAN, apostu_kantitatea, apostu_emaitza);
 		
 		apustua_test_apustua_egin.apustua_egin();
-		//assertEquals(apustua_test_apustua_egin, "");
 	}
 	
 	

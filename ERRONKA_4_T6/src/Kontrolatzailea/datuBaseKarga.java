@@ -52,7 +52,7 @@ public class datuBaseKarga {
 	 * Datu baseko informazioa ArrayList desberdinetan gordetzen dira. (Maila, erabiltzaile_kontua, langile_kontua, jokoak, kasinoak, kasino_erabiltzaile.)
 	 */
 	public static void karga() {
-        final String url = "jdbc:mysql://localhost:3306/kasinoa"; //url de la base de datos de phpmyadmin
+        final String url = "jdbc:mysql://localhost:3306/kasinoa"; //datu basearen url-a
         final String erabiltzaileKontsulta = "*";
         final String langileKontsulta = "*";
         final String jokoak = "*";
@@ -68,7 +68,7 @@ public class datuBaseKarga {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection(url, "root", ""); //usuario y contrase�a user: root password: 
+            connection = DriverManager.getConnection(url, "root", ""); //erabiltzailea eta pasahitza datu basera konektatu ahal izateko
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs;
             
@@ -166,25 +166,6 @@ public class datuBaseKarga {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        
-        
-//        //LOGS
-//        System.out.println("MAILAK:");
-//        for (Maila maila : mailak) {
-//            System.out.println(maila.toString());
-//        }
-//        
-//        System.out.println("\nERABILTZAILEAK:");
-//        for (Erabiltzaile erabiltzaile : erabiltzaileak) {
-//            System.out.println(erabiltzaile.toString());
-//        }
-//        
-//        System.out.println("\nLANGILEAK:");
-//        for (Admin admin : langileak) {
-//            System.out.println(admin.toString());
-//        }
-//        
-        
+        }        
     }
 }

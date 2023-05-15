@@ -129,9 +129,6 @@ public class lehenLehioa extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//lehenLehioa frame = new lehenLehioa();
-//					lehenLehioaframe.setUndecorated(true);
-
 					lehenLehioaframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -149,7 +146,7 @@ public class lehenLehioa extends JFrame {
 	    //Pantaila handian agertu ahal izateko
 	    setResizable(false);
 	    
-	    setTitle("Elorrieta Kasinoa ©");
+	    setTitle("Elorrieta Kasinoa ï¿½");
 	    
 	 // Lehen lehioaren dimentsioak aldatu
 		setBounds((screenSize.width - screenWidth) / 2, (screenSize.height - screenHeight) / 2, screenWidth, screenHeight);
@@ -196,7 +193,7 @@ public class lehenLehioa extends JFrame {
 	    txt1.setFont(new Font("Tahoma", Font.BOLD, 30));
 	    sarrera.add(txt1, gbcTxt1);
 
-	    // Restricciones para el bot©n
+	    // Restricciones para el botï¿½n
 	    GridBagConstraints gbcBtn = new GridBagConstraints();
 	    gbcBtn.gridx = 0;
 	    gbcBtn.gridy = 0;
@@ -413,7 +410,7 @@ public class lehenLehioa extends JFrame {
 	    btnRuletaJokoa.setBorderPainted(false);
 	    jokoak.add(btnRuletaJokoa);
 	    
-	  //Ruletara joateko botoia
+	    //Ruletara joateko botoia
 	    JButton btnJokotikLogin = new JButton("Login");
 	    btnJokotikLogin.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	    btnJokotikLogin.setBounds((int) (screenWidth*0.05), (int) (screenHeight*0.80), (int) (screenWidth*0.12), 50);
@@ -457,7 +454,7 @@ public class lehenLehioa extends JFrame {
 	    imgBannerErabiltzaileDatuak.setBounds(0, 0, screenWidth, (int) (screenHeight*0.20));
 	    erabiltzaileDatuak.add(imgBannerErabiltzaileDatuak);
 	    
-	  //erabiltzaileDatuak testuak
+	    //erabiltzaileDatuak testuak
 	    txtNAN = windowBuilder.createTextFieldTestua("NAN:", (int) (screenWidth*0.07), (int) (screenHeight*0.22), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
 	    txtIzena = windowBuilder.createTextFieldTestua("Nickname:", (int) (screenWidth*0.07), (int) (screenHeight*0.32), (int) (screenWidth*0.17), 25, new Font("Tahoma", Font.PLAIN, 30), erabiltzaileDatuak);
 	    txtIzena.setToolTipText("Gutxienez 4 karaktereko luzeera eduki behar du erabiltzaile izenak");
@@ -662,7 +659,7 @@ public class lehenLehioa extends JFrame {
     	        	comboBoxMaila.setEnabled(false);
     	            // Erabiltzaile guztiak erakutsi
     	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
-    	                String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " ï¿½", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " ï¿½"};
     	                model.addRow(errenkada);
     	            }
     	        } else {
@@ -674,7 +671,7 @@ public class lehenLehioa extends JFrame {
     	                    if (ke.getId_Kasino() == aukeratutakoKasinoa.getId_kasinoa()) {
     	                        for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                            if (erabiltzaile.getNAN().equals(ke.getNAN())) {
-    	                            	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                            	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " ï¿½", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " ï¿½"};
     	                                boolean erabiltzaileErantsia = false;
     	                                for (int i = 0; i < model.getRowCount(); i++) {
     	                                    if (model.getValueAt(i, 2).equals(erabiltzaile.getNAN())) {
@@ -736,7 +733,7 @@ public class lehenLehioa extends JFrame {
     	                    if (kasinoErabiltzaile.getId_Kasino() == aukeratutakoKasinoa.getId_kasinoa()) {
     	                        for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                            if (erabiltzaile.getNAN().equals(kasinoErabiltzaile.getNAN()) && erabiltzaile.getId_maila() == aukeratutakoMaila.getId_maila()) {
-    	                            	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                            	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " ï¿½", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " ï¿½"};
     	                                boolean erabiltzaileErantsia = false;
     	                                for (int i = 0; i < model.getRowCount(); i++) {
     	                                    if (model.getValueAt(i, 2).equals(erabiltzaile.getNAN())) {
@@ -756,7 +753,7 @@ public class lehenLehioa extends JFrame {
     	                // Erakutsi kasino guztien erabiltzaileak aukeratutako mailan
     	                for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                    if (erabiltzaile.getId_maila() == aukeratutakoMaila.getId_maila()) {
-    	                    	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " €", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " €"};
+    	                    	String[] errenkada = {erabiltzaile.getIzena(), erabiltzaile.getAbizena(), erabiltzaile.getNAN(), Integer.toString(erabiltzaile.getId_maila()), Double.toString(erabiltzaile.getDiru_kopuru_momentukoa()) + " ï¿½", Double.toString(erabiltzaile.getDiru_kopuru_historikoa()) + " ï¿½"};
     	                        boolean erabiltzaileErantsia = false;
     	                        for (int i = 0; i < model.getRowCount(); i++) {
     	                            if (model.getValueAt(i, 2).equals(erabiltzaile.getNAN())) {
@@ -787,7 +784,7 @@ public class lehenLehioa extends JFrame {
     	            
     	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                if (erabiltzaile.getNAN().equals(nan) && erabiltzaile.getId_maila() == 1) {
-    	                	JOptionPane.showMessageDialog(jokoak,"Kontu hau blokeatuta dago: " + nan, "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+    	                	JOptionPane.showMessageDialog(jokoak,"Kontu hau blokeatuta dago: " + nan, "Elorrieta Kasinoa ï¿½", JOptionPane.ERROR_MESSAGE);
     	                	blokeatuta = true;
     	                	break;
     	                	}  
@@ -795,7 +792,7 @@ public class lehenLehioa extends JFrame {
     	                
         	        if (!blokeatuta) {
         	        	datuBaseEraldaketak.erabiltzaileMailaUpdate(nan, 1);
-			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen blokeatu da kontua", "Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
+			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen blokeatu da kontua", "Elorrieta Kasinoa ï¿½", JOptionPane.INFORMATION_MESSAGE);
 		    	        datuBaseKarga.karga();
         	        }
         	        
@@ -818,7 +815,7 @@ public class lehenLehioa extends JFrame {
     	            for (Erabiltzaile erabiltzaile : datuBaseKarga.getErabiltzaileak()) {
     	                if (erabiltzaile.getNAN().equals(nan) && erabiltzaile.getId_maila() == 1) {
     	                	datuBaseEraldaketak.erabiltzaileMailaUpdate(nan, 3);
-    			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen desblokeatu da kontua", "Elorrieta Kasinoa ©", JOptionPane.INFORMATION_MESSAGE);
+    			        	JOptionPane.showMessageDialog(jokoak, nan + " zuzen desblokeatu da kontua", "Elorrieta Kasinoa ï¿½", JOptionPane.INFORMATION_MESSAGE);
     			        	datuBaseKarga.karga();
     	                	desblokeatuta = true;
     	                	break;
@@ -826,7 +823,7 @@ public class lehenLehioa extends JFrame {
     	                }
     	                
         	        if (!desblokeatuta) {
-			        	JOptionPane.showMessageDialog(jokoak, nan + " ezin izan da desblokeatu kontua", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+			        	JOptionPane.showMessageDialog(jokoak, nan + " ezin izan da desblokeatu kontua", "Elorrieta Kasinoa ï¿½", JOptionPane.ERROR_MESSAGE);
         	        }
         	        comboBoxKasino.setSelectedIndex(aukeratutakoMaila.getId_maila());
         	        comboBoxMaila.setSelectedIndex(aukeratutakoKasinoa.getId_kasinoa());
@@ -839,7 +836,7 @@ public class lehenLehioa extends JFrame {
 		btnSarrera.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	windowBuilder.btn3secDelay(login, 2, sarrera);
-	            setTitle("Hasi saioa | Elorrieta Kasinoa ©");
+	            setTitle("Hasi saioa | Elorrieta Kasinoa ï¿½");
 	        }
 		});	
 
@@ -854,7 +851,7 @@ public class lehenLehioa extends JFrame {
 		btnEzErregistratua.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	windowBuilder.btn3secDelay(erregistratu, 0, login);
-	            setTitle("Erregistroa | Elorrieta Kasinoa ©");
+	            setTitle("Erregistroa | Elorrieta Kasinoa ï¿½");
 	            }
 	        });
 		
@@ -882,7 +879,7 @@ public class lehenLehioa extends JFrame {
 	    		    ruletaApostua.setLblApostuMax((int) apostuMax);
 	    			
 	    			
-	    			setTitle("Jokoak | Elorrieta Kasinoa ©");
+	    			setTitle("Jokoak | Elorrieta Kasinoa ï¿½");
 	    		} 
 	    		else if(loginOndoAdmin){
 	    			momentukoErabiltzaileNAN = NAN;
@@ -900,7 +897,7 @@ public class lehenLehioa extends JFrame {
 	    	public void actionPerformed(ActionEvent e) {
 	    		windowBuilder.btn3secDelay(login, 0, erregistratu);
 	    			
-	    		setTitle("Hasi saioa | Elorrieta Kasinoa ©");
+	    		setTitle("Hasi saioa | Elorrieta Kasinoa ï¿½");
 	    		textNAN.setText("");
 	    		textIzena.setText("");
 	    		textAbizena.setText("");
@@ -953,10 +950,10 @@ public class lehenLehioa extends JFrame {
 	    			if(datuBaseEraldaketak.erregistroaInsert(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 	    				momentukoErabiltzaileNAN = NAN;
 	    				datuBaseEraldaketak.kasinoErabiltzaileInsert(momentukoErabiltzaileNAN, 1);
-	    				JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ©"	, JOptionPane.INFORMATION_MESSAGE);
+	    				JOptionPane.showMessageDialog(erregistratu, textIzena.getText()+ ", zure kontua zuzen sortu da", "Elorrieta Kasinoa ï¿½"	, JOptionPane.INFORMATION_MESSAGE);
 		    			windowBuilder.btn3secDelay(jokoak, 0, erregistratu);
 		    			
-		    	    	setTitle("Jokoak | Elorrieta Kasinoa ©");
+		    	    	setTitle("Jokoak | Elorrieta Kasinoa ï¿½");
 		    	    	momentukoErabiltzaileNAN = NAN;
 		    		    textNAN.setText("");
 		    		    textIzena.setText("");
@@ -973,7 +970,7 @@ public class lehenLehioa extends JFrame {
 		    		    ruletaApostua.setPertsonaApostuMax(apostuMax);
 		    		    ruletaApostua.setLblApostuMax((int) apostuMax);
 	    			} else {
-		    	    	JOptionPane.showMessageDialog(erregistratu, "Badirudi dagoeneko badagoela kontu bat sortuta " + NAN + " NANarekin.\r\nDagoeneko erregistratuta bazaude hasi saioa, eta bestela erregistraru gabeko NAN bat erabili.", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+		    	    	JOptionPane.showMessageDialog(erregistratu, "Badirudi dagoeneko badagoela kontu bat sortuta " + NAN + " NANarekin.\r\nDagoeneko erregistratuta bazaude hasi saioa, eta bestela erregistraru gabeko NAN bat erabili.", "Elorrieta Kasinoa ï¿½", JOptionPane.ERROR_MESSAGE);
 		    	    }
 	    		}
 	    	}
@@ -991,14 +988,14 @@ public class lehenLehioa extends JFrame {
 	    btnJokotikLogin.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		windowBuilder.btn3secDelay(login, 0, jokoak);
-	    		setTitle("Hasi saioa | Elorrieta Kasinoa ©");
+	    		setTitle("Hasi saioa | Elorrieta Kasinoa ï¿½");
 	    	}
 	    });
 	    
 	    //Ruleta botoiaren akzioak
 	    btnRuletaJokoa.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            // Oculta la ventana actual
+	            // Ezkutatu oraingo leihoa
 	            setVisible(false);
 	            
 	            EventQueue.invokeLater(new Runnable() {
@@ -1019,7 +1016,7 @@ public class lehenLehioa extends JFrame {
 	    //BlackJack botoiaren akzioak
 	    btnBlackJackJokoa.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-    	    	JOptionPane.showMessageDialog(jokoak, "Laster egongo da prest, barkatu eragozpenak.\r\n", "Elorrieta Kasinoa ©", JOptionPane.WARNING_MESSAGE);
+    	    	JOptionPane.showMessageDialog(jokoak, "Laster egongo da prest, barkatu eragozpenak.\r\n", "Elorrieta Kasinoa ï¿½", JOptionPane.WARNING_MESSAGE);
 	    	}	
 	    });
 	    
@@ -1027,7 +1024,7 @@ public class lehenLehioa extends JFrame {
 	    btnJokotikErabiltzaileDatu.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		windowBuilder.btn3secDelay(erabiltzaileDatuak, 0, jokoak);
-	    		setTitle("Erabiltzaile Datuak | Elorrieta Kasinoa ©");
+	    		setTitle("Erabiltzaile Datuak | Elorrieta Kasinoa ï¿½");
 	    		
 	    		datuBaseKarga.karga();
 	 	 	    ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
@@ -1081,7 +1078,7 @@ public class lehenLehioa extends JFrame {
 	    btnJokoraBuelta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowBuilder.btn3secDelay(jokoak, 0, erabiltzaileDatuak);
-    	    	setTitle("Hasi saioa | Elorrieta Kasinoa ©");
+    	    	setTitle("Hasi saioa | Elorrieta Kasinoa ï¿½");
 			}
 		});
 	    
@@ -1110,12 +1107,12 @@ public class lehenLehioa extends JFrame {
 
 	    		if(balidazioak.baliozkoEremuak(NAN, izena, abizena, pasahitza, jaiotzeDataString, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
 	    			if(datuBaseEraldaketak.erabiltzaileUpdate(NAN, izena, pasahitza, herrialdea, probintzia, herria, postaKodea, telefonoZbk)) {
-		    			JOptionPane.showMessageDialog(erregistratu, textIzena2.getText()+ ", aldaketak zuzen gorde dira.", "Elorrieta Kasinoa ©"	, JOptionPane.INFORMATION_MESSAGE);
+		    			JOptionPane.showMessageDialog(erregistratu, textIzena2.getText()+ ", aldaketak zuzen gorde dira.", "Elorrieta Kasinoa ï¿½"	, JOptionPane.INFORMATION_MESSAGE);
 		    			windowBuilder.btn3secDelay(jokoak, 0, erabiltzaileDatuak);
-		    	    	setTitle("Jokoak | Elorrieta Kasinoa ©");
+		    	    	setTitle("Jokoak | Elorrieta Kasinoa ï¿½");
 		    	    	momentukoErabiltzaileNAN = NAN;
 	    			} else {
-		    	    	JOptionPane.showMessageDialog(erregistratu, NAN + ", ezin izan dira aldaketak egin", "Elorrieta Kasinoa ©", JOptionPane.ERROR_MESSAGE);
+		    	    	JOptionPane.showMessageDialog(erregistratu, NAN + ", ezin izan dira aldaketak egin", "Elorrieta Kasinoa ï¿½", JOptionPane.ERROR_MESSAGE);
 		    	    }
 	    		}
 	    	}

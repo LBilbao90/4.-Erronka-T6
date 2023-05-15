@@ -79,8 +79,6 @@ public class TestJokoak {
         assertEquals(jokoak1.hashCode(), jokoak2.hashCode());
     }
 
-
-
     @Test
     public void testToString() {
         String expected = "Jokoak [id_jokoak=1, jokoIzena=Slotak, maxApostu=50.0, id_kasinoa=1]";
