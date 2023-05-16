@@ -96,12 +96,12 @@ public class TestDatuBaseEraldaketak {
     @Test
     public void testKasinoErabiltzaileInsert() {
     	datuBaseKarga.karga();
-    	String NAN= "03418239W";
+    	String NAN= "01439769S";
     	int id_Kasino = 1;
     	
     	assertTrue(datuBaseEraldaketak.kasinoErabiltzaileInsert(NAN, id_Kasino));
     	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("73264894A", 0));
-    	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("03418239W", 1));
+    	assertFalse(datuBaseEraldaketak.kasinoErabiltzaileInsert("01439769S", 1));
     	
     	Connection conn;
 	   	try {
