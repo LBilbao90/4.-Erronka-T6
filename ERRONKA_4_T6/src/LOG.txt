@@ -7,6 +7,3 @@
 2023-05-11 08:34:03 | Erabiltzaile NAN: 72323409R | Ruleta emaitza: 7 | Guztira apostatutako kantitatea: 5000 | Apostua emaitza: Zorionak! Irabazitakoa: 8000 | Azken balantzea: +3000
 2023-05-11 08:34:03 | Erabiltzaile NAN: 34567890V | Ruleta emaitza: 3 | Guztira apostatutako kantitatea: 1000 | Apostua emaitza: Berdin gelditzen zara | Azken balantzea: +0
 2023-05-11 09:03:52 | Erabiltzaile NAN: 72323409R | Ruleta emaitza: 3 | Guztira apostatutako kantitatea: 10000 | Apostua emaitza: Zorionak! Irabazitakoa: 18000 | Azken balantzea: +8000
-2023-05-12 12:22:21 | Erabiltzaile NAN: 72323409R | Ruleta emaitza: 6 | Guztira apostatutako kantitatea: 10000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -10000
-2023-05-15 10:55:05 | Erabiltzaile NAN: 03418239W | Ruleta emaitza: 17 | Guztira apostatutako kantitatea: 5000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -5000
-2023-05-15 10:59:29 | Erabiltzaile NAN: 03418239W | Ruleta emaitza: 36 | Guztira apostatutako kantitatea: 5000 | Apostua emaitza: Ez duzu ezer irabazi | Azken balantzea: -5000

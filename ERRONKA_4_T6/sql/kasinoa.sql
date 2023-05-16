@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2023 a las 09:05:24
+-- Tiempo de generación: 15-05-2023 a las 10:44:43
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -20,6 +20,106 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `kasinoa`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `emple_soldata_altua` (`sal_min` FLOAT, `sal_max` FLOAT)   begin
+
+declare NAN2 varchar(9);
+declare izena2 varchar(20);
+declare abizena2 varchar(50);
+declare jaiotze_data2 date;
+declare tlf_zenbakia2 char(9);
+declare kargu2 varchar(50);
+declare soldata2 double;
+
+#Controlador para el bucle
+declare fin bool default 0;
+
+declare c cursor for select NAN, izena, abizena, jaiotze_data, tlf_zenbakia, kargu, soldata from langile_kontua where soldata between sal_min and sal_max ;
+
+#Excepcion
+declare continue handler for not found set fin = 1;
+
+open c;
+
+fetch c into NAN2, izena2, abizena2, jaiotze_data2, tlf_zenbakia2, kargu2, soldata2;
+
+while fin=0 do
+	select concat(NAN2,' NANdun eta ',izena2,' ',abizena2,' izena duen langileak ',kargu2,' karguan ',soldata2,'€ kobratzen ditu.') Mezua;
+    fetch c into NAN2, izena2, abizena2, jaiotze_data2, tlf_zenbakia2, kargu2, soldata2;
+end while;
+
+close c;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `langile_adinagusia_izatea` (`Id_kasino` INT, `NAN` VARCHAR(9), `Izena` VARCHAR(20), `Abizena` VARCHAR(50), `Jaiotze_data` DATE, `Herrialdea` VARCHAR(100), `Probintzia` VARCHAR(100), `Herria` VARCHAR(50), `Posta_Kodea` INT, `Posta_elektronikoa` VARCHAR(100), `tlf_zenbakia` CHAR(9), `Kargu` VARCHAR(50), `Soldata` DOUBLE, `pasahitza` VARCHAR(20))   begin 
+#langilea
+declare langilearen_ID int;
+declare azken_Id_Langile int ;
+declare adina int;
+
+#Excepciones
+declare id_kasino_error boolean default 0;
+declare gmail_bikoiztuta boolean default 0;
+declare soldata_txarra boolean default 0;
+declare continue handler for 1452 set id_kasino_error = 1;
+declare continue handler for 1062 set gmail_bikoiztuta = 1;
+declare continue handler for 1265 set soldata_txarra = 1;
+
+select langile_adinagusia_izatea(Jaiotze_data) into adina;
+
+#langilea
+select max(Id_Langile) from langile_kontua into langilearen_ID; #metemos el ultimo id de langile_kontua en la declaracion previa de "Id_de_Langile"
+set azken_Id_Langile = langilearen_ID+1; #el ultimo id sera el id filtrado por el max() pero le sumaremos uno para que sea el ultimo de verdad
+
+#control de excepciones
+if adina >= 18 then -- si es mayor de edad
+
+	if adina <= 100 then -- si menor a muy mayor para trabajar (100 segun convenio 100 = edad maxima para no poder trabajar)
+			insert into langile_kontua values (azken_Id_Langile, Id_Kasino, NAN, Izena, Abizena, Jaiotze_data, Herrialdea, Probintzia, Herria, Posta_Kodea, Posta_elektronikoa, tlf_zenbakia, Kargu, Soldata, pasahitza);
+            
+		if id_kasino_error = 0 then -- ID kasino ongi
+			if gmail_bikoiztuta = 0 then  -- gmail ongi
+
+					select concat('Langilearen adina ' , adina , ' da') "Ongi txertatuta";
+
+            else -- gmail txarto
+				select concat('gmail duplikatuta, gmail: ' , Posta_elektronikoa) "ERROR gmail";
+			end if;
+        else -- ID kasino txarto
+			select concat('id kasino txarto, id kasino: ' , Id_Kasino) "ERROR id kasino";
+        end if;
+        
+	else -- muy mayor para trabajar 
+		select concat('pertsona ez zen egon behar lan egiten ' , adina , ' urterekin ezta?') "ERROR convenio";
+	end if;
+    
+else -- menor de edad
+	select concat('Langile gazteegia da, ' , adina , ' urte ditu') "ERROR gaztea";
+    
+end if;
+
+end$$
+
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `langile_adina_kalkulatu` (`Jaiotze_data` DATE) RETURNS INT(11) READS SQL DATA begin
+
+declare data_zuzena date;
+declare adina int;
+
+SELECT date(CURRENT_TIMESTAMP()) into data_zuzena; 
+select timestampdiff(year,Jaiotze_data,data_zuzena) into adina; 
+
+return adina;
+end$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -49,6 +149,28 @@ INSERT INTO `apostua` (`id_apostu`, `NAN`, `id_joko`, `apostu_kantitatea`, `apos
 (7, '72323409R', 1, 5000, 'Irabazi'),
 (8, '34567890V', 1, 1000, 'Berdin'),
 (9, '72323409R', 1, 10000, 'Irabazi');
+
+--
+-- Disparadores `apostua`
+--
+DELIMITER $$
+CREATE TRIGGER `eguneratu_diru_antolaketa_historikoa` AFTER INSERT ON `apostua` FOR EACH ROW BEGIN
+    UPDATE erabiltzaile_kontua
+    SET diru_kopuru_historikoa = diru_kopuru_historikoa + NEW.apostu_kantitatea
+    WHERE NAN = NEW.NAN;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `eguneratu_max_apostu` AFTER INSERT ON `apostua` FOR EACH ROW BEGIN
+    DECLARE max_apostu INT;
+    SELECT MAX(apostu_kantitatea) INTO max_apostu FROM apostua WHERE id_joko = NEW.id_joko;
+    UPDATE jokoak
+    SET MaxApostu = max_apostu
+    WHERE id_joko = NEW.id_joko;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -117,6 +239,20 @@ CREATE TABLE `jokoak` (
 INSERT INTO `jokoak` (`id_joko`, `id_Kasino`, `JokoIzena`, `MaxApostu`) VALUES
 (1, 1, 'Ruleta', 10000),
 (2, 1, 'Blackjack', 1000);
+
+--
+-- Disparadores `jokoak`
+--
+DELIMITER $$
+CREATE TRIGGER `sahiestu_jokoak_ezabatu` BEFORE DELETE ON `jokoak` FOR EACH ROW BEGIN
+    DECLARE num_apostuak INT;
+    SELECT COUNT(*) INTO num_apostuak FROM apostua WHERE id_joko = OLD.id_joko;
+    IF num_apostuak > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Ezin da jokoa ezabatu apostuak daudelako erregistratuta joku honetan';
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -391,6 +527,26 @@ ALTER TABLE `kasino_erabiltzaile`
 --
 ALTER TABLE `langile_kontua`
   ADD CONSTRAINT `fk_Id_Kasino` FOREIGN KEY (`id_Kasino`) REFERENCES `kasino` (`id_Kasino`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `langile_soldata_igo` ON SCHEDULE EVERY 3 MONTH STARTS '2023-05-15 10:10:18' ON COMPLETION NOT PRESERVE ENABLE COMMENT 'Langileen soldata 100€ igotzen da hiru hilean behin' DO BEGIN
+    UPDATE langile_kontua
+    SET Soldata = Soldata + 100;
+END$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `id_maila_eguneratu` ON SCHEDULE EVERY 1 YEAR STARTS '2023-05-15 10:18:25' ON COMPLETION NOT PRESERVE ENABLE COMMENT 'Id_maila urtero 1 handitzen da 2 baino handiagoa bada, eta ezin' DO BEGIN
+    UPDATE erabiltzaile_kontua
+    SET id_maila = CASE
+        WHEN id_maila > 2 AND id_maila < 5 THEN id_maila + 1
+        WHEN id_maila >= 5 THEN 5
+        ELSE id_maila
+    END;
+END$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
