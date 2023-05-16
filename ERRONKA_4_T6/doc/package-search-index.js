@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Ikuspegia"},{"l":"Kontrolatzailea"},{"l":"Modelo"},{"l":"Salbuespenak"},{"l":"Testak"}];updateSearchResults();

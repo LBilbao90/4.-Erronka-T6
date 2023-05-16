@@ -30,7 +30,7 @@ public class datuBaseKarga {
 	public static ArrayList<Admin> getLangileak() {
 		return langileak;
 	}
-
+	
 	public static ArrayList<Maila> getMailak() {
 		return mailak;
 	}
