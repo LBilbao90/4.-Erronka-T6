@@ -5,12 +5,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Ikuspegia.ruletaJokoa.OKButtonListener;
-import Kontrolatzailea.apostuak;
 import Kontrolatzailea.datuBaseEraldaketak;
 import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
-import Kontrolatzailea.apostuak;
 import Kontrolatzailea.txtIdatzi;
+import Modelo.Apostu;
 import Modelo.Erabiltzaile;
 
 import javax.swing.JLabel;
@@ -792,7 +791,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, zbk);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -804,7 +803,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, zbk);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -816,7 +815,7 @@ public class ruletaApostua extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, zbk);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -827,7 +826,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_3.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 3, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 3, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -838,7 +837,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_4.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 4, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 4, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -849,7 +848,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_5.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 5, zbk);
+		    	apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 5, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -860,7 +859,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_6.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 6, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 6, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -871,7 +870,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_7.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 7, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 7, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -882,7 +881,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_8.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 8, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 8, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -893,7 +892,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_9.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 9, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 9, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -904,7 +903,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_10.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 10, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 10, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -915,7 +914,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_11.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 11, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 11, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -926,7 +925,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_12.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 12, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 12, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -937,7 +936,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_13.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 13, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 13, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -948,7 +947,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_14.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 14, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 14, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -959,7 +958,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_15.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 15, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 15, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -970,7 +969,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_16.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 16, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 16, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -981,7 +980,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_17.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 17, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 17, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -992,7 +991,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_18.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 18, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 18, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1003,7 +1002,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_19.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 19, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 19, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1014,7 +1013,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_20.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 20, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 20, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1025,7 +1024,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_21.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 21, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 21, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1036,7 +1035,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_22.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 22, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 22, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1047,7 +1046,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_23.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 23, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 23, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1058,7 +1057,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_24.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 24, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 24, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1069,7 +1068,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_25.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 25, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 25, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1080,7 +1079,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_26.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 26, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 26, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1091,7 +1090,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_27.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 27, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 27, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1102,7 +1101,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_28.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 28, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 28, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1113,7 +1112,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_29.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 29, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 29, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1124,7 +1123,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_30.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 30, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 30, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1135,7 +1134,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_31.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 31, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 31, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1146,7 +1145,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_32.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 32, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 32, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1157,7 +1156,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_33.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 33, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 33, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1168,7 +1167,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_34.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 34, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 34, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1179,7 +1178,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_35.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 35, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 35, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1190,7 +1189,7 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_36.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 36, zbk);
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 36, zbk);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1201,7 +1200,7 @@ public class ruletaApostua extends JFrame {
 		btn_1_34.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, dozenakEskerrEskuin);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, dozenakEskerrEskuin);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1212,7 +1211,7 @@ public class ruletaApostua extends JFrame {
 		btn_2_35.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, dozenakEskerrEskuin);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, dozenakEskerrEskuin);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1223,7 +1222,7 @@ public class ruletaApostua extends JFrame {
 		btn_3_36.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, dozenakEskerrEskuin);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, dozenakEskerrEskuin);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1235,7 +1234,7 @@ public class ruletaApostua extends JFrame {
 		btn_1_12.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, dozenak);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, dozenak);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1246,7 +1245,7 @@ public class ruletaApostua extends JFrame {
 		btn_13_24.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, dozenak);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, dozenak);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1258,7 +1257,7 @@ public class ruletaApostua extends JFrame {
 		btn_25_36.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, dozenak);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, dozenak);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1270,7 +1269,7 @@ public class ruletaApostua extends JFrame {
 		btn_1_18.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, taulaErdia);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, taulaErdia);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1282,7 +1281,7 @@ public class ruletaApostua extends JFrame {
 		btn_19_36.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, taulaErdia);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, taulaErdia);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1294,7 +1293,7 @@ public class ruletaApostua extends JFrame {
 		btn_even.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, bakoitiBikoiti);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, bakoitiBikoiti);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1306,7 +1305,7 @@ public class ruletaApostua extends JFrame {
 		btn_odd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, bakoitiBikoiti);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, bakoitiBikoiti);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1318,7 +1317,7 @@ public class ruletaApostua extends JFrame {
 		btn_gorriak.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, kolorea);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, kolorea);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
@@ -1329,7 +1328,7 @@ public class ruletaApostua extends JFrame {
 		btn_beltzak.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, kolorea);
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, kolorea);
 				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
