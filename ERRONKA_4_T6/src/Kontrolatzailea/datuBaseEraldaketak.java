@@ -48,7 +48,7 @@ public class datuBaseEraldaketak {
 	            String url = "jdbc:mysql://localhost:3306/kasinoa";
 	            conn = (Connection) DriverManager.getConnection (url, "root","");
 	            Statement stmt = (Statement) conn.createStatement();                     
-	            stmt.executeUpdate( "INSERT INTO erabiltzaile_kontua VALUES ('"+NAN+"','"+3+"','"+30+"',"+30+",'"+telefonoZbk+"','"+postaKodea+"','"+herrialdea+"','"+probintzia+"','"+herria+"','"+jaiotzeData+"','"+abizena+"','"+izena+"','"+pasahitza+"');");
+	            stmt.executeUpdate( "INSERT INTO erabiltzaile_kontua VALUES ('"+NAN+"','"+3+"','"+10000+"',"+10000+",'"+telefonoZbk+"','"+postaKodea+"','"+herrialdea+"','"+probintzia+"','"+herria+"','"+jaiotzeData+"','"+abizena+"','"+izena+"','"+pasahitza+"');");
 	            erregistratuta=true;
 	            conn.close();
 	        }catch(SQLException ex) {
@@ -196,5 +196,28 @@ public class datuBaseEraldaketak {
 	        }
 	    }
 	    return insert;
+	}
+	
+	/**
+	 * Datu baseko 'kasino_erabiltzaile' taulara bi insert egingo ditu erabiltzailearen NANa kontuan edukita.
+	 * @param NAN | Eraibltzailearen NANa. (String)
+	 * @param diruKorutuHistorikoa | Erabiltzailearen diru kopuru historikoa. (double)
+	 * @param diruKopuruMomentukoa | Erabiltzailearen momentuko diru kopurua. (double)
+	 */
+	public static void erabiltzaileDiruaUpdate(String NAN, double diruKopuruHistorikoa, double diruKopuruMomentukoa) {
+	    Connection conn;
+	    // Datu basean 'updatea'-a egiten sailatzen da.
+	    try {
+	    	String url = "jdbc:mysql://localhost:3306/kasinoa";
+        conn = (Connection) DriverManager.getConnection (url, "root","");
+        Statement stmt = (Statement) conn.createStatement();      
+        stmt.executeUpdate("UPDATE erabiltzaile_kontua SET diru_kopuru_historikoa = '" + diruKopuruHistorikoa + "', diru_kopuru_momentukoa = '" + diruKopuruMomentukoa +  "' WHERE NAN = '" + NAN + "'");
+
+	        conn.close();
+	    } catch (SQLException ex) {
+	        System.out.println("SQLException: " + ex.getMessage());
+	        System.out.println("SQLState: " + ex.getSQLState());
+	        System.out.println("ErrorCode: " + ex.getErrorCode());
+	    }
 	}
 }

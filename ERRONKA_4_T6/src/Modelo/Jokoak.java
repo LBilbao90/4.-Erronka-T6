@@ -10,7 +10,7 @@ public class Jokoak extends Kasinoa {
 	private double maxApostu;
 
 
-	public Jokoak(int id_kasinoa, String izena, String helbidea, int telefonoa, ArrayList<Jokuak> jokoak) {
+	public Jokoak(int id_kasinoa, String izena, String helbidea, int telefonoa, ArrayList<Jokoak> jokoak) {
 		super(id_kasinoa, izena, helbidea, telefonoa, jokoak);
 	}
 

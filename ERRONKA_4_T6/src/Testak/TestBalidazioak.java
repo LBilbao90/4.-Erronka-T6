@@ -3,15 +3,11 @@ package Testak;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import javax.swing.JPanel;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import Kontrolatzailea.balidazioak;
 import Kontrolatzailea.datuBaseKarga;
-import Kontrolatzailea.metodoak;
-import Kontrolatzailea.balidazioak;
 
 public class TestBalidazioak {
 	@Test
@@ -78,12 +74,19 @@ public class TestBalidazioak {
 	    }
 	    
 	    @Test
-	    public void testLoginBalidazioaErabiltzaile() {
-	        datuBaseKarga.karga();
-	        Assert.assertEquals(0,balidazioak.loginBalidazioaErabiltzaile("12345678A", "elorrieta00".toCharArray()));
-	        Assert.assertEquals(1,balidazioak.loginBalidazioaErabiltzaile("03418239W", "Elorrieta00".toCharArray()));
-	        Assert.assertEquals(2,balidazioak.loginBalidazioaErabiltzaile("79144847F", "Elorrieta00".toCharArray()));
-	    }
+	    public void testLoginBalidazioaAdmin() {
+            datuBaseKarga.karga();
+            assertTrue(balidazioak.loginBalidazioaAdmin("73264894A", "Admin00".toCharArray()));
+            assertFalse(balidazioak.loginBalidazioaAdmin("03418239W", "Elorrieta00".toCharArray()));
+        }
+	    
+	    @Test
+        public void testLoginBalidazioaErabiltzaile() {
+            datuBaseKarga.karga();
+            Assert.assertEquals(0,balidazioak.loginBalidazioaErabiltzaile("12345678A", "elorrieta00".toCharArray()));
+            Assert.assertEquals(1,balidazioak.loginBalidazioaErabiltzaile("03418239W", "Elorrieta00".toCharArray()));
+            Assert.assertEquals(2,balidazioak.loginBalidazioaErabiltzaile("34567890V", "Elorrieta00".toCharArray()));
+        }
 
 	
 	    @Test

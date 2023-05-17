@@ -19,7 +19,6 @@ class TestAdmin {
 		try {
 			jaioteguna = dateFormat.parse("2000-01-01");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Admin a = new Admin("12345678A", "Jon", "Aguirre", jaioteguna, "Espainia", "Gipuzkoa", "Donostia", "20001", "1234", "123456789", 0, "Admin", 2000.0, 1, 1, "admin@gmail.com");
@@ -82,7 +81,6 @@ class TestAdmin {
 		try {
 			jaioteguna = dateFormat.parse("2000-01-01");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Admin admin1 = new Admin("12345678A", "Jon", "Aguirre", jaioteguna, "Espainia", "Gipuzkoa", "Donostia", "20001", "1234", "123456789", 0, "Admin", 2000.0, 1, 1, "admin@gmail.com");
@@ -98,7 +96,6 @@ class TestAdmin {
 		try {
 			jaioteguna = dateFormat.parse("2000-01-01");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Admin admin1 = new Admin("12345678A", "Jon", "Aguirre", jaioteguna, "Espainia", "Gipuzkoa", "Donostia", "20001", "1234", "123456789", 0, "Admin", 2000.0, 1, 1,"admin@gmail.com");
@@ -114,7 +111,6 @@ class TestAdmin {
 		try {
 			jaioteguna = dateFormat.parse("2000-01-01");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Admin admin1= new Admin("12345678A", "Jon", "Aguirre", jaioteguna, "Espainia", "Gipuzkoa", "Donostia", "20001", "1234", "123456789", 0, "Admin", 2000.0, 1, 1, "admin@gmail.com");
@@ -130,7 +126,6 @@ class TestAdmin {
 		try {
 			jaioteguna = dateFormat.parse("2000-01-01");
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
         Admin admin = new Admin("12345678A", "John", "Doe", jaioteguna, "Spain", "Madrid", "Madrid", "28001","password", "555555555", 1, "Administrator", 1500.0, 1, 1, "admin@gmail.com");
@@ -138,4 +133,3 @@ class TestAdmin {
         assertEquals(expected, admin.toString());
     }
 }
-

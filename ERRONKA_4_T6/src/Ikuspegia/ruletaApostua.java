@@ -5,12 +5,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Ikuspegia.ruletaJokoa.OKButtonListener;
-import Kontrolatzailea.apostuak;
 import Kontrolatzailea.datuBaseEraldaketak;
 import Kontrolatzailea.datuBaseKarga;
 import Kontrolatzailea.metodoak;
-import Kontrolatzailea.apostuak;
 import Kontrolatzailea.txtIdatzi;
+import Modelo.Apostu;
 import Modelo.Erabiltzaile;
 
 import javax.swing.JLabel;
@@ -20,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -91,22 +91,6 @@ public class ruletaApostua extends JFrame {
     public static void setBtnJokoetaraBueltatuListener(btnJokoetaraBueltatuListener listener) {
         btnJokoetaraBueltatuListener = listener;
     }
-    
-    /**
-     * Launch the application.
-     */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ruletaApostua frame = new ruletaApostua();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -123,44 +107,55 @@ public class ruletaApostua extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+	    JLabel aukeratuApostu = new JLabel("Aukeratu apostu kantitatea:");
+	    aukeratuApostu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	    aukeratuApostu.setBounds(10, 25, 300, 21);
+	    add(aukeratuApostu);
+		
 		// Talde bat sortu 'rdbtnApostuXX' guztiak batera funtzionatzeko.
 		ButtonGroup apostuKantitatea = new ButtonGroup();
 		
 		JRadioButton rdbtnApostu10 = new JRadioButton("10");
 		rdbtnApostu10.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnApostu10.setBounds(10, 48, 67, 21);
+		rdbtnApostu10.setBounds(10, 80, 67, 21);
 		apostuKantitatea.add(rdbtnApostu10);
 		contentPane.add(rdbtnApostu10);
 		
 		JRadioButton rdbtnApostu20 = new JRadioButton("20");
 		rdbtnApostu20.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnApostu20.setBounds(88, 48, 67, 21);
+		rdbtnApostu20.setBounds(90, 80, 67, 21);
 		apostuKantitatea.add(rdbtnApostu20);
 		contentPane.add(rdbtnApostu20);
 		
 		JRadioButton rdbtnApostu50 = new JRadioButton("50");
 		rdbtnApostu50.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnApostu50.setBounds(157, 48, 67, 21);
+		rdbtnApostu50.setBounds(160, 80, 67, 21);
 		apostuKantitatea.add(rdbtnApostu50);
 		contentPane.add(rdbtnApostu50);
 		
 		JRadioButton rdbtnApostu100 = new JRadioButton("100");
 		rdbtnApostu100.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnApostu100.setBounds(232, 48, 67, 21);
+		rdbtnApostu100.setBounds(240, 80, 67, 21);
 		apostuKantitatea.add(rdbtnApostu100);
 		contentPane.add(rdbtnApostu100);
 		
 		JRadioButton rdbtnApostu500 = new JRadioButton("500");
 		rdbtnApostu500.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnApostu500.setBounds(322, 48, 67, 21);
+		rdbtnApostu500.setBounds(330, 80, 67, 21);
 		apostuKantitatea.add(rdbtnApostu500);
 		contentPane.add(rdbtnApostu500);
 		
 		JRadioButton rdbtnApostu1000 = new JRadioButton("1000");
 		rdbtnApostu1000.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		rdbtnApostu1000.setBounds(415, 48, 78, 21);
+		rdbtnApostu1000.setBounds(420, 80, 78, 21);
 		apostuKantitatea.add(rdbtnApostu1000);
 		contentPane.add(rdbtnApostu1000);
+		
+		JRadioButton rdbtnAllIn = new JRadioButton("AllIn");
+		rdbtnAllIn.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnAllIn.setBounds(510, 80, 78, 21);
+		apostuKantitatea.add(rdbtnAllIn);
+		contentPane.add(rdbtnAllIn);
 		
 		JButton btn_zbk_36 = new JButton("");
 		btn_zbk_36.setOpaque(false);
@@ -567,6 +562,7 @@ public class ruletaApostua extends JFrame {
 					rdbtnApostu100.setEnabled(false);
 					rdbtnApostu500.setEnabled(false);
 					rdbtnApostu1000.setEnabled(false);
+					rdbtnAllIn.setEnabled(false);
 	            	btnJokoetaraBueltatu.setEnabled(false);
 	    			btnApostuaEgin.setEnabled(false);
 	    			btnApostuaEzabatu.setEnabled(false);
@@ -636,6 +632,7 @@ public class ruletaApostua extends JFrame {
 						rdbtnApostu100.setEnabled(true);
 						rdbtnApostu500.setEnabled(true);
 						rdbtnApostu1000.setEnabled(true);
+						rdbtnAllIn.setEnabled(true);
 						btnJokoetaraBueltatu.setEnabled(true);
 		    			btn_1_18.setEnabled(true);
 		    			btn_19_36.setEnabled(true);
@@ -726,7 +723,6 @@ public class ruletaApostua extends JFrame {
 		    			if (bakoitiBikoiti[paridad] != 0 && ruletaEmaitza != 0) {
 		    			    guztiraIrabaziak += bakoitiBikoiti[paridad] * 2;  // 2 * apostua
 		    			}
-		    			System.out.println(guztiraIrabaziak);
 		    			if (guztiraIrabaziak > 0 && guztiraIrabaziak > apostuOrain) {
 		    				emaitzaApostu = "Zorionak! Irabazitakoa: " + guztiraIrabaziak;
 		    				JOptionPane.showMessageDialog(btnApostuaEgin, emaitzaApostu);
@@ -758,6 +754,32 @@ public class ruletaApostua extends JFrame {
 		    			}
 		    			txtIdatzi txtIdatzi = new txtIdatzi();
 						txtIdatzi.idatzi(denboraOrduaMomentukoa + " | Erabiltzaile NAN: " + lehenLehioa.getMomentukoErabiltzaileNAN() + " | Ruleta emaitza: " + ruletaEmaitza + " | Guztira apostatutako kantitatea: " + guztiraApostua + " | Apostua emaitza: " + emaitzaApostu + " | Azken balantzea: " + azkenEmaitza);
+						
+						ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
+					    for (Erabiltzaile erabiltzaile : erabiltzaileak) {
+					        if (erabiltzaile.getNAN().equals(lehenLehioa.getMomentukoErabiltzaileNAN())) {
+								double diruKopuruHistorikoa = erabiltzaile.getDiru_kopuru_historikoa();
+								if (guztiraIrabaziak > 0) {
+									diruKopuruHistorikoa = erabiltzaile.getDiru_kopuru_historikoa() + guztiraIrabaziak; 
+								}
+								double diruKopuruMomentukoa = erabiltzaile.getDiru_kopuru_momentukoa();
+								if (guztiraIrabaziak > 0 && guztiraIrabaziak > apostuOrain) {
+									diruKopuruMomentukoa = erabiltzaile.getDiru_kopuru_momentukoa() + (guztiraIrabaziak - guztiraApostua);
+								} else {
+									if ((erabiltzaile.getDiru_kopuru_momentukoa() - guztiraApostua) < 0) {
+										diruKopuruMomentukoa = 0;
+									} else {
+										diruKopuruMomentukoa = erabiltzaile.getDiru_kopuru_momentukoa() - guztiraApostua;
+									}
+								}
+								
+					            datuBaseEraldaketak.erabiltzaileDiruaUpdate(lehenLehioa.getMomentukoErabiltzaileNAN(), diruKopuruHistorikoa, diruKopuruMomentukoa);
+					            break;
+					        }
+					    }
+						
+						
+						
 						apostuOrain = 0;
 						Arrays.fill(zbk, 0);
 						Arrays.fill(dozenak, 0);
@@ -793,25 +815,23 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_zbk_0.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, zbk);
-			
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
 			}
 		});
 		
-		btn_zbk_1.addActionListener(new ActionListener() {
-			
+		btn_zbk_1.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, zbk);
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -819,13 +839,11 @@ public class ruletaApostua extends JFrame {
 		});
 
 		btn_zbk_2.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -835,9 +853,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_3.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 3, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 3, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -847,9 +864,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_4.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 4, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 4, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -859,9 +875,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_5.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 5, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		    	apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 5, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -871,9 +886,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_6.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 6, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 6, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -883,9 +897,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_7.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 7, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 7, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -895,9 +908,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_8.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 8, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 8, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -907,9 +919,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_9.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 9, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 9, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -919,9 +930,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_10.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 10, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 10, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -931,9 +941,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_11.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 11, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 11, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -943,9 +952,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_12.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 12, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 12, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -955,9 +963,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_13.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 13, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 13, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -967,9 +974,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_14.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 14, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 14, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -979,9 +985,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_15.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 15, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 15, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -991,9 +996,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_16.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 16, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 16, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1003,9 +1007,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_17.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 17, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 17, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1015,9 +1018,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_18.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 18, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 18, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1027,9 +1029,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_19.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 19, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 19, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1039,9 +1040,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_20.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 20, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 20, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1051,9 +1051,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_21.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 21, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 21, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1063,9 +1062,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_22.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 22, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 22, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1075,9 +1073,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_23.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 23, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 23, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1087,9 +1084,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_24.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 24, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 24, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1099,9 +1095,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_25.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 25, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 25, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1111,9 +1106,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_26.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 26, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 26, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1123,9 +1117,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_27.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 27, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 27, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1135,9 +1128,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_28.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 28, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 28, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1147,9 +1139,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_29.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 29, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 29, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1159,9 +1150,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_30.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 30, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 30, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1171,9 +1161,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_31.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 31, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 31, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1183,9 +1172,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_32.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 32, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 32, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1195,9 +1183,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_33.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 33, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 33, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1207,9 +1194,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_34.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 34, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 34, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1219,9 +1205,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_35.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 35, zbk);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 35, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1231,9 +1216,8 @@ public class ruletaApostua extends JFrame {
 		btn_zbk_36.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 36, zbk);
-		        
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+		        apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 36, zbk);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1241,13 +1225,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_1_34.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenakEskerrEskuin);
-				
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, dozenakEskerrEskuin);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1255,13 +1236,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_2_35.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenakEskerrEskuin);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, dozenakEskerrEskuin);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1269,13 +1247,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_3_36.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenakEskerrEskuin);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, dozenakEskerrEskuin);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1284,13 +1259,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_1_12.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, dozenak);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, dozenak);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1298,13 +1270,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_13_24.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, dozenak);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, dozenak);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1313,13 +1282,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_25_36.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 2, dozenak);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 2, dozenak);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1328,13 +1294,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_1_18.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, taulaErdia);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, taulaErdia);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1343,13 +1306,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_19_36.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, taulaErdia);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, taulaErdia);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1358,13 +1318,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_even.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, bakoitiBikoiti);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, bakoitiBikoiti);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1373,13 +1330,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_odd.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, bakoitiBikoiti);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, bakoitiBikoiti);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1388,13 +1342,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_gorriak.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 0, kolorea);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 0, kolorea);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}
@@ -1402,13 +1353,10 @@ public class ruletaApostua extends JFrame {
 		});
 		
 		btn_beltzak.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				apostuOrain = apostuak.apostuaGehitu(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, pertsonaApostuMax, apostuOrain, 1, kolorea);
-
-				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected()){
+				apostuOrain = Apostu.apustua_egin(rdbtnApostu10, rdbtnApostu20, rdbtnApostu50, rdbtnApostu100, rdbtnApostu500, rdbtnApostu1000, rdbtnAllIn, pertsonaApostuMax, apostuOrain, 1, kolorea);
+				if(rdbtnApostu10.isSelected() || rdbtnApostu20.isSelected() || rdbtnApostu50.isSelected() || rdbtnApostu100.isSelected() || rdbtnApostu500.isSelected() || rdbtnApostu1000.isSelected() || rdbtnAllIn.isSelected()){
 					btnApostuaEgin.setEnabled(true);
 					btnApostuaEzabatu.setEnabled(true);
 				}

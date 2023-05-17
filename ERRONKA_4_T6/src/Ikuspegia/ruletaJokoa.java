@@ -143,11 +143,8 @@ public class ruletaJokoa extends JPanel {
                 	kont--;
                 	timer13.stop();
                     unekoZenbakia = metodoak.ruletakoZbkKalkulatu(angelu);
-                    System.out.println("Ruleta emaitza: " + unekoZenbakia);
-//                    unekoZenbakia = 0;
                     btnBiratu.setEnabled(false);
                     erakutsiMezua(unekoZenbakia);
-//                    unekoZenbakia = 0;
                     
                 }
             }
@@ -185,15 +182,5 @@ public class ruletaJokoa extends JPanel {
             }
         });
     }
-    
-//    public static void main(String[] args) {
-//        // Crear la ventana de la aplicación y agregar el panel de la imagen rotada
-//        JFrame frame = new JFrame("Rotar Imagen con Animación");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add(new ruletaJokoa());
-//        frame.pack();
-//        frame.setLocationRelativeTo(null);
-//        frame.setVisible(true);
-//    }
     
 }

@@ -56,10 +56,6 @@ public abstract class Pertsona extends Maila{
 		return herrialdea;
 	}
 
-//	public String getAutonomia_erkidegoa() {
-//		return autonomia_erkidegoa;
-//	}
-
 	public String getProbintzia() {
 		return probintzia;
 	}
@@ -71,10 +67,6 @@ public abstract class Pertsona extends Maila{
 	public String getPostaKodea() {
 		return postaKodea;
 	}
-
-//	public String getPosta_elektronikoa() {
-//		return posta_elektronikoa;
-//	}
 
 	public String getPasahitza() {
 		return pasahitza;
@@ -104,10 +96,6 @@ public abstract class Pertsona extends Maila{
 		this.herrialdea = herrialdea;
 	}
 
-//	public void setAutonomia_erkidegoa(String autonomia_erkidegoa) {
-//		this.autonomia_erkidegoa = autonomia_erkidegoa;
-//	}
-
 	public void setProbintzia(String probintzia) {
 		this.probintzia = probintzia;
 	}
@@ -119,10 +107,6 @@ public abstract class Pertsona extends Maila{
 	public void setPostaKodea(String postaKodea) {
 		this.postaKodea = postaKodea;
 	}
-
-//	public void setPosta_elektronikoa(String posta_elektronikoa) {
-//		this.posta_elektronikoa = posta_elektronikoa;
-//	}
 
 	public void setPasahitza(String pasahitza) {
 		this.pasahitza = pasahitza;
@@ -158,19 +142,5 @@ public abstract class Pertsona extends Maila{
 				+ ", herrialdea=" + herrialdea + ", probintzia=" + probintzia + ", herria=" + herria + ", postaKodea="
 				+ postaKodea + ", pasahitza=" + pasahitza + ", tlf_zenabkia=" + tlf_zenabkia + "]";
 	}
-	
-//	@Override
-//	public String toString() {
-//		return "Pertsona [NAN=" + NAN + "\nizena=" + izena + "\nabizena=" + abizena + "\njaioteguna=" + jaioteguna
-//				+ "\nherrialdea=" + herrialdea + "\nautonomia_erkidegoa=" + autonomia_erkidegoa + "\nprobintzia="
-//				+ probintzia + "\nherria=" + herria + "\npostaKodea=" + postaKodea + "\nposta_elektronikoa="
-//				+ posta_elektronikoa + "\npasahitza=" + pasahitza + "\ntlf_zenabkia=" + tlf_zenabkia + "]";
-//	}
-
-	
-	
-	
-	
-	
 }
 
