@@ -97,7 +97,6 @@ public class balidazioak {
 	    	// Erabiltzailea (NAN) eta pasahitza balidatu.
 	        if (adminintratzailea.getNAN().equals(admin) && adminintratzailea.getPasahitza().equals(new String(pasahitza))) {
 	        	adminZuzena = true;
-	        	System.out.println(adminintratzailea.getNAN());
 	            return adminZuzena;
 	        }
 	    }

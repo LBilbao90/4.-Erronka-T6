@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -96,7 +97,7 @@ public class ruletaApostua extends JFrame {
 	 * @param string 
 	 */
 	public ruletaApostua() {
-		setTitle("Apostua | Ruleta | Elorrieta Kasinoa �");
+		setTitle("Apostua | Ruleta | Elorrieta Kasinoa ©");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 500);
@@ -544,7 +545,7 @@ public class ruletaApostua extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				blokeatu = true;
 	            // 'ruletaLehioa'aren lehioa sortzen da
-	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa �");
+	            JFrame ruletaLehioa = new JFrame("Ruleta | Elorrieta Kasinoa ©");
 	            
 	            ruletaLehioa.getContentPane().add(ruleta);
 	            ruletaLehioa.setLocation(900, 150);
@@ -753,6 +754,32 @@ public class ruletaApostua extends JFrame {
 		    			}
 		    			txtIdatzi txtIdatzi = new txtIdatzi();
 						txtIdatzi.idatzi(denboraOrduaMomentukoa + " | Erabiltzaile NAN: " + lehenLehioa.getMomentukoErabiltzaileNAN() + " | Ruleta emaitza: " + ruletaEmaitza + " | Guztira apostatutako kantitatea: " + guztiraApostua + " | Apostua emaitza: " + emaitzaApostu + " | Azken balantzea: " + azkenEmaitza);
+						
+						ArrayList<Erabiltzaile> erabiltzaileak = datuBaseKarga.getErabiltzaileak();
+					    for (Erabiltzaile erabiltzaile : erabiltzaileak) {
+					        if (erabiltzaile.getNAN().equals(lehenLehioa.getMomentukoErabiltzaileNAN())) {
+								double diruKopuruHistorikoa = erabiltzaile.getDiru_kopuru_historikoa();
+								if (guztiraIrabaziak > 0) {
+									diruKopuruHistorikoa = erabiltzaile.getDiru_kopuru_historikoa() + guztiraIrabaziak; 
+								}
+								double diruKopuruMomentukoa = erabiltzaile.getDiru_kopuru_momentukoa();
+								if (guztiraIrabaziak > 0 && guztiraIrabaziak > apostuOrain) {
+									diruKopuruMomentukoa = erabiltzaile.getDiru_kopuru_momentukoa() + (guztiraIrabaziak - guztiraApostua);
+								} else {
+									if ((erabiltzaile.getDiru_kopuru_momentukoa() - guztiraApostua) < 0) {
+										diruKopuruMomentukoa = 0;
+									} else {
+										diruKopuruMomentukoa = erabiltzaile.getDiru_kopuru_momentukoa() - guztiraApostua;
+									}
+								}
+								
+					            datuBaseEraldaketak.erabiltzaileDiruaUpdate(lehenLehioa.getMomentukoErabiltzaileNAN(), diruKopuruHistorikoa, diruKopuruMomentukoa);
+					            break;
+					        }
+					    }
+						
+						
+						
 						apostuOrain = 0;
 						Arrays.fill(zbk, 0);
 						Arrays.fill(dozenak, 0);
